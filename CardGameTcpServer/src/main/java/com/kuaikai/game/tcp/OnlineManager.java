@@ -10,16 +10,18 @@ import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.farm.common.IMsgHandler;
-import com.farm.common.db.redis.LockUtils;
-import com.farm.common.utils.QuartzManager;
-import com.farm.common.utils.TimeUtils;
-import com.farm.server.event.TriggerManager;
-import com.farm.server.event.login.LoginOutEvent;
-import com.farm.server.tcp.MsgHandler;
-import com.farm.server.tcp.MsgThreadPool;
-import com.farm.server.tcp.msg.login.KickOffResHandler;
-import com.farm.server.webSocket.WebSocket;
+import com.kuaikai.game.tcp.ws.WebSocket;
+
+//import com.farm.common.IMsgHandler;
+//import com.farm.common.db.redis.LockUtils;
+//import com.farm.common.utils.QuartzManager;
+//import com.farm.common.utils.TimeUtils;
+//import com.farm.server.event.TriggerManager;
+//import com.farm.server.event.login.LoginOutEvent;
+//import com.farm.server.tcp.MsgHandler;
+//import com.farm.server.tcp.MsgThreadPool;
+//import com.farm.server.tcp.msg.login.KickOffResHandler;
+//import com.farm.server.webSocket.WebSocket;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.Attribute;
@@ -74,9 +76,9 @@ public class OnlineManager {
 	public static void kickOff(int uid, int code) {
 		ChannelHandlerContext channelHandlerContext = sessionMap.get(uid);
 		if (channelHandlerContext != null) {
-			KickOffResHandler kickOffResHandler = new KickOffResHandler(code);
-			innerSendMsg(uid, kickOffResHandler, channelHandlerContext);
-			onUserLogOut(uid, "server kick off");
+//			KickOffResHandler kickOffResHandler = new KickOffResHandler(code);
+//			innerSendMsg(uid, kickOffResHandler, channelHandlerContext);
+//			onUserLogOut(uid, "server kick off");
 		}
 	}
 
@@ -97,17 +99,17 @@ public class OnlineManager {
 				LOGGER.error(String.format("OnlineManager.onUserLogOut@close connect error|uid=%d", uid));
 			}
 			// 发送玩家下线通知
-			RLock rLock = LockUtils.getUserLock(uid);
-			rLock.lock();
-			try {
-				// 通知登陆成功
-				LoginOutEvent loginOutEvent = new LoginOutEvent(uid);
-				TriggerManager.triggerEvent(loginOutEvent);
-			} catch (Exception e) {
-				LOGGER.error(String.format("OnlineManager.onUserLogOut@logout listener error|uid=%d", uid), e);
-			} finally {
-				rLock.unlock();
-			}
+//			RLock rLock = LockUtils.getUserLock(uid);
+//			rLock.lock();
+//			try {
+//				// 通知登陆成功
+//				LoginOutEvent loginOutEvent = new LoginOutEvent(uid);
+//				TriggerManager.triggerEvent(loginOutEvent);
+//			} catch (Exception e) {
+//				LOGGER.error(String.format("OnlineManager.onUserLogOut@logout listener error|uid=%d", uid), e);
+//			} finally {
+//				rLock.unlock();
+//			}
 			LOGGER.info(String.format("OnlineManager.onUserLogOut@user log out|uid=%d|reason=%s", uid, reason));
 		}
 	}
@@ -170,48 +172,48 @@ public class OnlineManager {
 	private static final String CHECK_USER_PING = "* 0/2 * * * ? ";// 每隔两分钟检测
 
 	public static void init() throws SchedulerException {
-		QuartzManager.addCronTimeJob(QuartzManager.ONLINE_GROUP, "check_last_login", LastLoginCheckJob.class,
-				CHECK_LAST_LOGIN_CRON, null);
-		QuartzManager.addCronTimeJob(QuartzManager.ONLINE_GROUP, "CHECK_USER_PING", LastLoginCheckJob.class,
-				CHECK_USER_PING, null);
+//		QuartzManager.addCronTimeJob(QuartzManager.ONLINE_GROUP, "check_last_login", LastLoginCheckJob.class,
+//				CHECK_LAST_LOGIN_CRON, null);
+//		QuartzManager.addCronTimeJob(QuartzManager.ONLINE_GROUP, "CHECK_USER_PING", LastLoginCheckJob.class,
+//				CHECK_USER_PING, null);
 	}
 
-	public static void checkPingTime() {
-		long curTimes = System.currentTimeMillis();
-		Iterator<Map.Entry<Integer, Long>> iterator = pingMap.entrySet().iterator();
-		while (iterator.hasNext()) {
-			Map.Entry<Integer, Long> entry = iterator.next();
-			int uid = entry.getKey();
-			long pingTime = entry.getValue();
-			if (curTimes - pingTime > 2 * TimeUtils.MINITE_TO_MILL) {
-				MsgThreadPool.getThreadPool().execute(new HandleLogOut(uid));
-			}
-		}
-	}
-
-	private static final class HandleLogOut implements Runnable {
-
-		private int uid;
-
-		public HandleLogOut(int uid) {
-			this.uid = uid;
-		}
-
-		@Override
-		public void run() {
-			try {
-				Long pingTime = pingMap.get(uid);
-				if (pingTime == null) {
-					return;
-				}
-				long curTimes = System.currentTimeMillis();
-				if (curTimes - pingTime < 2 * TimeUtils.MINITE_TO_MILL) {
-					return;
-				}
-				OnlineManager.onUserLogOut(uid, "ping time off line");
-			} catch (Exception e) {
-			}
-		}
-	}
+//	public static void checkPingTime() {
+//		long curTimes = System.currentTimeMillis();
+//		Iterator<Map.Entry<Integer, Long>> iterator = pingMap.entrySet().iterator();
+//		while (iterator.hasNext()) {
+//			Map.Entry<Integer, Long> entry = iterator.next();
+//			int uid = entry.getKey();
+//			long pingTime = entry.getValue();
+//			if (curTimes - pingTime > 2 * TimeUtils.MINITE_TO_MILL) {
+//				MsgThreadPool.getThreadPool().execute(new HandleLogOut(uid));
+//			}
+//		}
+//	}
+//
+//	private static final class HandleLogOut implements Runnable {
+//
+//		private int uid;
+//
+//		public HandleLogOut(int uid) {
+//			this.uid = uid;
+//		}
+//
+//		@Override
+//		public void run() {
+//			try {
+//				Long pingTime = pingMap.get(uid);
+//				if (pingTime == null) {
+//					return;
+//				}
+//				long curTimes = System.currentTimeMillis();
+//				if (curTimes - pingTime < 2 * TimeUtils.MINITE_TO_MILL) {
+//					return;
+//				}
+//				OnlineManager.onUserLogOut(uid, "ping time off line");
+//			} catch (Exception e) {
+//			}
+//		}
+//	}
 
 }

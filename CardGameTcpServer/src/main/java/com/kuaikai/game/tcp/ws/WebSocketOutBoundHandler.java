@@ -3,7 +3,7 @@ package com.kuaikai.game.tcp.ws;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.farm.common.tcp.Message;
+import com.kuaikai.game.tcp.Message;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;

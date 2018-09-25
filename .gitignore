@@ -1,0 +1,15 @@
+*.class
+
+# Package Files #
+target/*
+web/WEB-INF/classes/*
+*.war
+*.ear
+.gradle/
+build/
+.classpath
+.project
+.settings
+bin
+/settings
+
