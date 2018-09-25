@@ -1,0 +1,19 @@
+allprojects {
+    apply plugin: 'java'
+    configurations {
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+}
+
+subprojects {
+    sourceCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+}
