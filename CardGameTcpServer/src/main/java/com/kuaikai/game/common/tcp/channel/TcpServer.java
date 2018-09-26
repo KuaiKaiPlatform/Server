@@ -1,20 +1,20 @@
-package com.kuaikai.game.common.tcp;
+package com.kuaikai.game.common.tcp.channel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.card.msg.handler.login.LoginReqHandler;
-import com.kuaikai.game.common.msg.IMsgHandler;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MessageFactory;
-import com.kuaikai.game.common.msg.MessageHandler;
 import com.kuaikai.game.common.msg.MsgHandler;
+import com.kuaikai.game.common.tcp.OnlineManager;
+import com.kuaikai.game.common.tcp.Server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 
-public class TcpServer extends MessageHandler {
+public class TcpServer extends ChannelConnection {
 
 	private static final TcpServer tcpServer = new TcpServer();
 
@@ -63,8 +63,8 @@ public class TcpServer extends MessageHandler {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("TcpServer.onConnectSuccess@connect success|desc=%s", ctx.channel().remoteAddress());
 		}
-		AttributeKey<IMsgHandler> msgHandlerKey = AttributeKey.valueOf(IMsgHandler.IMSGHANDLER);
-		Attribute<IMsgHandler> attributeMsgHanlder = ctx.channel().attr(msgHandlerKey);
+		AttributeKey<IChannelConnection> msgHandlerKey = AttributeKey.valueOf(IChannelConnection.IMSGHANDLER);
+		Attribute<IChannelConnection> attributeMsgHanlder = ctx.channel().attr(msgHandlerKey);
 		attributeMsgHanlder.set(this);
 	}
 

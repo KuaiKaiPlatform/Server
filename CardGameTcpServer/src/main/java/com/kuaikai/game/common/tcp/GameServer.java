@@ -9,8 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.msg.MessageFactory;
-import com.kuaikai.game.common.tcp.ws.WebSocket;
-import com.kuaikai.game.common.tcp.ws.WebSocketServer;
+import com.kuaikai.game.common.tcp.channel.TcpServer;
+import com.kuaikai.game.common.tcp.channel.ws.WebSocket;
+import com.kuaikai.game.common.tcp.channel.ws.WebSocketServer;
 
 public class GameServer {
 

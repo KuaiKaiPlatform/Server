@@ -11,9 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.card.msg.handler.login.KickOffResHandler;
-import com.kuaikai.game.common.msg.IMsgHandler;
 import com.kuaikai.game.common.msg.MsgHandler;
-import com.kuaikai.game.common.tcp.ws.WebSocket;
+import com.kuaikai.game.common.tcp.channel.IChannelConnection;
+import com.kuaikai.game.common.tcp.channel.ws.WebSocket;
 
 //import com.farm.common.IMsgHandler;
 //import com.farm.common.db.redis.LockUtils;
@@ -90,8 +90,8 @@ public class OnlineManager {
 		pingMap.remove(uid);
 		if (channelHandlerContext != null) {
 			try {
-				AttributeKey<IMsgHandler> msgHandlerKey = AttributeKey.valueOf(IMsgHandler.IMSGHANDLER);
-				Attribute<IMsgHandler> attribute = channelHandlerContext.channel().attr(msgHandlerKey);
+				AttributeKey<IChannelConnection> msgHandlerKey = AttributeKey.valueOf(IChannelConnection.IMSGHANDLER);
+				Attribute<IChannelConnection> attribute = channelHandlerContext.channel().attr(msgHandlerKey);
 				if (attribute == null || attribute.get() == null) {
 					LOGGER.info("OnlineManager.onUserLogOut@do not find IMsgHandler|uid={}|reason={}",
 							uid, reason);

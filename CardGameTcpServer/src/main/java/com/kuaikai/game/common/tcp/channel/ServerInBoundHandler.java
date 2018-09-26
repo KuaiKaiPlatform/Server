@@ -1,4 +1,4 @@
-package com.kuaikai.game.common.tcp;
+package com.kuaikai.game.common.tcp.channel;
 
 import com.kuaikai.game.common.msg.Message;
 

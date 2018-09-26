@@ -1,11 +1,13 @@
-package com.kuaikai.game.common.msg;
+package com.kuaikai.game.common.tcp.channel;
+
+import com.kuaikai.game.common.msg.Message;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelHandler.Sharable;
 
 @Sharable
-public abstract class MessageHandler extends ChannelInboundHandlerAdapter implements IMsgHandler {
+public abstract class ChannelConnection extends ChannelInboundHandlerAdapter implements IChannelConnection {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

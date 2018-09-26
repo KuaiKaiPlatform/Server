@@ -1,10 +1,10 @@
-package com.kuaikai.game.common.tcp.ws;
+package com.kuaikai.game.common.tcp.channel.ws;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.common.msg.IMsgHandler;
 import com.kuaikai.game.common.msg.Message;
+import com.kuaikai.game.common.tcp.channel.IChannelConnection;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -25,7 +25,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import io.netty.util.CharsetUtil;
 
-public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> implements IMsgHandler {
+public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> implements IChannelConnection {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketServerHandler.class);
 
@@ -138,7 +138,7 @@ public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler
 		// cause.printStackTrace();
 		// ctx.close();
 		// onLostConnection(ctx);
-		LOGGER.error(String.format("WebSocketServerHandler.exceptionCaught@exception occured"), cause);
+		LOGGER.error("WebSocketServerHandler.exceptionCaught@exception occured", cause);
 	}
 
 	@Override

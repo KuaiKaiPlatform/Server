@@ -1,4 +1,4 @@
-package com.kuaikai.game.common.tcp.ws;
+package com.kuaikai.game.common.tcp.channel.ws;
 
 import java.lang.reflect.Constructor;
 
@@ -65,7 +65,8 @@ public class WebSocketServer {
 
 			b.bind(port).sync();
 		} catch (Exception e) {
-			LOGGER.error("WebSocketServer.run@bind server", e);
+			LOGGER.error("WebSocketServer.run@bind error", e);
+			
 		}
 	}
 

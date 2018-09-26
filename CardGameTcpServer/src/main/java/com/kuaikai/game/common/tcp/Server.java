@@ -1,6 +1,8 @@
 package com.kuaikai.game.common.tcp;
 
-import com.kuaikai.game.common.msg.MessageHandler;
+import com.kuaikai.game.common.tcp.channel.ChannelConnection;
+import com.kuaikai.game.common.tcp.channel.ServerInBoundHandler;
+import com.kuaikai.game.common.tcp.channel.ServerOutBoundHandler;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -13,9 +15,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class Server {
 	private int port;
-	private MessageHandler messageHandler;
+	private ChannelConnection messageHandler;
 
-	public Server(int port, MessageHandler messageHandler) {
+	public Server(int port, ChannelConnection messageHandler) {
 		this.port = port;
 		this.messageHandler = messageHandler;
 	}

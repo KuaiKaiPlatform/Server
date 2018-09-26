@@ -1,9 +1,11 @@
-package com.kuaikai.game.common.msg;
+package com.kuaikai.game.common.tcp.channel;
 
+
+import com.kuaikai.game.common.msg.Message;
 
 import io.netty.channel.ChannelHandlerContext;
 
-public interface IMsgHandler {
+public interface IChannelConnection {
 
 	public static final String IMSGHANDLER = "IMsgHandler";
 

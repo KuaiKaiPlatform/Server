@@ -1,13 +1,14 @@
-package com.kuaikai.game.common.tcp.ws;
+package com.kuaikai.game.common.tcp.channel.ws;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.common.msg.IMsgHandler;
+import com.kuaikai.game.card.msg.handler.login.LoginReqHandler;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MessageFactory;
 import com.kuaikai.game.common.msg.MsgHandler;
 import com.kuaikai.game.common.tcp.OnlineManager;
+import com.kuaikai.game.common.tcp.channel.IChannelConnection;
 
 //import com.farm.common.IMsgHandler;
 //import com.farm.common.tcp.Message;
@@ -38,7 +39,7 @@ public class WebSocket extends WebSocketServerHandler {
 		try {
 			boolean canSendMSg = checkSendMsg(ctx, msg);
 			if (!canSendMSg) {
-				LOGGER.info(String.format("WebSocket.onMessageReceived@discard msg|msgid=%d", msg.msgid));
+				LOGGER.warn("WebSocket.onMessageReceived@discard msg|msgid={}", msg.msgid);
 				return;
 			}
 			MsgHandler msgHandler = MessageFactory.createMessage(ctx, msg);
@@ -46,20 +47,17 @@ public class WebSocket extends WebSocketServerHandler {
 //			if (msgHandler != null) {
 //				MsgThreadPool.getThreadPool().execute(msgHandler);
 //			}
-			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug(
-						String.format("WebSocket.onMessageReceived@receive msg|msg=%s|id=%d", msgHandler, msg.msgid));
-			}
+			LOGGER.debug("WebSocket.onMessageReceived@receive msg|msg={}|id={}", msgHandler, msg.msgid);
 		} catch (Exception e) {
-			LOGGER.error(String.format("WebSocket.onMessageReceived@error occured|msgid=%d", msg.msgid));
+			LOGGER.error("WebSocket.onMessageReceived@error occured|msgid={}", msg.msgid, e);
 		}
 
 	}
 
 	private boolean checkSendMsg(ChannelHandlerContext ctx, Message msg) {
-//		if (msg.msgid != LoginReqHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
-//			return OnlineManager.getUid(ctx) != null;
-//		}
+		if (msg.msgid != LoginReqHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
+			return OnlineManager.getUid(ctx) != null;
+		}
 		return true;
 
 	}
@@ -72,7 +70,7 @@ public class WebSocket extends WebSocketServerHandler {
 				OnlineManager.onUserLogOut(uid, "lost client webSocket");
 			}
 		} catch (Exception e) {
-			LOGGER.error(String.format("WebSocket.onLostConnection@connection lost error"), e);
+			LOGGER.error("WebSocket.onLostConnection@connection lost error", e);
 		}
 	}
 
@@ -90,10 +88,8 @@ public class WebSocket extends WebSocketServerHandler {
 
 	@Override
 	public void onConnectSuccess(ChannelHandlerContext ctx, Object... objects) {
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug(
-					String.format("WebSocket.onConnectSuccess@connect success|desc=%s", ctx.channel().remoteAddress()));
-		}
+		LOGGER.debug("WebSocket.onConnectSuccess@connect success|addr=%s", ctx.channel().remoteAddress());
+		
 		if (objects == null || objects.length == 0) {
 			return;
 		}
@@ -102,8 +98,8 @@ public class WebSocket extends WebSocketServerHandler {
 		Attribute<Boolean> attribute = ctx.channel().attr(attributeKey);
 		attribute.set(true);
 
-		AttributeKey<IMsgHandler> msgHandlerKey = AttributeKey.valueOf(IMsgHandler.IMSGHANDLER);
-		Attribute<IMsgHandler> attributeMsgHanlder = ctx.channel().attr(msgHandlerKey);
+		AttributeKey<IChannelConnection> msgHandlerKey = AttributeKey.valueOf(IChannelConnection.IMSGHANDLER);
+		Attribute<IChannelConnection> attributeMsgHanlder = ctx.channel().attr(msgHandlerKey);
 		attributeMsgHanlder.set(this);
 	}
 
