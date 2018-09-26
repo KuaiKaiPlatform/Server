@@ -1,7 +1,9 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.tcp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.kuaikai.game.common.msg.Message;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;

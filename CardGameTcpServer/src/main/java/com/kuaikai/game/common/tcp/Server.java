@@ -1,4 +1,6 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.tcp;
+
+import com.kuaikai.game.common.msg.MessageHandler;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

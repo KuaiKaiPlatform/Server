@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.tcp;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,7 +10,10 @@ import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.tcp.ws.WebSocket;
+import com.kuaikai.game.card.msg.handler.login.KickOffResHandler;
+import com.kuaikai.game.common.msg.IMsgHandler;
+import com.kuaikai.game.common.msg.MsgHandler;
+import com.kuaikai.game.common.tcp.ws.WebSocket;
 
 //import com.farm.common.IMsgHandler;
 //import com.farm.common.db.redis.LockUtils;
@@ -76,9 +79,9 @@ public class OnlineManager {
 	public static void kickOff(int uid, int code) {
 		ChannelHandlerContext channelHandlerContext = sessionMap.get(uid);
 		if (channelHandlerContext != null) {
-//			KickOffResHandler kickOffResHandler = new KickOffResHandler(code);
-//			innerSendMsg(uid, kickOffResHandler, channelHandlerContext);
-//			onUserLogOut(uid, "server kick off");
+			KickOffResHandler kickOffResHandler = new KickOffResHandler(code);
+			innerSendMsg(uid, kickOffResHandler, channelHandlerContext);
+			onUserLogOut(uid, "server kick off");
 		}
 	}
 
@@ -90,8 +93,8 @@ public class OnlineManager {
 				AttributeKey<IMsgHandler> msgHandlerKey = AttributeKey.valueOf(IMsgHandler.IMSGHANDLER);
 				Attribute<IMsgHandler> attribute = channelHandlerContext.channel().attr(msgHandlerKey);
 				if (attribute == null || attribute.get() == null) {
-					LOGGER.info(String.format("OnlineManager.onUserLogOut@do not find IMsgHandler|uid=%d|reason=%s",
-							uid, reason));
+					LOGGER.info("OnlineManager.onUserLogOut@do not find IMsgHandler|uid={}|reason={}",
+							uid, reason);
 				} else {
 					attribute.get().closeConnect(channelHandlerContext, reason);
 				}
@@ -158,11 +161,11 @@ public class OnlineManager {
 		try {
 			channelHandlerContext.writeAndFlush(msgHandler.encode());
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug(String.format("server send msg|uid=%d|msg=%s", uid, msgHandler));
+				LOGGER.debug("server send msg|uid={}|msg={}", uid, msgHandler);
 			}
 			return true;
 		} catch (Exception e) {
-			LOGGER.error(String.format("OnlineManager.sendMsg@send msg error|msg=%s|uid=%d", msgHandler.desc(), uid),
+			LOGGER.error("OnlineManager.sendMsg@send msg error|msg={}|uid={}", msgHandler.desc(), uid,
 					e);
 		}
 		return false;

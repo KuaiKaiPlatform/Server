@@ -1,4 +1,6 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.tcp;
+
+import com.kuaikai.game.common.msg.Message;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

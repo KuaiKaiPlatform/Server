@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.msg;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.kuaikai.game.common.utils.ClassUtils;
 
 import io.netty.channel.ChannelHandlerContext;
 
@@ -27,7 +29,7 @@ public class MessageFactory {
 	public static MsgHandler createMessage(ChannelHandlerContext ctx, Message msg) {
 		Constructor<MsgHandler> constructor = messages.get(msg.msgid);
 		if (constructor == null) {
-			LOGGER.error(String.format("MessageFactory.createMessage@donot find msg|id=%d", msg.msgid));
+			LOGGER.error("MessageFactory.createMessage@donot find msg|id={}", msg.msgid);
 			return null;
 		}
 		MsgHandler msgHandler = null;
@@ -35,17 +37,17 @@ public class MessageFactory {
 			msgHandler = constructor.newInstance(ctx);
 			msgHandler.decode(msg);
 		} catch (Exception e) {
-			LOGGER.error(String.format("MessageFactory.createMessage@error happened|id=%d", msg.msgid), e);
+			LOGGER.error("MessageFactory.createMessage@error happened|id={}", msg.msgid, e);
 		}
 		return msgHandler;
 	}
 
 	public static void init() throws Exception {
 		ChannelHandlerContext channelHandlerContext = null;
-		for (String className : ClassUtils.getClassName("com.farm.server.tcp.msg", true)) {
+		for (String className : ClassUtils.getClassName("com.kuaikai.game.card.msg.handler", true)) {
 			Class<?> class1 = Class.forName(className);
 			Type type = class1.getGenericSuperclass();
-			if (((Class<?>) type).getName().equals("com.farm.server.tcp.MsgHandler")) {
+			if (((Class<?>) type).getName().equals("com.kuaikai.game.common.msg.MsgHandler")) {
 				@SuppressWarnings("unchecked")
 				Constructor<MsgHandler> constructor = (Constructor<MsgHandler>) class1
 						.getConstructor(ChannelHandlerContext.class);

@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.tcp;
 
 import java.io.FileInputStream;
 import java.lang.reflect.Constructor;
@@ -8,8 +8,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.tcp.ws.WebSocket;
-import com.kuaikai.game.tcp.ws.WebSocketServer;
+import com.kuaikai.game.common.msg.MessageFactory;
+import com.kuaikai.game.common.tcp.ws.WebSocket;
+import com.kuaikai.game.common.tcp.ws.WebSocketServer;
 
 public class GameServer {
 
@@ -51,6 +52,7 @@ public class GameServer {
 		new WebSocketServer(constructor).run(webPort);
 		// 启动成功后向redis注册服务器 放在最后
 		//ServerInfoManager.registerServer(properties);
-		LOGGER.info(String.format("game server start"));
+		LOGGER.info("game server start");
+		//System.out.println("Card game server started.");
 	}
 }

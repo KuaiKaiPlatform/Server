@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp.ws;
+package com.kuaikai.game.common.tcp.ws;
 
 import java.lang.reflect.Constructor;
 
@@ -7,6 +7,8 @@ import javax.net.ssl.SSLEngine;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.kuaikai.game.common.utils.SslUtil;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -63,7 +65,7 @@ public class WebSocketServer {
 
 			b.bind(port).sync();
 		} catch (Exception e) {
-			LOGGER.error(String.format("WebSocketServer.run@bind server"), e);
+			LOGGER.error("WebSocketServer.run@bind server", e);
 		}
 	}
 

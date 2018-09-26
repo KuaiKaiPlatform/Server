@@ -1,13 +1,13 @@
-package com.kuaikai.game.tcp.ws;
+package com.kuaikai.game.common.tcp.ws;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.tcp.IMsgHandler;
-import com.kuaikai.game.tcp.Message;
-import com.kuaikai.game.tcp.MessageFactory;
-import com.kuaikai.game.tcp.MsgHandler;
-import com.kuaikai.game.tcp.OnlineManager;
+import com.kuaikai.game.common.msg.IMsgHandler;
+import com.kuaikai.game.common.msg.Message;
+import com.kuaikai.game.common.msg.MessageFactory;
+import com.kuaikai.game.common.msg.MsgHandler;
+import com.kuaikai.game.common.tcp.OnlineManager;
 
 //import com.farm.common.IMsgHandler;
 //import com.farm.common.tcp.Message;

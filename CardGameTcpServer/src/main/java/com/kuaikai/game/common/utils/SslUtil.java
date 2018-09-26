@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp.ws;
+package com.kuaikai.game.common.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.utils;
 
 import java.io.File;
 import java.io.IOException;

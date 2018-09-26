@@ -1,11 +1,12 @@
-package com.kuaikai.game.tcp;
+package com.kuaikai.game.common.msg;
 
 import java.net.InetSocketAddress;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.tcp.ws.WebSocket;
+import com.kuaikai.game.common.tcp.OnlineManager;
+import com.kuaikai.game.common.tcp.ws.WebSocket;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.Attribute;
