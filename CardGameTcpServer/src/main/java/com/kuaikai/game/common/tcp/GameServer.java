@@ -2,6 +2,8 @@ package com.kuaikai.game.common.tcp;
 
 import java.io.FileInputStream;
 import java.lang.reflect.Constructor;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -42,7 +44,7 @@ public class GameServer {
 		
 		OnlineManager.init();
 
-		MessageFactory.init();
+		MessageFactory.init(properties.getProperty("msg.handler.packages").split(","));
 		// 启动socket
 		int port = Integer.parseInt(properties.getProperty("port"));
 		TcpServer.getTcpServer().start(port);

@@ -1,14 +1,14 @@
-package com.kuaikai.game.card.msg.handler.login;
+package com.kuaikai.game.common.msg.handler.login;
 
 import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.card.msg.pb.KickOffResPB;
-import com.kuaikai.game.card.msg.pb.LoginReqPB;
-import com.kuaikai.game.card.msg.pb.LoginResPB;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MsgHandler;
+import com.kuaikai.game.common.msg.pb.KickOffResPB;
+import com.kuaikai.game.common.msg.pb.LoginReqPB;
+import com.kuaikai.game.common.msg.pb.LoginResPB;
 import com.kuaikai.game.common.tcp.OnlineManager;
 
 //import com.farm.common.db.redis.LockUtils;

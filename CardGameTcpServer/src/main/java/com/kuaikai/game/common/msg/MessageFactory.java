@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -42,9 +43,15 @@ public class MessageFactory {
 		return msgHandler;
 	}
 
-	public static void init() throws Exception {
+	public static void init(String [] packages) throws Exception {
+		for(String packageName : packages) {
+			init(packageName);
+		}
+	}
+	
+	public static void init(String packageName) throws Exception {
 		ChannelHandlerContext channelHandlerContext = null;
-		for (String className : ClassUtils.getClassName("com.kuaikai.game.card.msg.handler", true)) {
+		for (String className : ClassUtils.getClassName(packageName, true)) {
 			Class<?> class1 = Class.forName(className);
 			Type type = class1.getGenericSuperclass();
 			if (((Class<?>) type).getName().equals("com.kuaikai.game.common.msg.MsgHandler")) {
@@ -63,6 +70,6 @@ public class MessageFactory {
 	}
 
 	public static void main(String[] args) throws Exception {
-		init();
+		//init();
 	}
 }

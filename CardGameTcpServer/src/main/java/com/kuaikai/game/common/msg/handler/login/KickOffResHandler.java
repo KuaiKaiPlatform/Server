@@ -1,8 +1,8 @@
-package com.kuaikai.game.card.msg.handler.login;
+package com.kuaikai.game.common.msg.handler.login;
 
-import com.kuaikai.game.card.msg.pb.KickOffResPB;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MsgHandler;
+import com.kuaikai.game.common.msg.pb.KickOffResPB;
 
 //import com.farm.common.tcp.Message;
 //import com.farm.server.tcp.MsgHandler;
