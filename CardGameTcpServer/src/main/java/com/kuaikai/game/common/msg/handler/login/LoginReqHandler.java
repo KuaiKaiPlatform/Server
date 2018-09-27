@@ -4,6 +4,8 @@ import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.event.TriggerManager;
+import com.kuaikai.game.common.event.login.LoginEvent;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MsgHandler;
 import com.kuaikai.game.common.msg.pb.KickOffResPB;
@@ -52,17 +54,17 @@ public class LoginReqHandler extends MsgHandler {
 		}
 		OnlineManager.onUserLogin(uid, this.ctx);
 		// 拿userlock
-/*		RLock rLock = LockUtils.getUserLock(uid);
-		rLock.lock();
+//		RLock rLock = LockUtils.getUserLock(uid);
+//		rLock.lock();
 		try {
 			// 通知登陆成功
 			LoginEvent loginEvent = new LoginEvent(uid);
 			TriggerManager.triggerEvent(loginEvent);
 		} catch (Exception e) {
-			LOGGER.error(String.format("LoginReqHandler.process@login listener error|uid=%d", uid), e);
+			LOGGER.error("LoginReqHandler.process@login listener error|uid={}", uid, e);
 		} finally {
-			rLock.unlock();
-		}*/
+			//rLock.unlock();
+		}
 		//OnlineRedisManager.addLoginUser(uid);
 		// 发送登陆成功
 		writeMsg(new LoginResHandler(LoginResPB.LoginRes.ReturnCode.SUCCESS_VALUE));
@@ -86,7 +88,7 @@ public class LoginReqHandler extends MsgHandler {
 
 	@Override
 	public String desc() {
-		return String.format("msgid=%s,data=%s", msgid, loginReq);
+		return String.format("msgid=%d,data=%s", msgid, loginReq);
 	}
 
 }
