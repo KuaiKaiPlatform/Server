@@ -9,4 +9,4 @@
 
 rootProject.name = 'CardGameBackend'
 include 'CardGameCommon'
-include 'CardGameTcpServer'
+include 'CardGameLogicServer'
