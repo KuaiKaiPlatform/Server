@@ -41,7 +41,7 @@ public class LoginResHandler extends MsgHandler {
 
 	@Override
 	public String desc() {
-		return String.format("msgid=%s,data=%s", msgid, loginRes);
+		return String.format("msgid=%d,data=%s", msgid, loginRes);
 	}
 
 }

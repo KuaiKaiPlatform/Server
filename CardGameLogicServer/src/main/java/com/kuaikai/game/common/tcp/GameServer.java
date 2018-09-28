@@ -2,8 +2,6 @@ package com.kuaikai.game.common.tcp;
 
 import java.io.FileInputStream;
 import java.lang.reflect.Constructor;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -41,6 +39,8 @@ public class GameServer {
 		//QuartzManager.init();
 		// 需要初始化的manager
 		//MainManager.getMainManager().init();
+		
+		Modules.init(properties.getProperty("module.packages").split(","));
 		
 		OnlineManager.init();
 

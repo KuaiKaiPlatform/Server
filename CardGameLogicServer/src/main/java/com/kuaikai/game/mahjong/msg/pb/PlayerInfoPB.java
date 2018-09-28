@@ -37,9 +37,27 @@ public final class PlayerInfoPB {
      */
     com.kuaikai.game.common.msg.pb.PlayerBasicInfoPB.PlayerBasicInfoOrBuilder getBasicInfoOrBuilder();
 
-    // required bool prepared = 2;
+    // required .Direction direction = 2;
     /**
-     * <code>required bool prepared = 2;</code>
+     * <code>required .Direction direction = 2;</code>
+     *
+     * <pre>
+     * 玩家方位
+     * </pre>
+     */
+    boolean hasDirection();
+    /**
+     * <code>required .Direction direction = 2;</code>
+     *
+     * <pre>
+     * 玩家方位
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection();
+
+    // required bool prepared = 3;
+    /**
+     * <code>required bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -47,7 +65,7 @@ public final class PlayerInfoPB {
      */
     boolean hasPrepared();
     /**
-     * <code>required bool prepared = 2;</code>
+     * <code>required bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -55,9 +73,9 @@ public final class PlayerInfoPB {
      */
     boolean getPrepared();
 
-    // required bool offline = 3;
+    // required bool offline = 4;
     /**
-     * <code>required bool offline = 3;</code>
+     * <code>required bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -65,7 +83,7 @@ public final class PlayerInfoPB {
      */
     boolean hasOffline();
     /**
-     * <code>required bool offline = 3;</code>
+     * <code>required bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -73,9 +91,9 @@ public final class PlayerInfoPB {
      */
     boolean getOffline();
 
-    // repeated int32 points = 4;
+    // repeated int32 points = 5;
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -83,7 +101,7 @@ public final class PlayerInfoPB {
      */
     java.util.List<java.lang.Integer> getPointsList();
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -91,7 +109,7 @@ public final class PlayerInfoPB {
      */
     int getPointsCount();
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -99,9 +117,9 @@ public final class PlayerInfoPB {
      */
     int getPoints(int index);
 
-    // repeated int32 diPoints = 5;
+    // repeated int32 diPoints = 6;
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -109,7 +127,7 @@ public final class PlayerInfoPB {
      */
     java.util.List<java.lang.Integer> getDiPointsList();
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -117,7 +135,7 @@ public final class PlayerInfoPB {
      */
     int getDiPointsCount();
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -190,29 +208,40 @@ public final class PlayerInfoPB {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              prepared_ = input.readBool();
+              int rawValue = input.readEnum();
+              com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction value = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                direction_ = value;
+              }
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              offline_ = input.readBool();
+              prepared_ = input.readBool();
               break;
             }
             case 32: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              bitField0_ |= 0x00000008;
+              offline_ = input.readBool();
+              break;
+            }
+            case 40: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 points_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               points_.add(input.readInt32());
               break;
             }
-            case 34: {
+            case 42: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
                 points_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               while (input.getBytesUntilLimit() > 0) {
                 points_.add(input.readInt32());
@@ -220,20 +249,20 @@ public final class PlayerInfoPB {
               input.popLimit(limit);
               break;
             }
-            case 40: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 48: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 diPoints_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               diPoints_.add(input.readInt32());
               break;
             }
-            case 42: {
+            case 50: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
                 diPoints_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               while (input.getBytesUntilLimit() > 0) {
                 diPoints_.add(input.readInt32());
@@ -249,10 +278,10 @@ public final class PlayerInfoPB {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           points_ = java.util.Collections.unmodifiableList(points_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           diPoints_ = java.util.Collections.unmodifiableList(diPoints_);
         }
         this.unknownFields = unknownFields.build();
@@ -321,21 +350,45 @@ public final class PlayerInfoPB {
       return basicInfo_;
     }
 
-    // required bool prepared = 2;
-    public static final int PREPARED_FIELD_NUMBER = 2;
+    // required .Direction direction = 2;
+    public static final int DIRECTION_FIELD_NUMBER = 2;
+    private com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction direction_;
+    /**
+     * <code>required .Direction direction = 2;</code>
+     *
+     * <pre>
+     * 玩家方位
+     * </pre>
+     */
+    public boolean hasDirection() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .Direction direction = 2;</code>
+     *
+     * <pre>
+     * 玩家方位
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection() {
+      return direction_;
+    }
+
+    // required bool prepared = 3;
+    public static final int PREPARED_FIELD_NUMBER = 3;
     private boolean prepared_;
     /**
-     * <code>required bool prepared = 2;</code>
+     * <code>required bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
      * </pre>
      */
     public boolean hasPrepared() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required bool prepared = 2;</code>
+     * <code>required bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -345,21 +398,21 @@ public final class PlayerInfoPB {
       return prepared_;
     }
 
-    // required bool offline = 3;
-    public static final int OFFLINE_FIELD_NUMBER = 3;
+    // required bool offline = 4;
+    public static final int OFFLINE_FIELD_NUMBER = 4;
     private boolean offline_;
     /**
-     * <code>required bool offline = 3;</code>
+     * <code>required bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
      * </pre>
      */
     public boolean hasOffline() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required bool offline = 3;</code>
+     * <code>required bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -369,11 +422,11 @@ public final class PlayerInfoPB {
       return offline_;
     }
 
-    // repeated int32 points = 4;
-    public static final int POINTS_FIELD_NUMBER = 4;
+    // repeated int32 points = 5;
+    public static final int POINTS_FIELD_NUMBER = 5;
     private java.util.List<java.lang.Integer> points_;
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -384,7 +437,7 @@ public final class PlayerInfoPB {
       return points_;
     }
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -394,7 +447,7 @@ public final class PlayerInfoPB {
       return points_.size();
     }
     /**
-     * <code>repeated int32 points = 4;</code>
+     * <code>repeated int32 points = 5;</code>
      *
      * <pre>
      * 各项分数
@@ -404,11 +457,11 @@ public final class PlayerInfoPB {
       return points_.get(index);
     }
 
-    // repeated int32 diPoints = 5;
-    public static final int DIPOINTS_FIELD_NUMBER = 5;
+    // repeated int32 diPoints = 6;
+    public static final int DIPOINTS_FIELD_NUMBER = 6;
     private java.util.List<java.lang.Integer> diPoints_;
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -419,7 +472,7 @@ public final class PlayerInfoPB {
       return diPoints_;
     }
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -429,7 +482,7 @@ public final class PlayerInfoPB {
       return diPoints_.size();
     }
     /**
-     * <code>repeated int32 diPoints = 5;</code>
+     * <code>repeated int32 diPoints = 6;</code>
      *
      * <pre>
      * 当前底各项分数
@@ -441,6 +494,7 @@ public final class PlayerInfoPB {
 
     private void initFields() {
       basicInfo_ = com.kuaikai.game.common.msg.pb.PlayerBasicInfoPB.PlayerBasicInfo.getDefaultInstance();
+      direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
       prepared_ = false;
       offline_ = false;
       points_ = java.util.Collections.emptyList();
@@ -452,6 +506,10 @@ public final class PlayerInfoPB {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasBasicInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDirection()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -478,16 +536,19 @@ public final class PlayerInfoPB {
         output.writeMessage(1, basicInfo_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBool(2, prepared_);
+        output.writeEnum(2, direction_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(3, offline_);
+        output.writeBool(3, prepared_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, offline_);
       }
       for (int i = 0; i < points_.size(); i++) {
-        output.writeInt32(4, points_.get(i));
+        output.writeInt32(5, points_.get(i));
       }
       for (int i = 0; i < diPoints_.size(); i++) {
-        output.writeInt32(5, diPoints_.get(i));
+        output.writeInt32(6, diPoints_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -504,11 +565,15 @@ public final class PlayerInfoPB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, prepared_);
+          .computeEnumSize(2, direction_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, offline_);
+          .computeBoolSize(3, prepared_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, offline_);
       }
       {
         int dataSize = 0;
@@ -651,14 +716,16 @@ public final class PlayerInfoPB {
           basicInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        prepared_ = false;
+        direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
         bitField0_ = (bitField0_ & ~0x00000002);
-        offline_ = false;
+        prepared_ = false;
         bitField0_ = (bitField0_ & ~0x00000004);
-        points_ = java.util.Collections.emptyList();
+        offline_ = false;
         bitField0_ = (bitField0_ & ~0x00000008);
-        diPoints_ = java.util.Collections.emptyList();
+        points_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
+        diPoints_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -698,19 +765,23 @@ public final class PlayerInfoPB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.prepared_ = prepared_;
+        result.direction_ = direction_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        result.prepared_ = prepared_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.offline_ = offline_;
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
           points_ = java.util.Collections.unmodifiableList(points_);
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.points_ = points_;
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
           diPoints_ = java.util.Collections.unmodifiableList(diPoints_);
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
         result.diPoints_ = diPoints_;
         result.bitField0_ = to_bitField0_;
@@ -732,6 +803,9 @@ public final class PlayerInfoPB {
         if (other.hasBasicInfo()) {
           mergeBasicInfo(other.getBasicInfo());
         }
+        if (other.hasDirection()) {
+          setDirection(other.getDirection());
+        }
         if (other.hasPrepared()) {
           setPrepared(other.getPrepared());
         }
@@ -741,7 +815,7 @@ public final class PlayerInfoPB {
         if (!other.points_.isEmpty()) {
           if (points_.isEmpty()) {
             points_ = other.points_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           } else {
             ensurePointsIsMutable();
             points_.addAll(other.points_);
@@ -751,7 +825,7 @@ public final class PlayerInfoPB {
         if (!other.diPoints_.isEmpty()) {
           if (diPoints_.isEmpty()) {
             diPoints_ = other.diPoints_;
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           } else {
             ensureDiPointsIsMutable();
             diPoints_.addAll(other.diPoints_);
@@ -764,6 +838,10 @@ public final class PlayerInfoPB {
 
       public final boolean isInitialized() {
         if (!hasBasicInfo()) {
+          
+          return false;
+        }
+        if (!hasDirection()) {
           
           return false;
         }
@@ -954,20 +1032,72 @@ public final class PlayerInfoPB {
         return basicInfoBuilder_;
       }
 
-      // required bool prepared = 2;
+      // required .Direction direction = 2;
+      private com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+      /**
+       * <code>required .Direction direction = 2;</code>
+       *
+       * <pre>
+       * 玩家方位
+       * </pre>
+       */
+      public boolean hasDirection() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .Direction direction = 2;</code>
+       *
+       * <pre>
+       * 玩家方位
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection() {
+        return direction_;
+      }
+      /**
+       * <code>required .Direction direction = 2;</code>
+       *
+       * <pre>
+       * 玩家方位
+       * </pre>
+       */
+      public Builder setDirection(com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        direction_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .Direction direction = 2;</code>
+       *
+       * <pre>
+       * 玩家方位
+       * </pre>
+       */
+      public Builder clearDirection() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+        onChanged();
+        return this;
+      }
+
+      // required bool prepared = 3;
       private boolean prepared_ ;
       /**
-       * <code>required bool prepared = 2;</code>
+       * <code>required bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
        * </pre>
        */
       public boolean hasPrepared() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required bool prepared = 2;</code>
+       * <code>required bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
@@ -977,46 +1107,46 @@ public final class PlayerInfoPB {
         return prepared_;
       }
       /**
-       * <code>required bool prepared = 2;</code>
+       * <code>required bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
        * </pre>
        */
       public Builder setPrepared(boolean value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         prepared_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool prepared = 2;</code>
+       * <code>required bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
        * </pre>
        */
       public Builder clearPrepared() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         prepared_ = false;
         onChanged();
         return this;
       }
 
-      // required bool offline = 3;
+      // required bool offline = 4;
       private boolean offline_ ;
       /**
-       * <code>required bool offline = 3;</code>
+       * <code>required bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
        * </pre>
        */
       public boolean hasOffline() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required bool offline = 3;</code>
+       * <code>required bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
@@ -1026,42 +1156,42 @@ public final class PlayerInfoPB {
         return offline_;
       }
       /**
-       * <code>required bool offline = 3;</code>
+       * <code>required bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
        * </pre>
        */
       public Builder setOffline(boolean value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         offline_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool offline = 3;</code>
+       * <code>required bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
        * </pre>
        */
       public Builder clearOffline() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         offline_ = false;
         onChanged();
         return this;
       }
 
-      // repeated int32 points = 4;
+      // repeated int32 points = 5;
       private java.util.List<java.lang.Integer> points_ = java.util.Collections.emptyList();
       private void ensurePointsIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           points_ = new java.util.ArrayList<java.lang.Integer>(points_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1072,7 +1202,7 @@ public final class PlayerInfoPB {
         return java.util.Collections.unmodifiableList(points_);
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1082,7 +1212,7 @@ public final class PlayerInfoPB {
         return points_.size();
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1092,7 +1222,7 @@ public final class PlayerInfoPB {
         return points_.get(index);
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1106,7 +1236,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1119,7 +1249,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1133,7 +1263,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 points = 4;</code>
+       * <code>repeated int32 points = 5;</code>
        *
        * <pre>
        * 各项分数
@@ -1141,21 +1271,21 @@ public final class PlayerInfoPB {
        */
       public Builder clearPoints() {
         points_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
 
-      // repeated int32 diPoints = 5;
+      // repeated int32 diPoints = 6;
       private java.util.List<java.lang.Integer> diPoints_ = java.util.Collections.emptyList();
       private void ensureDiPointsIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           diPoints_ = new java.util.ArrayList<java.lang.Integer>(diPoints_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1166,7 +1296,7 @@ public final class PlayerInfoPB {
         return java.util.Collections.unmodifiableList(diPoints_);
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1176,7 +1306,7 @@ public final class PlayerInfoPB {
         return diPoints_.size();
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1186,7 +1316,7 @@ public final class PlayerInfoPB {
         return diPoints_.get(index);
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1200,7 +1330,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1213,7 +1343,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1227,7 +1357,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>repeated int32 diPoints = 5;</code>
+       * <code>repeated int32 diPoints = 6;</code>
        *
        * <pre>
        * 当前底各项分数
@@ -1235,7 +1365,7 @@ public final class PlayerInfoPB {
        */
       public Builder clearDiPoints() {
         diPoints_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -1266,11 +1396,13 @@ public final class PlayerInfoPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\030mahjong/PlayerInfo.proto\032\035account/Play" +
-      "erBasicInfo.proto\"v\n\nPlayerInfo\022#\n\tbasic" +
-      "Info\030\001 \002(\0132\020.PlayerBasicInfo\022\020\n\010prepared" +
-      "\030\002 \002(\010\022\017\n\007offline\030\003 \002(\010\022\016\n\006points\030\004 \003(\005\022" +
-      "\020\n\010diPoints\030\005 \003(\005B/\n\037com.kuaikai.game.ma" +
-      "hjong.msg.pbB\014PlayerInfoPB"
+      "erBasicInfo.proto\032\027mahjong/Direction.pro" +
+      "to\"\225\001\n\nPlayerInfo\022#\n\tbasicInfo\030\001 \002(\0132\020.P" +
+      "layerBasicInfo\022\035\n\tdirection\030\002 \002(\0162\n.Dire" +
+      "ction\022\020\n\010prepared\030\003 \002(\010\022\017\n\007offline\030\004 \002(\010" +
+      "\022\016\n\006points\030\005 \003(\005\022\020\n\010diPoints\030\006 \003(\005B/\n\037co" +
+      "m.kuaikai.game.mahjong.msg.pbB\014PlayerInf" +
+      "oPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1282,7 +1414,7 @@ public final class PlayerInfoPB {
           internal_static_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PlayerInfo_descriptor,
-              new java.lang.String[] { "BasicInfo", "Prepared", "Offline", "Points", "DiPoints", });
+              new java.lang.String[] { "BasicInfo", "Direction", "Prepared", "Offline", "Points", "DiPoints", });
           return null;
         }
       };
@@ -1290,6 +1422,7 @@ public final class PlayerInfoPB {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.common.msg.pb.PlayerBasicInfoPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.DirectionPB.getDescriptor(),
         }, assigner);
   }
 
