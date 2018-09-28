@@ -8,6 +8,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
+import com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.msg.handler.SJoinDeskHandler;
 import com.kuaikai.game.mahjong.msg.pb.DirectionPB;
@@ -66,12 +68,21 @@ public class DeskManager {
 		for(int i=0; i < desk.getPids().size(); i++) {
 			builder.addPlayerInfos(createPlayerInfo(desk.getPids().get(i), i+1));
 		}
+		builder.setRuleSetting(createRuleSetting());
 		return builder;
 	}
 	
 	private static PlayerInfo.Builder createPlayerInfo(int pid, int index) {
 		PlayerInfo.Builder builder = PlayerInfo.newBuilder();
 		builder.setDirection(DirectionPB.Direction.valueOf(index));
+		return builder;
+	}
+	
+	private static RuleSetting.Builder createRuleSetting() {
+		RuleSetting.Builder builder = RuleSetting.newBuilder();
+		builder.setRule(GameRule.DOU_DI_ZHU);
+		
+		//builder.setSetting();
 		return builder;
 	}
 	
