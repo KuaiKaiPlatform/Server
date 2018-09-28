@@ -56,35 +56,53 @@ public final class JoinDeskPB {
     com.kuaikai.game.mahjong.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerInfosOrBuilder(
         int index);
 
-    // required .RuleSetting ruleSetting = 2;
+    // required .GameRule rule = 2;
     /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
+     * <code>required .GameRule rule = 2;</code>
      *
      * <pre>
-     * 玩法规则设置
+     * 玩法编号
      * </pre>
      */
-    boolean hasRuleSetting();
+    boolean hasRule();
     /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
+     * <code>required .GameRule rule = 2;</code>
      *
      * <pre>
-     * 玩法规则设置
+     * 玩法编号
      * </pre>
      */
-    com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting getRuleSetting();
-    /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
-     *
-     * <pre>
-     * 玩法规则设置
-     * </pre>
-     */
-    com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder getRuleSettingOrBuilder();
+    com.kuaikai.game.common.msg.pb.GameRulePB.GameRule getRule();
 
-    // required .SJoinDesk.Status status = 3;
+    // required .GameSetting setting = 3;
     /**
-     * <code>required .SJoinDesk.Status status = 3;</code>
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    boolean hasSetting();
+    /**
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting getSetting();
+    /**
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder getSettingOrBuilder();
+
+    // required .SJoinDesk.Status status = 4;
+    /**
+     * <code>required .SJoinDesk.Status status = 4;</code>
      *
      * <pre>
      * 牌桌状态
@@ -92,7 +110,7 @@ public final class JoinDeskPB {
      */
     boolean hasStatus();
     /**
-     * <code>required .SJoinDesk.Status status = 3;</code>
+     * <code>required .SJoinDesk.Status status = 4;</code>
      *
      * <pre>
      * 牌桌状态
@@ -159,26 +177,37 @@ public final class JoinDeskPB {
               playerInfos_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.PlayerInfoPB.PlayerInfo.PARSER, extensionRegistry));
               break;
             }
-            case 18: {
-              com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = ruleSetting_.toBuilder();
+            case 16: {
+              int rawValue = input.readEnum();
+              com.kuaikai.game.common.msg.pb.GameRulePB.GameRule value = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                rule_ = value;
               }
-              ruleSetting_ = input.readMessage(com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(ruleSetting_);
-                ruleSetting_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
               break;
             }
-            case 24: {
+            case 26: {
+              com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = setting_.toBuilder();
+              }
+              setting_ = input.readMessage(com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(setting_);
+                setting_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 32: {
               int rawValue = input.readEnum();
               com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status value = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(3, rawValue);
+                unknownFields.mergeVarintField(4, rawValue);
               } else {
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000004;
                 status_ = value;
               }
               break;
@@ -414,55 +443,79 @@ public final class JoinDeskPB {
       return playerInfos_.get(index);
     }
 
-    // required .RuleSetting ruleSetting = 2;
-    public static final int RULESETTING_FIELD_NUMBER = 2;
-    private com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting ruleSetting_;
+    // required .GameRule rule = 2;
+    public static final int RULE_FIELD_NUMBER = 2;
+    private com.kuaikai.game.common.msg.pb.GameRulePB.GameRule rule_;
     /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
+     * <code>required .GameRule rule = 2;</code>
      *
      * <pre>
-     * 玩法规则设置
+     * 玩法编号
      * </pre>
      */
-    public boolean hasRuleSetting() {
+    public boolean hasRule() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
+     * <code>required .GameRule rule = 2;</code>
      *
      * <pre>
-     * 玩法规则设置
+     * 玩法编号
      * </pre>
      */
-    public com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting getRuleSetting() {
-      return ruleSetting_;
-    }
-    /**
-     * <code>required .RuleSetting ruleSetting = 2;</code>
-     *
-     * <pre>
-     * 玩法规则设置
-     * </pre>
-     */
-    public com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder getRuleSettingOrBuilder() {
-      return ruleSetting_;
+    public com.kuaikai.game.common.msg.pb.GameRulePB.GameRule getRule() {
+      return rule_;
     }
 
-    // required .SJoinDesk.Status status = 3;
-    public static final int STATUS_FIELD_NUMBER = 3;
+    // required .GameSetting setting = 3;
+    public static final int SETTING_FIELD_NUMBER = 3;
+    private com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting setting_;
+    /**
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    public boolean hasSetting() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting getSetting() {
+      return setting_;
+    }
+    /**
+     * <code>required .GameSetting setting = 3;</code>
+     *
+     * <pre>
+     * 规则设置
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder getSettingOrBuilder() {
+      return setting_;
+    }
+
+    // required .SJoinDesk.Status status = 4;
+    public static final int STATUS_FIELD_NUMBER = 4;
     private com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status status_;
     /**
-     * <code>required .SJoinDesk.Status status = 3;</code>
+     * <code>required .SJoinDesk.Status status = 4;</code>
      *
      * <pre>
      * 牌桌状态
      * </pre>
      */
     public boolean hasStatus() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required .SJoinDesk.Status status = 3;</code>
+     * <code>required .SJoinDesk.Status status = 4;</code>
      *
      * <pre>
      * 牌桌状态
@@ -474,7 +527,8 @@ public final class JoinDeskPB {
 
     private void initFields() {
       playerInfos_ = java.util.Collections.emptyList();
-      ruleSetting_ = com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.getDefaultInstance();
+      rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
+      setting_ = com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
       status_ = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.WAITING;
     }
     private byte memoizedIsInitialized = -1;
@@ -482,7 +536,11 @@ public final class JoinDeskPB {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasRuleSetting()) {
+      if (!hasRule()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSetting()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -496,10 +554,6 @@ public final class JoinDeskPB {
           return false;
         }
       }
-      if (!getRuleSetting().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -511,10 +565,13 @@ public final class JoinDeskPB {
         output.writeMessage(1, playerInfos_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(2, ruleSetting_);
+        output.writeEnum(2, rule_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(3, status_.getNumber());
+        output.writeMessage(3, setting_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(4, status_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -531,11 +588,15 @@ public final class JoinDeskPB {
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, ruleSetting_);
+          .computeEnumSize(2, rule_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, status_.getNumber());
+          .computeMessageSize(3, setting_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, status_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -646,7 +707,7 @@ public final class JoinDeskPB {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getPlayerInfosFieldBuilder();
-          getRuleSettingFieldBuilder();
+          getSettingFieldBuilder();
         }
       }
       private static Builder create() {
@@ -661,14 +722,16 @@ public final class JoinDeskPB {
         } else {
           playerInfosBuilder_.clear();
         }
-        if (ruleSettingBuilder_ == null) {
-          ruleSetting_ = com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.getDefaultInstance();
-        } else {
-          ruleSettingBuilder_.clear();
-        }
+        rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
         bitField0_ = (bitField0_ & ~0x00000002);
-        status_ = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.WAITING;
+        if (settingBuilder_ == null) {
+          setting_ = com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
+        } else {
+          settingBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
+        status_ = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.WAITING;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -709,13 +772,17 @@ public final class JoinDeskPB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (ruleSettingBuilder_ == null) {
-          result.ruleSetting_ = ruleSetting_;
-        } else {
-          result.ruleSetting_ = ruleSettingBuilder_.build();
-        }
+        result.rule_ = rule_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000002;
+        }
+        if (settingBuilder_ == null) {
+          result.setting_ = setting_;
+        } else {
+          result.setting_ = settingBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.status_ = status_;
         result.bitField0_ = to_bitField0_;
@@ -760,8 +827,11 @@ public final class JoinDeskPB {
             }
           }
         }
-        if (other.hasRuleSetting()) {
-          mergeRuleSetting(other.getRuleSetting());
+        if (other.hasRule()) {
+          setRule(other.getRule());
+        }
+        if (other.hasSetting()) {
+          mergeSetting(other.getSetting());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
@@ -771,7 +841,11 @@ public final class JoinDeskPB {
       }
 
       public final boolean isInitialized() {
-        if (!hasRuleSetting()) {
+        if (!hasRule()) {
+          
+          return false;
+        }
+        if (!hasSetting()) {
           
           return false;
         }
@@ -784,10 +858,6 @@ public final class JoinDeskPB {
             
             return false;
           }
-        }
-        if (!getRuleSetting().isInitialized()) {
-          
-          return false;
         }
         return true;
       }
@@ -1123,173 +1193,225 @@ public final class JoinDeskPB {
         return playerInfosBuilder_;
       }
 
-      // required .RuleSetting ruleSetting = 2;
-      private com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting ruleSetting_ = com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder> ruleSettingBuilder_;
+      // required .GameRule rule = 2;
+      private com.kuaikai.game.common.msg.pb.GameRulePB.GameRule rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameRule rule = 2;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 玩法编号
        * </pre>
        */
-      public boolean hasRuleSetting() {
+      public boolean hasRule() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameRule rule = 2;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 玩法编号
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting getRuleSetting() {
-        if (ruleSettingBuilder_ == null) {
-          return ruleSetting_;
+      public com.kuaikai.game.common.msg.pb.GameRulePB.GameRule getRule() {
+        return rule_;
+      }
+      /**
+       * <code>required .GameRule rule = 2;</code>
+       *
+       * <pre>
+       * 玩法编号
+       * </pre>
+       */
+      public Builder setRule(com.kuaikai.game.common.msg.pb.GameRulePB.GameRule value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        rule_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .GameRule rule = 2;</code>
+       *
+       * <pre>
+       * 玩法编号
+       * </pre>
+       */
+      public Builder clearRule() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
+        onChanged();
+        return this;
+      }
+
+      // required .GameSetting setting = 3;
+      private com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting setting_ = com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder> settingBuilder_;
+      /**
+       * <code>required .GameSetting setting = 3;</code>
+       *
+       * <pre>
+       * 规则设置
+       * </pre>
+       */
+      public boolean hasSetting() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .GameSetting setting = 3;</code>
+       *
+       * <pre>
+       * 规则设置
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting getSetting() {
+        if (settingBuilder_ == null) {
+          return setting_;
         } else {
-          return ruleSettingBuilder_.getMessage();
+          return settingBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public Builder setRuleSetting(com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting value) {
-        if (ruleSettingBuilder_ == null) {
+      public Builder setSetting(com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting value) {
+        if (settingBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ruleSetting_ = value;
+          setting_ = value;
           onChanged();
         } else {
-          ruleSettingBuilder_.setMessage(value);
+          settingBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public Builder setRuleSetting(
-          com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder builderForValue) {
-        if (ruleSettingBuilder_ == null) {
-          ruleSetting_ = builderForValue.build();
+      public Builder setSetting(
+          com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder builderForValue) {
+        if (settingBuilder_ == null) {
+          setting_ = builderForValue.build();
           onChanged();
         } else {
-          ruleSettingBuilder_.setMessage(builderForValue.build());
+          settingBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public Builder mergeRuleSetting(com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting value) {
-        if (ruleSettingBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              ruleSetting_ != com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.getDefaultInstance()) {
-            ruleSetting_ =
-              com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.newBuilder(ruleSetting_).mergeFrom(value).buildPartial();
+      public Builder mergeSetting(com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting value) {
+        if (settingBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              setting_ != com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.getDefaultInstance()) {
+            setting_ =
+              com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.newBuilder(setting_).mergeFrom(value).buildPartial();
           } else {
-            ruleSetting_ = value;
+            setting_ = value;
           }
           onChanged();
         } else {
-          ruleSettingBuilder_.mergeFrom(value);
+          settingBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public Builder clearRuleSetting() {
-        if (ruleSettingBuilder_ == null) {
-          ruleSetting_ = com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.getDefaultInstance();
+      public Builder clearSetting() {
+        if (settingBuilder_ == null) {
+          setting_ = com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
           onChanged();
         } else {
-          ruleSettingBuilder_.clear();
+          settingBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder getRuleSettingBuilder() {
-        bitField0_ |= 0x00000002;
+      public com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder getSettingBuilder() {
+        bitField0_ |= 0x00000004;
         onChanged();
-        return getRuleSettingFieldBuilder().getBuilder();
+        return getSettingFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder getRuleSettingOrBuilder() {
-        if (ruleSettingBuilder_ != null) {
-          return ruleSettingBuilder_.getMessageOrBuilder();
+      public com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder getSettingOrBuilder() {
+        if (settingBuilder_ != null) {
+          return settingBuilder_.getMessageOrBuilder();
         } else {
-          return ruleSetting_;
+          return setting_;
         }
       }
       /**
-       * <code>required .RuleSetting ruleSetting = 2;</code>
+       * <code>required .GameSetting setting = 3;</code>
        *
        * <pre>
-       * 玩法规则设置
+       * 规则设置
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder> 
-          getRuleSettingFieldBuilder() {
-        if (ruleSettingBuilder_ == null) {
-          ruleSettingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting.Builder, com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSettingOrBuilder>(
-                  ruleSetting_,
+          com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder> 
+          getSettingFieldBuilder() {
+        if (settingBuilder_ == null) {
+          settingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting.Builder, com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSettingOrBuilder>(
+                  setting_,
                   getParentForChildren(),
                   isClean());
-          ruleSetting_ = null;
+          setting_ = null;
         }
-        return ruleSettingBuilder_;
+        return settingBuilder_;
       }
 
-      // required .SJoinDesk.Status status = 3;
+      // required .SJoinDesk.Status status = 4;
       private com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status status_ = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.WAITING;
       /**
-       * <code>required .SJoinDesk.Status status = 3;</code>
+       * <code>required .SJoinDesk.Status status = 4;</code>
        *
        * <pre>
        * 牌桌状态
        * </pre>
        */
       public boolean hasStatus() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required .SJoinDesk.Status status = 3;</code>
+       * <code>required .SJoinDesk.Status status = 4;</code>
        *
        * <pre>
        * 牌桌状态
@@ -1299,7 +1421,7 @@ public final class JoinDeskPB {
         return status_;
       }
       /**
-       * <code>required .SJoinDesk.Status status = 3;</code>
+       * <code>required .SJoinDesk.Status status = 4;</code>
        *
        * <pre>
        * 牌桌状态
@@ -1309,20 +1431,20 @@ public final class JoinDeskPB {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required .SJoinDesk.Status status = 3;</code>
+       * <code>required .SJoinDesk.Status status = 4;</code>
        *
        * <pre>
        * 牌桌状态
        * </pre>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         status_ = com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status.WAITING;
         onChanged();
         return this;
@@ -1354,13 +1476,14 @@ public final class JoinDeskPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\027mahjong/SJoinDesk.proto\032\030mahjong/Playe" +
-      "rInfo.proto\032\030common/RuleSetting.proto\"\264\001" +
-      "\n\tSJoinDesk\022 \n\013playerInfos\030\001 \003(\0132\013.Playe" +
-      "rInfo\022!\n\013ruleSetting\030\002 \002(\0132\014.RuleSetting" +
-      "\022!\n\006status\030\003 \002(\0162\021.SJoinDesk.Status\"?\n\006S" +
-      "tatus\022\013\n\007WAITING\020\000\022\014\n\010STARTING\020\001\022\016\n\nSET_" +
-      "ENDING\020\002\022\n\n\006ENDING\020\003B-\n\037com.kuaikai.game" +
-      ".mahjong.msg.pbB\nJoinDeskPB"
+      "rInfo.proto\032\031mahjong/GameSetting.proto\032\025" +
+      "common/GameRule.proto\"\311\001\n\tSJoinDesk\022 \n\013p" +
+      "layerInfos\030\001 \003(\0132\013.PlayerInfo\022\027\n\004rule\030\002 " +
+      "\002(\0162\t.GameRule\022\035\n\007setting\030\003 \002(\0132\014.GameSe" +
+      "tting\022!\n\006status\030\004 \002(\0162\021.SJoinDesk.Status" +
+      "\"?\n\006Status\022\013\n\007WAITING\020\000\022\014\n\010STARTING\020\001\022\016\n" +
+      "\nSET_ENDING\020\002\022\n\n\006ENDING\020\003B-\n\037com.kuaikai" +
+      ".game.mahjong.msg.pbB\nJoinDeskPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1372,7 +1495,7 @@ public final class JoinDeskPB {
           internal_static_SJoinDesk_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SJoinDesk_descriptor,
-              new java.lang.String[] { "PlayerInfos", "RuleSetting", "Status", });
+              new java.lang.String[] { "PlayerInfos", "Rule", "Setting", "Status", });
           return null;
         }
       };
@@ -1380,7 +1503,8 @@ public final class JoinDeskPB {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.mahjong.msg.pb.PlayerInfoPB.getDescriptor(),
-          com.kuaikai.game.common.msg.pb.RuleSettingPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.GameSettingPB.getDescriptor(),
+          com.kuaikai.game.common.msg.pb.GameRulePB.getDescriptor(),
         }, assigner);
   }
 

@@ -1,6 +1,5 @@
 *.class
-
-# Package Files #
+.gradle/
 target/*
 web/WEB-INF/classes/*
 *.war
@@ -12,4 +11,3 @@ build/
 bin/
 */statistics/
 */logs/
-.gradle/

@@ -53,6 +53,78 @@ public final class GameRulePB {
      * <code>DOU_DI_ZHU = 99009;</code>
      */
     DOU_DI_ZHU(8, 99009),
+    /**
+     * <code>LIANG = 61001;</code>
+     *
+     * <pre>
+     * 陕西麻将：61开头
+     * </pre>
+     */
+    LIANG(9, 61001),
+    /**
+     * <code>SXMJ = 61002;</code>
+     */
+    SXMJ(10, 61002),
+    /**
+     * <code>HUA_SHUI = 61003;</code>
+     */
+    HUA_SHUI(11, 61003),
+    /**
+     * <code>WEI_NAN = 61004;</code>
+     */
+    WEI_NAN(12, 61004),
+    /**
+     * <code>BAO_JI = 61005;</code>
+     */
+    BAO_JI(13, 61005),
+    /**
+     * <code>ONE_FIVE_NINE = 61006;</code>
+     */
+    ONE_FIVE_NINE(14, 61006),
+    /**
+     * <code>GUO_ZI = 61007;</code>
+     */
+    GUO_ZI(15, 61007),
+    /**
+     * <code>HAN_ZHONG = 61008;</code>
+     */
+    HAN_ZHONG(16, 61008),
+    /**
+     * <code>WU_HU = 34001;</code>
+     *
+     * <pre>
+     * 安徽麻将：34开头
+     * </pre>
+     */
+    WU_HU(17, 34001),
+    /**
+     * <code>WU_WEI = 34002;</code>
+     */
+    WU_WEI(18, 34002),
+    /**
+     * <code>SHE_XIAN = 34003;</code>
+     */
+    SHE_XIAN(19, 34003),
+    /**
+     * <code>HE_XIAN = 34004;</code>
+     */
+    HE_XIAN(20, 34004),
+    /**
+     * <code>FU_YANG = 34005;</code>
+     */
+    FU_YANG(21, 34005),
+    /**
+     * <code>MING_GUANG = 34006;</code>
+     */
+    MING_GUANG(22, 34006),
+    /**
+     * <code>LAI_AN_TUI_DAO_HU = 34007;</code>
+     */
+    LAI_AN_TUI_DAO_HU(23, 34007),
+    /**
+     * <code>LAI_AN_LAO_SAN_FAN = 34008;</code>
+     */
+    LAI_AN_LAO_SAN_FAN(24, 34008),
     ;
 
     /**
@@ -95,6 +167,78 @@ public final class GameRulePB {
      * <code>DOU_DI_ZHU = 99009;</code>
      */
     public static final int DOU_DI_ZHU_VALUE = 99009;
+    /**
+     * <code>LIANG = 61001;</code>
+     *
+     * <pre>
+     * 陕西麻将：61开头
+     * </pre>
+     */
+    public static final int LIANG_VALUE = 61001;
+    /**
+     * <code>SXMJ = 61002;</code>
+     */
+    public static final int SXMJ_VALUE = 61002;
+    /**
+     * <code>HUA_SHUI = 61003;</code>
+     */
+    public static final int HUA_SHUI_VALUE = 61003;
+    /**
+     * <code>WEI_NAN = 61004;</code>
+     */
+    public static final int WEI_NAN_VALUE = 61004;
+    /**
+     * <code>BAO_JI = 61005;</code>
+     */
+    public static final int BAO_JI_VALUE = 61005;
+    /**
+     * <code>ONE_FIVE_NINE = 61006;</code>
+     */
+    public static final int ONE_FIVE_NINE_VALUE = 61006;
+    /**
+     * <code>GUO_ZI = 61007;</code>
+     */
+    public static final int GUO_ZI_VALUE = 61007;
+    /**
+     * <code>HAN_ZHONG = 61008;</code>
+     */
+    public static final int HAN_ZHONG_VALUE = 61008;
+    /**
+     * <code>WU_HU = 34001;</code>
+     *
+     * <pre>
+     * 安徽麻将：34开头
+     * </pre>
+     */
+    public static final int WU_HU_VALUE = 34001;
+    /**
+     * <code>WU_WEI = 34002;</code>
+     */
+    public static final int WU_WEI_VALUE = 34002;
+    /**
+     * <code>SHE_XIAN = 34003;</code>
+     */
+    public static final int SHE_XIAN_VALUE = 34003;
+    /**
+     * <code>HE_XIAN = 34004;</code>
+     */
+    public static final int HE_XIAN_VALUE = 34004;
+    /**
+     * <code>FU_YANG = 34005;</code>
+     */
+    public static final int FU_YANG_VALUE = 34005;
+    /**
+     * <code>MING_GUANG = 34006;</code>
+     */
+    public static final int MING_GUANG_VALUE = 34006;
+    /**
+     * <code>LAI_AN_TUI_DAO_HU = 34007;</code>
+     */
+    public static final int LAI_AN_TUI_DAO_HU_VALUE = 34007;
+    /**
+     * <code>LAI_AN_LAO_SAN_FAN = 34008;</code>
+     */
+    public static final int LAI_AN_LAO_SAN_FAN_VALUE = 34008;
 
 
     public final int getNumber() { return value; }
@@ -110,6 +254,22 @@ public final class GameRulePB {
         case 99007: return SAN_DAI;
         case 99008: return GAN_DENG_YAN;
         case 99009: return DOU_DI_ZHU;
+        case 61001: return LIANG;
+        case 61002: return SXMJ;
+        case 61003: return HUA_SHUI;
+        case 61004: return WEI_NAN;
+        case 61005: return BAO_JI;
+        case 61006: return ONE_FIVE_NINE;
+        case 61007: return GUO_ZI;
+        case 61008: return HAN_ZHONG;
+        case 34001: return WU_HU;
+        case 34002: return WU_WEI;
+        case 34003: return SHE_XIAN;
+        case 34004: return HE_XIAN;
+        case 34005: return FU_YANG;
+        case 34006: return MING_GUANG;
+        case 34007: return LAI_AN_TUI_DAO_HU;
+        case 34008: return LAI_AN_LAO_SAN_FAN;
         default: return null;
       }
     }
@@ -170,12 +330,19 @@ public final class GameRulePB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025common/GameRule.proto*\241\001\n\010GameRule\022\r\n\007" +
+      "\n\025common/GameRule.proto*\251\003\n\010GameRule\022\r\n\007" +
       "JIN_HUA\020\271\205\006\022\r\n\007NIU_NIU\020\272\205\006\022\013\n\005BI_JI\020\273\205\006\022" +
       "\r\n\007WA_KENG\020\274\205\006\022\020\n\nTUI_DUI_ZI\020\275\205\006\022\024\n\016ZHUO" +
       "_LAO_MA_ZI\020\276\205\006\022\r\n\007SAN_DAI\020\277\205\006\022\022\n\014GAN_DEN" +
-      "G_YAN\020\300\205\006\022\020\n\nDOU_DI_ZHU\020\301\205\006B,\n\036com.kuaik" +
-      "ai.game.common.msg.pbB\nGameRulePB"
+      "G_YAN\020\300\205\006\022\020\n\nDOU_DI_ZHU\020\301\205\006\022\013\n\005LIANG\020\311\334\003" +
+      "\022\n\n\004SXMJ\020\312\334\003\022\016\n\010HUA_SHUI\020\313\334\003\022\r\n\007WEI_NAN\020" +
+      "\314\334\003\022\014\n\006BAO_JI\020\315\334\003\022\023\n\rONE_FIVE_NINE\020\316\334\003\022\014" +
+      "\n\006GUO_ZI\020\317\334\003\022\017\n\tHAN_ZHONG\020\320\334\003\022\013\n\005WU_HU\020\321" +
+      "\211\002\022\014\n\006WU_WEI\020\322\211\002\022\016\n\010SHE_XIAN\020\323\211\002\022\r\n\007HE_X" +
+      "IAN\020\324\211\002\022\r\n\007FU_YANG\020\325\211\002\022\020\n\nMING_GUANG\020\326\211\002",
+      "\022\027\n\021LAI_AN_TUI_DAO_HU\020\327\211\002\022\030\n\022LAI_AN_LAO_" +
+      "SAN_FAN\020\330\211\002B,\n\036com.kuaikai.game.common.m" +
+      "sg.pbB\nGameRulePB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

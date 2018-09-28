@@ -9,10 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
-import com.kuaikai.game.common.msg.pb.RuleSettingPB.RuleSetting;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.msg.handler.SJoinDeskHandler;
 import com.kuaikai.game.mahjong.msg.pb.DirectionPB;
+import com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting;
 import com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk;
 import com.kuaikai.game.mahjong.msg.pb.PlayerInfoPB.PlayerInfo;
 
@@ -68,7 +68,7 @@ public class DeskManager {
 		for(int i=0; i < desk.getPids().size(); i++) {
 			builder.addPlayerInfos(createPlayerInfo(desk.getPids().get(i), i+1));
 		}
-		builder.setRuleSetting(createRuleSetting());
+		builder.setRule(GameRule.GUO_ZI).setSetting(createGameSetting());
 		return builder;
 	}
 	
@@ -78,11 +78,9 @@ public class DeskManager {
 		return builder;
 	}
 	
-	private static RuleSetting.Builder createRuleSetting() {
-		RuleSetting.Builder builder = RuleSetting.newBuilder();
-		builder.setRule(GameRule.DOU_DI_ZHU);
-		
-		//builder.setSetting();
+	private static GameSetting.Builder createGameSetting() {
+		GameSetting.Builder builder = GameSetting.newBuilder();
+		builder.setTotalSet(8);
 		return builder;
 	}
 	
