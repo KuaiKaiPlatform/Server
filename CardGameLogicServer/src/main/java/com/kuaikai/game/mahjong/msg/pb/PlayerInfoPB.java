@@ -55,9 +55,9 @@ public final class PlayerInfoPB {
      */
     com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection();
 
-    // required bool prepared = 3;
+    // optional bool prepared = 3;
     /**
-     * <code>required bool prepared = 3;</code>
+     * <code>optional bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -65,7 +65,7 @@ public final class PlayerInfoPB {
      */
     boolean hasPrepared();
     /**
-     * <code>required bool prepared = 3;</code>
+     * <code>optional bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -73,9 +73,9 @@ public final class PlayerInfoPB {
      */
     boolean getPrepared();
 
-    // required bool offline = 4;
+    // optional bool offline = 4;
     /**
-     * <code>required bool offline = 4;</code>
+     * <code>optional bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -83,7 +83,7 @@ public final class PlayerInfoPB {
      */
     boolean hasOffline();
     /**
-     * <code>required bool offline = 4;</code>
+     * <code>optional bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -374,11 +374,11 @@ public final class PlayerInfoPB {
       return direction_;
     }
 
-    // required bool prepared = 3;
+    // optional bool prepared = 3;
     public static final int PREPARED_FIELD_NUMBER = 3;
     private boolean prepared_;
     /**
-     * <code>required bool prepared = 3;</code>
+     * <code>optional bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -388,7 +388,7 @@ public final class PlayerInfoPB {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required bool prepared = 3;</code>
+     * <code>optional bool prepared = 3;</code>
      *
      * <pre>
      * 是否准备
@@ -398,11 +398,11 @@ public final class PlayerInfoPB {
       return prepared_;
     }
 
-    // required bool offline = 4;
+    // optional bool offline = 4;
     public static final int OFFLINE_FIELD_NUMBER = 4;
     private boolean offline_;
     /**
-     * <code>required bool offline = 4;</code>
+     * <code>optional bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -412,7 +412,7 @@ public final class PlayerInfoPB {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required bool offline = 4;</code>
+     * <code>optional bool offline = 4;</code>
      *
      * <pre>
      * 是否离线
@@ -510,14 +510,6 @@ public final class PlayerInfoPB {
         return false;
       }
       if (!hasDirection()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPrepared()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasOffline()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -845,14 +837,6 @@ public final class PlayerInfoPB {
           
           return false;
         }
-        if (!hasPrepared()) {
-          
-          return false;
-        }
-        if (!hasOffline()) {
-          
-          return false;
-        }
         if (!getBasicInfo().isInitialized()) {
           
           return false;
@@ -1084,10 +1068,10 @@ public final class PlayerInfoPB {
         return this;
       }
 
-      // required bool prepared = 3;
+      // optional bool prepared = 3;
       private boolean prepared_ ;
       /**
-       * <code>required bool prepared = 3;</code>
+       * <code>optional bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
@@ -1097,7 +1081,7 @@ public final class PlayerInfoPB {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required bool prepared = 3;</code>
+       * <code>optional bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
@@ -1107,7 +1091,7 @@ public final class PlayerInfoPB {
         return prepared_;
       }
       /**
-       * <code>required bool prepared = 3;</code>
+       * <code>optional bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
@@ -1120,7 +1104,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>required bool prepared = 3;</code>
+       * <code>optional bool prepared = 3;</code>
        *
        * <pre>
        * 是否准备
@@ -1133,10 +1117,10 @@ public final class PlayerInfoPB {
         return this;
       }
 
-      // required bool offline = 4;
+      // optional bool offline = 4;
       private boolean offline_ ;
       /**
-       * <code>required bool offline = 4;</code>
+       * <code>optional bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
@@ -1146,7 +1130,7 @@ public final class PlayerInfoPB {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required bool offline = 4;</code>
+       * <code>optional bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
@@ -1156,7 +1140,7 @@ public final class PlayerInfoPB {
         return offline_;
       }
       /**
-       * <code>required bool offline = 4;</code>
+       * <code>optional bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
@@ -1169,7 +1153,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>required bool offline = 4;</code>
+       * <code>optional bool offline = 4;</code>
        *
        * <pre>
        * 是否离线
@@ -1399,7 +1383,7 @@ public final class PlayerInfoPB {
       "erBasicInfo.proto\032\027mahjong/Direction.pro" +
       "to\"\225\001\n\nPlayerInfo\022#\n\tbasicInfo\030\001 \002(\0132\020.P" +
       "layerBasicInfo\022\035\n\tdirection\030\002 \002(\0162\n.Dire" +
-      "ction\022\020\n\010prepared\030\003 \002(\010\022\017\n\007offline\030\004 \002(\010" +
+      "ction\022\020\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010" +
       "\022\016\n\006points\030\005 \003(\005\022\020\n\010diPoints\030\006 \003(\005B/\n\037co" +
       "m.kuaikai.game.mahjong.msg.pbB\014PlayerInf" +
       "oPB"

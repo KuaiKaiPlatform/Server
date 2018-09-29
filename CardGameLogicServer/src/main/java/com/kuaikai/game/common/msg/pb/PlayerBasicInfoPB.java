@@ -56,9 +56,9 @@ public final class PlayerBasicInfoPB {
     com.google.protobuf.ByteString
         getNknBytes();
 
-    // required string head = 3;
+    // optional string head = 3;
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -66,7 +66,7 @@ public final class PlayerBasicInfoPB {
      */
     boolean hasHead();
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -74,7 +74,7 @@ public final class PlayerBasicInfoPB {
      */
     java.lang.String getHead();
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -83,9 +83,9 @@ public final class PlayerBasicInfoPB {
     com.google.protobuf.ByteString
         getHeadBytes();
 
-    // required int32 sex = 4;
+    // optional int32 sex = 4;
     /**
-     * <code>required int32 sex = 4;</code>
+     * <code>optional int32 sex = 4;</code>
      *
      * <pre>
      * 玩家性别
@@ -93,7 +93,7 @@ public final class PlayerBasicInfoPB {
      */
     boolean hasSex();
     /**
-     * <code>required int32 sex = 4;</code>
+     * <code>optional int32 sex = 4;</code>
      *
      * <pre>
      * 玩家性别
@@ -323,11 +323,11 @@ public final class PlayerBasicInfoPB {
       }
     }
 
-    // required string head = 3;
+    // optional string head = 3;
     public static final int HEAD_FIELD_NUMBER = 3;
     private java.lang.Object head_;
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -337,7 +337,7 @@ public final class PlayerBasicInfoPB {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -358,7 +358,7 @@ public final class PlayerBasicInfoPB {
       }
     }
     /**
-     * <code>required string head = 3;</code>
+     * <code>optional string head = 3;</code>
      *
      * <pre>
      * 玩家头像
@@ -378,11 +378,11 @@ public final class PlayerBasicInfoPB {
       }
     }
 
-    // required int32 sex = 4;
+    // optional int32 sex = 4;
     public static final int SEX_FIELD_NUMBER = 4;
     private int sex_;
     /**
-     * <code>required int32 sex = 4;</code>
+     * <code>optional int32 sex = 4;</code>
      *
      * <pre>
      * 玩家性别
@@ -392,7 +392,7 @@ public final class PlayerBasicInfoPB {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 sex = 4;</code>
+     * <code>optional int32 sex = 4;</code>
      *
      * <pre>
      * 玩家性别
@@ -474,14 +474,6 @@ public final class PlayerBasicInfoPB {
         return false;
       }
       if (!hasNkn()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasHead()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasSex()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -760,14 +752,6 @@ public final class PlayerBasicInfoPB {
           
           return false;
         }
-        if (!hasHead()) {
-          
-          return false;
-        }
-        if (!hasSex()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -937,10 +921,10 @@ public final class PlayerBasicInfoPB {
         return this;
       }
 
-      // required string head = 3;
+      // optional string head = 3;
       private java.lang.Object head_ = "";
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -950,7 +934,7 @@ public final class PlayerBasicInfoPB {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -968,7 +952,7 @@ public final class PlayerBasicInfoPB {
         }
       }
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -988,7 +972,7 @@ public final class PlayerBasicInfoPB {
         }
       }
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -1005,7 +989,7 @@ public final class PlayerBasicInfoPB {
         return this;
       }
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -1018,7 +1002,7 @@ public final class PlayerBasicInfoPB {
         return this;
       }
       /**
-       * <code>required string head = 3;</code>
+       * <code>optional string head = 3;</code>
        *
        * <pre>
        * 玩家头像
@@ -1035,10 +1019,10 @@ public final class PlayerBasicInfoPB {
         return this;
       }
 
-      // required int32 sex = 4;
+      // optional int32 sex = 4;
       private int sex_ ;
       /**
-       * <code>required int32 sex = 4;</code>
+       * <code>optional int32 sex = 4;</code>
        *
        * <pre>
        * 玩家性别
@@ -1048,7 +1032,7 @@ public final class PlayerBasicInfoPB {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 sex = 4;</code>
+       * <code>optional int32 sex = 4;</code>
        *
        * <pre>
        * 玩家性别
@@ -1058,7 +1042,7 @@ public final class PlayerBasicInfoPB {
         return sex_;
       }
       /**
-       * <code>required int32 sex = 4;</code>
+       * <code>optional int32 sex = 4;</code>
        *
        * <pre>
        * 玩家性别
@@ -1071,7 +1055,7 @@ public final class PlayerBasicInfoPB {
         return this;
       }
       /**
-       * <code>required int32 sex = 4;</code>
+       * <code>optional int32 sex = 4;</code>
        *
        * <pre>
        * 玩家性别
@@ -1209,7 +1193,7 @@ public final class PlayerBasicInfoPB {
     java.lang.String[] descriptorData = {
       "\n\035account/PlayerBasicInfo.proto\"R\n\017Playe" +
       "rBasicInfo\022\013\n\003uid\030\001 \002(\005\022\013\n\003nkn\030\002 \002(\t\022\014\n\004" +
-      "head\030\003 \002(\t\022\013\n\003sex\030\004 \002(\005\022\n\n\002ip\030\005 \001(\tB3\n\036c" +
+      "head\030\003 \001(\t\022\013\n\003sex\030\004 \001(\005\022\n\n\002ip\030\005 \001(\tB3\n\036c" +
       "om.kuaikai.game.common.msg.pbB\021PlayerBas" +
       "icInfoPB"
     };

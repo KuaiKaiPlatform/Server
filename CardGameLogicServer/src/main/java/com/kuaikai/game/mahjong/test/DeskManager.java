@@ -9,11 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
+import com.kuaikai.game.common.msg.pb.PlayerBasicInfoPB.PlayerBasicInfo;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.msg.handler.SJoinDeskHandler;
-import com.kuaikai.game.mahjong.msg.pb.DirectionPB;
+import com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction;
 import com.kuaikai.game.mahjong.msg.pb.GameSettingPB.GameSetting;
 import com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk;
+import com.kuaikai.game.mahjong.msg.pb.JoinDeskPB.SJoinDesk.Status;
 import com.kuaikai.game.mahjong.msg.pb.PlayerInfoPB.PlayerInfo;
 
 public class DeskManager {
@@ -31,8 +33,7 @@ public class DeskManager {
 		readWriteLock.writeLock().lock();
 		try {
 			Desk desk = joinDesk(uid);
-			SJoinDesk.Builder builder = createSJoinDesk(uid, desk);
-			OnlineManager.sendMsg(uid, new SJoinDeskHandler(builder));
+			OnlineManager.sendMsg(uid, new SJoinDeskHandler(createSJoinDesk(uid, desk)));
 		} catch(Exception e) {
 			LOGGER.error("DeskManager.onUserLogin@error|uid={}", uid, e);
 		} finally {
@@ -68,20 +69,20 @@ public class DeskManager {
 		for(int i=0; i < desk.getPids().size(); i++) {
 			builder.addPlayerInfos(createPlayerInfo(desk.getPids().get(i), i+1));
 		}
-		builder.setRule(GameRule.GUO_ZI).setSetting(createGameSetting());
-		return builder;
+		return builder.setRule(GameRule.GUO_ZI).setSetting(createGameSetting()).setStatus(Status.WAITING);
 	}
 	
 	private static PlayerInfo.Builder createPlayerInfo(int pid, int index) {
-		PlayerInfo.Builder builder = PlayerInfo.newBuilder();
-		builder.setDirection(DirectionPB.Direction.valueOf(index));
-		return builder;
+		return PlayerInfo.newBuilder().setBasicInfo(createPlayerBasicInfo(pid)).setDirection(Direction.valueOf(index))
+				.setPrepared(true).addPoints(5);
+	}
+
+	private static PlayerBasicInfo.Builder createPlayerBasicInfo(int pid) {
+		return PlayerBasicInfo.newBuilder().setUid(pid).setNkn(String.valueOf(pid));
 	}
 	
 	private static GameSetting.Builder createGameSetting() {
-		GameSetting.Builder builder = GameSetting.newBuilder();
-		builder.setTotalSet(8);
-		return builder;
+		return GameSetting.newBuilder().setTotalSet(8);
 	}
 	
 }
