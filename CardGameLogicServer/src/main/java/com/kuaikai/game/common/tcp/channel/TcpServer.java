@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MessageFactory;
 import com.kuaikai.game.common.msg.MsgHandler;
-import com.kuaikai.game.common.msg.handler.login.LoginReqHandler;
+import com.kuaikai.game.common.msg.handler.login.CLoginHandler;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.common.tcp.Server;
 
@@ -51,7 +51,7 @@ public class TcpServer extends ChannelConnection {
 	}
 
 	private boolean checkSendMsg(ChannelHandlerContext ctx, Message msg) {
-		if (msg.msgid != LoginReqHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
+		if (msg.msgid != CLoginHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
 			return OnlineManager.getUid(ctx) != null;
 		}
 		return true;

@@ -9,7 +9,7 @@ public final class GameRulePB {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   /**
-   * Protobuf enum {@code GameRule}
+   * Protobuf enum {@code common.GameRule}
    */
   public enum GameRule
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -318,7 +318,7 @@ public final class GameRulePB {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:GameRule)
+    // @@protoc_insertion_point(enum_scope:common.GameRule)
   }
 
 
@@ -330,19 +330,19 @@ public final class GameRulePB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025common/GameRule.proto*\251\003\n\010GameRule\022\r\n\007" +
-      "JIN_HUA\020\271\205\006\022\r\n\007NIU_NIU\020\272\205\006\022\013\n\005BI_JI\020\273\205\006\022" +
-      "\r\n\007WA_KENG\020\274\205\006\022\020\n\nTUI_DUI_ZI\020\275\205\006\022\024\n\016ZHUO" +
-      "_LAO_MA_ZI\020\276\205\006\022\r\n\007SAN_DAI\020\277\205\006\022\022\n\014GAN_DEN" +
-      "G_YAN\020\300\205\006\022\020\n\nDOU_DI_ZHU\020\301\205\006\022\013\n\005LIANG\020\311\334\003" +
-      "\022\n\n\004SXMJ\020\312\334\003\022\016\n\010HUA_SHUI\020\313\334\003\022\r\n\007WEI_NAN\020" +
-      "\314\334\003\022\014\n\006BAO_JI\020\315\334\003\022\023\n\rONE_FIVE_NINE\020\316\334\003\022\014" +
-      "\n\006GUO_ZI\020\317\334\003\022\017\n\tHAN_ZHONG\020\320\334\003\022\013\n\005WU_HU\020\321" +
-      "\211\002\022\014\n\006WU_WEI\020\322\211\002\022\016\n\010SHE_XIAN\020\323\211\002\022\r\n\007HE_X" +
-      "IAN\020\324\211\002\022\r\n\007FU_YANG\020\325\211\002\022\020\n\nMING_GUANG\020\326\211\002",
-      "\022\027\n\021LAI_AN_TUI_DAO_HU\020\327\211\002\022\030\n\022LAI_AN_LAO_" +
-      "SAN_FAN\020\330\211\002B,\n\036com.kuaikai.game.common.m" +
-      "sg.pbB\nGameRulePB"
+      "\n\025common/GameRule.proto\022\006common*\251\003\n\010Game" +
+      "Rule\022\r\n\007JIN_HUA\020\271\205\006\022\r\n\007NIU_NIU\020\272\205\006\022\013\n\005BI" +
+      "_JI\020\273\205\006\022\r\n\007WA_KENG\020\274\205\006\022\020\n\nTUI_DUI_ZI\020\275\205\006" +
+      "\022\024\n\016ZHUO_LAO_MA_ZI\020\276\205\006\022\r\n\007SAN_DAI\020\277\205\006\022\022\n" +
+      "\014GAN_DENG_YAN\020\300\205\006\022\020\n\nDOU_DI_ZHU\020\301\205\006\022\013\n\005L" +
+      "IANG\020\311\334\003\022\n\n\004SXMJ\020\312\334\003\022\016\n\010HUA_SHUI\020\313\334\003\022\r\n\007" +
+      "WEI_NAN\020\314\334\003\022\014\n\006BAO_JI\020\315\334\003\022\023\n\rONE_FIVE_NI" +
+      "NE\020\316\334\003\022\014\n\006GUO_ZI\020\317\334\003\022\017\n\tHAN_ZHONG\020\320\334\003\022\013\n" +
+      "\005WU_HU\020\321\211\002\022\014\n\006WU_WEI\020\322\211\002\022\016\n\010SHE_XIAN\020\323\211\002" +
+      "\022\r\n\007HE_XIAN\020\324\211\002\022\r\n\007FU_YANG\020\325\211\002\022\020\n\nMING_G",
+      "UANG\020\326\211\002\022\027\n\021LAI_AN_TUI_DAO_HU\020\327\211\002\022\030\n\022LAI" +
+      "_AN_LAO_SAN_FAN\020\330\211\002B,\n\036com.kuaikai.game." +
+      "common.msg.pbB\nGameRulePB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

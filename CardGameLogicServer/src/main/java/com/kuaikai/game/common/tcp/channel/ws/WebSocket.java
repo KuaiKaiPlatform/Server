@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MessageFactory;
 import com.kuaikai.game.common.msg.MsgHandler;
-import com.kuaikai.game.common.msg.handler.login.LoginReqHandler;
+import com.kuaikai.game.common.msg.handler.login.CLoginHandler;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.common.tcp.channel.IChannelConnection;
 
@@ -55,7 +55,7 @@ public class WebSocket extends WebSocketServerHandler {
 	}
 
 	private boolean checkSendMsg(ChannelHandlerContext ctx, Message msg) {
-		if (msg.msgid != LoginReqHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
+		if (msg.msgid != CLoginHandler.msgid) {// 非登陆消息 检测玩家登陆是否成功
 			return OnlineManager.getUid(ctx) != null;
 		}
 		return true;
@@ -88,7 +88,7 @@ public class WebSocket extends WebSocketServerHandler {
 
 	@Override
 	public void onConnectSuccess(ChannelHandlerContext ctx, Object... objects) {
-		LOGGER.debug("WebSocket.onConnectSuccess@connect success|addr=%s", ctx.channel().remoteAddress());
+		LOGGER.debug("WebSocket.onConnectSuccess@connect success|addr={}", ctx.channel().remoteAddress());
 		
 		if (objects == null || objects.length == 0) {
 			return;

@@ -24,10 +24,10 @@ public class WebSocketOutBoundHandler extends ChannelOutboundHandlerAdapter {
 				totalLength += message.bytes.length + 4;
 			}
 			ByteBuf byteBuf = ByteBufAllocator.DEFAULT.buffer(totalLength);
-			byteBuf.writeShort(totalLength - 2);
-			byteBuf.writeShort(message.msgid);
+			byteBuf.writeShortLE(totalLength - 2);
+			byteBuf.writeShortLE(message.msgid);
 			if (message.bytes != null) {
-				byteBuf.writeInt(message.bytes.length);
+				byteBuf.writeIntLE(message.bytes.length);
 				byteBuf.writeBytes(message.bytes);
 			}
 			BinaryWebSocketFrame binaryWebSocketFrame = new BinaryWebSocketFrame(byteBuf);

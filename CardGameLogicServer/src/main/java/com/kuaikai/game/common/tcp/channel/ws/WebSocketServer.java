@@ -48,11 +48,11 @@ public class WebSocketServer {
 							// ChunkedWriteHandler
 							// 向客户端发送HTML5文件，主要用于支持浏览器和服务器进行WebSocket通信
 							// WebSocketServerHandler自定义Handler
-							SSLContext sslContext = SslUtil.createSSLContext("JKS", "conf/wss.jks", "1539159440023"); /// SslUtil自定义类
+/*							SSLContext sslContext = SslUtil.createSSLContext("JKS", "conf/wss.jks", "1539159440023"); /// SslUtil自定义类
 							final SSLEngine sslEngine = sslContext.createSSLEngine();
 							sslEngine.setUseClientMode(false); // 是否使用客户端模式
 							sslEngine.setNeedClientAuth(false);// 是否需要验证客户端
-							ch.pipeline().addLast("ssl", new SslHandler(sslEngine));
+							ch.pipeline().addLast("ssl", new SslHandler(sslEngine));*/
 							ch.pipeline().addLast("http-codec", new HttpServerCodec())
 									.addLast("aggregator", new HttpObjectAggregator(65536)) // 定义缓冲大小
 									.addLast("http-chunked", new ChunkedWriteHandler())

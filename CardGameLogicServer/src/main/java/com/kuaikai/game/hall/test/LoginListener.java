@@ -1,4 +1,4 @@
-package com.kuaikai.game.mahjong.test;
+package com.kuaikai.game.hall.test;
 
 import com.kuaikai.game.common.event.BaseEvent;
 import com.kuaikai.game.common.event.BaseListener;

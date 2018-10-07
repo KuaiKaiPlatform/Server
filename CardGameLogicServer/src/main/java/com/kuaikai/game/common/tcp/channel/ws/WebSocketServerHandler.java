@@ -83,7 +83,7 @@ public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler
 		 * String.format("%s frame types not supported",
 		 * frame.getClass().getName())); }
 		 */
-
+		LOGGER.debug("WebSocketServerHandler.handleWebSocketFrame@instanceof BinaryWebSocketFrame {}", frame instanceof BinaryWebSocketFrame);
 		// 支持二进制消息
 		if (frame instanceof BinaryWebSocketFrame) {
 			BinaryWebSocketFrame img = (BinaryWebSocketFrame) frame;
@@ -94,11 +94,11 @@ public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler
 			}
 
 			byteBuf.markReaderIndex();
-			int length = byteBuf.readUnsignedShort();
-			int msgid = byteBuf.readShort();
+			int length = byteBuf.readUnsignedShortLE();
+			int msgid = byteBuf.readUnsignedShortLE();
 			// int nowLength = length - 2;
 			int nowLength = length - 6;
-			byteBuf.readInt();
+			byteBuf.readUnsignedIntLE();
 			// -------------------------
 			int nowCanRead = byteBuf.readableBytes();
 			if (nowLength > nowCanRead) {
@@ -143,6 +143,7 @@ public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+		LOGGER.debug("WebSocketServerHandler.channelRead0");
 		// 普通HTTP接入
 		if (msg instanceof FullHttpRequest) {
 			handleHttpRequest(ctx, (FullHttpRequest) msg);
@@ -150,7 +151,7 @@ public abstract class WebSocketServerHandler extends SimpleChannelInboundHandler
 			// BinaryWebSocketFrame CloseWebSocketFrame
 			// ContinuationWebSocketFrame
 			// PingWebSocketFrame PongWebSocketFrame TextWebScoketFrame
-
+			LOGGER.debug("WebSocketServerHandler.channelRead0@WebSocketFrame");
 			handleWebSocketFrame(ctx, (WebSocketFrame) msg);
 		}
 	}

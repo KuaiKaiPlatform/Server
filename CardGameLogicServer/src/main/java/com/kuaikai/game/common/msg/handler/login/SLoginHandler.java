@@ -2,7 +2,7 @@ package com.kuaikai.game.common.msg.handler.login;
 
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MsgHandler;
-import com.kuaikai.game.common.msg.pb.LoginResPB;
+import com.kuaikai.game.common.msg.pb.SLoginPB.SLogin;
 
 //import com.farm.common.tcp.Message;
 //import com.farm.server.tcp.MsgHandler;
@@ -10,20 +10,20 @@ import com.kuaikai.game.common.msg.pb.LoginResPB;
 
 import io.netty.channel.ChannelHandlerContext;
 
-public class LoginResHandler extends MsgHandler {
+public class SLoginHandler extends MsgHandler {
 
-	public static final int msgid = 578;
-	private LoginResPB.LoginRes loginRes;
+	public static final int msgid = 2;
+	private SLogin sLogin;
 
-	public LoginResHandler(ChannelHandlerContext ctx) {
+	public SLoginHandler(ChannelHandlerContext ctx) {
 		super(ctx);
 	}
 
-	public LoginResHandler(int code) {
+	public SLoginHandler(int code) {
 		this(null);
-		LoginResPB.LoginRes.Builder builder = LoginResPB.LoginRes.newBuilder();
-		builder.setReturnCode(LoginResPB.LoginRes.ReturnCode.valueOf(code));
-		loginRes = builder.build();
+		SLogin.Builder builder = SLogin.newBuilder();
+		builder.setReturnCode(SLogin.ReturnCode.valueOf(code));
+		sLogin = builder.build();
 	}
 
 	@Override
@@ -36,12 +36,12 @@ public class LoginResHandler extends MsgHandler {
 
 	@Override
 	public Message encode() throws Exception {
-		return new Message(msgid, loginRes.toByteArray());
+		return new Message(msgid, sLogin.toByteArray());
 	}
 
 	@Override
 	public String desc() {
-		return String.format("msgid=%d,data=%s", msgid, loginRes);
+		return String.format("msgid=%d,data=%s", msgid, sLogin);
 	}
 
 }

@@ -51,14 +51,14 @@ public class MessageFactory {
 	public static void init(String packageName) throws Exception {
 		ChannelHandlerContext channelHandlerContext = null;
 		for (String className : ClassUtils.getClassName(packageName, true)) {
-			Class<?> class1 = Class.forName(className);
-			Type type = class1.getGenericSuperclass();
+			Class<?> clazz = Class.forName(className);
+			Type type = clazz.getGenericSuperclass();
 			if (((Class<?>) type).getName().equals("com.kuaikai.game.common.msg.MsgHandler")) {
 				@SuppressWarnings("unchecked")
-				Constructor<MsgHandler> constructor = (Constructor<MsgHandler>) class1
+				Constructor<MsgHandler> constructor = (Constructor<MsgHandler>) clazz
 						.getConstructor(ChannelHandlerContext.class);
 				Object object = constructor.newInstance(channelHandlerContext);
-				Field field = class1.getDeclaredField("msgid");
+				Field field = clazz.getDeclaredField("msgid");
 				int msgid = field.getInt(object);
 				if (msgid == -1) {
 					throw new RuntimeException("do no find msgid," + className);

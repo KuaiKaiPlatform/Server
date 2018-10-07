@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.msg.MsgHandler;
-import com.kuaikai.game.common.msg.handler.login.KickOffResHandler;
+import com.kuaikai.game.common.msg.handler.login.SKickOffHandler;
 import com.kuaikai.game.common.tcp.channel.IChannelConnection;
 import com.kuaikai.game.common.tcp.channel.ws.WebSocket;
 
@@ -79,7 +79,7 @@ public class OnlineManager {
 	public static void kickOff(int uid, int code) {
 		ChannelHandlerContext channelHandlerContext = sessionMap.get(uid);
 		if (channelHandlerContext != null) {
-			KickOffResHandler kickOffResHandler = new KickOffResHandler(code);
+			SKickOffHandler kickOffResHandler = new SKickOffHandler(code);
 			innerSendMsg(uid, kickOffResHandler, channelHandlerContext);
 			onUserLogOut(uid, "server kick off");
 		}
