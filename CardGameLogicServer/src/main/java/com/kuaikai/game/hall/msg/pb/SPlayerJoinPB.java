@@ -11,31 +11,31 @@ public final class SPlayerJoinPB {
   public interface SPlayerJoinOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .common.PlayerInfo playerInfo = 1;
+    // required .common.PlayerInfo player = 1;
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    boolean hasPlayerInfo();
+    boolean hasPlayer();
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayerInfo();
+    com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayer();
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerInfoOrBuilder();
+    com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerOrBuilder();
 
     // required int32 deskId = 2;
     /**
@@ -131,12 +131,12 @@ public final class SPlayerJoinPB {
             case 10: {
               com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = playerInfo_.toBuilder();
+                subBuilder = player_.toBuilder();
               }
-              playerInfo_ = input.readMessage(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.PARSER, extensionRegistry);
+              player_ = input.readMessage(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(playerInfo_);
-                playerInfo_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(player_);
+                player_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
               break;
@@ -191,38 +191,38 @@ public final class SPlayerJoinPB {
     }
 
     private int bitField0_;
-    // required .common.PlayerInfo playerInfo = 1;
-    public static final int PLAYERINFO_FIELD_NUMBER = 1;
-    private com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo playerInfo_;
+    // required .common.PlayerInfo player = 1;
+    public static final int PLAYER_FIELD_NUMBER = 1;
+    private com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo player_;
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    public boolean hasPlayerInfo() {
+    public boolean hasPlayer() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayerInfo() {
-      return playerInfo_;
+    public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayer() {
+      return player_;
     }
     /**
-     * <code>required .common.PlayerInfo playerInfo = 1;</code>
+     * <code>required .common.PlayerInfo player = 1;</code>
      *
      * <pre>
      * 玩家信息
      * </pre>
      */
-    public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerInfoOrBuilder() {
-      return playerInfo_;
+    public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerOrBuilder() {
+      return player_;
     }
 
     // required int32 deskId = 2;
@@ -274,7 +274,7 @@ public final class SPlayerJoinPB {
     }
 
     private void initFields() {
-      playerInfo_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
+      player_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
       deskId_ = 0;
       clubId_ = 0;
     }
@@ -283,7 +283,7 @@ public final class SPlayerJoinPB {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasPlayerInfo()) {
+      if (!hasPlayer()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -291,7 +291,7 @@ public final class SPlayerJoinPB {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getPlayerInfo().isInitialized()) {
+      if (!getPlayer().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -303,7 +303,7 @@ public final class SPlayerJoinPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, playerInfo_);
+        output.writeMessage(1, player_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, deskId_);
@@ -322,7 +322,7 @@ public final class SPlayerJoinPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, playerInfo_);
+          .computeMessageSize(1, player_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -444,7 +444,7 @@ public final class SPlayerJoinPB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getPlayerInfoFieldBuilder();
+          getPlayerFieldBuilder();
         }
       }
       private static Builder create() {
@@ -453,10 +453,10 @@ public final class SPlayerJoinPB {
 
       public Builder clear() {
         super.clear();
-        if (playerInfoBuilder_ == null) {
-          playerInfo_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
+        if (playerBuilder_ == null) {
+          player_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
         } else {
-          playerInfoBuilder_.clear();
+          playerBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         deskId_ = 0;
@@ -494,10 +494,10 @@ public final class SPlayerJoinPB {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (playerInfoBuilder_ == null) {
-          result.playerInfo_ = playerInfo_;
+        if (playerBuilder_ == null) {
+          result.player_ = player_;
         } else {
-          result.playerInfo_ = playerInfoBuilder_.build();
+          result.player_ = playerBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
@@ -523,8 +523,8 @@ public final class SPlayerJoinPB {
 
       public Builder mergeFrom(com.kuaikai.game.hall.msg.pb.SPlayerJoinPB.SPlayerJoin other) {
         if (other == com.kuaikai.game.hall.msg.pb.SPlayerJoinPB.SPlayerJoin.getDefaultInstance()) return this;
-        if (other.hasPlayerInfo()) {
-          mergePlayerInfo(other.getPlayerInfo());
+        if (other.hasPlayer()) {
+          mergePlayer(other.getPlayer());
         }
         if (other.hasDeskId()) {
           setDeskId(other.getDeskId());
@@ -537,7 +537,7 @@ public final class SPlayerJoinPB {
       }
 
       public final boolean isInitialized() {
-        if (!hasPlayerInfo()) {
+        if (!hasPlayer()) {
           
           return false;
         }
@@ -545,7 +545,7 @@ public final class SPlayerJoinPB {
           
           return false;
         }
-        if (!getPlayerInfo().isInitialized()) {
+        if (!getPlayer().isInitialized()) {
           
           return false;
         }
@@ -571,140 +571,140 @@ public final class SPlayerJoinPB {
       }
       private int bitField0_;
 
-      // required .common.PlayerInfo playerInfo = 1;
-      private com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo playerInfo_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
+      // required .common.PlayerInfo player = 1;
+      private com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo player_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder> playerInfoBuilder_;
+          com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder> playerBuilder_;
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public boolean hasPlayerInfo() {
+      public boolean hasPlayer() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayerInfo() {
-        if (playerInfoBuilder_ == null) {
-          return playerInfo_;
+      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayer() {
+        if (playerBuilder_ == null) {
+          return player_;
         } else {
-          return playerInfoBuilder_.getMessage();
+          return playerBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public Builder setPlayerInfo(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo value) {
-        if (playerInfoBuilder_ == null) {
+      public Builder setPlayer(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo value) {
+        if (playerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          playerInfo_ = value;
+          player_ = value;
           onChanged();
         } else {
-          playerInfoBuilder_.setMessage(value);
+          playerBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public Builder setPlayerInfo(
+      public Builder setPlayer(
           com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder builderForValue) {
-        if (playerInfoBuilder_ == null) {
-          playerInfo_ = builderForValue.build();
+        if (playerBuilder_ == null) {
+          player_ = builderForValue.build();
           onChanged();
         } else {
-          playerInfoBuilder_.setMessage(builderForValue.build());
+          playerBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public Builder mergePlayerInfo(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo value) {
-        if (playerInfoBuilder_ == null) {
+      public Builder mergePlayer(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo value) {
+        if (playerBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              playerInfo_ != com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance()) {
-            playerInfo_ =
-              com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.newBuilder(playerInfo_).mergeFrom(value).buildPartial();
+              player_ != com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance()) {
+            player_ =
+              com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.newBuilder(player_).mergeFrom(value).buildPartial();
           } else {
-            playerInfo_ = value;
+            player_ = value;
           }
           onChanged();
         } else {
-          playerInfoBuilder_.mergeFrom(value);
+          playerBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public Builder clearPlayerInfo() {
-        if (playerInfoBuilder_ == null) {
-          playerInfo_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
+      public Builder clearPlayer() {
+        if (playerBuilder_ == null) {
+          player_ = com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance();
           onChanged();
         } else {
-          playerInfoBuilder_.clear();
+          playerBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder getPlayerInfoBuilder() {
+      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder getPlayerBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
-        return getPlayerInfoFieldBuilder().getBuilder();
+        return getPlayerFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerInfoOrBuilder() {
-        if (playerInfoBuilder_ != null) {
-          return playerInfoBuilder_.getMessageOrBuilder();
+      public com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayerOrBuilder() {
+        if (playerBuilder_ != null) {
+          return playerBuilder_.getMessageOrBuilder();
         } else {
-          return playerInfo_;
+          return player_;
         }
       }
       /**
-       * <code>required .common.PlayerInfo playerInfo = 1;</code>
+       * <code>required .common.PlayerInfo player = 1;</code>
        *
        * <pre>
        * 玩家信息
@@ -712,16 +712,16 @@ public final class SPlayerJoinPB {
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder> 
-          getPlayerInfoFieldBuilder() {
-        if (playerInfoBuilder_ == null) {
-          playerInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          getPlayerFieldBuilder() {
+        if (playerBuilder_ == null) {
+          playerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder>(
-                  playerInfo_,
+                  player_,
                   getParentForChildren(),
                   isClean());
-          playerInfo_ = null;
+          player_ = null;
         }
-        return playerInfoBuilder_;
+        return playerBuilder_;
       }
 
       // required int32 deskId = 2;
@@ -848,10 +848,10 @@ public final class SPlayerJoinPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\026hall/SPlayerJoin.proto\022\004hall\032\027common/P" +
-      "layerInfo.proto\"U\n\013SPlayerJoin\022&\n\nplayer" +
-      "Info\030\001 \002(\0132\022.common.PlayerInfo\022\016\n\006deskId" +
-      "\030\002 \002(\005\022\016\n\006clubId\030\003 \001(\005B-\n\034com.kuaikai.ga" +
-      "me.hall.msg.pbB\rSPlayerJoinPB"
+      "layerInfo.proto\"Q\n\013SPlayerJoin\022\"\n\006player" +
+      "\030\001 \002(\0132\022.common.PlayerInfo\022\016\n\006deskId\030\002 \002" +
+      "(\005\022\016\n\006clubId\030\003 \001(\005B-\n\034com.kuaikai.game.h" +
+      "all.msg.pbB\rSPlayerJoinPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -863,7 +863,7 @@ public final class SPlayerJoinPB {
           internal_static_hall_SPlayerJoin_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_hall_SPlayerJoin_descriptor,
-              new java.lang.String[] { "PlayerInfo", "DeskId", "ClubId", });
+              new java.lang.String[] { "Player", "DeskId", "ClubId", });
           return null;
         }
       };

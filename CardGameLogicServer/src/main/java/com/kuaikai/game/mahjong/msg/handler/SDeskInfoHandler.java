@@ -9,7 +9,7 @@ import io.netty.channel.ChannelHandlerContext;
 public class SDeskInfoHandler extends MsgHandler {
 
 	public static final int msgid = 103;
-	private SDeskInfo sDeskInfo;
+	private SDeskInfo sDesk;
 
 	public SDeskInfoHandler(ChannelHandlerContext ctx) {
 		super(ctx);
@@ -17,7 +17,7 @@ public class SDeskInfoHandler extends MsgHandler {
 
 	public SDeskInfoHandler(SDeskInfo.Builder builder) {
 		super(null);
-		sDeskInfo = builder.build();
+		sDesk = builder.build();
 	}
 
 	@Override
@@ -30,12 +30,12 @@ public class SDeskInfoHandler extends MsgHandler {
 
 	@Override
 	public Message encode() throws Exception {
-		return new Message(msgid, sDeskInfo.toByteArray());
+		return new Message(msgid, sDesk.toByteArray());
 	}
 
 	@Override
 	public String desc() {
-		return String.format("msgid=%d,data=%s", msgid, sDeskInfo);
+		return String.format("msgid=%d,data=%s", msgid, sDesk);
 	}
 
 }

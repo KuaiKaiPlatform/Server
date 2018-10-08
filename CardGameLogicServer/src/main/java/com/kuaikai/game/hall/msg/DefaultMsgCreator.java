@@ -3,6 +3,7 @@ package com.kuaikai.game.hall.msg;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
+import com.kuaikai.game.common.msg.pb.DeskInfoPB.DeskInfo;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
@@ -14,15 +15,19 @@ import com.kuaikai.game.hall.msg.pb.SPlayerJoinPB.SPlayerJoin;
 public class DefaultMsgCreator implements MsgCreator {
 
 	public SDeskInfo.Builder createSDeskInfo(Desk desk) {
-		SDeskInfo.Builder builder = SDeskInfo.newBuilder();
+		return SDeskInfo.newBuilder().setDesk(createDeskInfo(desk));
+	}
+	
+	public DeskInfo.Builder createDeskInfo(Desk desk) {
+		DeskInfo.Builder builder = DeskInfo.newBuilder();
 		for(Player p : desk.getPlayers()) {
-			builder.addPlayerInfos(createPlayerInfo(p));
+			builder.addPlayers(createPlayerInfo(p));
 		}
-		return builder.setRule(GameRule.GUO_ZI).setSetting(createGameSetting()).setStatus(GameStatus.WAITING);
+		return builder.setDeskId(desk.getDeskId()).setRule(GameRule.GUO_ZI).setSetting(createGameSetting()).setStatus(GameStatus.WAITING);
 	}
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
-		return PlayerInfo.newBuilder().setUserInfo(createUserInfo(p.getUser())).setSeat(p.getSeat())
+		return PlayerInfo.newBuilder().setUser(createUserInfo(p.getUser())).setSeat(p.getSeat())
 				.setPrepared(true).addAllPoints(p.getPoints());
 	}
 
@@ -35,7 +40,7 @@ public class DefaultMsgCreator implements MsgCreator {
 	}
 	
 	public SPlayerJoin.Builder createSPlayerJoin(Player p, Desk desk) {
-		return SPlayerJoin.newBuilder().setPlayerInfo(createPlayerInfo(p)).setDeskId(desk.getDeskId());
+		return SPlayerJoin.newBuilder().setPlayer(createPlayerInfo(p)).setDeskId(desk.getDeskId());
 	}
 	
 }

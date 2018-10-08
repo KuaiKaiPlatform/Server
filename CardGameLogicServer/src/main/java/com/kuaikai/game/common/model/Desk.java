@@ -37,6 +37,7 @@ public class Desk {
 			pids.add(player.getId());
 			players.add(player);
 			id2Player.put(player.getId(), player);
+			seat2Player.put(player.getSeat(), player);
 		}
 	}
 	

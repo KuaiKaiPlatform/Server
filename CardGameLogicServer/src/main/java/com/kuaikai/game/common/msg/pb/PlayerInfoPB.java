@@ -11,35 +11,35 @@ public final class PlayerInfoPB {
   public interface PlayerInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .account.UserInfo userInfo = 1;
+    // required .account.UserInfo user = 1;
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    boolean hasUserInfo();
+    boolean hasUser();
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUserInfo();
+    com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUser();
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserInfoOrBuilder();
+    com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserOrBuilder();
 
-    // required int32 seat = 2;
+    // optional int32 seat = 2;
     /**
-     * <code>required int32 seat = 2;</code>
+     * <code>optional int32 seat = 2;</code>
      *
      * <pre>
      * 玩家座位，从1开始，对应麻将桌东向
@@ -47,7 +47,7 @@ public final class PlayerInfoPB {
      */
     boolean hasSeat();
     /**
-     * <code>required int32 seat = 2;</code>
+     * <code>optional int32 seat = 2;</code>
      *
      * <pre>
      * 玩家座位，从1开始，对应麻将桌东向
@@ -171,12 +171,12 @@ public final class PlayerInfoPB {
             case 10: {
               com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = userInfo_.toBuilder();
+                subBuilder = user_.toBuilder();
               }
-              userInfo_ = input.readMessage(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.PARSER, extensionRegistry);
+              user_ = input.readMessage(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(userInfo_);
-                userInfo_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
               break;
@@ -260,45 +260,45 @@ public final class PlayerInfoPB {
     }
 
     private int bitField0_;
-    // required .account.UserInfo userInfo = 1;
-    public static final int USERINFO_FIELD_NUMBER = 1;
-    private com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo userInfo_;
+    // required .account.UserInfo user = 1;
+    public static final int USER_FIELD_NUMBER = 1;
+    private com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo user_;
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    public boolean hasUserInfo() {
+    public boolean hasUser() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUserInfo() {
-      return userInfo_;
+    public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUser() {
+      return user_;
     }
     /**
-     * <code>required .account.UserInfo userInfo = 1;</code>
+     * <code>required .account.UserInfo user = 1;</code>
      *
      * <pre>
      * 玩家基本信息
      * </pre>
      */
-    public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserInfoOrBuilder() {
-      return userInfo_;
+    public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
-    // required int32 seat = 2;
+    // optional int32 seat = 2;
     public static final int SEAT_FIELD_NUMBER = 2;
     private int seat_;
     /**
-     * <code>required int32 seat = 2;</code>
+     * <code>optional int32 seat = 2;</code>
      *
      * <pre>
      * 玩家座位，从1开始，对应麻将桌东向
@@ -308,7 +308,7 @@ public final class PlayerInfoPB {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 seat = 2;</code>
+     * <code>optional int32 seat = 2;</code>
      *
      * <pre>
      * 玩家座位，从1开始，对应麻将桌东向
@@ -402,7 +402,7 @@ public final class PlayerInfoPB {
     }
 
     private void initFields() {
-      userInfo_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
+      user_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
       seat_ = 0;
       prepared_ = false;
       offline_ = false;
@@ -413,15 +413,11 @@ public final class PlayerInfoPB {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasUserInfo()) {
+      if (!hasUser()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasSeat()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getUserInfo().isInitialized()) {
+      if (!getUser().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -433,7 +429,7 @@ public final class PlayerInfoPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, userInfo_);
+        output.writeMessage(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, seat_);
@@ -458,7 +454,7 @@ public final class PlayerInfoPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, userInfo_);
+          .computeMessageSize(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -589,7 +585,7 @@ public final class PlayerInfoPB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getUserInfoFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -598,10 +594,10 @@ public final class PlayerInfoPB {
 
       public Builder clear() {
         super.clear();
-        if (userInfoBuilder_ == null) {
-          userInfo_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
+        if (userBuilder_ == null) {
+          user_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
         } else {
-          userInfoBuilder_.clear();
+          userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         seat_ = 0;
@@ -643,10 +639,10 @@ public final class PlayerInfoPB {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (userInfoBuilder_ == null) {
-          result.userInfo_ = userInfo_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
         } else {
-          result.userInfo_ = userInfoBuilder_.build();
+          result.user_ = userBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
@@ -681,8 +677,8 @@ public final class PlayerInfoPB {
 
       public Builder mergeFrom(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo other) {
         if (other == com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance()) return this;
-        if (other.hasUserInfo()) {
-          mergeUserInfo(other.getUserInfo());
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         if (other.hasSeat()) {
           setSeat(other.getSeat());
@@ -708,15 +704,11 @@ public final class PlayerInfoPB {
       }
 
       public final boolean isInitialized() {
-        if (!hasUserInfo()) {
+        if (!hasUser()) {
           
           return false;
         }
-        if (!hasSeat()) {
-          
-          return false;
-        }
-        if (!getUserInfo().isInitialized()) {
+        if (!getUser().isInitialized()) {
           
           return false;
         }
@@ -742,140 +734,140 @@ public final class PlayerInfoPB {
       }
       private int bitField0_;
 
-      // required .account.UserInfo userInfo = 1;
-      private com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo userInfo_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
+      // required .account.UserInfo user = 1;
+      private com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo user_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder> userInfoBuilder_;
+          com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder> userBuilder_;
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public boolean hasUserInfo() {
+      public boolean hasUser() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUserInfo() {
-        if (userInfoBuilder_ == null) {
-          return userInfo_;
+      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
         } else {
-          return userInfoBuilder_.getMessage();
+          return userBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public Builder setUserInfo(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo value) {
-        if (userInfoBuilder_ == null) {
+      public Builder setUser(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo value) {
+        if (userBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          userInfo_ = value;
+          user_ = value;
           onChanged();
         } else {
-          userInfoBuilder_.setMessage(value);
+          userBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public Builder setUserInfo(
+      public Builder setUser(
           com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder builderForValue) {
-        if (userInfoBuilder_ == null) {
-          userInfo_ = builderForValue.build();
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
           onChanged();
         } else {
-          userInfoBuilder_.setMessage(builderForValue.build());
+          userBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public Builder mergeUserInfo(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo value) {
-        if (userInfoBuilder_ == null) {
+      public Builder mergeUser(com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo value) {
+        if (userBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              userInfo_ != com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance()) {
-            userInfo_ =
-              com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.newBuilder(userInfo_).mergeFrom(value).buildPartial();
+              user_ != com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
           } else {
-            userInfo_ = value;
+            user_ = value;
           }
           onChanged();
         } else {
-          userInfoBuilder_.mergeFrom(value);
+          userBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public Builder clearUserInfo() {
-        if (userInfoBuilder_ == null) {
-          userInfo_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
           onChanged();
         } else {
-          userInfoBuilder_.clear();
+          userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder getUserInfoBuilder() {
+      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder getUserBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
-        return getUserInfoFieldBuilder().getBuilder();
+        return getUserFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
        * </pre>
        */
-      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserInfoOrBuilder() {
-        if (userInfoBuilder_ != null) {
-          return userInfoBuilder_.getMessageOrBuilder();
+      public com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
         } else {
-          return userInfo_;
+          return user_;
         }
       }
       /**
-       * <code>required .account.UserInfo userInfo = 1;</code>
+       * <code>required .account.UserInfo user = 1;</code>
        *
        * <pre>
        * 玩家基本信息
@@ -883,22 +875,22 @@ public final class PlayerInfoPB {
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder> 
-          getUserInfoFieldBuilder() {
-        if (userInfoBuilder_ == null) {
-          userInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.Builder, com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfoOrBuilder>(
-                  userInfo_,
+                  user_,
                   getParentForChildren(),
                   isClean());
-          userInfo_ = null;
+          user_ = null;
         }
-        return userInfoBuilder_;
+        return userBuilder_;
       }
 
-      // required int32 seat = 2;
+      // optional int32 seat = 2;
       private int seat_ ;
       /**
-       * <code>required int32 seat = 2;</code>
+       * <code>optional int32 seat = 2;</code>
        *
        * <pre>
        * 玩家座位，从1开始，对应麻将桌东向
@@ -908,7 +900,7 @@ public final class PlayerInfoPB {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 seat = 2;</code>
+       * <code>optional int32 seat = 2;</code>
        *
        * <pre>
        * 玩家座位，从1开始，对应麻将桌东向
@@ -918,7 +910,7 @@ public final class PlayerInfoPB {
         return seat_;
       }
       /**
-       * <code>required int32 seat = 2;</code>
+       * <code>optional int32 seat = 2;</code>
        *
        * <pre>
        * 玩家座位，从1开始，对应麻将桌东向
@@ -931,7 +923,7 @@ public final class PlayerInfoPB {
         return this;
       }
       /**
-       * <code>required int32 seat = 2;</code>
+       * <code>optional int32 seat = 2;</code>
        *
        * <pre>
        * 玩家座位，从1开始，对应麻将桌东向
@@ -1162,11 +1154,11 @@ public final class PlayerInfoPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\027common/PlayerInfo.proto\022\006common\032\026accou" +
-      "nt/UserInfo.proto\"r\n\nPlayerInfo\022#\n\010userI" +
-      "nfo\030\001 \002(\0132\021.account.UserInfo\022\014\n\004seat\030\002 \002" +
-      "(\005\022\020\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010\022\016\n" +
-      "\006points\030\005 \003(\005B.\n\036com.kuaikai.game.common" +
-      ".msg.pbB\014PlayerInfoPB"
+      "nt/UserInfo.proto\"n\n\nPlayerInfo\022\037\n\004user\030" +
+      "\001 \002(\0132\021.account.UserInfo\022\014\n\004seat\030\002 \001(\005\022\020" +
+      "\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010\022\016\n\006poi" +
+      "nts\030\005 \003(\005B.\n\036com.kuaikai.game.common.msg" +
+      ".pbB\014PlayerInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1178,7 +1170,7 @@ public final class PlayerInfoPB {
           internal_static_common_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_PlayerInfo_descriptor,
-              new java.lang.String[] { "UserInfo", "Seat", "Prepared", "Offline", "Points", });
+              new java.lang.String[] { "User", "Seat", "Prepared", "Offline", "Points", });
           return null;
         }
       };
