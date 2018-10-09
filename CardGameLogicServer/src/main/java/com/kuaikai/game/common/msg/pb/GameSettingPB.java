@@ -85,6 +85,10 @@ public final class GameSettingPB {
   }
   /**
    * Protobuf type {@code common.GameSetting}
+   *
+   * <pre>
+   * 玩法规则设置
+   * </pre>
    */
   public static final class GameSetting extends
       com.google.protobuf.GeneratedMessage
@@ -425,6 +429,10 @@ public final class GameSettingPB {
     }
     /**
      * Protobuf type {@code common.GameSetting}
+     *
+     * <pre>
+     * 玩法规则设置
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
