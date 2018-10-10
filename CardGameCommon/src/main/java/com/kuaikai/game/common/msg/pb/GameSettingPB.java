@@ -11,9 +11,36 @@ public final class GameSettingPB {
   public interface GameSettingOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int32 totalSet = 1;
+    // required string json = 1;
     /**
-     * <code>optional int32 totalSet = 1;</code>
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    boolean hasJson();
+    /**
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    java.lang.String getJson();
+    /**
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getJsonBytes();
+
+    // optional int32 totalSet = 2;
+    /**
+     * <code>optional int32 totalSet = 2;</code>
      *
      * <pre>
      * 麻将相关
@@ -21,7 +48,7 @@ public final class GameSettingPB {
      */
     boolean hasTotalSet();
     /**
-     * <code>optional int32 totalSet = 1;</code>
+     * <code>optional int32 totalSet = 2;</code>
      *
      * <pre>
      * 麻将相关
@@ -29,9 +56,9 @@ public final class GameSettingPB {
      */
     int getTotalSet();
 
-    // optional int32 totalQuan = 2;
+    // optional int32 totalQuan = 3;
     /**
-     * <code>optional int32 totalQuan = 2;</code>
+     * <code>optional int32 totalQuan = 3;</code>
      *
      * <pre>
      * 总圈数
@@ -39,7 +66,7 @@ public final class GameSettingPB {
      */
     boolean hasTotalQuan();
     /**
-     * <code>optional int32 totalQuan = 2;</code>
+     * <code>optional int32 totalQuan = 3;</code>
      *
      * <pre>
      * 总圈数
@@ -47,9 +74,9 @@ public final class GameSettingPB {
      */
     int getTotalQuan();
 
-    // optional int32 totalDi = 3;
+    // optional int32 totalDi = 4;
     /**
-     * <code>optional int32 totalDi = 3;</code>
+     * <code>optional int32 totalDi = 4;</code>
      *
      * <pre>
      * 总底数
@@ -57,7 +84,7 @@ public final class GameSettingPB {
      */
     boolean hasTotalDi();
     /**
-     * <code>optional int32 totalDi = 3;</code>
+     * <code>optional int32 totalDi = 4;</code>
      *
      * <pre>
      * 总底数
@@ -65,9 +92,9 @@ public final class GameSettingPB {
      */
     int getTotalDi();
 
-    // optional int32 totalPlayer = 4;
+    // optional int32 totalPlayer = 5;
     /**
-     * <code>optional int32 totalPlayer = 4;</code>
+     * <code>optional int32 totalPlayer = 5;</code>
      *
      * <pre>
      * 玩家人数
@@ -75,7 +102,7 @@ public final class GameSettingPB {
      */
     boolean hasTotalPlayer();
     /**
-     * <code>optional int32 totalPlayer = 4;</code>
+     * <code>optional int32 totalPlayer = 5;</code>
      *
      * <pre>
      * 玩家人数
@@ -138,23 +165,28 @@ public final class GameSettingPB {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              totalSet_ = input.readInt32();
+              json_ = input.readBytes();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              totalQuan_ = input.readInt32();
+              totalSet_ = input.readInt32();
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              totalDi_ = input.readInt32();
+              totalQuan_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
+              totalDi_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
               totalPlayer_ = input.readInt32();
               break;
             }
@@ -198,21 +230,76 @@ public final class GameSettingPB {
     }
 
     private int bitField0_;
-    // optional int32 totalSet = 1;
-    public static final int TOTALSET_FIELD_NUMBER = 1;
+    // required string json = 1;
+    public static final int JSON_FIELD_NUMBER = 1;
+    private java.lang.Object json_;
+    /**
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    public boolean hasJson() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    public java.lang.String getJson() {
+      java.lang.Object ref = json_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          json_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string json = 1;</code>
+     *
+     * <pre>
+     * JSON 格式的 setting 内容
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getJsonBytes() {
+      java.lang.Object ref = json_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        json_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 totalSet = 2;
+    public static final int TOTALSET_FIELD_NUMBER = 2;
     private int totalSet_;
     /**
-     * <code>optional int32 totalSet = 1;</code>
+     * <code>optional int32 totalSet = 2;</code>
      *
      * <pre>
      * 麻将相关
      * </pre>
      */
     public boolean hasTotalSet() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 totalSet = 1;</code>
+     * <code>optional int32 totalSet = 2;</code>
      *
      * <pre>
      * 麻将相关
@@ -222,21 +309,21 @@ public final class GameSettingPB {
       return totalSet_;
     }
 
-    // optional int32 totalQuan = 2;
-    public static final int TOTALQUAN_FIELD_NUMBER = 2;
+    // optional int32 totalQuan = 3;
+    public static final int TOTALQUAN_FIELD_NUMBER = 3;
     private int totalQuan_;
     /**
-     * <code>optional int32 totalQuan = 2;</code>
+     * <code>optional int32 totalQuan = 3;</code>
      *
      * <pre>
      * 总圈数
      * </pre>
      */
     public boolean hasTotalQuan() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 totalQuan = 2;</code>
+     * <code>optional int32 totalQuan = 3;</code>
      *
      * <pre>
      * 总圈数
@@ -246,21 +333,21 @@ public final class GameSettingPB {
       return totalQuan_;
     }
 
-    // optional int32 totalDi = 3;
-    public static final int TOTALDI_FIELD_NUMBER = 3;
+    // optional int32 totalDi = 4;
+    public static final int TOTALDI_FIELD_NUMBER = 4;
     private int totalDi_;
     /**
-     * <code>optional int32 totalDi = 3;</code>
+     * <code>optional int32 totalDi = 4;</code>
      *
      * <pre>
      * 总底数
      * </pre>
      */
     public boolean hasTotalDi() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 totalDi = 3;</code>
+     * <code>optional int32 totalDi = 4;</code>
      *
      * <pre>
      * 总底数
@@ -270,21 +357,21 @@ public final class GameSettingPB {
       return totalDi_;
     }
 
-    // optional int32 totalPlayer = 4;
-    public static final int TOTALPLAYER_FIELD_NUMBER = 4;
+    // optional int32 totalPlayer = 5;
+    public static final int TOTALPLAYER_FIELD_NUMBER = 5;
     private int totalPlayer_;
     /**
-     * <code>optional int32 totalPlayer = 4;</code>
+     * <code>optional int32 totalPlayer = 5;</code>
      *
      * <pre>
      * 玩家人数
      * </pre>
      */
     public boolean hasTotalPlayer() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 totalPlayer = 4;</code>
+     * <code>optional int32 totalPlayer = 5;</code>
      *
      * <pre>
      * 玩家人数
@@ -295,6 +382,7 @@ public final class GameSettingPB {
     }
 
     private void initFields() {
+      json_ = "";
       totalSet_ = 0;
       totalQuan_ = 0;
       totalDi_ = 0;
@@ -305,6 +393,10 @@ public final class GameSettingPB {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasJson()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -313,16 +405,19 @@ public final class GameSettingPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, totalSet_);
+        output.writeBytes(1, getJsonBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, totalQuan_);
+        output.writeInt32(2, totalSet_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, totalDi_);
+        output.writeInt32(3, totalQuan_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, totalPlayer_);
+        output.writeInt32(4, totalDi_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, totalPlayer_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -335,19 +430,23 @@ public final class GameSettingPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, totalSet_);
+          .computeBytesSize(1, getJsonBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, totalQuan_);
+          .computeInt32Size(2, totalSet_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, totalDi_);
+          .computeInt32Size(3, totalQuan_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, totalPlayer_);
+          .computeInt32Size(4, totalDi_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, totalPlayer_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -469,14 +568,16 @@ public final class GameSettingPB {
 
       public Builder clear() {
         super.clear();
-        totalSet_ = 0;
+        json_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        totalQuan_ = 0;
+        totalSet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        totalDi_ = 0;
+        totalQuan_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        totalPlayer_ = 0;
+        totalDi_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        totalPlayer_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -508,17 +609,21 @@ public final class GameSettingPB {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.totalSet_ = totalSet_;
+        result.json_ = json_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.totalQuan_ = totalQuan_;
+        result.totalSet_ = totalSet_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.totalDi_ = totalDi_;
+        result.totalQuan_ = totalQuan_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.totalDi_ = totalDi_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.totalPlayer_ = totalPlayer_;
         result.bitField0_ = to_bitField0_;
@@ -537,6 +642,11 @@ public final class GameSettingPB {
 
       public Builder mergeFrom(com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting other) {
         if (other == com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance()) return this;
+        if (other.hasJson()) {
+          bitField0_ |= 0x00000001;
+          json_ = other.json_;
+          onChanged();
+        }
         if (other.hasTotalSet()) {
           setTotalSet(other.getTotalSet());
         }
@@ -554,6 +664,10 @@ public final class GameSettingPB {
       }
 
       public final boolean isInitialized() {
+        if (!hasJson()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -576,20 +690,118 @@ public final class GameSettingPB {
       }
       private int bitField0_;
 
-      // optional int32 totalSet = 1;
+      // required string json = 1;
+      private java.lang.Object json_ = "";
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public boolean hasJson() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public java.lang.String getJson() {
+        java.lang.Object ref = json_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          json_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getJsonBytes() {
+        java.lang.Object ref = json_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          json_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public Builder setJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        json_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public Builder clearJson() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        json_ = getDefaultInstance().getJson();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string json = 1;</code>
+       *
+       * <pre>
+       * JSON 格式的 setting 内容
+       * </pre>
+       */
+      public Builder setJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        json_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 totalSet = 2;
       private int totalSet_ ;
       /**
-       * <code>optional int32 totalSet = 1;</code>
+       * <code>optional int32 totalSet = 2;</code>
        *
        * <pre>
        * 麻将相关
        * </pre>
        */
       public boolean hasTotalSet() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 totalSet = 1;</code>
+       * <code>optional int32 totalSet = 2;</code>
        *
        * <pre>
        * 麻将相关
@@ -599,46 +811,46 @@ public final class GameSettingPB {
         return totalSet_;
       }
       /**
-       * <code>optional int32 totalSet = 1;</code>
+       * <code>optional int32 totalSet = 2;</code>
        *
        * <pre>
        * 麻将相关
        * </pre>
        */
       public Builder setTotalSet(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         totalSet_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 totalSet = 1;</code>
+       * <code>optional int32 totalSet = 2;</code>
        *
        * <pre>
        * 麻将相关
        * </pre>
        */
       public Builder clearTotalSet() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         totalSet_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 totalQuan = 2;
+      // optional int32 totalQuan = 3;
       private int totalQuan_ ;
       /**
-       * <code>optional int32 totalQuan = 2;</code>
+       * <code>optional int32 totalQuan = 3;</code>
        *
        * <pre>
        * 总圈数
        * </pre>
        */
       public boolean hasTotalQuan() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 totalQuan = 2;</code>
+       * <code>optional int32 totalQuan = 3;</code>
        *
        * <pre>
        * 总圈数
@@ -648,46 +860,46 @@ public final class GameSettingPB {
         return totalQuan_;
       }
       /**
-       * <code>optional int32 totalQuan = 2;</code>
+       * <code>optional int32 totalQuan = 3;</code>
        *
        * <pre>
        * 总圈数
        * </pre>
        */
       public Builder setTotalQuan(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         totalQuan_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 totalQuan = 2;</code>
+       * <code>optional int32 totalQuan = 3;</code>
        *
        * <pre>
        * 总圈数
        * </pre>
        */
       public Builder clearTotalQuan() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         totalQuan_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 totalDi = 3;
+      // optional int32 totalDi = 4;
       private int totalDi_ ;
       /**
-       * <code>optional int32 totalDi = 3;</code>
+       * <code>optional int32 totalDi = 4;</code>
        *
        * <pre>
        * 总底数
        * </pre>
        */
       public boolean hasTotalDi() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 totalDi = 3;</code>
+       * <code>optional int32 totalDi = 4;</code>
        *
        * <pre>
        * 总底数
@@ -697,46 +909,46 @@ public final class GameSettingPB {
         return totalDi_;
       }
       /**
-       * <code>optional int32 totalDi = 3;</code>
+       * <code>optional int32 totalDi = 4;</code>
        *
        * <pre>
        * 总底数
        * </pre>
        */
       public Builder setTotalDi(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         totalDi_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 totalDi = 3;</code>
+       * <code>optional int32 totalDi = 4;</code>
        *
        * <pre>
        * 总底数
        * </pre>
        */
       public Builder clearTotalDi() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         totalDi_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 totalPlayer = 4;
+      // optional int32 totalPlayer = 5;
       private int totalPlayer_ ;
       /**
-       * <code>optional int32 totalPlayer = 4;</code>
+       * <code>optional int32 totalPlayer = 5;</code>
        *
        * <pre>
        * 玩家人数
        * </pre>
        */
       public boolean hasTotalPlayer() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 totalPlayer = 4;</code>
+       * <code>optional int32 totalPlayer = 5;</code>
        *
        * <pre>
        * 玩家人数
@@ -746,27 +958,27 @@ public final class GameSettingPB {
         return totalPlayer_;
       }
       /**
-       * <code>optional int32 totalPlayer = 4;</code>
+       * <code>optional int32 totalPlayer = 5;</code>
        *
        * <pre>
        * 玩家人数
        * </pre>
        */
       public Builder setTotalPlayer(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         totalPlayer_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 totalPlayer = 4;</code>
+       * <code>optional int32 totalPlayer = 5;</code>
        *
        * <pre>
        * 玩家人数
        * </pre>
        */
       public Builder clearTotalPlayer() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         totalPlayer_ = 0;
         onChanged();
         return this;
@@ -797,11 +1009,11 @@ public final class GameSettingPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030common/GameSetting.proto\022\006common\"X\n\013Ga" +
-      "meSetting\022\020\n\010totalSet\030\001 \001(\005\022\021\n\ttotalQuan" +
-      "\030\002 \001(\005\022\017\n\007totalDi\030\003 \001(\005\022\023\n\013totalPlayer\030\004" +
-      " \001(\005B/\n\036com.kuaikai.game.common.msg.pbB\r" +
-      "GameSettingPB"
+      "\n\030common/GameSetting.proto\022\006common\"f\n\013Ga" +
+      "meSetting\022\014\n\004json\030\001 \002(\t\022\020\n\010totalSet\030\002 \001(" +
+      "\005\022\021\n\ttotalQuan\030\003 \001(\005\022\017\n\007totalDi\030\004 \001(\005\022\023\n" +
+      "\013totalPlayer\030\005 \001(\005B/\n\036com.kuaikai.game.c" +
+      "ommon.msg.pbB\rGameSettingPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -813,7 +1025,7 @@ public final class GameSettingPB {
           internal_static_common_GameSetting_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_GameSetting_descriptor,
-              new java.lang.String[] { "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", });
+              new java.lang.String[] { "Json", "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", });
           return null;
         }
       };

@@ -4,9 +4,7 @@ import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
 import com.kuaikai.game.common.msg.pb.DeskInfoPB.DeskInfo;
-import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting;
-import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 import com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo;
 import com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo;
 import com.kuaikai.game.hall.msg.pb.SDeskInfoPB.SDeskInfo;
@@ -23,7 +21,7 @@ public class DefaultMsgCreator implements MsgCreator {
 		for(Player p : desk.getPlayers()) {
 			builder.addPlayers(createPlayerInfo(p));
 		}
-		return builder.setDeskId(desk.getDeskId()).setRule(GameRule.GUO_ZI).setSetting(createGameSetting()).setStatus(GameStatus.WAITING);
+		return builder.setDeskId(desk.getDeskId()).setClubId(desk.getClubId()).setRule(desk.getRule()).setSetting(createGameSetting(desk)).setStatus(desk.getStatus());
 	}
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
@@ -35,8 +33,8 @@ public class DefaultMsgCreator implements MsgCreator {
 		return UserInfo.newBuilder().setUid(u.getId()).setNkn(u.getNickName());
 	}
 	
-	protected GameSetting.Builder createGameSetting() {
-		return GameSetting.newBuilder().setTotalSet(8);
+	protected GameSetting.Builder createGameSetting(Desk desk) {
+		return GameSetting.newBuilder().setJson(desk.getSetting().toJson());
 	}
 	
 	public SPlayerJoin.Builder createSPlayerJoin(Player p, Desk desk) {
