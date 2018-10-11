@@ -25,7 +25,6 @@ import com.kuaikai.game.mahjong.engine.oper.HuOperation;
 
 public class MahjongPlayer extends GamePlayer {
 	
-	private MahjongDesk desk;
 	private boolean baoTing;	// 是否报听
 	
 	private CardContainer cardContainer;
@@ -51,14 +50,14 @@ public class MahjongPlayer extends GamePlayer {
 	}
 
 	public MahjongPlayer(Player player, MahjongDesk desk) {
-		super(player);
-		this.desk = desk;
+		super(player, desk);
+		this.gameDesk = desk;
 		
 		this.gameResult = new PlayerGameResult(this);
 	}
 	
-	public MahjongDesk getDesk() {
-		return desk;
+	public MahjongDesk getGameDesk() {
+		return (MahjongDesk)gameDesk;
 	}
 
 	private void initCheckers() {
@@ -66,10 +65,10 @@ public class MahjongPlayer extends GamePlayer {
 		pengChecker = CheckerFactory.createPengChecker(this);
 		gangChecker = CheckerFactory.createGangChecker(this);
 		
-		if(desk.getSetting().getBool(GameSetting.KE_CHI))
+		if(gameDesk.getSetting().getBool(GameSetting.KE_CHI))
 			chiChecker = CheckerFactory.createChiChecker(this);
 		
-		if(desk.getSetting().getBool(GameSetting.KE_TING))
+		if(gameDesk.getSetting().getBool(GameSetting.KE_TING))
 			tingChecker = CheckerFactory.createTingChecker(this);
 	}
 	
@@ -165,8 +164,8 @@ public class MahjongPlayer extends GamePlayer {
 		List<Integer> tingCards = getTingCards();
 		if(tingCards == null || tingCards.isEmpty()) return cards;
 		cards.addAll(tingCards);
-		if(desk.getEngine().containsAttr(RoomAttr.ALMIGHTY_CARD) && cards.size() > 1) {
-			cards.remove(desk.getEngine().getAttr(RoomAttr.ALMIGHTY_CARD));
+		if(getGameDesk().getEngine().containsAttr(RoomAttr.ALMIGHTY_CARD) && cards.size() > 1) {
+			cards.remove(getGameDesk().getEngine().getAttr(RoomAttr.ALMIGHTY_CARD));
 		}
 		return cards;
 	}
@@ -191,13 +190,13 @@ public class MahjongPlayer extends GamePlayer {
 	public void onPassOperation(BaseOperation oper) {
 		switch(oper.getOperType()) {
 		case OperType.HU :	// 漏胡
-			if(desk.getSetting().getBool(GameSetting.NO_LOU_HU)) break;
+			if(gameDesk.getSetting().getBool(GameSetting.NO_LOU_HU)) break;
 			HuOperation huOper = (HuOperation)oper;
 			if(huOper.isZimo()) break;	// 自摸不漏胡
 			addLouHuCard(oper.getPreOperation().getTarget().getValue());
 			break;
 		case OperType.PENG :	// 漏碰
-			if(!desk.getSetting().getBool(GameSetting.LOU_PENG)) break;
+			if(!gameDesk.getSetting().getBool(GameSetting.LOU_PENG)) break;
 			addLouPengCard(oper.getPreOperation().getTarget().getValue());
 			break;
 		}
@@ -211,7 +210,7 @@ public class MahjongPlayer extends GamePlayer {
 			setAttrs.put(SetAttr.LOU_HU_CARDS, cards);
 		}
 		
-		int louHuNum = desk.getSetting().getInt(GameSetting.LOU_HU_NUM);
+		int louHuNum = gameDesk.getSetting().getInt(GameSetting.LOU_HU_NUM);
 		if(louHuNum >= 0) {	// 漏胡一张或多张
 			cards.add(card);
 		}

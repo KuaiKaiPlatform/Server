@@ -2,6 +2,7 @@ package com.kuaikai.game.mahjong.engine.oper;
 
 import java.util.List;
 
+import com.kuaikai.game.logic.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.GameSetting;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.CardContainer;
@@ -61,9 +62,9 @@ public class BuGangOperation extends BaseOperation {
 	protected void createCanExecuteOperations() {
 		// 补杠判断其他人能否抢杠胡
 		if(!desk.getSetting().getBool(GameSetting.NO_QIANG_GANG)) {
-			for (MahjongPlayer other : desk.getAllPlayers()) {
+			for (GamePlayer other : desk.getAllPlayers()) {
 				if (other.equals(player)) continue;
-				HuOperation.check(other, this);
+				HuOperation.check((MahjongPlayer)other, this);
 			}
 		}
 		

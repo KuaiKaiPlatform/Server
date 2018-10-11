@@ -96,7 +96,7 @@ public class HuOperation extends BaseOperation {
 		
 		if(!isZimo()) {
 			// 胡牌加入手牌
-			player.getMjPlayer().getCardContainer().addHandCard(target);
+			player.getCardContainer().addHandCard(target);
 			target.setValidAlmighty(false);	// 胡万能牌时，不做万能牌使用
 
 			// 本局结果中加入点炮玩家	
@@ -141,7 +141,7 @@ public class HuOperation extends BaseOperation {
 	}
 
 	public static HuOperation check(MahjongPlayer player, BaseOperation preOper) {
-		HuOperation operation = player.getMjPlayer().getHuChecker().checkHuOperation(preOper);
+		HuOperation operation = player.getHuChecker().checkHuOperation(preOper);
 		if(preOper != null) preOper.addCanExecuteOperation(operation);
 		return operation;
 	}

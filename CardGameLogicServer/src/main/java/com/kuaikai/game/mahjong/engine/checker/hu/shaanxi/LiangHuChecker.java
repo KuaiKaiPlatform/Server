@@ -46,14 +46,14 @@ public class LiangHuChecker extends DefaultHuChecker {
 	protected void initPaiXinChecker() {
 		// 十三幺
 		SingleChecker shiSanYao = null;
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_YAO)) {
+		if(desk.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_YAO)) {
 			shiSanYao = new SingleChecker(PaiXin.SHI_SAN_YAO, paiXinChecker);
 			paiXinChecker.setChecker(shiSanYao);
 		}
 
 		// 十三不靠
 		SingleChecker shiSanBuKao = null;
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_BU_KAO)) {
+		if(desk.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_BU_KAO)) {
 			shiSanBuKao = new SingleChecker(PaiXin.SHI_SAN_BU_KAO, paiXinChecker);
 			if(shiSanYao != null) {
 				shiSanYao.setNextChecker(shiSanBuKao);
@@ -117,7 +117,7 @@ public class LiangHuChecker extends DefaultHuChecker {
 		Map<Integer, DiscardTingCards> result = super.getDiscard2TingCards();
 		if(result == null || result.isEmpty()) return result;
 		
-		LiangProcessor processor = (LiangProcessor)room.getEngine().getProcessor();
+		LiangProcessor processor = (LiangProcessor)desk.getEngine().getProcessor();
 		if(!processor.hadDiscardLiang(player)) return result;	// 没打过亮牌
 
 		// 如果打听的牌只有一张亮牌，移除

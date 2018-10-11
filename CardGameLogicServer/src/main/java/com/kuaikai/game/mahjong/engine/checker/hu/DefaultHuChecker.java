@@ -22,12 +22,10 @@ import com.kuaikai.game.mahjong.engine.model.DiscardTingCards;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
 import com.kuaikai.game.mahjong.engine.oper.OperationFactory;
-import com.kuaikai.game.mahjong.engine.paixin.PaiXinHelper;
 
 /**
  * 默认的胡牌检查器
@@ -35,13 +33,13 @@ import com.kuaikai.game.mahjong.engine.paixin.PaiXinHelper;
  */
 public class DefaultHuChecker implements HuChecker {
 	protected static final Logger logger = LoggerFactory.getLogger("play");
-	protected final MahjongDesk room;
+	protected final MahjongDesk desk;
 	protected final MahjongPlayer player;
 	protected PaiXinChecker paiXinChecker;
 	
 	public DefaultHuChecker(MahjongPlayer player) {
 		this.player = player;
-		this.room = player.getRoom();
+		this.desk = player.getGameDesk();
 		paiXinChecker = new PaiXinChecker(player);
 		initPaiXinChecker();
 	}
@@ -124,32 +122,32 @@ public class DefaultHuChecker implements HuChecker {
 	@Override
 	public Set<Integer> checkPaiXins(BaseOperation oper) {
 		List<MJCard> handCards = new ArrayList<MJCard>();
-		handCards.addAll(player.getMjPlayer().getCardContainer().getHandCards());
+		handCards.addAll(player.getCardContainer().getHandCards());
 		if (!oper.checkOperType(OperType.MO)) {
 			handCards.add(oper.getTarget());
 			oper.getTarget().setValidAlmighty(false); // 如果打了一张万能牌，只做牌本身用
 		}
 		
-		if(logger.isDebugEnabled())
+/*		if(logger.isDebugEnabled())
 			logger.debug(String.format("DefaultHuChecker.checkPaiXins@room=%d|set=%d|user=%d|cards=%s|target=%s",
-					room.getRoomid(),
-					room.getCurSet(),
+					desk.getKey(),
+					desk.getCurSet(),
 					player.getId(),
 					PaiXinHelper.toCardsList(handCards),
-					oper.getTarget()));
+					oper.getTarget()));*/
 		
 		return checkPaiXins(handCards, oper.getTarget());
 	}
 	
 	@Override
 	public Set<Integer> checkPaiXins(List<MJCard> handCards, MJCard card) {
-		int almightyCardNum = room.getEngine().getAlmightyCardNum();
+		int almightyCardNum = desk.getEngine().getAlmightyCardNum();
 		paiXinChecker.clearResult();
-		paiXinChecker.check(player, handCards, card, player.getMjPlayer().getCardContainer().getCardGroups(), almightyCardNum);
+		paiXinChecker.check(player, handCards, card, player.getCardContainer().getCardGroups(), almightyCardNum);
 		Set<Integer> result = new HashSet<Integer>();
 		
 		// 玩法设置要求缺一门时，清一色、混一色、缺一门、乱字必须存在任意一种牌型。
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.QUE_YI_MEN)) {
+		if(desk.getSetting().getBool(GameSetting.QUE_YI_MEN)) {
 			if(!paiXinChecker.containsResult(PaiXin.QING_YI_SE) &&
 					!paiXinChecker.containsResult(PaiXin.HUN_YI_SE) &&
 					!paiXinChecker.containsResult(PaiXin.QUE_YI_MEN) &&
@@ -162,12 +160,12 @@ public class DefaultHuChecker implements HuChecker {
 	}
 	
 	protected boolean preCheck(BaseOperation oper) {
-		if(logger.isDebugEnabled())
+/*		if(logger.isDebugEnabled())
 			logger.debug(String.format("DefaultHuChecker.preCheck@room=%d|set=%d|user=%d|target=%s",
-					room.getRoomid(),
-					room.getCurSet(),
+					desk.getRoomid(),
+					desk.getCurSet(),
 					player.getId(),
-					oper.getTarget()));
+					oper.getTarget()));*/
 		
 		if(player.equals(oper.getPlayer())) return true;	// 可以自摸
 		
@@ -175,21 +173,21 @@ public class DefaultHuChecker implements HuChecker {
 		
 		// 听所有牌
 		if(HuModesChecker.tingAll(player)) {
-			if(!room.getCreateRoomParam().getSettingBool(GameSetting.TING_ALL_DIAN) && !qiangGang) return false;		// 不能点炮胡 
-			if(!room.getCreateRoomParam().getSettingBool(GameSetting.TING_ALL_QIANG_GANG) && qiangGang) return false;	// 不能抢杠胡
+			if(!desk.getSetting().getBool(GameSetting.TING_ALL_DIAN) && !qiangGang) return false;		// 不能点炮胡 
+			if(!desk.getSetting().getBool(GameSetting.TING_ALL_QIANG_GANG) && qiangGang) return false;	// 不能抢杠胡
 		}
 		
 		// 先判断抢杠胡
 		if(qiangGang) {
 			// 房间规则为不能抢杠胡
-			if (room.getCreateRoomParam().getSettingBool(GameSetting.NO_QIANG_GANG))
+			if (desk.getSetting().getBool(GameSetting.NO_QIANG_GANG))
 				return false;
 			else 
 				return true;
 		} 
 		
 		// 普通点炮胡，房间规则为只能自摸
-		if (room.getCreateRoomParam().getSettingBool(GameSetting.ZI_MO_ONLY)) return false;
+		if (desk.getSetting().getBool(GameSetting.ZI_MO_ONLY)) return false;
 		
 		return true;
 	}
@@ -200,20 +198,20 @@ public class DefaultHuChecker implements HuChecker {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean louHuCheck(BaseOperation oper) {
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.NO_LOU_HU)) return true;		// 无漏胡限制
-		if(!player.getMjPlayer().containsAttr(MahjongPlayer.SetAttr.LOU_HU_CARDS)) return true;	// 玩家当前不处于漏胡状态
-		if(room.getCreateRoomParam().getSettingInt(GameSetting.LOU_HU_NUM) < 0) return false;	// -1 漏胡所有
+		if(desk.getSetting().getBool(GameSetting.NO_LOU_HU)) return true;		// 无漏胡限制
+		if(!player.getSetAttrs().contains(MahjongPlayer.SetAttr.LOU_HU_CARDS)) return true;	// 玩家当前不处于漏胡状态
+		if(desk.getSetting().getInt(GameSetting.LOU_HU_NUM) < 0) return false;	// -1 漏胡所有
 		
 		// 漏胡一张或多张
-		List<Integer> cards = (List<Integer>)player.getMjPlayer().getAttr(MahjongPlayer.SetAttr.LOU_HU_CARDS); // 不能胡的牌列表
+		List<Integer> cards = (List<Integer>)player.getSetAttrs().get(MahjongPlayer.SetAttr.LOU_HU_CARDS); // 不能胡的牌列表
 		
-		if(logger.isDebugEnabled())
+/*		if(logger.isDebugEnabled())
 			logger.debug(String.format("DefaultHuChecker.louHuCheck@room=%d|set=%d|user=%d|louHuCards=%s|target=%d",
-					room.getRoomid(),
-					room.getCurSet(),
+					desk.getRoomid(),
+					desk.getCurSet(),
 					player.getId(),
 					cards.toString(),
-					oper.getTarget().getValue()));
+					oper.getTarget().getValue()));*/
 		
 		return !cards.contains(oper.getTarget().getValue());
 	}
@@ -226,11 +224,11 @@ public class DefaultHuChecker implements HuChecker {
 	public HuOperation checkHuOperation(BaseOperation oper) {
 		// 检查该玩家是否漏胡
 		if(!louHuCheck(oper)) {
-			logger.info(String.format("DefaultHuChecker.checkHuOperation@louHuCheck failed|room=%d|set=%d|user=%d|target=%d",
-					room.getRoomid(),
-					room.getCurSet(),
+/*			logger.info(String.format("DefaultHuChecker.checkHuOperation@louHuCheck failed|room=%d|set=%d|user=%d|target=%d",
+					desk.getRoomid(),
+					desk.getCurSet(),
 					player.getId(),
-					oper.getTarget().getValue()));
+					oper.getTarget().getValue()));*/
 			return null;
 		}
 		
@@ -241,12 +239,12 @@ public class DefaultHuChecker implements HuChecker {
 		Set<Integer> paiXins = checkPaiXins(oper);
 		if(paiXins == null || paiXins.isEmpty()) return null;
 		
-		logger.info(String.format("DefaultHuChecker.checkHuOperation@paiXins found|room=%d|set=%d|user=%d|paiXins=%s",
-				room.getRoomid(),
-				room.getCurSet(),
+/*		logger.info(String.format("DefaultHuChecker.checkHuOperation@paiXins found|room=%d|set=%d|user=%d|paiXins=%s",
+				desk.getRoomid(),
+				desk.getCurSet(),
 				player.getId(),
 				paiXins,
-				oper.getTarget()));
+				oper.getTarget()));*/
 		
 		// 生成 HuAction
 		HuOperation huOper = OperationFactory.createHuOperation(player, oper);
@@ -255,11 +253,11 @@ public class DefaultHuChecker implements HuChecker {
 		
 		// 检查可胡牌型和胡牌方式是否具备胡牌条件，做后续操作
 		if(!postCheck(oper, huOper)) {
-			logger.info(String.format("DefaultHuChecker.checkHuOperation@postCheck failed|room=%d|set=%d|user=%d|target=%d",
-					room.getRoomid(),
-					room.getCurSet(),
+/*			logger.info(String.format("DefaultHuChecker.checkHuOperation@postCheck failed|room=%d|set=%d|user=%d|target=%d",
+					desk.getRoomid(),
+					desk.getCurSet(),
 					player.getId(),
-					oper.getTarget().getValue()));
+					oper.getTarget().getValue()));*/
 			return null;
 		}
 		
@@ -268,7 +266,7 @@ public class DefaultHuChecker implements HuChecker {
 
 	@Override
 	public Map<Integer, DiscardTingCards> getDiscard2TingCards() {
-		List<MJCard> hands = player.getMjPlayer().getCardContainer().getHandCards();
+		List<MJCard> hands = player.getCardContainer().getHandCards();
 		if(hands.size()%3 != 2) return null;
 		
 		// 打一张牌，可以听哪些牌
@@ -276,7 +274,7 @@ public class DefaultHuChecker implements HuChecker {
 		List<MJCard> handsDiscard = new ArrayList<MJCard>();
 
 		Set<Integer> checkedCards = new HashSet<>();	// 已经查过的手牌
-		List<Integer> initCardPool = room.getEngine().getProcessor().getInitCardPool();
+		List<Integer> initCardPool = desk.getEngine().getProcessor().getInitCardPool();
 
 		for (MJCard discard : hands) {
 			if(!player.equals(discard.getPlayer())) return null;	// 手牌中有别人的牌，说明已经是胡牌状态
@@ -312,11 +310,11 @@ public class DefaultHuChecker implements HuChecker {
 
 	@Override
 	public List<Integer> getTingCards() {
-		List<MJCard> hands = player.getMjPlayer().getCardContainer().getHandCards();
+		List<MJCard> hands = player.getCardContainer().getHandCards();
 		if(hands.size()%3 != 1) return null;
 		
 		List<Integer> tingCards = new LinkedList<Integer>();
-		List<Integer> initCardPool = room.getEngine().getProcessor().getInitCardPool();
+		List<Integer> initCardPool = desk.getEngine().getProcessor().getInitCardPool();
 
 		// 所有牌测试是否胡牌
 		List<MJCard> handsToCheck = new ArrayList<MJCard>();
@@ -338,7 +336,7 @@ public class DefaultHuChecker implements HuChecker {
 	public boolean isTing(List<MJCard> hands) {
 		if(hands == null || hands.size()%3 != 1) return false;
 		
-		List<Integer> initCardPool = room.getEngine().getProcessor().getInitCardPool();
+		List<Integer> initCardPool = desk.getEngine().getProcessor().getInitCardPool();
 		// 所有牌测试是否胡牌
 		List<MJCard> handsToCheck = new ArrayList<MJCard>();
 		for (Integer num : initCardPool) {

@@ -25,7 +25,7 @@ public class DefaultChiChecker implements ChiChecker {
 	
 	public DefaultChiChecker(MahjongPlayer player) {
 		this.player = player;
-		this.desk = player.getDesk();
+		this.desk = player.getGameDesk();
 	}
 	
 	/*

@@ -3,12 +3,12 @@ package com.kuaikai.game.mahjong.engine.checker.hu.mode;
 import java.util.List;
 import java.util.Set;
 
+import com.kuaikai.game.logic.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
@@ -44,7 +44,7 @@ public class HuModesChecker {
 	}*/
 
 	public static boolean haiDiLao(HuOperation oper) {
-		return oper.isZimo() && oper.getRoom().getEngine().getCardPool().isEmpty();
+		return oper.isZimo() && oper.getDesk().getEngine().getCardPool().isEmpty();
 	}
 
 	public static boolean gangShangHua(HuOperation oper) {
@@ -162,8 +162,8 @@ public class HuModesChecker {
 	public static boolean jueZhang(HuOperation oper) {
 		int count = 0; // 明牌计数
 		int huCard = oper.getTarget().getValue();
-		for(MahjongPlayer player : oper.getRoom().getAllPlayers()) {
-			List<CardGroup> cardGroups = player.getMjPlayer().getCardContainer().getCardGroups();
+		for(GamePlayer player : oper.getDesk().getAllPlayers()) {
+			List<CardGroup> cardGroups = ((MahjongPlayer)player).getCardContainer().getCardGroups();
 			if(cardGroups == null) continue;
 			for(CardGroup group : cardGroups) {
 				//if(!group.isValid()) continue;
@@ -175,7 +175,7 @@ public class HuModesChecker {
 			}
 		}
 		
-		for(MJCard card : oper.getRoom().getEngine().getCardPool().getDiscards()) {
+		for(MJCard card : oper.getDesk().getEngine().getCardPool().getDiscards()) {
 			if(card.getValue() == huCard) {
 				count++;
 			}
@@ -198,7 +198,7 @@ public class HuModesChecker {
 	 * @return
 	 */
 	public static boolean danDiao(MahjongPlayer player) {
-		Set<Integer> cards = player.getMjPlayer().getTingCardsWithoutAlmighty();
+		Set<Integer> cards = player.getTingCardsWithoutAlmighty();
 		return cards != null && cards.size() == 1;
 	}
 
@@ -207,12 +207,13 @@ public class HuModesChecker {
 	 * @param operation
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static boolean danDiaoAlmighty(MahjongPlayer player) {
-		List<Integer> tingCards = (List<Integer>)player.getMjPlayer().getAttr(MahjongPlayer.SetAttr.TING_CARDS);
+		List<Integer> tingCards = (List<Integer>)player.getSetAttrs().get(MahjongPlayer.SetAttr.TING_CARDS);
 		if(tingCards == null || tingCards.size() != 1) return false;
-		if(!player.getRoom().getEngine().containsAttr(RoomAttr.ALMIGHTY_CARD)) return false;
+		if(!player.getGameDesk().getEngine().containsAttr(RoomAttr.ALMIGHTY_CARD)) return false;
 		
-		int almightyCard = player.getRoom().getEngine().getAlmightyCardNum();
+		int almightyCard = player.getGameDesk().getEngine().getAlmightyCardNum();
 		return tingCards.get(0) == almightyCard;
 	}
 	
@@ -221,10 +222,11 @@ public class HuModesChecker {
 	 * @param operation
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static boolean tingAll(MahjongPlayer player) {
-		List<Integer> tingCards = (List<Integer>)player.getMjPlayer().getAttr(MahjongPlayer.SetAttr.TING_CARDS);
+		List<Integer> tingCards = (List<Integer>)player.getSetAttrs().get(MahjongPlayer.SetAttr.TING_CARDS);
 		if(tingCards == null || tingCards.isEmpty()) return false;
-		List<Integer> initCardPool = player.getRoom().getEngine().getProcessor().getInitCardPool();
+		List<Integer> initCardPool = player.getGameDesk().getEngine().getProcessor().getInitCardPool();
 		return tingCards.size() == initCardPool.size();
 	}
 	

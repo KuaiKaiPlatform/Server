@@ -23,7 +23,7 @@ public class PlayerGameResult {
 	public PlayerGameResult(MahjongPlayer player) {
 		this.player = player;
 		
-		Calculator calculator = player.getDesk().getEngine().getCalculator();
+		Calculator calculator = player.getGameDesk().getEngine().getCalculator();
 		finalGamePoints = new GamePoints(calculator.getPointsSize(), calculator.getInitDiFen());
 	}
 	
@@ -40,13 +40,13 @@ public class PlayerGameResult {
 	}
 
 	public GamePoints getCurrentDiGamePoints() {
-		int di = player.getDesk().getEngine().getAttrInt(RoomAttr.CURRENT_DI);
+		int di = player.getGameDesk().getEngine().getAttrInt(RoomAttr.CURRENT_DI);
     	if(di <= 0) return null;
     	if(di2Points == null) di2Points = new HashMap<Integer, GamePoints>();
     	
     	GamePoints diPoints = di2Points.get(di);
     	if(diPoints == null) {
-    		Calculator calculator = player.getDesk().getEngine().getCalculator();
+    		Calculator calculator = player.getGameDesk().getEngine().getCalculator();
     		diPoints = new GamePoints(calculator.getPointsSize(), calculator.getInitDiFen());
     		di2Points.put(di, diPoints);
     	}

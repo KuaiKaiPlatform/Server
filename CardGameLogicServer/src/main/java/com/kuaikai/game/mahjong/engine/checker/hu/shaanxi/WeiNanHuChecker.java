@@ -94,7 +94,7 @@ public class WeiNanHuChecker extends DefaultHuChecker {
 
 	@Override
 	public boolean postCheck(BaseOperation act, HuOperation huOper) {
-		if(!room.getCreateRoomParam().getSettingBool(GameSetting.DING_QUE)) return true;	// 不带缺一门，无限制番数
+		if(!desk.getCreateRoomParam().getSettingBool(GameSetting.DING_QUE)) return true;	// 不带缺一门，无限制番数
 		if(huOper.getPaiXins().size() > 1 || !huOper.containsPaiXin(PaiXin.BIAO_ZHUN_HU)) return true;	// 不是普通平胡，有其他牌型，可胡
 		
 		// 检查胡牌番数，点炮2番起胡

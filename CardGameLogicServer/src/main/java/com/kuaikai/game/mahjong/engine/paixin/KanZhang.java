@@ -15,7 +15,7 @@ public class KanZhang {
 	 */
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum, MahjongPlayer player) {
 		if(card == null) return false;
-		Set<Integer> tingCards = player.getMjPlayer().getTingCardsWithoutAlmighty();
+		Set<Integer> tingCards = player.getTingCardsWithoutAlmighty();
 		if(tingCards == null || tingCards.size() != 1) return false;	// 必须单钓
 		
 		int kanZhang = card.getValue();

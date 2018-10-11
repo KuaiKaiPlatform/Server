@@ -9,7 +9,7 @@ import com.kuaikai.game.mahjong.engine.model.shaanxi.LiangMJCard;
 public class MahjongFactory {
 	
 	public static MJCard createMJCard(int value, MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case LIANG :
 			return new LiangMJCard(value, player);
 		default :
@@ -18,7 +18,7 @@ public class MahjongFactory {
 	}
 
 	public static CardContainer createCardContainer(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case LIANG :
 			return new LiangCardContainer(player);
 		default :
@@ -27,7 +27,7 @@ public class MahjongFactory {
 	}
 
 	public static CardGroup createCardGroup(MahjongPlayer player, int operType, List<MJCard> cards, MJCard target) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case LIANG :
 			return new LiangCardGroup(player, operType, cards, target);
 		default :

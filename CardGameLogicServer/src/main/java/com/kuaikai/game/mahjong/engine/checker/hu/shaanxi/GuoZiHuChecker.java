@@ -40,7 +40,7 @@ public class GuoZiHuChecker extends DefaultHuChecker {
 	protected void initPaiXinChecker() {
 		// 十三不靠
 		SingleChecker shiSanBuKao = null;
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_BU_KAO)) {
+		if(desk.getCreateRoomParam().getSettingBool(GameSetting.SHI_SAN_BU_KAO)) {
 			shiSanBuKao = new SingleChecker(PaiXin.SHI_SAN_BU_KAO, paiXinChecker);
 			paiXinChecker.setChecker(shiSanBuKao);
 		}

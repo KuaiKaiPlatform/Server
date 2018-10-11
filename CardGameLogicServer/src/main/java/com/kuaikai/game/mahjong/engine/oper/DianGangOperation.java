@@ -7,7 +7,6 @@ import com.kuaikai.game.mahjong.engine.model.CardContainer;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 
 public class DianGangOperation extends BaseOperation {
@@ -28,7 +27,7 @@ public class DianGangOperation extends BaseOperation {
 		}
 		
 		// 移除手牌
-		CardContainer cardContainer = player.getMjPlayer().getCardContainer();
+		CardContainer cardContainer = player.getCardContainer();
 		List<MJCard> gangCards = cardContainer.removeHandCards(target.getValue(), 3);
 		
 		if(gangCards.size() != 3) {
@@ -50,8 +49,8 @@ public class DianGangOperation extends BaseOperation {
 	protected void postExecute() {
 		super.postExecute();
 		
-		player.getMjPlayer().removeAttr(MahjongPlayer.SetAttr.LOU_HU_CARDS);
-		player.getMjPlayer().removeAttr(MahjongPlayer.SetAttr.LOU_PENG_CARDS);
+		player.getSetAttrs().remove(MahjongPlayer.SetAttr.LOU_HU_CARDS);
+		player.getSetAttrs().remove(MahjongPlayer.SetAttr.LOU_PENG_CARDS);
 		
 		desk.getEngine().getCalculator().createGangDetail(this);
 	}
@@ -71,7 +70,7 @@ public class DianGangOperation extends BaseOperation {
 	 * 
 	 */
 	public static DianGangOperation check(MahjongPlayer player, BaseOperation preOper) {
-		DianGangOperation operation = player.getMjPlayer().getGangChecker().checkDianGangOperation(preOper);
+		DianGangOperation operation = player.getGangChecker().checkDianGangOperation(preOper);
 		if(preOper != null) preOper.addCanExecuteOperation(operation);
 		return operation;
 	}

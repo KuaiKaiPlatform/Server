@@ -33,13 +33,13 @@ public class OneFiveNineHuChecker extends DefaultHuChecker {
 	protected void initPaiXinChecker() {
 		SingleChecker root = null;
 		SingleChecker current = null;
-		if(room.getCreateRoomParam().getSettingBool(GameSetting.HONG_ZHONG_ALMIGHTY)) {
+		if(desk.getCreateRoomParam().getSettingBool(GameSetting.HONG_ZHONG_ALMIGHTY)) {
 			 SingleChecker almight4 = new SingleChecker(PaiXin.ALMIGHTY_4, paiXinChecker);
 			 root = almight4;
 			 current = almight4;
 		}
 		
-		if(!room.getCreateRoomParam().getSettingBool(GameSetting.NO_QI_DUI)) {
+		if(!desk.getCreateRoomParam().getSettingBool(GameSetting.NO_QI_DUI)) {
 			SingleChecker qiDui = new SingleChecker(PaiXin.QI_DUI, paiXinChecker);
 			if(root == null) {
 				root = qiDui;

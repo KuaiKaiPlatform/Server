@@ -78,6 +78,10 @@ public class Desk {
 	public Player getPlayerById(int pid) {
 		return id2Player.get(pid);
 	}
+
+	public Player getPlayerBySeat(int seat) {
+		return seat2Player.get(seat);
+	}
 	
 	public boolean isFull() {
 		return players.size() >= setting.getInt(GameSetting.TOTAL_PLAYER);

@@ -19,9 +19,6 @@ import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
-import com.rafo.chess.common.utils.RandomUtils;
-import com.sy.mahjong.gm.GmManager;
-import com.sy.mahjong.message.room.CreateRoomParam;
 
 public class DefaultProcessor implements IMahjongProcessor {
 

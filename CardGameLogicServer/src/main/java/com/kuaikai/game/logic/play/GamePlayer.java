@@ -8,14 +8,28 @@ import com.kuaikai.game.common.model.Player;
  */
 public abstract class GamePlayer {
 
+	protected GameDesk gameDesk;
 	protected Player player;
 	
-	protected GamePlayer(Player player) {
+	protected GamePlayer(Player player, GameDesk desk) {
 		this.player = player;
+		this.gameDesk = desk;
+	}
+	
+	public boolean isBanker() {
+		return this.equals(gameDesk.getBanker());
+	}
+	
+	public GameDesk getGameDesk() {
+		return gameDesk;
 	}
 	
 	public int getId() {
 		return player.getId();
+	}
+	
+	public int getDelta(GamePlayer other) {
+		return player.getDelta(other.player);
 	}
 	
 }

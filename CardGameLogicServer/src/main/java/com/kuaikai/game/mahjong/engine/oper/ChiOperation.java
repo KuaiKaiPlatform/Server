@@ -96,7 +96,7 @@ public class ChiOperation extends BaseOperation {
 	}
 	
 	public static List<BaseOperation> check(MahjongPlayer player, BaseOperation preOper) {
-		if(!player.getDesk().getSetting().getBool(GameSetting.KE_CHI)) return null;
+		if(!player.getGameDesk().getSetting().getBool(GameSetting.KE_CHI)) return null;
 		List<BaseOperation> operations = player.getChiChecker().checkChiOperations(preOper);
 		if(preOper != null) preOper.addCanExecuteOperations(operations);
 		return operations;

@@ -42,7 +42,7 @@ public class AnKe {
 			if(card != null && cardNum == card.getValue() && !moCard && count < 4) continue;
 			
 			// 自己摸的牌，当摸牌不算暗刻时，必须有四张才算暗刻
-			if(card != null && cardNum == card.getValue() && moCard && player.getRoom().getCreateRoomParam().getSettingBool(GameSetting.MO_NOT_AN_KE) && count < 4) continue;
+			if(card != null && cardNum == card.getValue() && moCard && player.getGameDesk().getSetting().getBool(GameSetting.MO_NOT_AN_KE) && count < 4) continue;
 			
 			for(int i=0; i<3; i++) {
 				cards.remove(new Integer(cardNum));	// 删除三张

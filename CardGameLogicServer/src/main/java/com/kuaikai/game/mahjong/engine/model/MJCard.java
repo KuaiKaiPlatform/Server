@@ -31,7 +31,7 @@ public class MJCard {
     }
     
 	public boolean isAlmighty() {
-		int almighty = player.getDesk().getEngine().getAlmightyCardNum();
+		int almighty = player.getGameDesk().getEngine().getAlmightyCardNum();
 		return value == almighty;
 	}
 

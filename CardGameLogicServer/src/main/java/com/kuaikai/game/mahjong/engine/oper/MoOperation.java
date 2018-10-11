@@ -4,7 +4,6 @@ import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.CardPool;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 import com.kuaikai.game.mahjong.engine.model.SetResult;
 
@@ -38,7 +37,7 @@ public class MoOperation extends BaseOperation {
 		}
 		
 		MJCard mjCard = MahjongFactory.createMJCard(card, player);
-		player.getMjPlayer().getCardContainer().addHandCard(mjCard);
+		player.getCardContainer().addHandCard(mjCard);
 		this.setTarget(mjCard);
 	}
 	
@@ -63,9 +62,9 @@ public class MoOperation extends BaseOperation {
 	
 	@Override
 	protected void postExecute() {
-		player.getMjPlayer().removeAttr(MahjongPlayer.SetAttr.LOU_HU_CARDS);
-		player.getMjPlayer().removeAttr(MahjongPlayer.SetAttr.LOU_PENG_CARDS);
-		player.getMjPlayer().putAttr(MahjongPlayer.SetAttr.MO_STARTED, true);	// 记录玩家开始摸第一张牌);
+		player.getSetAttrs().remove(MahjongPlayer.SetAttr.LOU_HU_CARDS);
+		player.getSetAttrs().remove(MahjongPlayer.SetAttr.LOU_PENG_CARDS);
+		player.getSetAttrs().put(MahjongPlayer.SetAttr.MO_STARTED, true);	// 记录玩家开始摸第一张牌);
 		super.postExecute();
 	}
 	
@@ -94,11 +93,11 @@ public class MoOperation extends BaseOperation {
 	 * 
 	 */
 	public static MoOperation check(MahjongPlayer player, BaseOperation preOperation) {
-		if(player.getRoom().getEngine().getProcessor().checkHuangZhuang()) {
+		if(player.getGameDesk().getEngine().getProcessor().checkHuangZhuang()) {
 			// 无牌可摸，记录荒庄，准备结算
-			SetResult setResult = player.getRoom().getEngine().getCurrentSetResult();
+			SetResult setResult = player.getGameDesk().getEngine().getCurrentSetResult();
 			setResult.setHuangZhuang(true);
-			player.getRoom().getEngine().enterJieSuanStage();
+			player.getGameDesk().getEngine().enterJieSuanStage();
 			return null;	
 		}
 		MoOperation moOper = OperationFactory.createMoOperation(player, preOperation);

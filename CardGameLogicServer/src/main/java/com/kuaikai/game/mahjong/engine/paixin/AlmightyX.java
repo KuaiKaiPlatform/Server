@@ -15,7 +15,7 @@ public class AlmightyX {
 	 */
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum, int need, MahjongPlayer player) {
 		// 计所有牌，手牌和明牌，万能牌值不转为100
-		if(player.getRoom().getCreateRoomParam().getSettingBool(GameSetting.ALMIGHTY_X_COUNT_ALL)) {
+		if(player.getGameDesk().getSetting().getBool(GameSetting.ALMIGHTY_X_COUNT_ALL)) {
 			List<Integer> cards = PaiXinHelper.getAllCards(handCards, groupList, -1);
 			Map<Integer, Integer> cardCount = PaiXinHelper.countCards(cards);
 			Integer countAlmighty = cardCount.get(almightyCardNum);	// 万能牌计数

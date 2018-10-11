@@ -38,7 +38,7 @@ public class MingKe {
 		if(card == null) return result;
 		
 		// 自摸算明刻时继续检查
-		if(player.equals(card.getPlayer()) && !player.getRoom().getCreateRoomParam().getSettingBool(GameSetting.MO_MING_KE)) {
+		if(player.equals(card.getPlayer()) && !player.getGameDesk().getSetting().getBool(GameSetting.MO_MING_KE)) {
 			return result;
 		}
 		

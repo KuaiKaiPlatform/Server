@@ -16,7 +16,7 @@ public class MenQianQing {
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum, MahjongPlayer player) {
 		if(groupList == null || groupList.isEmpty()) return true;
 		
-		boolean keAnGang = !player.getRoom().getCreateRoomParam().getSettingBool(GameSetting.MEN_QIAN_QING_NOT_AN_GANG);	// 允许暗杠
+		boolean keAnGang = !player.getGameDesk().getSetting().getBool(GameSetting.MEN_QIAN_QING_NOT_AN_GANG);	// 允许暗杠
 		for(CardGroup group : groupList) {
 			if(!group.checkOperType(OperType.AN_GANG))	// 不是暗杠
 				return false;

@@ -24,14 +24,14 @@ import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 public class CheckerFactory {
 	
 	public static ChiChecker createChiChecker(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		default :
 			return new DefaultChiChecker(player);
 		}
 	}
 	
 	public static PengChecker createPengChecker(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case GUO_ZI :
 			return new GuoZiPengChecker(player);
 		default :
@@ -40,14 +40,14 @@ public class CheckerFactory {
 	}
 
 	public static TingChecker createTingChecker(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		default :
 			return new DefaultTingChecker(player);
 		}
 	}
 	
 	public static GangChecker createGangChecker(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case GUO_ZI :
 			return new GuoZiGangChecker(player);
 		default :
@@ -56,7 +56,7 @@ public class CheckerFactory {
 	}
 	
 	public static HuChecker createHuChecker(MahjongPlayer player) {
-		switch(player.getDesk().getRule()) {
+		switch(player.getGameDesk().getRule()) {
 		case HAN_ZHONG :
 			return new HanZhongHuChecker(player);
 		case SXMJ :

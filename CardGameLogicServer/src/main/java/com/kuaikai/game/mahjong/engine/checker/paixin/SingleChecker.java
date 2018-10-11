@@ -13,7 +13,6 @@ import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
-import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.paixin.AlmightyX;
 import com.kuaikai.game.mahjong.engine.paixin.AnKe;
@@ -115,8 +114,8 @@ public class SingleChecker {
 		case PaiXin.SHI_SAN_YAO :
 			if(ShiSanYao.check(handlist, card, groupList, almightyCardNum)) {
 				paiXinChecker.addResult(PaiXin.SHI_SAN_YAO);
-				MahjongDesk room = player.getRoom();
-				loggerSSY.info(room.getRoomid() + "," + room.getCurSet() + "," + player.getId() + "," + room.getCreateRoomParam().getRule());
+				//MahjongDesk desk = player.getDesk();
+				//loggerSSY.info(desk.getRoomid() + "," + desk.getCurSet() + "," + player.getId() + "," + desk.getCreateRoomParam().getRule());
 				return true;
 			}
 			break;
@@ -151,7 +150,7 @@ public class SingleChecker {
 			}
 			break;
 		case PaiXin.QI_DUI :
-			if(player.getRoom().getCreateRoomParam().getSettingBool(GameSetting.NO_QI_DUI)) break;
+			if(player.getGameDesk().getSetting().getBool(GameSetting.NO_QI_DUI)) break;
 			
 			switch(QiDui.check(handlist, card, groupList, almightyCardNum)) {
 			case 0 :	// 普通七对

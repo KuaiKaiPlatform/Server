@@ -29,6 +29,10 @@ public class AttrsModel {
 		this.attrs.putAll(map);
 		return this;
 	}
+
+	public boolean contains(Object key) {
+		return attrs.containsKey(key);
+	}
 	
 	public void remove(Object key) {
 		attrs.remove(key);

@@ -39,7 +39,7 @@ public abstract class BaseOperation implements Comparable<BaseOperation> {
 	
 	public BaseOperation(MahjongPlayer player, BaseOperation preOperation) {
 		this.player = player;
-		this.desk = player.getDesk();
+		this.desk = player.getGameDesk();
 		this.preOperation = preOperation;
 	}
 	

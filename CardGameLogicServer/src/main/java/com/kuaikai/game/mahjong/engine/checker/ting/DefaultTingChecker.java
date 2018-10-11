@@ -15,12 +15,12 @@ import com.kuaikai.game.mahjong.engine.oper.TingOperation;
 public class DefaultTingChecker implements TingChecker {
 
 	protected static final Logger logger = LoggerFactory.getLogger("play");
-	protected final MahjongDesk room;
+	protected final MahjongDesk desk;
 	protected final MahjongPlayer player;
 	
 	public DefaultTingChecker(MahjongPlayer player) {
 		this.player = player;
-		this.room = player.getRoom();
+		this.desk = player.getGameDesk();
 	}
 	
 	/*
@@ -32,16 +32,16 @@ public class DefaultTingChecker implements TingChecker {
 		if(!preCheck(oper)) return null;
 		
 		// 分析打牌后可听的牌
-		Map<Integer, DiscardTingCards> discard2TingCards = player.getMjPlayer().getHuChecker().getDiscard2TingCards();
+		Map<Integer, DiscardTingCards> discard2TingCards = player.getHuChecker().getDiscard2TingCards();
 		if(discard2TingCards == null || discard2TingCards.isEmpty()) return null;
 		
-		if(logger.isDebugEnabled()) logger.debug(player.getLogPrefix().append(";discards=").append(discard2TingCards.keySet()).toString());
+		//if(logger.isDebugEnabled()) logger.debug(player.getLogPrefix().append(";discards=").append(discard2TingCards.keySet()).toString());
 		
 		return OperationFactory.createTingOperation(player, oper, discard2TingCards);
 	}
 	
 	protected boolean preCheck(BaseOperation oper) {
-		return !player.getMjPlayer().isBaoTing();
+		return !player.isBaoTing();
 	}
 	
 }

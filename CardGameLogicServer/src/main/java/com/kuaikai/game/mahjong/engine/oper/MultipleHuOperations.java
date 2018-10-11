@@ -18,10 +18,10 @@ public class MultipleHuOperations {
 	protected static final Logger logger = LoggerFactory.getLogger("play");
 	
 	private Set<HuOperation> huOperations = new HashSet<HuOperation>();	// 一炮多响
-	private MahjongDesk room;
+	private MahjongDesk desk;
 	
-	public MultipleHuOperations(MahjongDesk room) {
-		this.room = room;
+	public MultipleHuOperations(MahjongDesk desk) {
+		this.desk = desk;
 	}
 	
 	public void addHuOperation(HuOperation oper) {
@@ -66,7 +66,7 @@ public class MultipleHuOperations {
 	public void executeHu(MahjongPlayer player) {
 		HuOperation oper = findHuOperation(player);
 		if(oper == null) {
-			logger.error(room.getLogPrefix().append(";MultipleHuOperations.executeHu;hu operation not found;uid:").append(player.getId()).toString());
+			//logger.error(room.getLogPrefix().append(";MultipleHuOperations.executeHu;hu operation not found;uid:").append(player.getId()).toString());
 			return;
 		}
 		
@@ -74,7 +74,7 @@ public class MultipleHuOperations {
 		oper.executeOperation();
 
 		// 发送操作结果
-		room.getMessageSender().syncOperCardRes(oper);
+		desk.getMessageSender().syncOperCardRes(oper);
 		
 		// 所有人都选择完毕，有人选择胡，进入结算，本局结束
 		if(this.isAllReady()) {
@@ -86,7 +86,7 @@ public class MultipleHuOperations {
 	public void executePass(MahjongPlayer player) {
 		HuOperation oper = findHuOperation(player);
 		if(oper == null) {
-			logger.error(room.getLogPrefix().append(";MultipleHuOperations.executePass;hu operation not found;uid:").append(player.getId()).toString());
+			//logger.error(room.getLogPrefix().append(";MultipleHuOperations.executePass;hu operation not found;uid:").append(player.getId()).toString());
 			return;
 		}
 		
@@ -98,10 +98,10 @@ public class MultipleHuOperations {
 			this.clearHuOperations();
 			
 			// 执行过牌
-			room.getEngine().executePass(player);
+			desk.getEngine().executePass(player);
 			
 			// 检查是否进入结算阶段，本局结束
-			room.getEngine().checkJieSuanStage();
+			desk.getEngine().checkJieSuanStage();
 			
 			return;
 		}
@@ -116,17 +116,17 @@ public class MultipleHuOperations {
 	private void executeAllReady() {
 		// 增加已完成的操作
 		for(BaseOperation oper : huOperations) {
-			if(!oper.isPassed()) room.getEngine().getOperManager().addDoneOperation(oper);
+			if(!oper.isPassed()) desk.getEngine().getOperManager().addDoneOperation(oper);
 		}
 		
-		room.getEngine().postMultipleHu();
+		desk.getEngine().postMultipleHu();
 		
 		// 一炮多响结束
 		this.clearHuOperations();
 		
 		// 进入结算阶段，本局结束
-		room.getEngine().enterJieSuanStage();
-		room.handleOnSetEnd();
+		desk.getEngine().enterJieSuanStage();
+		desk.handleOnSetEnd();
 	}
 	
 }

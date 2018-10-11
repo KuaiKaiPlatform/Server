@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Player {
 	
+	private Desk desk;
+	
 	private User user;
 	
 	// 玩家座位，从1开始，对应麻将桌东向
@@ -21,6 +23,14 @@ public class Player {
 
 	public int getId() {
 		return user==null?0:user.getId();
+	}
+
+	public Desk getDesk() {
+		return desk;
+	}
+
+	public void setDesk(Desk desk) {
+		this.desk = desk;
 	}
 
 	public User getUser() {
@@ -64,5 +74,14 @@ public class Player {
 		points.add(point);
 	}
 	
+	/**
+	 * @param player
+	 * @return 指定一名玩家到本玩家的距离
+	 */
+	public int getDelta(Player player) {
+		List<Player> players = desk.getPlayers();
+		int delta = this.getSeat() - player.getSeat();
+		return delta >= 0?delta:delta+players.size();
+	}
 	
 }
