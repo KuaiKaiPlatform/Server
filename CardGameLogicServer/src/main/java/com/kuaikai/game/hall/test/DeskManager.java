@@ -33,7 +33,7 @@ public class DeskManager {
 			Desk desk = DeskRedis.joinDesk(uid);
 			OnlineManager.sendMsg(uid, new CommonMsgHandler(MsgId.SDeskInfo, msgCreator.createSDeskInfo(desk).build()));
 			OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SPlayerJoin, msgCreator.createSPlayerJoin(desk.getPlayerById(uid), desk).build()), uid);
-			if(desk.isFull()) {
+			if(desk.canStart()) {
 				String deskKey = desk.getKey();
 				try {
 					// 通知牌局开始

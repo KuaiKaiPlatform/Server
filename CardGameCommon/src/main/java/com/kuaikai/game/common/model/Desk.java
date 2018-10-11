@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
+import com.kuaikai.game.common.constants.GameSetting;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 
@@ -17,8 +18,10 @@ public class Desk {
 	
 	// 玩家id到玩家对象map
 	protected Map<Integer, Player> id2Player = new HashMap<>();
+	
 	// 玩家座位到玩家对象map
 	protected Map<Integer, Player> seat2Player = new HashMap<>();
+	
 	// 玩家加入房间的顺序
 	protected List<Player> players = new ArrayList<>();
 	
@@ -26,7 +29,11 @@ public class Desk {
 	
 	protected GameStatus status = GameStatus.WAITING;
 	
+	// 所有规则设置
 	protected AttrsModel setting = new AttrsModel();
+	
+	// 客户端显示的规则设置
+	protected AttrsModel clientSetting = new AttrsModel();
 	
 	public Desk() {}
 	
@@ -73,7 +80,7 @@ public class Desk {
 	}
 	
 	public boolean isFull() {
-		return false;
+		return players.size() >= setting.getInt(GameSetting.TOTAL_PLAYER);
 	}
 	
 	public GameRule getRule() {
@@ -110,6 +117,18 @@ public class Desk {
 	
 	public boolean canJoin() {
 		return this.checkStatus(GameStatus.WAITING) && !this.isFull();
+	}
+	
+	/**
+	 * 开局：玩家总数达到最少开局人数，并且所有玩家都准备好
+	 * 
+	 */
+	public boolean canStart() {
+		if(players.size() < setting.getInt(GameSetting.MIN_PLAYER)) return false;
+		for(Player p : players) {
+			if(!p.isPrepared()) return false;
+		}
+		return true;
 	}
 	
 	public String toString() {

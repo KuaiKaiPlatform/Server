@@ -1,4 +1,4 @@
-package com.kuaikai.game.mahjong.module;
+package com.kuaikai.game.logic.module;
 
 import com.kuaikai.game.common.event.TriggerManager;
 import com.kuaikai.game.common.event.desk.DeskStartEvent;

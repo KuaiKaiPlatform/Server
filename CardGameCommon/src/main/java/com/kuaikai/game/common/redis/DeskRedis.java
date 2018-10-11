@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.constants.GameSetting;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
@@ -32,14 +33,19 @@ public class DeskRedis {
 		if(desk == null || !desk.canJoin()) {
 			// 新建一桌
 			deskId = deskIdInc.incrementAndGet();
-			desk = new Desk(deskId);
-			desk.setClubId(CLUB_ID);
-			desk.getSetting().changeAttr("totalSet", 8);
+			desk = createDesk(deskId);
 			desks.put(desk.getKey(), desk);
 		}
 		
 		desk.addPlayer(createPlayer(uid, desk.getPids().size()+1));
 		uid2deskId.put(uid, desk.getDeskId());
+		return desk;
+	}
+	
+	private static Desk createDesk(int deskId) {
+		Desk desk = new Desk(deskId);
+		desk.setClubId(CLUB_ID);
+		desk.getSetting().put(GameSetting.TOTAL_SET, 8).put(GameSetting.TOTAL_PLAYER, 4).put(GameSetting.MIN_PLAYER, 4);
 		return desk;
 	}
 	

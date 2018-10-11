@@ -2,6 +2,7 @@ package com.kuaikai.game.common.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.alibaba.fastjson.JSONObject;
 import com.kuaikai.game.common.utils.CollectionUtils;
@@ -10,40 +11,59 @@ public class AttrsModel {
 
 	protected Map<Object, Object> attrs = new HashMap<Object, Object>();
 	
-	public Map<Object, Object> getAttrs() {
-		return attrs;
+	public AttrsModel put(Object key, Object value) {
+		attrs.put(key, value);
+		return this;
 	}
 
-	public void putAttrs(Map<Object, Object> attrs) {
-		this.attrs.putAll(attrs);
+	public AttrsModel putIfNotExist(Object key, Object obj) {
+		if(!attrs.containsKey(key)) attrs.put(key, obj);
+		return this;
 	}
 	
-	public String getAttrStr(Object key) {
+	public Map<Object, Object> getAll() {
+		return attrs;
+	}
+	
+	public AttrsModel putAll(Map<Object, Object> map) {
+		this.attrs.putAll(map);
+		return this;
+	}
+	
+	public void remove(Object key) {
+		attrs.remove(key);
+	}
+
+	public Object get(Object key) {
+		return attrs.get(key);
+	}
+	
+	public String getStr(Object key) {
 		return (String)attrs.get(key);
 	}
 
-	public int getAttrInt(Object key) {
+	public int getInt(Object key) {
 		return CollectionUtils.getMapInt(attrs, key);
 	}
 
-	public long getAttrLong(Object key) {
+	public long getLong(Object key) {
 		return CollectionUtils.getMapLong(attrs, key);
 	}
 	
-	public boolean getAttrBool(Object key) {
+	public boolean getBool(Object key) {
 		return CollectionUtils.getMapBool(attrs, key);
-	}
-	
-	public void changeAttr(Object key, Object obj) {
-		attrs.put(key, obj);
-	}
-
-	public void changeAttrIfNotExist(Object key, Object obj) {
-		if(!attrs.containsKey(key)) attrs.put(key, obj);
 	}
 	
 	public String toJson() {
 		return JSONObject.toJSONString(attrs);
+	}
+	
+	public AttrsModel fromJson(String json) {
+		JSONObject jsonObj = JSONObject.parseObject(json);
+		for(Entry<String, Object> entry : jsonObj.entrySet()) {
+			this.put(entry.getKey(), entry.getValue());
+		}
+		return this;
 	}
 	
 }
