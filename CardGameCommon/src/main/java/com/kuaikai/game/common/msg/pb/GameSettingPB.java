@@ -16,7 +16,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     boolean hasJson();
@@ -24,7 +24,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     java.lang.String getJson();
@@ -32,7 +32,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     com.google.protobuf.ByteString
@@ -237,7 +237,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     public boolean hasJson() {
@@ -247,7 +247,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     public java.lang.String getJson() {
@@ -268,7 +268,7 @@ public final class GameSettingPB {
      * <code>required string json = 1;</code>
      *
      * <pre>
-     * JSON 格式的 setting 内容
+     * JSON 格式的 setting 内容（客户端相关）
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -696,7 +696,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public boolean hasJson() {
@@ -706,7 +706,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public java.lang.String getJson() {
@@ -724,7 +724,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -744,7 +744,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public Builder setJson(
@@ -761,7 +761,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public Builder clearJson() {
@@ -774,7 +774,7 @@ public final class GameSettingPB {
        * <code>required string json = 1;</code>
        *
        * <pre>
-       * JSON 格式的 setting 内容
+       * JSON 格式的 setting 内容（客户端相关）
        * </pre>
        */
       public Builder setJsonBytes(

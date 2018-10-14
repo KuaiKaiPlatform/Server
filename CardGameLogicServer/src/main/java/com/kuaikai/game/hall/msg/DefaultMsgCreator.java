@@ -4,6 +4,7 @@ import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
 import com.kuaikai.game.common.msg.pb.DeskInfoPB.DeskInfo;
+import com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq;
 import com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting;
 import com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo;
 import com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo;
@@ -21,7 +22,8 @@ public class DefaultMsgCreator implements MsgCreator {
 		for(Player p : desk.getPlayers()) {
 			builder.addPlayers(createPlayerInfo(p));
 		}
-		return builder.setDeskId(desk.getDeskId()).setClubId(desk.getClubId()).setRule(desk.getRule()).setSetting(createGameSetting(desk)).setStatus(desk.getStatus());
+		return builder.setUniq(DeskUniq.newBuilder().setDeskId(desk.getDeskId()).setClubId(desk.getClubId()))
+				.setRule(desk.getRule()).setSetting(createGameSetting(desk)).setStatus(desk.getStatus());
 	}
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
@@ -38,7 +40,8 @@ public class DefaultMsgCreator implements MsgCreator {
 	}
 	
 	public SPlayerJoin.Builder createSPlayerJoin(Player p, Desk desk) {
-		return SPlayerJoin.newBuilder().setPlayer(createPlayerInfo(p)).setDeskId(desk.getDeskId());
+		return SPlayerJoin.newBuilder().setPlayer(createPlayerInfo(p))
+				.setUniq(DeskUniq.newBuilder().setDeskId(desk.getDeskId()).setClubId(desk.getClubId()));
 	}
 	
 }

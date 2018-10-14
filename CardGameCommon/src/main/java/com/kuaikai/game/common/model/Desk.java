@@ -1,15 +1,13 @@
 package com.kuaikai.game.common.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kuaikai.game.common.constants.GameSetting;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
+import com.kuaikai.game.common.play.CardGameSetting;
 
 public class Desk {
 	
@@ -22,18 +20,19 @@ public class Desk {
 	// 玩家座位到玩家对象map
 	protected Map<Integer, Player> seat2Player = new HashMap<>();
 	
-	// 玩家加入房间的顺序
-	protected List<Player> players = new ArrayList<>();
-	
 	protected GameRule rule = GameRule.GUO_ZI;
-	
-	protected GameStatus status = GameStatus.WAITING;
 	
 	// 所有规则设置
 	protected AttrsModel setting = new AttrsModel();
 	
 	// 客户端显示的规则设置
 	protected AttrsModel clientSetting = new AttrsModel();
+	
+	// 当前状态
+	protected GameStatus status = GameStatus.WAITING;
+	
+	// 当前局数
+	protected int curSet;
 	
 	public Desk() {}
 	
@@ -60,8 +59,7 @@ public class Desk {
 	}
 	
 	public void addPlayer(Player player) {
-		if(!players.contains(player)) {
-			players.add(player);
+		if(!id2Player.containsValue(player)) {
 			id2Player.put(player.getId(), player);
 			seat2Player.put(player.getSeat(), player);
 		}
@@ -71,8 +69,8 @@ public class Desk {
 		return id2Player.keySet();
 	}
 	
-	public List<Player> getPlayers() {
-		return players;
+	public Collection<Player> getPlayers() {
+		return id2Player.values();
 	}
 
 	public Player getPlayerById(int pid) {
@@ -83,8 +81,12 @@ public class Desk {
 		return seat2Player.get(seat);
 	}
 	
+	public int getPlayerNum() {
+		return id2Player.size();
+	}
+	
 	public boolean isFull() {
-		return players.size() >= setting.getInt(GameSetting.TOTAL_PLAYER);
+		return id2Player.size() >= setting.getInt(CardGameSetting.TOTAL_PLAYER);
 	}
 	
 	public GameRule getRule() {
@@ -111,8 +113,18 @@ public class Desk {
 		this.status = status;
 	}
 
+	public int getCurSet() {
+		return curSet;
+	}
+
+	public void incrCurSet() {
+		this.curSet++;
+	}
+
 	public void clear() {
-		players.clear();
+		id2Player.clear();
+		seat2Player.clear();
+		setting.clear();
 	}
 	
 	public boolean checkStatus(GameStatus status) {
@@ -128,8 +140,8 @@ public class Desk {
 	 * 
 	 */
 	public boolean canStart() {
-		if(players.size() < setting.getInt(GameSetting.MIN_PLAYER)) return false;
-		for(Player p : players) {
+		if(id2Player.size() < setting.getInt(CardGameSetting.MIN_PLAYER)) return false;
+		for(Player p : id2Player.values()) {
 			if(!p.isPrepared()) return false;
 		}
 		return true;

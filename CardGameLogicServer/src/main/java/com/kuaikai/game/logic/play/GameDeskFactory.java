@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.play.CardGameRule;
+import com.kuaikai.game.common.play.GameDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 
 public class GameDeskFactory {

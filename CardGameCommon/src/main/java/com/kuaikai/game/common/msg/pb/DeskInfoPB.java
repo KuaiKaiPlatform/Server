@@ -11,45 +11,35 @@ public final class DeskInfoPB {
   public interface DeskInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 deskId = 1;
+    // required .common.DeskUniq uniq = 1;
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required .common.DeskUniq uniq = 1;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    boolean hasDeskId();
+    boolean hasUniq();
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required .common.DeskUniq uniq = 1;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    int getDeskId();
+    com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq();
+    /**
+     * <code>required .common.DeskUniq uniq = 1;</code>
+     *
+     * <pre>
+     * 牌桌唯一标识
+     * </pre>
+     */
+    com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder();
 
-    // optional int32 clubId = 2;
+    // repeated .common.PlayerInfo players = 2;
     /**
-     * <code>optional int32 clubId = 2;</code>
-     *
-     * <pre>
-     * 俱乐部ID
-     * </pre>
-     */
-    boolean hasClubId();
-    /**
-     * <code>optional int32 clubId = 2;</code>
-     *
-     * <pre>
-     * 俱乐部ID
-     * </pre>
-     */
-    int getClubId();
-
-    // repeated .common.PlayerInfo players = 3;
-    /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -58,7 +48,7 @@ public final class DeskInfoPB {
     java.util.List<com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo> 
         getPlayersList();
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -66,7 +56,7 @@ public final class DeskInfoPB {
      */
     com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo getPlayers(int index);
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -74,7 +64,7 @@ public final class DeskInfoPB {
      */
     int getPlayersCount();
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -83,7 +73,7 @@ public final class DeskInfoPB {
     java.util.List<? extends com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder> 
         getPlayersOrBuilderList();
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -92,9 +82,9 @@ public final class DeskInfoPB {
     com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder getPlayersOrBuilder(
         int index);
 
-    // optional .common.GameRule rule = 4;
+    // optional .common.GameRule rule = 3;
     /**
-     * <code>optional .common.GameRule rule = 4;</code>
+     * <code>optional .common.GameRule rule = 3;</code>
      *
      * <pre>
      * 玩法编号
@@ -102,7 +92,7 @@ public final class DeskInfoPB {
      */
     boolean hasRule();
     /**
-     * <code>optional .common.GameRule rule = 4;</code>
+     * <code>optional .common.GameRule rule = 3;</code>
      *
      * <pre>
      * 玩法编号
@@ -110,9 +100,9 @@ public final class DeskInfoPB {
      */
     com.kuaikai.game.common.msg.pb.GameRulePB.GameRule getRule();
 
-    // optional .common.GameSetting setting = 5;
+    // optional .common.GameSetting setting = 4;
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
@@ -120,7 +110,7 @@ public final class DeskInfoPB {
      */
     boolean hasSetting();
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
@@ -128,7 +118,7 @@ public final class DeskInfoPB {
      */
     com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting getSetting();
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
@@ -136,9 +126,9 @@ public final class DeskInfoPB {
      */
     com.kuaikai.game.common.msg.pb.GameSettingPB.GameSettingOrBuilder getSettingOrBuilder();
 
-    // optional .common.GameStatus status = 6;
+    // optional .common.GameStatus status = 5;
     /**
-     * <code>optional .common.GameStatus status = 6;</code>
+     * <code>optional .common.GameStatus status = 5;</code>
      *
      * <pre>
      * 游戏状态
@@ -146,13 +136,31 @@ public final class DeskInfoPB {
      */
     boolean hasStatus();
     /**
-     * <code>optional .common.GameStatus status = 6;</code>
+     * <code>optional .common.GameStatus status = 5;</code>
      *
      * <pre>
      * 游戏状态
      * </pre>
      */
     com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus getStatus();
+
+    // optional int32 curSet = 6;
+    /**
+     * <code>optional int32 curSet = 6;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    boolean hasCurSet();
+    /**
+     * <code>optional int32 curSet = 6;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    int getCurSet();
   }
   /**
    * Protobuf type {@code common.DeskInfo}
@@ -209,38 +217,41 @@ public final class DeskInfoPB {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = uniq_.toBuilder();
+              }
+              uniq_ = input.readMessage(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(uniq_);
+                uniq_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000001;
-              deskId_ = input.readInt32();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              clubId_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 players_ = new java.util.ArrayList<com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               players_.add(input.readMessage(com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.PARSER, extensionRegistry));
               break;
             }
-            case 32: {
+            case 24: {
               int rawValue = input.readEnum();
               com.kuaikai.game.common.msg.pb.GameRulePB.GameRule value = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(4, rawValue);
+                unknownFields.mergeVarintField(3, rawValue);
               } else {
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000002;
                 rule_ = value;
               }
               break;
             }
-            case 42: {
+            case 34: {
               com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = setting_.toBuilder();
               }
               setting_ = input.readMessage(com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.PARSER, extensionRegistry);
@@ -248,18 +259,23 @@ public final class DeskInfoPB {
                 subBuilder.mergeFrom(setting_);
                 setting_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               break;
             }
-            case 48: {
+            case 40: {
               int rawValue = input.readEnum();
               com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus value = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(6, rawValue);
+                unknownFields.mergeVarintField(5, rawValue);
               } else {
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000008;
                 status_ = value;
               }
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              curSet_ = input.readInt32();
               break;
             }
           }
@@ -270,7 +286,7 @@ public final class DeskInfoPB {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           players_ = java.util.Collections.unmodifiableList(players_);
         }
         this.unknownFields = unknownFields.build();
@@ -305,59 +321,45 @@ public final class DeskInfoPB {
     }
 
     private int bitField0_;
-    // required int32 deskId = 1;
-    public static final int DESKID_FIELD_NUMBER = 1;
-    private int deskId_;
+    // required .common.DeskUniq uniq = 1;
+    public static final int UNIQ_FIELD_NUMBER = 1;
+    private com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq uniq_;
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required .common.DeskUniq uniq = 1;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public boolean hasDeskId() {
+    public boolean hasUniq() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required .common.DeskUniq uniq = 1;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public int getDeskId() {
-      return deskId_;
-    }
-
-    // optional int32 clubId = 2;
-    public static final int CLUBID_FIELD_NUMBER = 2;
-    private int clubId_;
-    /**
-     * <code>optional int32 clubId = 2;</code>
-     *
-     * <pre>
-     * 俱乐部ID
-     * </pre>
-     */
-    public boolean hasClubId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq() {
+      return uniq_;
     }
     /**
-     * <code>optional int32 clubId = 2;</code>
+     * <code>required .common.DeskUniq uniq = 1;</code>
      *
      * <pre>
-     * 俱乐部ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public int getClubId() {
-      return clubId_;
+    public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder() {
+      return uniq_;
     }
 
-    // repeated .common.PlayerInfo players = 3;
-    public static final int PLAYERS_FIELD_NUMBER = 3;
+    // repeated .common.PlayerInfo players = 2;
+    public static final int PLAYERS_FIELD_NUMBER = 2;
     private java.util.List<com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo> players_;
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -367,7 +369,7 @@ public final class DeskInfoPB {
       return players_;
     }
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -378,7 +380,7 @@ public final class DeskInfoPB {
       return players_;
     }
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -388,7 +390,7 @@ public final class DeskInfoPB {
       return players_.size();
     }
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -398,7 +400,7 @@ public final class DeskInfoPB {
       return players_.get(index);
     }
     /**
-     * <code>repeated .common.PlayerInfo players = 3;</code>
+     * <code>repeated .common.PlayerInfo players = 2;</code>
      *
      * <pre>
      * 所有玩家信息
@@ -409,21 +411,21 @@ public final class DeskInfoPB {
       return players_.get(index);
     }
 
-    // optional .common.GameRule rule = 4;
-    public static final int RULE_FIELD_NUMBER = 4;
+    // optional .common.GameRule rule = 3;
+    public static final int RULE_FIELD_NUMBER = 3;
     private com.kuaikai.game.common.msg.pb.GameRulePB.GameRule rule_;
     /**
-     * <code>optional .common.GameRule rule = 4;</code>
+     * <code>optional .common.GameRule rule = 3;</code>
      *
      * <pre>
      * 玩法编号
      * </pre>
      */
     public boolean hasRule() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .common.GameRule rule = 4;</code>
+     * <code>optional .common.GameRule rule = 3;</code>
      *
      * <pre>
      * 玩法编号
@@ -433,21 +435,21 @@ public final class DeskInfoPB {
       return rule_;
     }
 
-    // optional .common.GameSetting setting = 5;
-    public static final int SETTING_FIELD_NUMBER = 5;
+    // optional .common.GameSetting setting = 4;
+    public static final int SETTING_FIELD_NUMBER = 4;
     private com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting setting_;
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
      * </pre>
      */
     public boolean hasSetting() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
@@ -457,7 +459,7 @@ public final class DeskInfoPB {
       return setting_;
     }
     /**
-     * <code>optional .common.GameSetting setting = 5;</code>
+     * <code>optional .common.GameSetting setting = 4;</code>
      *
      * <pre>
      * 规则设置
@@ -467,21 +469,21 @@ public final class DeskInfoPB {
       return setting_;
     }
 
-    // optional .common.GameStatus status = 6;
-    public static final int STATUS_FIELD_NUMBER = 6;
+    // optional .common.GameStatus status = 5;
+    public static final int STATUS_FIELD_NUMBER = 5;
     private com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus status_;
     /**
-     * <code>optional .common.GameStatus status = 6;</code>
+     * <code>optional .common.GameStatus status = 5;</code>
      *
      * <pre>
      * 游戏状态
      * </pre>
      */
     public boolean hasStatus() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .common.GameStatus status = 6;</code>
+     * <code>optional .common.GameStatus status = 5;</code>
      *
      * <pre>
      * 游戏状态
@@ -491,25 +493,59 @@ public final class DeskInfoPB {
       return status_;
     }
 
+    // optional int32 curSet = 6;
+    public static final int CURSET_FIELD_NUMBER = 6;
+    private int curSet_;
+    /**
+     * <code>optional int32 curSet = 6;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public boolean hasCurSet() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 curSet = 6;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public int getCurSet() {
+      return curSet_;
+    }
+
     private void initFields() {
-      deskId_ = 0;
-      clubId_ = 0;
+      uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
       players_ = java.util.Collections.emptyList();
       rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
       setting_ = com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
       status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
+      curSet_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasDeskId()) {
+      if (!hasUniq()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getUniq().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
       for (int i = 0; i < getPlayersCount(); i++) {
         if (!getPlayers(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasSetting()) {
+        if (!getSetting().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -522,22 +558,22 @@ public final class DeskInfoPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, deskId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, clubId_);
+        output.writeMessage(1, uniq_);
       }
       for (int i = 0; i < players_.size(); i++) {
-        output.writeMessage(3, players_.get(i));
+        output.writeMessage(2, players_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(3, rule_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeEnum(4, rule_.getNumber());
+        output.writeMessage(4, setting_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(5, setting_);
+        output.writeEnum(5, status_.getNumber());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeEnum(6, status_.getNumber());
+        output.writeInt32(6, curSet_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -550,27 +586,27 @@ public final class DeskInfoPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, deskId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, clubId_);
+          .computeMessageSize(1, uniq_);
       }
       for (int i = 0; i < players_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, players_.get(i));
+          .computeMessageSize(2, players_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, rule_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, rule_.getNumber());
+          .computeMessageSize(4, setting_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, setting_);
+          .computeEnumSize(5, status_.getNumber());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, status_.getNumber());
+          .computeInt32Size(6, curSet_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -684,6 +720,7 @@ public final class DeskInfoPB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUniqFieldBuilder();
           getPlayersFieldBuilder();
           getSettingFieldBuilder();
         }
@@ -694,25 +731,29 @@ public final class DeskInfoPB {
 
       public Builder clear() {
         super.clear();
-        deskId_ = 0;
+        if (uniqBuilder_ == null) {
+          uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+        } else {
+          uniqBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        clubId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (playersBuilder_ == null) {
           players_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           playersBuilder_.clear();
         }
         rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (settingBuilder_ == null) {
           setting_ = com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
         } else {
           settingBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        curSet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
@@ -745,36 +786,40 @@ public final class DeskInfoPB {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.deskId_ = deskId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
+        if (uniqBuilder_ == null) {
+          result.uniq_ = uniq_;
+        } else {
+          result.uniq_ = uniqBuilder_.build();
         }
-        result.clubId_ = clubId_;
         if (playersBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             players_ = java.util.Collections.unmodifiableList(players_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.players_ = players_;
         } else {
           result.players_ = playersBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
         }
         result.rule_ = rule_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
         }
         if (settingBuilder_ == null) {
           result.setting_ = setting_;
         } else {
           result.setting_ = settingBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.status_ = status_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.status_ = status_;
+        result.curSet_ = curSet_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -791,17 +836,14 @@ public final class DeskInfoPB {
 
       public Builder mergeFrom(com.kuaikai.game.common.msg.pb.DeskInfoPB.DeskInfo other) {
         if (other == com.kuaikai.game.common.msg.pb.DeskInfoPB.DeskInfo.getDefaultInstance()) return this;
-        if (other.hasDeskId()) {
-          setDeskId(other.getDeskId());
-        }
-        if (other.hasClubId()) {
-          setClubId(other.getClubId());
+        if (other.hasUniq()) {
+          mergeUniq(other.getUniq());
         }
         if (playersBuilder_ == null) {
           if (!other.players_.isEmpty()) {
             if (players_.isEmpty()) {
               players_ = other.players_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensurePlayersIsMutable();
               players_.addAll(other.players_);
@@ -814,7 +856,7 @@ public final class DeskInfoPB {
               playersBuilder_.dispose();
               playersBuilder_ = null;
               players_ = other.players_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               playersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getPlayersFieldBuilder() : null;
@@ -832,17 +874,30 @@ public final class DeskInfoPB {
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
+        if (other.hasCurSet()) {
+          setCurSet(other.getCurSet());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasDeskId()) {
+        if (!hasUniq()) {
+          
+          return false;
+        }
+        if (!getUniq().isInitialized()) {
           
           return false;
         }
         for (int i = 0; i < getPlayersCount(); i++) {
           if (!getPlayers(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSetting()) {
+          if (!getSetting().isInitialized()) {
             
             return false;
           }
@@ -869,111 +924,166 @@ public final class DeskInfoPB {
       }
       private int bitField0_;
 
-      // required int32 deskId = 1;
-      private int deskId_ ;
+      // required .common.DeskUniq uniq = 1;
+      private com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder> uniqBuilder_;
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required .common.DeskUniq uniq = 1;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public boolean hasDeskId() {
+      public boolean hasUniq() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required .common.DeskUniq uniq = 1;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public int getDeskId() {
-        return deskId_;
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq() {
+        if (uniqBuilder_ == null) {
+          return uniq_;
+        } else {
+          return uniqBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required .common.DeskUniq uniq = 1;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public Builder setDeskId(int value) {
+      public Builder setUniq(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq value) {
+        if (uniqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          uniq_ = value;
+          onChanged();
+        } else {
+          uniqBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000001;
-        deskId_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required .common.DeskUniq uniq = 1;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public Builder clearDeskId() {
+      public Builder setUniq(
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder builderForValue) {
+        if (uniqBuilder_ == null) {
+          uniq_ = builderForValue.build();
+          onChanged();
+        } else {
+          uniqBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 1;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public Builder mergeUniq(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq value) {
+        if (uniqBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              uniq_ != com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance()) {
+            uniq_ =
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.newBuilder(uniq_).mergeFrom(value).buildPartial();
+          } else {
+            uniq_ = value;
+          }
+          onChanged();
+        } else {
+          uniqBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 1;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public Builder clearUniq() {
+        if (uniqBuilder_ == null) {
+          uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+          onChanged();
+        } else {
+          uniqBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        deskId_ = 0;
-        onChanged();
         return this;
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 1;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder getUniqBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getUniqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 1;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder() {
+        if (uniqBuilder_ != null) {
+          return uniqBuilder_.getMessageOrBuilder();
+        } else {
+          return uniq_;
+        }
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 1;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder> 
+          getUniqFieldBuilder() {
+        if (uniqBuilder_ == null) {
+          uniqBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder>(
+                  uniq_,
+                  getParentForChildren(),
+                  isClean());
+          uniq_ = null;
+        }
+        return uniqBuilder_;
       }
 
-      // optional int32 clubId = 2;
-      private int clubId_ ;
-      /**
-       * <code>optional int32 clubId = 2;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public boolean hasClubId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 clubId = 2;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public int getClubId() {
-        return clubId_;
-      }
-      /**
-       * <code>optional int32 clubId = 2;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public Builder setClubId(int value) {
-        bitField0_ |= 0x00000002;
-        clubId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 clubId = 2;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public Builder clearClubId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        clubId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .common.PlayerInfo players = 3;
+      // repeated .common.PlayerInfo players = 2;
       private java.util.List<com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo> players_ =
         java.util.Collections.emptyList();
       private void ensurePlayersIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           players_ = new java.util.ArrayList<com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo>(players_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -981,7 +1091,7 @@ public final class DeskInfoPB {
           com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder> playersBuilder_;
 
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -995,7 +1105,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1009,7 +1119,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1023,7 +1133,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1044,7 +1154,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1062,7 +1172,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1082,7 +1192,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1103,7 +1213,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1121,7 +1231,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1139,7 +1249,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1157,7 +1267,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1166,7 +1276,7 @@ public final class DeskInfoPB {
       public Builder clearPlayers() {
         if (playersBuilder_ == null) {
           players_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           playersBuilder_.clear();
@@ -1174,7 +1284,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1191,7 +1301,7 @@ public final class DeskInfoPB {
         return this;
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1202,7 +1312,7 @@ public final class DeskInfoPB {
         return getPlayersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1216,7 +1326,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1231,7 +1341,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1242,7 +1352,7 @@ public final class DeskInfoPB {
             com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1254,7 +1364,7 @@ public final class DeskInfoPB {
             index, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .common.PlayerInfo players = 3;</code>
+       * <code>repeated .common.PlayerInfo players = 2;</code>
        *
        * <pre>
        * 所有玩家信息
@@ -1271,7 +1381,7 @@ public final class DeskInfoPB {
           playersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo.Builder, com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfoOrBuilder>(
                   players_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           players_ = null;
@@ -1279,20 +1389,20 @@ public final class DeskInfoPB {
         return playersBuilder_;
       }
 
-      // optional .common.GameRule rule = 4;
+      // optional .common.GameRule rule = 3;
       private com.kuaikai.game.common.msg.pb.GameRulePB.GameRule rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
       /**
-       * <code>optional .common.GameRule rule = 4;</code>
+       * <code>optional .common.GameRule rule = 3;</code>
        *
        * <pre>
        * 玩法编号
        * </pre>
        */
       public boolean hasRule() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .common.GameRule rule = 4;</code>
+       * <code>optional .common.GameRule rule = 3;</code>
        *
        * <pre>
        * 玩法编号
@@ -1302,7 +1412,7 @@ public final class DeskInfoPB {
         return rule_;
       }
       /**
-       * <code>optional .common.GameRule rule = 4;</code>
+       * <code>optional .common.GameRule rule = 3;</code>
        *
        * <pre>
        * 玩法编号
@@ -1312,41 +1422,41 @@ public final class DeskInfoPB {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         rule_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .common.GameRule rule = 4;</code>
+       * <code>optional .common.GameRule rule = 3;</code>
        *
        * <pre>
        * 玩法编号
        * </pre>
        */
       public Builder clearRule() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
         onChanged();
         return this;
       }
 
-      // optional .common.GameSetting setting = 5;
+      // optional .common.GameSetting setting = 4;
       private com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting setting_ = com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting, com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.Builder, com.kuaikai.game.common.msg.pb.GameSettingPB.GameSettingOrBuilder> settingBuilder_;
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
        * </pre>
        */
       public boolean hasSetting() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1360,7 +1470,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1376,11 +1486,11 @@ public final class DeskInfoPB {
         } else {
           settingBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1394,11 +1504,11 @@ public final class DeskInfoPB {
         } else {
           settingBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1406,7 +1516,7 @@ public final class DeskInfoPB {
        */
       public Builder mergeSetting(com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting value) {
         if (settingBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
               setting_ != com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance()) {
             setting_ =
               com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.newBuilder(setting_).mergeFrom(value).buildPartial();
@@ -1417,11 +1527,11 @@ public final class DeskInfoPB {
         } else {
           settingBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1434,23 +1544,23 @@ public final class DeskInfoPB {
         } else {
           settingBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
        * </pre>
        */
       public com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.Builder getSettingBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return getSettingFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1464,7 +1574,7 @@ public final class DeskInfoPB {
         }
       }
       /**
-       * <code>optional .common.GameSetting setting = 5;</code>
+       * <code>optional .common.GameSetting setting = 4;</code>
        *
        * <pre>
        * 规则设置
@@ -1484,20 +1594,20 @@ public final class DeskInfoPB {
         return settingBuilder_;
       }
 
-      // optional .common.GameStatus status = 6;
+      // optional .common.GameStatus status = 5;
       private com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
       /**
-       * <code>optional .common.GameStatus status = 6;</code>
+       * <code>optional .common.GameStatus status = 5;</code>
        *
        * <pre>
        * 游戏状态
        * </pre>
        */
       public boolean hasStatus() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .common.GameStatus status = 6;</code>
+       * <code>optional .common.GameStatus status = 5;</code>
        *
        * <pre>
        * 游戏状态
@@ -1507,7 +1617,7 @@ public final class DeskInfoPB {
         return status_;
       }
       /**
-       * <code>optional .common.GameStatus status = 6;</code>
+       * <code>optional .common.GameStatus status = 5;</code>
        *
        * <pre>
        * 游戏状态
@@ -1517,21 +1627,70 @@ public final class DeskInfoPB {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000010;
         status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .common.GameStatus status = 6;</code>
+       * <code>optional .common.GameStatus status = 5;</code>
        *
        * <pre>
        * 游戏状态
        * </pre>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 curSet = 6;
+      private int curSet_ ;
+      /**
+       * <code>optional int32 curSet = 6;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public boolean hasCurSet() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 curSet = 6;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public int getCurSet() {
+        return curSet_;
+      }
+      /**
+       * <code>optional int32 curSet = 6;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder setCurSet(int value) {
+        bitField0_ |= 0x00000020;
+        curSet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 curSet = 6;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder clearCurSet() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        curSet_ = 0;
         onChanged();
         return this;
       }
@@ -1561,16 +1720,17 @@ public final class DeskInfoPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025common/DeskInfo.proto\022\006common\032\027common/" +
-      "PlayerInfo.proto\032\030common/GameSetting.pro" +
-      "to\032\025common/GameRule.proto\032\027common/GameSt" +
-      "atus.proto\"\271\001\n\010DeskInfo\022\016\n\006deskId\030\001 \002(\005\022" +
-      "\016\n\006clubId\030\002 \001(\005\022#\n\007players\030\003 \003(\0132\022.commo" +
-      "n.PlayerInfo\022\036\n\004rule\030\004 \001(\0162\020.common.Game" +
-      "Rule\022$\n\007setting\030\005 \001(\0132\023.common.GameSetti" +
-      "ng\022\"\n\006status\030\006 \001(\0162\022.common.GameStatusB," +
-      "\n\036com.kuaikai.game.common.msg.pbB\nDeskIn" +
-      "foPB"
+      "\n\025common/DeskInfo.proto\022\006common\032\025common/" +
+      "DeskUniq.proto\032\027common/PlayerInfo.proto\032" +
+      "\030common/GameSetting.proto\032\025common/GameRu" +
+      "le.proto\032\027common/GameStatus.proto\"\311\001\n\010De" +
+      "skInfo\022\036\n\004uniq\030\001 \002(\0132\020.common.DeskUniq\022#" +
+      "\n\007players\030\002 \003(\0132\022.common.PlayerInfo\022\036\n\004r" +
+      "ule\030\003 \001(\0162\020.common.GameRule\022$\n\007setting\030\004" +
+      " \001(\0132\023.common.GameSetting\022\"\n\006status\030\005 \001(" +
+      "\0162\022.common.GameStatus\022\016\n\006curSet\030\006 \001(\005B,\n" +
+      "\036com.kuaikai.game.common.msg.pbB\nDeskInf",
+      "oPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1582,13 +1742,14 @@ public final class DeskInfoPB {
           internal_static_common_DeskInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_DeskInfo_descriptor,
-              new java.lang.String[] { "DeskId", "ClubId", "Players", "Rule", "Setting", "Status", });
+              new java.lang.String[] { "Uniq", "Players", "Rule", "Setting", "Status", "CurSet", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.getDescriptor(),
           com.kuaikai.game.common.msg.pb.PlayerInfoPB.getDescriptor(),
           com.kuaikai.game.common.msg.pb.GameSettingPB.getDescriptor(),
           com.kuaikai.game.common.msg.pb.GameRulePB.getDescriptor(),

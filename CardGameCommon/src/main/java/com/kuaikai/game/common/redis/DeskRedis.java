@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.common.constants.GameSetting;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
+import com.kuaikai.game.common.play.CardGameSetting;
 
 public class DeskRedis {
 	
@@ -45,7 +45,7 @@ public class DeskRedis {
 	private static Desk createDesk(int deskId) {
 		Desk desk = new Desk(deskId);
 		desk.setClubId(CLUB_ID);
-		desk.getSetting().put(GameSetting.TOTAL_SET, 8).put(GameSetting.TOTAL_PLAYER, 4).put(GameSetting.MIN_PLAYER, 4);
+		desk.getSetting().put(CardGameSetting.TOTAL_SET, 8).put(CardGameSetting.TOTAL_PLAYER, 4).put(CardGameSetting.MIN_PLAYER, 4);
 		return desk;
 	}
 	

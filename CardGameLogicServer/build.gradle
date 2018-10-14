@@ -11,7 +11,7 @@ version = '1.0.0'
 
 dependencies {
     compile project(':CardGameCommon')
-	
+	compile project(':CardGameMahjong')
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
 
 }

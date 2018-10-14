@@ -58,6 +58,10 @@ public class AttrsModel {
 		return CollectionUtils.getMapBool(attrs, key);
 	}
 	
+	public void clear() {
+		attrs.clear();
+	}
+	
 	public String toJson() {
 		return JSONObject.toJSONString(attrs);
 	}

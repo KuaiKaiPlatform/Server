@@ -79,9 +79,8 @@ public class Player {
 	 * @return 指定一名玩家到本玩家的距离
 	 */
 	public int getDelta(Player player) {
-		List<Player> players = desk.getPlayers();
 		int delta = this.getSeat() - player.getSeat();
-		return delta >= 0?delta:delta+players.size();
+		return delta >= 0?delta:delta+desk.getPlayerNum();
 	}
 	
 }

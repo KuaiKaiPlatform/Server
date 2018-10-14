@@ -29,41 +29,31 @@ public final class SPlayerQuitPB {
      */
     int getUid();
 
-    // required int32 deskId = 2;
+    // required .common.DeskUniq uniq = 2;
     /**
-     * <code>required int32 deskId = 2;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    boolean hasDeskId();
+    boolean hasUniq();
     /**
-     * <code>required int32 deskId = 2;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    int getDeskId();
-
-    // optional int32 clubId = 3;
+    com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq();
     /**
-     * <code>optional int32 clubId = 3;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 俱乐部ID
+     * 牌桌唯一标识
      * </pre>
      */
-    boolean hasClubId();
-    /**
-     * <code>optional int32 clubId = 3;</code>
-     *
-     * <pre>
-     * 俱乐部ID
-     * </pre>
-     */
-    int getClubId();
+    com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder();
   }
   /**
    * Protobuf type {@code hall.SPlayerQuit}
@@ -125,14 +115,17 @@ public final class SPlayerQuitPB {
               uid_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 18: {
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = uniq_.toBuilder();
+              }
+              uniq_ = input.readMessage(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(uniq_);
+                uniq_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000002;
-              deskId_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              clubId_ = input.readInt32();
               break;
             }
           }
@@ -199,58 +192,43 @@ public final class SPlayerQuitPB {
       return uid_;
     }
 
-    // required int32 deskId = 2;
-    public static final int DESKID_FIELD_NUMBER = 2;
-    private int deskId_;
+    // required .common.DeskUniq uniq = 2;
+    public static final int UNIQ_FIELD_NUMBER = 2;
+    private com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq uniq_;
     /**
-     * <code>required int32 deskId = 2;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public boolean hasDeskId() {
+    public boolean hasUniq() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 deskId = 2;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 牌桌ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public int getDeskId() {
-      return deskId_;
-    }
-
-    // optional int32 clubId = 3;
-    public static final int CLUBID_FIELD_NUMBER = 3;
-    private int clubId_;
-    /**
-     * <code>optional int32 clubId = 3;</code>
-     *
-     * <pre>
-     * 俱乐部ID
-     * </pre>
-     */
-    public boolean hasClubId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq() {
+      return uniq_;
     }
     /**
-     * <code>optional int32 clubId = 3;</code>
+     * <code>required .common.DeskUniq uniq = 2;</code>
      *
      * <pre>
-     * 俱乐部ID
+     * 牌桌唯一标识
      * </pre>
      */
-    public int getClubId() {
-      return clubId_;
+    public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder() {
+      return uniq_;
     }
 
     private void initFields() {
       uid_ = 0;
-      deskId_ = 0;
-      clubId_ = 0;
+      uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -261,7 +239,11 @@ public final class SPlayerQuitPB {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasDeskId()) {
+      if (!hasUniq()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getUniq().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -276,10 +258,7 @@ public final class SPlayerQuitPB {
         output.writeInt32(1, uid_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, deskId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, clubId_);
+        output.writeMessage(2, uniq_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -296,11 +275,7 @@ public final class SPlayerQuitPB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, deskId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, clubId_);
+          .computeMessageSize(2, uniq_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -414,6 +389,7 @@ public final class SPlayerQuitPB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUniqFieldBuilder();
         }
       }
       private static Builder create() {
@@ -424,10 +400,12 @@ public final class SPlayerQuitPB {
         super.clear();
         uid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        deskId_ = 0;
+        if (uniqBuilder_ == null) {
+          uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+        } else {
+          uniqBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000002);
-        clubId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -463,11 +441,11 @@ public final class SPlayerQuitPB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.deskId_ = deskId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
+        if (uniqBuilder_ == null) {
+          result.uniq_ = uniq_;
+        } else {
+          result.uniq_ = uniqBuilder_.build();
         }
-        result.clubId_ = clubId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -487,11 +465,8 @@ public final class SPlayerQuitPB {
         if (other.hasUid()) {
           setUid(other.getUid());
         }
-        if (other.hasDeskId()) {
-          setDeskId(other.getDeskId());
-        }
-        if (other.hasClubId()) {
-          setClubId(other.getClubId());
+        if (other.hasUniq()) {
+          mergeUniq(other.getUniq());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -502,7 +477,11 @@ public final class SPlayerQuitPB {
           
           return false;
         }
-        if (!hasDeskId()) {
+        if (!hasUniq()) {
+          
+          return false;
+        }
+        if (!getUniq().isInitialized()) {
           
           return false;
         }
@@ -577,102 +556,157 @@ public final class SPlayerQuitPB {
         return this;
       }
 
-      // required int32 deskId = 2;
-      private int deskId_ ;
+      // required .common.DeskUniq uniq = 2;
+      private com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder> uniqBuilder_;
       /**
-       * <code>required int32 deskId = 2;</code>
+       * <code>required .common.DeskUniq uniq = 2;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public boolean hasDeskId() {
+      public boolean hasUniq() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 deskId = 2;</code>
+       * <code>required .common.DeskUniq uniq = 2;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public int getDeskId() {
-        return deskId_;
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq getUniq() {
+        if (uniqBuilder_ == null) {
+          return uniq_;
+        } else {
+          return uniqBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 deskId = 2;</code>
+       * <code>required .common.DeskUniq uniq = 2;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public Builder setDeskId(int value) {
+      public Builder setUniq(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq value) {
+        if (uniqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          uniq_ = value;
+          onChanged();
+        } else {
+          uniqBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000002;
-        deskId_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>required int32 deskId = 2;</code>
+       * <code>required .common.DeskUniq uniq = 2;</code>
        *
        * <pre>
-       * 牌桌ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public Builder clearDeskId() {
+      public Builder setUniq(
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder builderForValue) {
+        if (uniqBuilder_ == null) {
+          uniq_ = builderForValue.build();
+          onChanged();
+        } else {
+          uniqBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 2;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public Builder mergeUniq(com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq value) {
+        if (uniqBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              uniq_ != com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance()) {
+            uniq_ =
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.newBuilder(uniq_).mergeFrom(value).buildPartial();
+          } else {
+            uniq_ = value;
+          }
+          onChanged();
+        } else {
+          uniqBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 2;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public Builder clearUniq() {
+        if (uniqBuilder_ == null) {
+          uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
+          onChanged();
+        } else {
+          uniqBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000002);
-        deskId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 clubId = 3;
-      private int clubId_ ;
-      /**
-       * <code>optional int32 clubId = 3;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public boolean hasClubId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 clubId = 3;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public int getClubId() {
-        return clubId_;
-      }
-      /**
-       * <code>optional int32 clubId = 3;</code>
-       *
-       * <pre>
-       * 俱乐部ID
-       * </pre>
-       */
-      public Builder setClubId(int value) {
-        bitField0_ |= 0x00000004;
-        clubId_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional int32 clubId = 3;</code>
+       * <code>required .common.DeskUniq uniq = 2;</code>
        *
        * <pre>
-       * 俱乐部ID
+       * 牌桌唯一标识
        * </pre>
        */
-      public Builder clearClubId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        clubId_ = 0;
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder getUniqBuilder() {
+        bitField0_ |= 0x00000002;
         onChanged();
-        return this;
+        return getUniqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 2;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      public com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder getUniqOrBuilder() {
+        if (uniqBuilder_ != null) {
+          return uniqBuilder_.getMessageOrBuilder();
+        } else {
+          return uniq_;
+        }
+      }
+      /**
+       * <code>required .common.DeskUniq uniq = 2;</code>
+       *
+       * <pre>
+       * 牌桌唯一标识
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder> 
+          getUniqFieldBuilder() {
+        if (uniqBuilder_ == null) {
+          uniqBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.Builder, com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniqOrBuilder>(
+                  uniq_,
+                  getParentForChildren(),
+                  isClean());
+          uniq_ = null;
+        }
+        return uniqBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:hall.SPlayerQuit)
@@ -700,10 +734,10 @@ public final class SPlayerQuitPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026hall/SPlayerQuit.proto\022\004hall\":\n\013SPlaye" +
-      "rQuit\022\013\n\003uid\030\001 \002(\005\022\016\n\006deskId\030\002 \002(\005\022\016\n\006cl" +
-      "ubId\030\003 \001(\005B-\n\034com.kuaikai.game.hall.msg." +
-      "pbB\rSPlayerQuitPB"
+      "\n\026hall/SPlayerQuit.proto\022\004hall\032\025common/D" +
+      "eskUniq.proto\":\n\013SPlayerQuit\022\013\n\003uid\030\001 \002(" +
+      "\005\022\036\n\004uniq\030\002 \002(\0132\020.common.DeskUniqB-\n\034com" +
+      ".kuaikai.game.hall.msg.pbB\rSPlayerQuitPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -715,13 +749,14 @@ public final class SPlayerQuitPB {
           internal_static_hall_SPlayerQuit_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_hall_SPlayerQuit_descriptor,
-              new java.lang.String[] { "Uid", "DeskId", "ClubId", });
+              new java.lang.String[] { "Uid", "Uniq", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.kuaikai.game.common.msg.pb.DeskUniqPB.getDescriptor(),
         }, assigner);
   }
 
