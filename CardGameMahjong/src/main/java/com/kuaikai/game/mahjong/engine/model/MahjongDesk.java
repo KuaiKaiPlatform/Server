@@ -9,7 +9,6 @@ import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.DeskRecord;
 import com.kuaikai.game.common.play.GameDesk;
 import com.kuaikai.game.common.play.GamePlayer;
-import com.kuaikai.game.common.play.MessageSender;
 import com.kuaikai.game.mahjong.engine.MahjongEngine;
 import com.kuaikai.game.mahjong.engine.record.MahjongSetRecord;
 import com.kuaikai.game.mahjong.engine.sender.DefaultMessageSender;

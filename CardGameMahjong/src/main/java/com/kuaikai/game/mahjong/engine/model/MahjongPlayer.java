@@ -102,10 +102,7 @@ public class MahjongPlayer extends GamePlayer {
 	public void onSetStart() {
 		cardContainer.clear();
 		baoTing = false;
-		
-		for(SetAttr setAttr : SetAttr.values()) {
-			setAttrs.remove(setAttr);
-		}
+		this.initOrClearSetAttrs();
 	}
 
 	@Override

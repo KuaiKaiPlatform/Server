@@ -109,6 +109,24 @@ public final class SSetInitPB {
      * </pre>
      */
     int getBankerId();
+
+    // required .mahjong.SetStage stage = 5;
+    /**
+     * <code>required .mahjong.SetStage stage = 5;</code>
+     *
+     * <pre>
+     * 牌局阶段
+     * </pre>
+     */
+    boolean hasStage();
+    /**
+     * <code>required .mahjong.SetStage stage = 5;</code>
+     *
+     * <pre>
+     * 牌局阶段
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage getStage();
   }
   /**
    * Protobuf type {@code mahjong.SSetInit}
@@ -186,6 +204,17 @@ public final class SSetInitPB {
             case 32: {
               bitField0_ |= 0x00000004;
               bankerId_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage value = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                stage_ = value;
+              }
               break;
             }
           }
@@ -359,11 +388,36 @@ public final class SSetInitPB {
       return bankerId_;
     }
 
+    // required .mahjong.SetStage stage = 5;
+    public static final int STAGE_FIELD_NUMBER = 5;
+    private com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage stage_;
+    /**
+     * <code>required .mahjong.SetStage stage = 5;</code>
+     *
+     * <pre>
+     * 牌局阶段
+     * </pre>
+     */
+    public boolean hasStage() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .mahjong.SetStage stage = 5;</code>
+     *
+     * <pre>
+     * 牌局阶段
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage getStage() {
+      return stage_;
+    }
+
     private void initFields() {
       playerSetInfos_ = java.util.Collections.emptyList();
       curSet_ = 0;
       remainCards_ = 0;
       bankerId_ = 0;
+      stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -379,6 +433,10 @@ public final class SSetInitPB {
         return false;
       }
       if (!hasBankerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStage()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -407,6 +465,9 @@ public final class SSetInitPB {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(4, bankerId_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(5, stage_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -431,6 +492,10 @@ public final class SSetInitPB {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, bankerId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, stage_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -565,6 +630,8 @@ public final class SSetInitPB {
         bitField0_ = (bitField0_ & ~0x00000004);
         bankerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -614,6 +681,10 @@ public final class SSetInitPB {
           to_bitField0_ |= 0x00000004;
         }
         result.bankerId_ = bankerId_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.stage_ = stage_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -665,6 +736,9 @@ public final class SSetInitPB {
         if (other.hasBankerId()) {
           setBankerId(other.getBankerId());
         }
+        if (other.hasStage()) {
+          setStage(other.getStage());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -679,6 +753,10 @@ public final class SSetInitPB {
           return false;
         }
         if (!hasBankerId()) {
+          
+          return false;
+        }
+        if (!hasStage()) {
           
           return false;
         }
@@ -1169,6 +1247,58 @@ public final class SSetInitPB {
         return this;
       }
 
+      // required .mahjong.SetStage stage = 5;
+      private com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
+      /**
+       * <code>required .mahjong.SetStage stage = 5;</code>
+       *
+       * <pre>
+       * 牌局阶段
+       * </pre>
+       */
+      public boolean hasStage() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required .mahjong.SetStage stage = 5;</code>
+       *
+       * <pre>
+       * 牌局阶段
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage getStage() {
+        return stage_;
+      }
+      /**
+       * <code>required .mahjong.SetStage stage = 5;</code>
+       *
+       * <pre>
+       * 牌局阶段
+       * </pre>
+       */
+      public Builder setStage(com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        stage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .mahjong.SetStage stage = 5;</code>
+       *
+       * <pre>
+       * 牌局阶段
+       * </pre>
+       */
+      public Builder clearStage() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:mahjong.SSetInit)
     }
 
@@ -1195,11 +1325,13 @@ public final class SSetInitPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\026mahjong/SSetInit.proto\022\007mahjong\032\033mahjo" +
-      "ng/PlayerSetInfo.proto\"q\n\010SSetInit\022.\n\016pl" +
-      "ayerSetInfos\030\001 \003(\0132\026.mahjong.PlayerSetIn" +
-      "fo\022\016\n\006curSet\030\002 \002(\005\022\023\n\013remainCards\030\003 \002(\005\022" +
-      "\020\n\010bankerId\030\004 \002(\005B-\n\037com.kuaikai.game.ma" +
-      "hjong.msg.pbB\nSSetInitPB"
+      "ng/PlayerSetInfo.proto\032\026mahjong/SetStage" +
+      ".proto\"\223\001\n\010SSetInit\022.\n\016playerSetInfos\030\001 " +
+      "\003(\0132\026.mahjong.PlayerSetInfo\022\016\n\006curSet\030\002 " +
+      "\002(\005\022\023\n\013remainCards\030\003 \002(\005\022\020\n\010bankerId\030\004 \002" +
+      "(\005\022 \n\005stage\030\005 \002(\0162\021.mahjong.SetStageB-\n\037" +
+      "com.kuaikai.game.mahjong.msg.pbB\nSSetIni" +
+      "tPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1211,7 +1343,7 @@ public final class SSetInitPB {
           internal_static_mahjong_SSetInit_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_SSetInit_descriptor,
-              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", });
+              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", "Stage", });
           return null;
         }
       };
@@ -1219,6 +1351,7 @@ public final class SSetInitPB {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.SetStagePB.getDescriptor(),
         }, assigner);
   }
 

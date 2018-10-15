@@ -3,13 +3,20 @@ package com.kuaikai.game.mahjong.engine.sender;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kuaikai.game.common.msg.CommonMsgHandler;
 import com.kuaikai.game.common.play.GameDesk;
 import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.common.play.MessageSender;
+import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
+import com.kuaikai.game.mahjong.msg.MsgCreator;
+import com.kuaikai.game.mahjong.msg.MsgId;
+import com.kuaikai.game.mahjong.msg.pb.SSetInitPB.SSetInit;
 
 public class DefaultMessageSender extends MessageSender {
+	
+	protected MsgCreator msgCreator;
 	
 	public DefaultMessageSender(GameDesk desk) {
 		super(desk);
@@ -19,6 +26,10 @@ public class DefaultMessageSender extends MessageSender {
 		return (MahjongDesk)desk;
 	}
 	
+	public void setMsgCreator(MsgCreator msgCreator) {
+		this.msgCreator = msgCreator;
+	}
+
 	/**
 	 * 同步牌桌信息
 	 */
@@ -31,6 +42,7 @@ public class DefaultMessageSender extends MessageSender {
 		
 		List<BaseOperation> canExecuteOperations = getDesk().getEngine().getOperManager().getCurrentCanExecuteOperations();
 		for(GamePlayer receiver : receivers) {
+			SSetInit.Builder builder = msgCreator.createSSetInit(this.getDesk(), receiver);
 /*			SFSObject initSFSObject = getSetStartObj(receiver);
 			// 可执行操作只发送给操作者
 			initSFSObject.removeElement("canOperDetails");
@@ -52,11 +64,12 @@ public class DefaultMessageSender extends MessageSender {
 			}
 			
 			MessageHelper.sendMsg(roomExt, MessageContants.Init, initSFSObject, receiver);*/
+			OnlineManager.sendMsg(receiver.getId(), new CommonMsgHandler(MsgId.SSetInit, builder.build()));
 
 		}
 		
 	}
-
+	
 	/*
 	 * 同步玩家最近的操作和可执行的操作
 	 */

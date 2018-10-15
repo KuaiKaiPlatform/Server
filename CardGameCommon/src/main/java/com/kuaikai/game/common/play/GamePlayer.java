@@ -36,6 +36,11 @@ public abstract class GamePlayer {
 		return player.getDelta(other.player);
 	}
 	
+	public void initOrClearSetAttrs() {
+		if(setAttrs == null) setAttrs = new AttrsModel();
+		setAttrs.clear();
+	}
+	
 	public AttrsModel getSetAttrs() {
 		return setAttrs;
 	}

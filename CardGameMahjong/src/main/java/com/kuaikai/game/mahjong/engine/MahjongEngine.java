@@ -23,23 +23,15 @@ import com.kuaikai.game.mahjong.engine.oper.MoOperation;
 import com.kuaikai.game.mahjong.engine.oper.OperationManager;
 import com.kuaikai.game.mahjong.engine.process.IMahjongProcessor;
 import com.kuaikai.game.mahjong.engine.process.ProcessorFactory;
+import com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage;
 
 /***
  * 麻将引擎
  */
 public class MahjongEngine {
 	
-	// 游戏中
-	private static final int STAGE_GAMING = 0;
-	// 下注阶段
-	private static final int STAGE_XIA_ZHU = 1;
-	// 定缺阶段
-	private static final int STAGE_DING_QUE = 2;
-	// 结算阶段
-	private static final int STAGE_JIE_SUAN = 3;
-	
 	// 房间所处的阶段
-	private int stage;
+	private SetStage stage = SetStage.GAMING;
 	
 	private MahjongDesk desk;
 	private IMahjongProcessor processor;
@@ -83,20 +75,20 @@ public class MahjongEngine {
 		return operManager;
 	}
 	
-	public boolean checkStage(int stage) {
-		return this.stage == stage;
+	public boolean checkStage(SetStage stage) {
+		return stage.equals(this.stage);
 	}
 
-	public int getStage() {
+	public SetStage getStage() {
 		return stage;
 	}
 
 	public boolean isStageGaming() {
-		return this.checkStage(STAGE_GAMING);
+		return this.checkStage(SetStage.GAMING);
 	}
 	
 	public void enterGamingStage() {
-		stage = STAGE_GAMING;
+		stage = SetStage.GAMING;
 		
 		// 记下听的牌
 		Collection<GamePlayer> players = desk.getAllPlayers();
@@ -121,27 +113,27 @@ public class MahjongEngine {
 	}
 	
 	public boolean isStageXiaZhu() {
-		return this.checkStage(STAGE_XIA_ZHU);
+		return this.checkStage(SetStage.XIA_ZHU);
 	}
 
 	public void enterXiaZhuStage() {
-		stage = STAGE_XIA_ZHU;
+		stage = SetStage.XIA_ZHU;
 	}
 	
 	public boolean isStageDingQue() {
-		return this.checkStage(STAGE_DING_QUE);
+		return this.checkStage(SetStage.DING_QUE);
 	}
 	
 	public void enterDingQueStage() {
-		stage = STAGE_DING_QUE;
+		stage = SetStage.DING_QUE;
 	}
 	
 	public boolean isStageJieSuan() {
-		return this.checkStage(STAGE_JIE_SUAN);
+		return this.checkStage(SetStage.JIE_SUAN);
 	}
 	
 	public void enterJieSuanStage() {
-		stage = STAGE_JIE_SUAN;
+		stage = SetStage.JIE_SUAN;
 	}
 
 	public void putAttr(Object key, Object value) {

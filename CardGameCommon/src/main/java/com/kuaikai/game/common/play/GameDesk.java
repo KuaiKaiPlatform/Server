@@ -20,6 +20,8 @@ public abstract class GameDesk {
 	
 	protected MessageSender messageSender;
 	
+	private AttrsModel attrs;
+	
 	// 玩家id到玩家对象map
 	protected Map<Integer, GamePlayer> id2Player = new HashMap<>();
 	
@@ -45,6 +47,10 @@ public abstract class GameDesk {
 		return desk.getKey();
 	}
 	
+	public int getCurSet() {
+		return desk.getCurSet();
+	}
+	
 	public GamePlayer getBanker() {
 		return banker;
 	}
@@ -53,12 +59,20 @@ public abstract class GameDesk {
 		this.banker = banker;
 	}
 	
+	public int getBankerId() {
+		return banker == null?-1:banker.getId();
+	}
+	
 	public DeskRecord getRecord() {
 		return record;
 	}
 
 	public void setRecord(DeskRecord record) {
 		this.record = record;
+	}
+
+	public AttrsModel getAttrs() {
+		return attrs;
 	}
 
 	public Collection<GamePlayer> getAllPlayers() {
@@ -85,10 +99,6 @@ public abstract class GameDesk {
 		int nextSeat = seat % getSetting().getInt(CardGameSetting.TOTAL_PLAYER) + 1;
 		GamePlayer player = this.getPlayerBySeat(nextSeat);
 		return player == null?getNextPlayer(nextSeat):player;
-	}
-	
-	public int getCurSet() {
-		return desk.getCurSet();
 	}
 	
 	public MessageSender getMessageSender() {

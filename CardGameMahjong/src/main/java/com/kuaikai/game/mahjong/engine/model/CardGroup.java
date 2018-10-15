@@ -1,6 +1,7 @@
 package com.kuaikai.game.mahjong.engine.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CardGroup {
@@ -41,6 +42,14 @@ public class CardGroup {
 		return cards;
 	}
 
+	public List<Integer> getCardValues() {
+		List<Integer> cardList = new LinkedList<Integer>();
+		for(MJCard card : cards) {
+			cardList.add(card.getValue());
+		}
+		return cardList;
+	}
+	
 /*	public SFSObject toSFSObject() {
 		SFSObject data = new SFSObject();
 		data.putInt("operType", operType);
