@@ -19,6 +19,8 @@ public class DeskStartListener implements BaseListener {
 	public <T> void onEventTriggered(BaseEvent<T> baseEvent) {
 		DeskStartEvent deskStartEvent = (DeskStartEvent) baseEvent;
 		String deskKey = deskStartEvent.t;
+		LOGGER.debug("com.kuaikai.game.logic.listener.DeskStartListener.onEventTriggered@desk={}", deskKey);
+		
 		Desk desk = DeskRedis.getDesk(deskKey);
 		
 		GameDesk gameDesk = GameDeskFactory.create(desk);

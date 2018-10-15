@@ -4,12 +4,17 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.alibaba.fastjson.JSONObject;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 import com.kuaikai.game.common.play.CardGameSetting;
 
 public class Desk {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Desk.class);
 	
 	protected int deskId;
 	protected int clubId;
@@ -140,6 +145,7 @@ public class Desk {
 	 * 
 	 */
 	public boolean canStart() {
+		LOGGER.debug("Desk.canStart@checking desk={}", this.getKey());
 		if(id2Player.size() < setting.getInt(CardGameSetting.MIN_PLAYER)) return false;
 		for(Player p : id2Player.values()) {
 			if(!p.isPrepared()) return false;

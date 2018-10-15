@@ -28,7 +28,7 @@ public class DefaultMsgCreator implements MsgCreator {
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
 		return PlayerInfo.newBuilder().setUser(createUserInfo(p.getUser())).setSeat(p.getSeat())
-				.setPrepared(true).addAllPoints(p.getPoints());
+				.setPrepared(p.isPrepared()).addAllPoints(p.getPoints());
 	}
 
 	protected UserInfo.Builder createUserInfo(User u) {

@@ -58,6 +58,7 @@ public class DeskRedis {
 		p.addPoint(6);
 		p.addPoint(3);
 		p.setSeat(seat);
+		p.setPrepared(true);
 		return p;
 	}
 	

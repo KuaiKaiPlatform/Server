@@ -35,6 +35,7 @@ public class DeskManager {
 			OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SPlayerJoin, msgCreator.createSPlayerJoin(desk.getPlayerById(uid), desk).build()), uid);
 			if(desk.canStart()) {
 				String deskKey = desk.getKey();
+				LOGGER.debug("DeskManager.onUserLogin@can start desk={}", deskKey);
 				try {
 					// 通知牌局开始
 					DeskStartEvent startEvent = new DeskStartEvent(deskKey);

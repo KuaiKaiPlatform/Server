@@ -24,6 +24,7 @@ public class TriggerManager {
 		String eventName = event.getClass().getName();
 		List<BaseListener> listeners = instance.listeners.get(eventName);
 		if (listeners == null) {
+			LOGGER.warn("TriggerManager.triggerEvent@listeners not found|eventName={}", eventName);
 			return;
 		}
 		for (BaseListener listener : listeners) {
