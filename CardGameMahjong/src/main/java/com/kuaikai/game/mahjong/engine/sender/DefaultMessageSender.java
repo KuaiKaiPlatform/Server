@@ -10,6 +10,7 @@ import com.kuaikai.game.common.play.MessageSender;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
+import com.kuaikai.game.mahjong.msg.DefaultMsgCreator;
 import com.kuaikai.game.mahjong.msg.MsgCreator;
 import com.kuaikai.game.mahjong.msg.MsgId;
 import com.kuaikai.game.mahjong.msg.pb.SSetInitPB.SSetInit;
@@ -20,6 +21,7 @@ public class DefaultMessageSender extends MessageSender {
 	
 	public DefaultMessageSender(GameDesk desk) {
 		super(desk);
+		msgCreator = new DefaultMsgCreator();
 	}
 	
 	private MahjongDesk getDesk() {

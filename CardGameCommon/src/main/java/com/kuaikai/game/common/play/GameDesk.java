@@ -75,6 +75,13 @@ public abstract class GameDesk {
 		return attrs;
 	}
 
+	public void addPlayer(GamePlayer player) {
+		if(!id2Player.containsValue(player)) {
+			id2Player.put(player.getId(), player);
+			seat2Player.put(player.getSeat(), player);
+		}
+	}
+	
 	public Collection<GamePlayer> getAllPlayers() {
 		return id2Player.values();
 	}

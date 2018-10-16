@@ -31,6 +31,10 @@ public abstract class GamePlayer {
 	public int getId() {
 		return player.getId();
 	}
+
+	public int getSeat() {
+		return player.getSeat();
+	}
 	
 	public int getDelta(GamePlayer other) {
 		return player.getDelta(other.player);

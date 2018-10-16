@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.model.Desk;
+import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.DeskRecord;
@@ -23,8 +24,16 @@ public class MahjongDesk extends GameDesk {
 	public MahjongDesk(Desk desk) {
 		super(desk);
 		engine = new MahjongEngine(this);
+		this.initPlayers();
 	}
 
+	private void initPlayers() {
+		for(Player p : desk.getPlayers()) {
+			MahjongPlayer mp = new MahjongPlayer(p, this);
+			this.addPlayer(mp);
+		}
+	}
+	
 	public MahjongEngine getEngine() {
 		return engine;
 	}

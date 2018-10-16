@@ -41,9 +41,12 @@ public class DefaultMsgCreator implements MsgCreator {
 		
 		// 明牌
 		List<CardGroup> cardGroups = cardContainer.getCardGroups();
-		for(CardGroup group : cardGroups) {
-			builder.addCardGroups(this.createCardGroup(group));
+		if(cardGroups != null) {
+			for (CardGroup group : cardGroups) {
+				builder.addCardGroups(this.createCardGroup(group));
+			}
 		}
+
 		
 		return builder;
 	}
