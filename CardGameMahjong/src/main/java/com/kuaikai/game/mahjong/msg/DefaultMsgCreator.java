@@ -46,7 +46,6 @@ public class DefaultMsgCreator implements MsgCreator {
 				builder.addCardGroups(this.createCardGroup(group));
 			}
 		}
-
 		
 		return builder;
 	}

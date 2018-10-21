@@ -52,7 +52,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     java.util.List<java.lang.Integer> getHandcardsList();
@@ -60,7 +60,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     int getHandcardsCount();
@@ -68,7 +68,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     int getHandcards(int index);
@@ -359,7 +359,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     public java.util.List<java.lang.Integer>
@@ -370,7 +370,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     public int getHandcardsCount() {
@@ -380,7 +380,7 @@ public final class PlayerSetInfoPB {
      * <code>repeated int32 handcards = 3;</code>
      *
      * <pre>
-     * 手牌
+     * 手牌（只有自己收到）
      * </pre>
      */
     public int getHandcards(int index) {
@@ -970,7 +970,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public java.util.List<java.lang.Integer>
@@ -981,7 +981,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public int getHandcardsCount() {
@@ -991,7 +991,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public int getHandcards(int index) {
@@ -1001,7 +1001,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public Builder setHandcards(
@@ -1015,7 +1015,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public Builder addHandcards(int value) {
@@ -1028,7 +1028,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public Builder addAllHandcards(
@@ -1042,7 +1042,7 @@ public final class PlayerSetInfoPB {
        * <code>repeated int32 handcards = 3;</code>
        *
        * <pre>
-       * 手牌
+       * 手牌（只有自己收到）
        * </pre>
        */
       public Builder clearHandcards() {

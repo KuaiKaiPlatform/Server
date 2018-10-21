@@ -16,7 +16,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo> 
@@ -25,7 +25,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo getPlayerSetInfos(int index);
@@ -33,7 +33,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     int getPlayerSetInfosCount();
@@ -41,7 +41,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder> 
@@ -50,7 +50,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder getPlayerSetInfosOrBuilder(
@@ -127,12 +127,128 @@ public final class SSetInitPB {
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage getStage();
+
+    // optional .mahjong.OperDetail lastOperDetail = 6;
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    boolean hasLastOperDetail();
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getLastOperDetail();
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getLastOperDetailOrBuilder();
+
+    // repeated .mahjong.OperDetail canOperDetails = 7;
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> 
+        getCanOperDetailsList();
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getCanOperDetails(int index);
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    int getCanOperDetailsCount();
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> 
+        getCanOperDetailsOrBuilderList();
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getCanOperDetailsOrBuilder(
+        int index);
+
+    // repeated .mahjong.DiscardTingCards discardTingCards = 8;
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> 
+        getDiscardTingCardsList();
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index);
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    int getDiscardTingCardsCount();
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
+        getDiscardTingCardsOrBuilderList();
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code mahjong.SSetInit}
    *
    * <pre>
-   * 开局或重连后返回牌局初始状态
+   * 开局或重连后返回牌局当前状态
    * </pre>
    */
   public static final class SSetInit extends
@@ -217,6 +333,35 @@ public final class SSetInitPB {
               }
               break;
             }
+            case 50: {
+              com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = lastOperDetail_.toBuilder();
+              }
+              lastOperDetail_ = input.readMessage(com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(lastOperDetail_);
+                lastOperDetail_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                canOperDetails_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              canOperDetails_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.PARSER, extensionRegistry));
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                discardTingCards_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              discardTingCards_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -227,6 +372,12 @@ public final class SSetInitPB {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           playerSetInfos_ = java.util.Collections.unmodifiableList(playerSetInfos_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          canOperDetails_ = java.util.Collections.unmodifiableList(canOperDetails_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          discardTingCards_ = java.util.Collections.unmodifiableList(discardTingCards_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -267,7 +418,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo> getPlayerSetInfosList() {
@@ -277,7 +428,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder> 
@@ -288,7 +439,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     public int getPlayerSetInfosCount() {
@@ -298,7 +449,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo getPlayerSetInfos(int index) {
@@ -308,7 +459,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局初始状态
+     * 所有玩家牌局当前状态
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder getPlayerSetInfosOrBuilder(
@@ -412,12 +563,161 @@ public final class SSetInitPB {
       return stage_;
     }
 
+    // optional .mahjong.OperDetail lastOperDetail = 6;
+    public static final int LASTOPERDETAIL_FIELD_NUMBER = 6;
+    private com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail lastOperDetail_;
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    public boolean hasLastOperDetail() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getLastOperDetail() {
+      return lastOperDetail_;
+    }
+    /**
+     * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+     *
+     * <pre>
+     * 最近的操作信息
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getLastOperDetailOrBuilder() {
+      return lastOperDetail_;
+    }
+
+    // repeated .mahjong.OperDetail canOperDetails = 7;
+    public static final int CANOPERDETAILS_FIELD_NUMBER = 7;
+    private java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> canOperDetails_;
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    public java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> getCanOperDetailsList() {
+      return canOperDetails_;
+    }
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> 
+        getCanOperDetailsOrBuilderList() {
+      return canOperDetails_;
+    }
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    public int getCanOperDetailsCount() {
+      return canOperDetails_.size();
+    }
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getCanOperDetails(int index) {
+      return canOperDetails_.get(index);
+    }
+    /**
+     * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+     *
+     * <pre>
+     * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getCanOperDetailsOrBuilder(
+        int index) {
+      return canOperDetails_.get(index);
+    }
+
+    // repeated .mahjong.DiscardTingCards discardTingCards = 8;
+    public static final int DISCARDTINGCARDS_FIELD_NUMBER = 8;
+    private java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> discardTingCards_;
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
+      return discardTingCards_;
+    }
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
+        getDiscardTingCardsOrBuilderList() {
+      return discardTingCards_;
+    }
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    public int getDiscardTingCardsCount() {
+      return discardTingCards_.size();
+    }
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
+      return discardTingCards_.get(index);
+    }
+    /**
+     * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+     *
+     * <pre>
+     * 打牌后的听牌列表
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
+        int index) {
+      return discardTingCards_.get(index);
+    }
+
     private void initFields() {
       playerSetInfos_ = java.util.Collections.emptyList();
       curSet_ = 0;
       remainCards_ = 0;
       bankerId_ = 0;
       stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
+      lastOperDetail_ = com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance();
+      canOperDetails_ = java.util.Collections.emptyList();
+      discardTingCards_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -446,6 +746,24 @@ public final class SSetInitPB {
           return false;
         }
       }
+      if (hasLastOperDetail()) {
+        if (!getLastOperDetail().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getCanOperDetailsCount(); i++) {
+        if (!getCanOperDetails(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getDiscardTingCardsCount(); i++) {
+        if (!getDiscardTingCards(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -467,6 +785,15 @@ public final class SSetInitPB {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeEnum(5, stage_.getNumber());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(6, lastOperDetail_);
+      }
+      for (int i = 0; i < canOperDetails_.size(); i++) {
+        output.writeMessage(7, canOperDetails_.get(i));
+      }
+      for (int i = 0; i < discardTingCards_.size(); i++) {
+        output.writeMessage(8, discardTingCards_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -496,6 +823,18 @@ public final class SSetInitPB {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, stage_.getNumber());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, lastOperDetail_);
+      }
+      for (int i = 0; i < canOperDetails_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, canOperDetails_.get(i));
+      }
+      for (int i = 0; i < discardTingCards_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, discardTingCards_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -579,7 +918,7 @@ public final class SSetInitPB {
      * Protobuf type {@code mahjong.SSetInit}
      *
      * <pre>
-     * 开局或重连后返回牌局初始状态
+     * 开局或重连后返回牌局当前状态
      * </pre>
      */
     public static final class Builder extends
@@ -610,6 +949,9 @@ public final class SSetInitPB {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getPlayerSetInfosFieldBuilder();
+          getLastOperDetailFieldBuilder();
+          getCanOperDetailsFieldBuilder();
+          getDiscardTingCardsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -632,6 +974,24 @@ public final class SSetInitPB {
         bitField0_ = (bitField0_ & ~0x00000008);
         stage_ = com.kuaikai.game.mahjong.msg.pb.SetStagePB.SetStage.GAMING;
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (lastOperDetailBuilder_ == null) {
+          lastOperDetail_ = com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance();
+        } else {
+          lastOperDetailBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (canOperDetailsBuilder_ == null) {
+          canOperDetails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          canOperDetailsBuilder_.clear();
+        }
+        if (discardTingCardsBuilder_ == null) {
+          discardTingCards_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          discardTingCardsBuilder_.clear();
+        }
         return this;
       }
 
@@ -685,6 +1045,32 @@ public final class SSetInitPB {
           to_bitField0_ |= 0x00000008;
         }
         result.stage_ = stage_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (lastOperDetailBuilder_ == null) {
+          result.lastOperDetail_ = lastOperDetail_;
+        } else {
+          result.lastOperDetail_ = lastOperDetailBuilder_.build();
+        }
+        if (canOperDetailsBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            canOperDetails_ = java.util.Collections.unmodifiableList(canOperDetails_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.canOperDetails_ = canOperDetails_;
+        } else {
+          result.canOperDetails_ = canOperDetailsBuilder_.build();
+        }
+        if (discardTingCardsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            discardTingCards_ = java.util.Collections.unmodifiableList(discardTingCards_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.discardTingCards_ = discardTingCards_;
+        } else {
+          result.discardTingCards_ = discardTingCardsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -739,6 +1125,61 @@ public final class SSetInitPB {
         if (other.hasStage()) {
           setStage(other.getStage());
         }
+        if (other.hasLastOperDetail()) {
+          mergeLastOperDetail(other.getLastOperDetail());
+        }
+        if (canOperDetailsBuilder_ == null) {
+          if (!other.canOperDetails_.isEmpty()) {
+            if (canOperDetails_.isEmpty()) {
+              canOperDetails_ = other.canOperDetails_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureCanOperDetailsIsMutable();
+              canOperDetails_.addAll(other.canOperDetails_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.canOperDetails_.isEmpty()) {
+            if (canOperDetailsBuilder_.isEmpty()) {
+              canOperDetailsBuilder_.dispose();
+              canOperDetailsBuilder_ = null;
+              canOperDetails_ = other.canOperDetails_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              canOperDetailsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getCanOperDetailsFieldBuilder() : null;
+            } else {
+              canOperDetailsBuilder_.addAllMessages(other.canOperDetails_);
+            }
+          }
+        }
+        if (discardTingCardsBuilder_ == null) {
+          if (!other.discardTingCards_.isEmpty()) {
+            if (discardTingCards_.isEmpty()) {
+              discardTingCards_ = other.discardTingCards_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureDiscardTingCardsIsMutable();
+              discardTingCards_.addAll(other.discardTingCards_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.discardTingCards_.isEmpty()) {
+            if (discardTingCardsBuilder_.isEmpty()) {
+              discardTingCardsBuilder_.dispose();
+              discardTingCardsBuilder_ = null;
+              discardTingCards_ = other.discardTingCards_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              discardTingCardsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDiscardTingCardsFieldBuilder() : null;
+            } else {
+              discardTingCardsBuilder_.addAllMessages(other.discardTingCards_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -762,6 +1203,24 @@ public final class SSetInitPB {
         }
         for (int i = 0; i < getPlayerSetInfosCount(); i++) {
           if (!getPlayerSetInfos(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasLastOperDetail()) {
+          if (!getLastOperDetail().isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getCanOperDetailsCount(); i++) {
+          if (!getCanOperDetails(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getDiscardTingCardsCount(); i++) {
+          if (!getDiscardTingCards(i).isInitialized()) {
             
             return false;
           }
@@ -805,7 +1264,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo> getPlayerSetInfosList() {
@@ -819,7 +1278,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public int getPlayerSetInfosCount() {
@@ -833,7 +1292,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo getPlayerSetInfos(int index) {
@@ -847,7 +1306,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder setPlayerSetInfos(
@@ -868,7 +1327,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder setPlayerSetInfos(
@@ -886,7 +1345,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder addPlayerSetInfos(com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo value) {
@@ -906,7 +1365,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder addPlayerSetInfos(
@@ -927,7 +1386,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder addPlayerSetInfos(
@@ -945,7 +1404,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder addPlayerSetInfos(
@@ -963,7 +1422,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder addAllPlayerSetInfos(
@@ -981,7 +1440,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder clearPlayerSetInfos() {
@@ -998,7 +1457,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public Builder removePlayerSetInfos(int index) {
@@ -1015,7 +1474,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo.Builder getPlayerSetInfosBuilder(
@@ -1026,7 +1485,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder getPlayerSetInfosOrBuilder(
@@ -1040,7 +1499,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfoOrBuilder> 
@@ -1055,7 +1514,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo.Builder addPlayerSetInfosBuilder() {
@@ -1066,7 +1525,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo.Builder addPlayerSetInfosBuilder(
@@ -1078,7 +1537,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.PlayerSetInfo playerSetInfos = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局初始状态
+       * 所有玩家牌局当前状态
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo.Builder> 
@@ -1299,6 +1758,783 @@ public final class SSetInitPB {
         return this;
       }
 
+      // optional .mahjong.OperDetail lastOperDetail = 6;
+      private com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail lastOperDetail_ = com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> lastOperDetailBuilder_;
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public boolean hasLastOperDetail() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getLastOperDetail() {
+        if (lastOperDetailBuilder_ == null) {
+          return lastOperDetail_;
+        } else {
+          return lastOperDetailBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public Builder setLastOperDetail(com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail value) {
+        if (lastOperDetailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          lastOperDetail_ = value;
+          onChanged();
+        } else {
+          lastOperDetailBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public Builder setLastOperDetail(
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder builderForValue) {
+        if (lastOperDetailBuilder_ == null) {
+          lastOperDetail_ = builderForValue.build();
+          onChanged();
+        } else {
+          lastOperDetailBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public Builder mergeLastOperDetail(com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail value) {
+        if (lastOperDetailBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              lastOperDetail_ != com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance()) {
+            lastOperDetail_ =
+              com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.newBuilder(lastOperDetail_).mergeFrom(value).buildPartial();
+          } else {
+            lastOperDetail_ = value;
+          }
+          onChanged();
+        } else {
+          lastOperDetailBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public Builder clearLastOperDetail() {
+        if (lastOperDetailBuilder_ == null) {
+          lastOperDetail_ = com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance();
+          onChanged();
+        } else {
+          lastOperDetailBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder getLastOperDetailBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getLastOperDetailFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getLastOperDetailOrBuilder() {
+        if (lastOperDetailBuilder_ != null) {
+          return lastOperDetailBuilder_.getMessageOrBuilder();
+        } else {
+          return lastOperDetail_;
+        }
+      }
+      /**
+       * <code>optional .mahjong.OperDetail lastOperDetail = 6;</code>
+       *
+       * <pre>
+       * 最近的操作信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> 
+          getLastOperDetailFieldBuilder() {
+        if (lastOperDetailBuilder_ == null) {
+          lastOperDetailBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder>(
+                  lastOperDetail_,
+                  getParentForChildren(),
+                  isClean());
+          lastOperDetail_ = null;
+        }
+        return lastOperDetailBuilder_;
+      }
+
+      // repeated .mahjong.OperDetail canOperDetails = 7;
+      private java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> canOperDetails_ =
+        java.util.Collections.emptyList();
+      private void ensureCanOperDetailsIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          canOperDetails_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail>(canOperDetails_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> canOperDetailsBuilder_;
+
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> getCanOperDetailsList() {
+        if (canOperDetailsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(canOperDetails_);
+        } else {
+          return canOperDetailsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public int getCanOperDetailsCount() {
+        if (canOperDetailsBuilder_ == null) {
+          return canOperDetails_.size();
+        } else {
+          return canOperDetailsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail getCanOperDetails(int index) {
+        if (canOperDetailsBuilder_ == null) {
+          return canOperDetails_.get(index);
+        } else {
+          return canOperDetailsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder setCanOperDetails(
+          int index, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail value) {
+        if (canOperDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.set(index, value);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder setCanOperDetails(
+          int index, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder builderForValue) {
+        if (canOperDetailsBuilder_ == null) {
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder addCanOperDetails(com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail value) {
+        if (canOperDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.add(value);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder addCanOperDetails(
+          int index, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail value) {
+        if (canOperDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.add(index, value);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder addCanOperDetails(
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder builderForValue) {
+        if (canOperDetailsBuilder_ == null) {
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.add(builderForValue.build());
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder addCanOperDetails(
+          int index, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder builderForValue) {
+        if (canOperDetailsBuilder_ == null) {
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder addAllCanOperDetails(
+          java.lang.Iterable<? extends com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail> values) {
+        if (canOperDetailsBuilder_ == null) {
+          ensureCanOperDetailsIsMutable();
+          super.addAll(values, canOperDetails_);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder clearCanOperDetails() {
+        if (canOperDetailsBuilder_ == null) {
+          canOperDetails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public Builder removeCanOperDetails(int index) {
+        if (canOperDetailsBuilder_ == null) {
+          ensureCanOperDetailsIsMutable();
+          canOperDetails_.remove(index);
+          onChanged();
+        } else {
+          canOperDetailsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder getCanOperDetailsBuilder(
+          int index) {
+        return getCanOperDetailsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder getCanOperDetailsOrBuilder(
+          int index) {
+        if (canOperDetailsBuilder_ == null) {
+          return canOperDetails_.get(index);  } else {
+          return canOperDetailsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> 
+           getCanOperDetailsOrBuilderList() {
+        if (canOperDetailsBuilder_ != null) {
+          return canOperDetailsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(canOperDetails_);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder addCanOperDetailsBuilder() {
+        return getCanOperDetailsFieldBuilder().addBuilder(
+            com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder addCanOperDetailsBuilder(
+          int index) {
+        return getCanOperDetailsFieldBuilder().addBuilder(
+            index, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.OperDetail canOperDetails = 7;</code>
+       *
+       * <pre>
+       * 本人可做的操作（可胡、可听、可杠、可碰、可吃和可打等）
+       * </pre>
+       */
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder> 
+           getCanOperDetailsBuilderList() {
+        return getCanOperDetailsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder> 
+          getCanOperDetailsFieldBuilder() {
+        if (canOperDetailsBuilder_ == null) {
+          canOperDetailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.Builder, com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetailOrBuilder>(
+                  canOperDetails_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          canOperDetails_ = null;
+        }
+        return canOperDetailsBuilder_;
+      }
+
+      // repeated .mahjong.DiscardTingCards discardTingCards = 8;
+      private java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> discardTingCards_ =
+        java.util.Collections.emptyList();
+      private void ensureDiscardTingCardsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          discardTingCards_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards>(discardTingCards_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> discardTingCardsBuilder_;
+
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
+        if (discardTingCardsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(discardTingCards_);
+        } else {
+          return discardTingCardsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public int getDiscardTingCardsCount() {
+        if (discardTingCardsBuilder_ == null) {
+          return discardTingCards_.size();
+        } else {
+          return discardTingCardsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
+        if (discardTingCardsBuilder_ == null) {
+          return discardTingCards_.get(index);
+        } else {
+          return discardTingCardsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder setDiscardTingCards(
+          int index, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards value) {
+        if (discardTingCardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.set(index, value);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder setDiscardTingCards(
+          int index, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder builderForValue) {
+        if (discardTingCardsBuilder_ == null) {
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder addDiscardTingCards(com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards value) {
+        if (discardTingCardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.add(value);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder addDiscardTingCards(
+          int index, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards value) {
+        if (discardTingCardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.add(index, value);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder addDiscardTingCards(
+          com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder builderForValue) {
+        if (discardTingCardsBuilder_ == null) {
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.add(builderForValue.build());
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder addDiscardTingCards(
+          int index, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder builderForValue) {
+        if (discardTingCardsBuilder_ == null) {
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder addAllDiscardTingCards(
+          java.lang.Iterable<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> values) {
+        if (discardTingCardsBuilder_ == null) {
+          ensureDiscardTingCardsIsMutable();
+          super.addAll(values, discardTingCards_);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder clearDiscardTingCards() {
+        if (discardTingCardsBuilder_ == null) {
+          discardTingCards_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public Builder removeDiscardTingCards(int index) {
+        if (discardTingCardsBuilder_ == null) {
+          ensureDiscardTingCardsIsMutable();
+          discardTingCards_.remove(index);
+          onChanged();
+        } else {
+          discardTingCardsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder getDiscardTingCardsBuilder(
+          int index) {
+        return getDiscardTingCardsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
+          int index) {
+        if (discardTingCardsBuilder_ == null) {
+          return discardTingCards_.get(index);  } else {
+          return discardTingCardsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
+           getDiscardTingCardsOrBuilderList() {
+        if (discardTingCardsBuilder_ != null) {
+          return discardTingCardsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(discardTingCards_);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder() {
+        return getDiscardTingCardsFieldBuilder().addBuilder(
+            com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder(
+          int index) {
+        return getDiscardTingCardsFieldBuilder().addBuilder(
+            index, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
+       *
+       * <pre>
+       * 打牌后的听牌列表
+       * </pre>
+       */
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder> 
+           getDiscardTingCardsBuilderList() {
+        return getDiscardTingCardsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
+          getDiscardTingCardsFieldBuilder() {
+        if (discardTingCardsBuilder_ == null) {
+          discardTingCardsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder, com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder>(
+                  discardTingCards_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          discardTingCards_ = null;
+        }
+        return discardTingCardsBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:mahjong.SSetInit)
     }
 
@@ -1326,12 +2562,17 @@ public final class SSetInitPB {
     java.lang.String[] descriptorData = {
       "\n\026mahjong/SSetInit.proto\022\007mahjong\032\033mahjo" +
       "ng/PlayerSetInfo.proto\032\026mahjong/SetStage" +
-      ".proto\"\223\001\n\010SSetInit\022.\n\016playerSetInfos\030\001 " +
-      "\003(\0132\026.mahjong.PlayerSetInfo\022\016\n\006curSet\030\002 " +
-      "\002(\005\022\023\n\013remainCards\030\003 \002(\005\022\020\n\010bankerId\030\004 \002" +
-      "(\005\022 \n\005stage\030\005 \002(\0162\021.mahjong.SetStageB-\n\037" +
-      "com.kuaikai.game.mahjong.msg.pbB\nSSetIni" +
-      "tPB"
+      ".proto\032\030mahjong/OperDetail.proto\032\036mahjon" +
+      "g/DiscardTingCards.proto\"\242\002\n\010SSetInit\022.\n" +
+      "\016playerSetInfos\030\001 \003(\0132\026.mahjong.PlayerSe" +
+      "tInfo\022\016\n\006curSet\030\002 \002(\005\022\023\n\013remainCards\030\003 \002" +
+      "(\005\022\020\n\010bankerId\030\004 \002(\005\022 \n\005stage\030\005 \002(\0162\021.ma" +
+      "hjong.SetStage\022+\n\016lastOperDetail\030\006 \001(\0132\023" +
+      ".mahjong.OperDetail\022+\n\016canOperDetails\030\007 " +
+      "\003(\0132\023.mahjong.OperDetail\0223\n\020discardTingC",
+      "ards\030\010 \003(\0132\031.mahjong.DiscardTingCardsB-\n" +
+      "\037com.kuaikai.game.mahjong.msg.pbB\nSSetIn" +
+      "itPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1343,7 +2584,7 @@ public final class SSetInitPB {
           internal_static_mahjong_SSetInit_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_SSetInit_descriptor,
-              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", "Stage", });
+              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", "Stage", "LastOperDetail", "CanOperDetails", "DiscardTingCards", });
           return null;
         }
       };
@@ -1352,6 +2593,8 @@ public final class SSetInitPB {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.getDescriptor(),
           com.kuaikai.game.mahjong.msg.pb.SetStagePB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.OperDetailPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.getDescriptor(),
         }, assigner);
   }
 
