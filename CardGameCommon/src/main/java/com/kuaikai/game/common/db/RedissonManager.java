@@ -66,6 +66,8 @@ public class RedissonManager {
 		properties.put("redis.port", "6379");
 		properties.put("redis.db", "2");
 		instance.init(properties);
+		
+		System.out.println("finish");
 	}
 
 	public RedissonClient getRedisson() {

@@ -153,6 +153,14 @@ public class Desk {
 		return true;
 	}
 	
+	public boolean hasClub() {
+		return clubId > 0;
+	}
+	
+	public boolean exists() {
+		return hasClub() && deskId > 0;
+	}
+	
 	public String toString() {
 		return JSONObject.toJSONString(this);
 	}

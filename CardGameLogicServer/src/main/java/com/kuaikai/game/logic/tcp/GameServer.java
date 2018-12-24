@@ -8,6 +8,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.db.RedissonManager;
 import com.kuaikai.game.common.msg.MessageFactory;
 import com.kuaikai.game.common.tcp.Modules;
 import com.kuaikai.game.common.tcp.OnlineManager;
@@ -32,7 +33,7 @@ public class GameServer {
 		// 初始化db
 		//MySQLManager.getInstance().init(properties);
 		// 初始化reids
-		//RedissonManager.getInstance().init(properties);
+		RedissonManager.getInstance().init(properties);
 		//GlobalEventManager.init();
 
 		// 初始化GMManager

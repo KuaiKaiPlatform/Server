@@ -11,6 +11,7 @@ import com.kuaikai.game.common.msg.MsgHandler;
 import com.kuaikai.game.common.msg.pb.CLoginPB.CLogin;
 import com.kuaikai.game.common.msg.pb.SKickOffPB.SKickOff;
 import com.kuaikai.game.common.msg.pb.SLoginPB.SLogin;
+import com.kuaikai.game.common.redis.LockRedis;
 import com.kuaikai.game.common.tcp.OnlineManager;
 
 //import com.farm.common.db.redis.LockUtils;
@@ -54,16 +55,16 @@ public class CLoginHandler extends MsgHandler {
 		}
 		OnlineManager.onUserLogin(uid, this.ctx);
 		// 拿userlock
-//		RLock rLock = LockUtils.getUserLock(uid);
-//		rLock.lock();
+		RLock rLock = LockRedis.getUserLock(uid);
+		rLock.lock();
 		try {
 			// 通知登陆成功
 			LoginEvent loginEvent = new LoginEvent(uid);
 			TriggerManager.triggerEvent(loginEvent);
 		} catch (Exception e) {
-			LOGGER.error("LoginReqHandler.process@login listener error|uid={}", uid, e);
+			LOGGER.error("CLoginHandler.process@login listener error|uid={}", uid, e);
 		} finally {
-			//rLock.unlock();
+			rLock.unlock();
 		}
 		//OnlineRedisManager.addLoginUser(uid);
 		// 发送登陆成功

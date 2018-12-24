@@ -12,9 +12,9 @@ import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.model.User;
 import com.kuaikai.game.common.play.CardGameSetting;
 
-public class DeskRedis {
+public class DeskMock {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(DeskRedis.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DeskMock.class);
 	
 	private static Map<Integer, Integer> uid2deskId = new ConcurrentHashMap<Integer, Integer>();
 	private static Map<String, Desk> desks = new ConcurrentHashMap<String, Desk>();

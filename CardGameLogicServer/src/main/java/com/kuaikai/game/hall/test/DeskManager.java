@@ -9,7 +9,7 @@ import com.kuaikai.game.common.event.TriggerManager;
 import com.kuaikai.game.common.event.desk.DeskStartEvent;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.msg.CommonMsgHandler;
-import com.kuaikai.game.common.redis.DeskRedis;
+import com.kuaikai.game.common.redis.DeskMock;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.hall.msg.DefaultMsgCreator;
 import com.kuaikai.game.hall.msg.MsgCreator;
@@ -30,7 +30,7 @@ public class DeskManager {
 	public static void onUserLogin(int uid) {
 		readWriteLock.writeLock().lock();
 		try {
-			Desk desk = DeskRedis.joinDesk(uid);
+			Desk desk = DeskMock.joinDesk(uid);
 			OnlineManager.sendMsg(uid, new CommonMsgHandler(MsgId.SDeskInfo, msgCreator.createSDeskInfo(desk).build()));
 			OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SPlayerJoin, msgCreator.createSPlayerJoin(desk.getPlayerById(uid), desk).build()), uid);
 			if(desk.canStart()) {
