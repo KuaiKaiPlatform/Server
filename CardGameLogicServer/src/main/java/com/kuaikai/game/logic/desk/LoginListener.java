@@ -1,4 +1,4 @@
-package com.kuaikai.game.hall.test;
+package com.kuaikai.game.logic.desk;
 
 import com.kuaikai.game.common.event.BaseEvent;
 import com.kuaikai.game.common.event.BaseListener;

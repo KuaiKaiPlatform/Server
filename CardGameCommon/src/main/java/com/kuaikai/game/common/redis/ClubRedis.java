@@ -8,7 +8,7 @@ import com.kuaikai.game.common.model.Club;
 import com.kuaikai.game.common.utils.CollectionUtils;
 
 /**
- *   竞技场相关记录
+ *   俱乐部相关记录
  * @author Alear
  *
  */
@@ -26,10 +26,12 @@ public class ClubRedis {
 		return redissonClient.getMap(key);
 	}
 	
-	public static boolean putClub(int clubId, int ownerId) {
-		RMap<String, String> rMap = getRMap(clubId);
-		rMap.put(FIELD_CLUB_ID, String.valueOf(clubId));
-		rMap.put(FIELD_OWNER_ID, String.valueOf(ownerId));
+	public static boolean putClub(Club club) {
+		RMap<String, String> rMap = getRMap(club.getId());
+		rMap.put(FIELD_CLUB_ID, String.valueOf(club.getId()));
+		rMap.put(FIELD_NAME, club.getName());
+		rMap.put(FIELD_OWNER_ID, String.valueOf(club.getOwnerId()));
+		rMap.put(FIELD_TOTAL, String.valueOf(club.getTotal()));
 		return true;
 	}
 	
@@ -39,6 +41,23 @@ public class ClubRedis {
 		return club;
 	}
 
+	public static boolean putAttr(int clubId, String key, String value) {
+		RMap<String, String> rMap = getRMap(clubId);
+		rMap.put(key, value);
+		return true;
+	}
+	
+	public static String getAttr(int clubId, String key) {
+		RMap<String, String> rMap = getRMap(clubId);
+		return rMap.get(key);
+	}
+	
+	public static boolean putOwnerId(int clubId, int ownerId) {
+		RMap<String, String> rMap = getRMap(clubId);
+		rMap.put(FIELD_OWNER_ID, String.valueOf(ownerId));
+		return true;
+	}
+	
 	public static int getOwnerId(int clubId) {
 		RMap<String, String> rMap = getRMap(clubId);
 		return CollectionUtils.getMapInt(rMap, ClubRedis.FIELD_OWNER_ID);

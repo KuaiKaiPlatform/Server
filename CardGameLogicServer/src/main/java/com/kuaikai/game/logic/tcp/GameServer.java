@@ -8,6 +8,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.conf.PropertyManager;
 import com.kuaikai.game.common.db.RedissonManager;
 import com.kuaikai.game.common.msg.MessageFactory;
 import com.kuaikai.game.common.tcp.Modules;
@@ -28,6 +29,8 @@ public class GameServer {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("conf/conf.properties"));
 
+		PropertyManager.init(properties);
+		
 		//WordFileterUtil.init("conf/wordFilter");
 
 		// 初始化db

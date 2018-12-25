@@ -25,7 +25,7 @@ public class AttrsModel {
 		return attrs;
 	}
 	
-	public AttrsModel putAll(Map<Object, Object> map) {
+	public AttrsModel putAll(Map map) {
 		this.attrs.putAll(map);
 		return this;
 	}
@@ -40,6 +40,14 @@ public class AttrsModel {
 
 	public Object get(Object key) {
 		return attrs.get(key);
+	}
+	
+	public Map<String, String> getAllStr() {
+		Map<String, String> result = new HashMap<String, String>();
+		for(Map.Entry entry : attrs.entrySet()) {
+			result.put(entry.getKey().toString(), entry.getValue().toString());
+		}
+		return result;
 	}
 	
 	public String getStr(Object key) {

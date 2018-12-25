@@ -1,5 +1,7 @@
 package com.kuaikai.game.common.model;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import com.kuaikai.game.common.redis.ClubRedis;
@@ -12,6 +14,10 @@ public class Club {
 	private String head;
 	private int total;
 	private int ownerId;
+	
+	private List<ClubRule> clubRules = new LinkedList<ClubRule>();
+	
+	public Club() {}
 	
 	public Club(Map<String, String> map) {
 		this.id = CollectionUtils.getMapInt(map, ClubRedis.FIELD_CLUB_ID);
@@ -51,6 +57,10 @@ public class Club {
 		this.ownerId = ownerId;
 	}
 
+	public void addClubRule(ClubRule rule) {
+		clubRules.add(rule);
+	}
+	
 	/**
 	 * 是否为大众竞技场
 	 * @return

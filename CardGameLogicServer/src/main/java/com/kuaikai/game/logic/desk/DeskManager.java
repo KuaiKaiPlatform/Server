@@ -1,4 +1,4 @@
-package com.kuaikai.game.hall.test;
+package com.kuaikai.game.logic.desk;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.event.TriggerManager;
 import com.kuaikai.game.common.event.desk.DeskStartEvent;
+import com.kuaikai.game.common.mock.DeskMock;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.msg.CommonMsgHandler;
-import com.kuaikai.game.common.redis.DeskMock;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.hall.msg.DefaultMsgCreator;
 import com.kuaikai.game.hall.msg.MsgCreator;

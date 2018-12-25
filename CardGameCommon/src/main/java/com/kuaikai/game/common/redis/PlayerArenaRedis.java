@@ -12,7 +12,7 @@ import com.kuaikai.game.common.utils.CollectionUtils;
  * @author Alear
  *
  */
-public class ArenaRedis {
+public class PlayerArenaRedis {
 
 	public static final String USER_DESK		= "user.desk.%d";			// 玩家入座或快速开始的竞技场编号和桌号
 	public static final String FIELD_CLUB_ID	= "clubId";

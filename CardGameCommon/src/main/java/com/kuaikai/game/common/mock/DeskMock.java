@@ -1,4 +1,4 @@
-package com.kuaikai.game.common.redis;
+package com.kuaikai.game.common.mock;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ import com.kuaikai.game.common.play.CardGameSetting;
 
 public class DeskMock {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(DeskMock.class);
+	private static final Logger logger = LoggerFactory.getLogger(DeskMock.class);
 	
 	private static Map<Integer, Integer> uid2deskId = new ConcurrentHashMap<Integer, Integer>();
 	private static Map<String, Desk> desks = new ConcurrentHashMap<String, Desk>();

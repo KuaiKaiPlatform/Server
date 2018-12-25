@@ -31,7 +31,7 @@ public class Desk {
 	protected AttrsModel setting = new AttrsModel();
 	
 	// 客户端显示的规则设置
-	protected AttrsModel clientSetting = new AttrsModel();
+	protected AttrsModel clubSetting = new AttrsModel();
 	
 	// 当前状态
 	protected GameStatus status = GameStatus.WAITING;
