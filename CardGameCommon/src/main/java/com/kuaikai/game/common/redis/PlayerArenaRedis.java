@@ -33,10 +33,7 @@ public class PlayerArenaRedis {
 	
 	public static Desk getUserDesk(int uid) {
 		RMap<String, String> rMap = getRMap(uid);
-		Desk desk = new Desk(CollectionUtils.getMapInt(rMap, FIELD_DESK_ID));
-		desk.setClubId(CollectionUtils.getMapInt(rMap, FIELD_CLUB_ID));
-		return desk;
+		return ClubDeskRedis.getDesk(CollectionUtils.getMapInt(rMap, FIELD_CLUB_ID), CollectionUtils.getMapLong(rMap, FIELD_DESK_ID));
 	}
-	
 	
 }

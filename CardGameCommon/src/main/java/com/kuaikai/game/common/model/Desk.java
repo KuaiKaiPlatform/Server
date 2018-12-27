@@ -16,7 +16,7 @@ public class Desk {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(Desk.class);
 	
-	protected int deskId;
+	protected long deskId;
 	protected int clubId;
 	
 	// 玩家id到玩家对象map
@@ -41,11 +41,11 @@ public class Desk {
 	
 	public Desk() {}
 	
-	public Desk(int id) {
+	public Desk(long id) {
 		this.deskId = id;
 	}
 	
-	public int getDeskId() {
+	public long getDeskId() {
 		return deskId;
 	}
 	
@@ -120,6 +120,10 @@ public class Desk {
 
 	public int getCurSet() {
 		return curSet;
+	}
+
+	public void setCurSet(int curSet) {
+		this.curSet = curSet;
 	}
 
 	public void incrCurSet() {

@@ -29,6 +29,11 @@ public class ClubRuleRedis {
 		return redissonClient.getScoredSortedSet(key);
 	}
 	
+	/**
+	 *	返回指定俱乐部的玩法列表
+	 * @param clubId
+	 * @return
+	 */
 	public static List<GameRule> getGameRules(int clubId) {
 		RScoredSortedSet<String> rScoredSortedSet = getRScoredSortedSet(clubId);
 		Collection<String> ruleIds = rScoredSortedSet.valueRange(0, -1);
@@ -39,6 +44,12 @@ public class ClubRuleRedis {
 		return result;
 	}
 
+	/**
+	 * 增加指定俱乐部的玩法
+	 * @param clubId
+	 * @param rule
+	 * @return
+	 */
 	public static boolean addGameRule(int clubId, GameRule rule) {
 		RScoredSortedSet<String> rScoredSortedSet = getRScoredSortedSet(clubId);
 		return rScoredSortedSet.add(rule.getNumber(), String.valueOf(rule.getNumber()));
@@ -50,12 +61,23 @@ public class ClubRuleRedis {
 		return redissonClient.getMap(key);
 	}
 	
+	/**
+	 * 	设置指定俱乐部玩法的规则
+	 * @param clubRule
+	 * @return
+	 */
 	public static boolean putSetting(ClubRule clubRule) {
 		RMap<String, String> rMap = getRMapSetting(clubRule.getClubId(), clubRule.getRule());
 		rMap.putAll(clubRule.getSetting().getAllStr());
 		return true;
 	}
 	
+	/**
+	 * 	返回指定俱乐部玩法的规则
+	 * @param clubId
+	 * @param rule
+	 * @return
+	 */
 	public static AttrsModel getSetting(int clubId, GameRule rule) {
 		RMap<String, String> rMap = getRMapSetting(clubId, rule);
 		AttrsModel setting = new AttrsModel();

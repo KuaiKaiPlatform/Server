@@ -1,77 +1,180 @@
 package com.kuaikai.game.common.redis;
 
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 
 import org.redisson.api.RMap;
 import org.redisson.api.RScoredSortedSet;
 import org.redisson.api.RedissonClient;
 
 import com.kuaikai.game.common.db.RedissonManager;
-import com.kuaikai.game.common.model.AttrsModel;
-import com.kuaikai.game.common.model.ClubRule;
+import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
+import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
+import com.kuaikai.game.common.utils.CollectionUtils;
 
 /**
- *   俱乐部牌桌相关记录
+ *  俱乐部牌桌相关记录
  * @author Alear
  *
  */
 public class ClubDeskRedis {
 
-	public static final String CLUB_RULES				= "club.rules.%d";
-	public static final String CLUB_RULE_SETTING		= "club.rule.setting.%d.%d";
+	// 未开始的牌桌
+	public static final String CLUB_DESKS_WAITING			= "club.desks.waiting.%d";
+
+	// 正在进行游戏的牌桌
+	public static final String CLUB_DESKS_STARTED			= "club.desks.started.%d";
 	
-	private static RScoredSortedSet<String> getRScoredSortedSet(int clubId) {
-		String key = String.format(CLUB_RULES, clubId);
+	// 牌桌属性：玩法、状态、当前局数等
+	public static final String CLUB_DESK			= "club.desk.%d.%d";
+	
+	public static final String FIELD_RULE			= "rule";
+	public static final String FIELD_STATUS			= "status";
+	public static final String FIELD_CURRENT_SET	= "curSet";
+	
+	// 牌桌各座位的uid，座位从1开始编号
+	public static final String CLUB_DESK_SEATS				= "club.desk.seats.%d.%d";
+
+	private static RScoredSortedSet<Long> getRScoredSortedSetWaiting(int clubId) {
+		String key = String.format(CLUB_DESKS_WAITING, clubId);
 		RedissonClient redissonClient = RedissonManager.getRedission();
 		return redissonClient.getScoredSortedSet(key);
 	}
 	
-	public static List<GameRule> getGameRules(int clubId) {
-		RScoredSortedSet<String> rScoredSortedSet = getRScoredSortedSet(clubId);
-		Collection<String> ruleIds = rScoredSortedSet.valueRange(0, -1);
-		List<GameRule> result = new LinkedList<GameRule>();
-		for(String ruleId : ruleIds) {
-			result.add(GameRule.valueOf(Integer.parseInt(ruleId)));
-		}
-		return result;
-	}
-
-	public static boolean addGameRule(int clubId, GameRule rule) {
-		RScoredSortedSet<String> rScoredSortedSet = getRScoredSortedSet(clubId);
-		return rScoredSortedSet.add(rule.getNumber(), String.valueOf(rule.getNumber()));
+	/**
+	 * 私有竞技场：增加一个等待的牌桌ID
+	 * @param clubId
+	 * @param deskId
+	 * @return
+	 */
+	public static boolean addWaiting(int clubId, long deskId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetWaiting(clubId);
+		return deskIds.add(deskId, deskId);
 	}
 	
-	private static RMap<String, String> getRMapSetting(int clubId, GameRule rule) {
-		String key = String.format(CLUB_RULE_SETTING, clubId, rule.getNumber());
+	/**
+	 * 私有竞技场：删除一个等待的牌桌ID
+	 * @param clubId
+	 * @param deskId
+	 * @return
+	 */
+	public static boolean removeWaiting(int clubId, long deskId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetWaiting(clubId);
+		return deskIds.remove(deskId);
+	}
+	
+	/**
+	 * 私有竞技场：返回等待的牌桌ID
+	 * @param clubId
+	 * @return
+	 */
+	public static Collection<Long> getWaitings(int clubId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetWaiting(clubId);
+		return deskIds.valueRange(0, -1);
+	}
+	
+	private static RScoredSortedSet<Long> getRScoredSortedSetStarted(int clubId) {
+		String key = String.format(CLUB_DESKS_STARTED, clubId);
+		RedissonClient redissonClient = RedissonManager.getRedission();
+		return redissonClient.getScoredSortedSet(key);
+	}
+	
+	/**
+	 * 私有竞技场：增加一个进行的牌桌ID
+	 * @param clubId
+	 * @param deskId
+	 * @return
+	 */
+	public static boolean addStarted(int clubId, long deskId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetStarted(clubId);
+		return deskIds.add(deskId, deskId);
+	}
+	
+	/**
+	 * 私有竞技场：删除一个进行的牌桌ID
+	 * @param clubId
+	 * @param deskId
+	 * @return
+	 */
+	public static boolean removeStarted(int clubId, long deskId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetStarted(clubId);
+		return deskIds.remove(deskId);
+	}
+	
+	/**
+	 * 私有竞技场：返回进行的牌桌ID
+	 * @param clubId
+	 * @return
+	 */
+	public static Collection<Long> getStarteds(int clubId) {
+		RScoredSortedSet<Long> deskIds = getRScoredSortedSetStarted(clubId);
+		return deskIds.valueRange(0, -1);
+	}
+	
+	private static RMap<String, String> getRMap(int clubId, long deskId) {
+		String key = String.format(CLUB_DESK, clubId, deskId);
 		RedissonClient redissonClient = RedissonManager.getRedission();
 		return redissonClient.getMap(key);
 	}
 	
-	public static boolean putSetting(ClubRule clubRule) {
-		RMap<String, String> rMap = getRMapSetting(clubRule.getClubId(), clubRule.getRule());
-		rMap.putAll(clubRule.getSetting().getAllStr());
-		return true;
+	public static void putDesk(Desk desk) {
+		RMap<String, String> rMap = getRMap(desk.getClubId(), desk.getDeskId());
+		rMap.put(FIELD_RULE, String.valueOf(desk.getRule().getNumber()));
+		rMap.put(FIELD_STATUS, String.valueOf(desk.getStatus().getNumber()));
+		rMap.put(FIELD_CURRENT_SET, String.valueOf(desk.getCurSet()));
 	}
 	
-	public static AttrsModel getSetting(int clubId, GameRule rule) {
-		RMap<String, String> rMap = getRMapSetting(clubId, rule);
-		AttrsModel setting = new AttrsModel();
-		setting.putAll(rMap.readAllMap());
-		return setting;
+	public static Desk getDesk(int clubId, long deskId) {
+		Desk desk = new Desk(deskId);
+		desk.setClubId(clubId);
+		
+		RMap<String, String> rMap = getRMap(clubId, deskId);
+		if(!rMap.isExists()) return desk;
+		
+		desk.setRule(GameRule.valueOf(CollectionUtils.getMapInt(rMap, FIELD_RULE)));
+		desk.setStatus(GameStatus.valueOf(CollectionUtils.getMapInt(rMap, FIELD_STATUS)));
+		desk.setCurSet(CollectionUtils.getMapInt(rMap, FIELD_CURRENT_SET));
+		return desk;
 	}
-
-	public static boolean putSettingAttr(int clubId, GameRule rule, String key, String value) {
-		RMap<String, String> rMap = getRMapSetting(clubId, rule);
+	
+	public static boolean putAttr(int clubId, long deskId, String key, String value) {
+		RMap<String, String> rMap = getRMap(clubId, deskId);
 		rMap.put(key, value);
 		return true;
 	}
 	
-	public static String getSettingAttr(int clubId, GameRule rule, String key) {
-		RMap<String, String> rMap = getRMapSetting(clubId, rule);
+	public static String getAttr(int clubId, long deskId, String key) {
+		RMap<String, String> rMap = getRMap(clubId, deskId);
 		return rMap.get(key);
+	}
+	
+	public static boolean delete(int clubId, long deskId) {
+		RMap<String, String> rMap = getRMap(clubId, deskId);
+		return rMap.delete();
+	}
+	
+	
+	private static RMap<String, String> getRMapSeats(int clubId, long deskId) {
+		String key = String.format(CLUB_DESK_SEATS, clubId, deskId);
+		RedissonClient redissonClient = RedissonManager.getRedission();
+		return redissonClient.getMap(key);
+	}
+	
+	public static boolean putSeat(int clubId, long deskId, int seat, int uid) {
+		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
+		rMap.put(String.valueOf(seat), String.valueOf(uid));
+		return true;
+	}
+	
+	public static Map<String, String> getSeats(int clubId, long deskId) {
+		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
+		return rMap.readAllMap();
+	}
+
+	public static boolean deleteSeats(int clubId, long deskId) {
+		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
+		return rMap.delete();
 	}
 	
 }

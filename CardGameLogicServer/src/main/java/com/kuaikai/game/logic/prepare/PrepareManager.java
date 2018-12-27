@@ -33,15 +33,18 @@ public class PrepareManager {
 	}
 	
 	public static void onUserLogin(int uid) {
-		if(PropertyManager.isDebug()) {
-			// DEBUG 模式时，设置为大众亮六飞一竞技场
-			PlayerArenaRedis.putUserDesk(uid, ClubMock.CLUB_ID_PUB_LIANG, 0);
-		}
-		
 		Desk desk = PlayerArenaRedis.getUserDesk(uid);
+		
 		if(!desk.hasClub()) {	// 未找到竞技场
-			logger.warn("PrepareManager.onUserLogin@Club not found|uid={}", uid);
-			return;
+			if(PropertyManager.isDebug()) {
+				// DEBUG 模式时，设置为大众亮六飞一竞技场
+				int debugClubId = ClubMock.CLUB_ID_PUB_LIANG;
+				PlayerArenaRedis.putUserDesk(uid, debugClubId, 0);
+				logger.info("PrepareManager.onUserLogin@Club set as {} for debug|uid={}", debugClubId, uid);
+			} else {
+				logger.warn("PrepareManager.onUserLogin@Club not found|uid={}", uid);
+				return;	
+			}
 		}
 		
 		Club club = ClubRedis.getClub(desk.getClubId());

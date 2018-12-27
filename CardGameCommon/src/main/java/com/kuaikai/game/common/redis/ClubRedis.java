@@ -19,6 +19,8 @@ public class ClubRedis {
 	public static final String FIELD_NAME		= "name";
 	public static final String FIELD_OWNER_ID	= "ownerId";
 	public static final String FIELD_TOTAL		= "total";
+	public static final String FIELD_TOTAL_DESK	= "totalDesk";
+	public static final String FIELD_DESK_ID	= "deskId";
 	
 	private static RMap<String, String> getRMap(int clubId) {
 		String key = String.format(CLUB, clubId);
@@ -32,6 +34,7 @@ public class ClubRedis {
 		rMap.put(FIELD_NAME, club.getName());
 		rMap.put(FIELD_OWNER_ID, String.valueOf(club.getOwnerId()));
 		rMap.put(FIELD_TOTAL, String.valueOf(club.getTotal()));
+		rMap.put(FIELD_TOTAL_DESK, String.valueOf(club.getTotalDesk()));
 		return true;
 	}
 	
@@ -50,6 +53,11 @@ public class ClubRedis {
 	public static String getAttr(int clubId, String key) {
 		RMap<String, String> rMap = getRMap(clubId);
 		return rMap.get(key);
+	}
+	
+	public static long incrDeskId(int clubId) {
+		RMap<String, String> rMap = getRMap(clubId);
+		return Long.parseLong(rMap.addAndGet(FIELD_DESK_ID, 1));
 	}
 	
 	public static boolean putOwnerId(int clubId, int ownerId) {

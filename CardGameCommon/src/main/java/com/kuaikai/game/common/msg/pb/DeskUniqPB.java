@@ -11,15 +11,15 @@ public final class DeskUniqPB {
   public interface DeskUniqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 deskId = 1;
+    // required int64 deskId = 1;
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required int64 deskId = 1;</code>
      */
     boolean hasDeskId();
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required int64 deskId = 1;</code>
      */
-    int getDeskId();
+    long getDeskId();
 
     // optional int32 clubId = 2;
     /**
@@ -88,7 +88,7 @@ public final class DeskUniqPB {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              deskId_ = input.readInt32();
+              deskId_ = input.readInt64();
               break;
             }
             case 16: {
@@ -136,19 +136,19 @@ public final class DeskUniqPB {
     }
 
     private int bitField0_;
-    // required int32 deskId = 1;
+    // required int64 deskId = 1;
     public static final int DESKID_FIELD_NUMBER = 1;
-    private int deskId_;
+    private long deskId_;
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required int64 deskId = 1;</code>
      */
     public boolean hasDeskId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 deskId = 1;</code>
+     * <code>required int64 deskId = 1;</code>
      */
-    public int getDeskId() {
+    public long getDeskId() {
       return deskId_;
     }
 
@@ -169,7 +169,7 @@ public final class DeskUniqPB {
     }
 
     private void initFields() {
-      deskId_ = 0;
+      deskId_ = 0L;
       clubId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -189,7 +189,7 @@ public final class DeskUniqPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, deskId_);
+        output.writeInt64(1, deskId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, clubId_);
@@ -205,7 +205,7 @@ public final class DeskUniqPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, deskId_);
+          .computeInt64Size(1, deskId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -331,7 +331,7 @@ public final class DeskUniqPB {
 
       public Builder clear() {
         super.clear();
-        deskId_ = 0;
+        deskId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         clubId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -424,35 +424,35 @@ public final class DeskUniqPB {
       }
       private int bitField0_;
 
-      // required int32 deskId = 1;
-      private int deskId_ ;
+      // required int64 deskId = 1;
+      private long deskId_ ;
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required int64 deskId = 1;</code>
        */
       public boolean hasDeskId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required int64 deskId = 1;</code>
        */
-      public int getDeskId() {
+      public long getDeskId() {
         return deskId_;
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required int64 deskId = 1;</code>
        */
-      public Builder setDeskId(int value) {
+      public Builder setDeskId(long value) {
         bitField0_ |= 0x00000001;
         deskId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 deskId = 1;</code>
+       * <code>required int64 deskId = 1;</code>
        */
       public Builder clearDeskId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        deskId_ = 0;
+        deskId_ = 0L;
         onChanged();
         return this;
       }
@@ -516,7 +516,7 @@ public final class DeskUniqPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\025common/DeskUniq.proto\022\006common\"*\n\010DeskU" +
-      "niq\022\016\n\006deskId\030\001 \002(\005\022\016\n\006clubId\030\002 \001(\005B,\n\036c" +
+      "niq\022\016\n\006deskId\030\001 \002(\003\022\016\n\006clubId\030\002 \001(\005B,\n\036c" +
       "om.kuaikai.game.common.msg.pbB\nDeskUniqP" +
       "B"
     };

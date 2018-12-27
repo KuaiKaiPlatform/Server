@@ -2,7 +2,7 @@ package com.kuaikai.game.common.mock;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,15 +16,15 @@ public class DeskMock {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeskMock.class);
 	
-	private static Map<Integer, Integer> uid2deskId = new ConcurrentHashMap<Integer, Integer>();
+	private static Map<Integer, Long> uid2deskId = new ConcurrentHashMap<Integer, Long>();
 	private static Map<String, Desk> desks = new ConcurrentHashMap<String, Desk>();
-	private static AtomicInteger deskIdInc = new AtomicInteger();
+	private static AtomicLong deskIdInc = new AtomicLong();
 	
 	private static final int CLUB_ID = 1;
 	
 	public static Desk joinDesk(int uid) {
 		// 已经在牌桌中
-		Integer deskId = uid2deskId.get(uid);
+		Long deskId = uid2deskId.get(uid);
 		Desk desk = (deskId != null)?desks.get(deskId + "-" + CLUB_ID):null;
 		if(desk != null) return desk;
 		
@@ -42,7 +42,7 @@ public class DeskMock {
 		return desk;
 	}
 	
-	private static Desk createDesk(int deskId) {
+	private static Desk createDesk(long deskId) {
 		Desk desk = new Desk(deskId);
 		desk.setClubId(CLUB_ID);
 		desk.getSetting().put(CardGameSetting.TOTAL_SET, 8).put(CardGameSetting.TOTAL_PLAYER, 4).put(CardGameSetting.MIN_PLAYER, 4);
