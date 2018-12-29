@@ -82,8 +82,15 @@ public class Club {
 	 * @return
 	 */
 	public boolean isPub() {
+		return Club.isPub(ownerId);
+	}
+
+	/**
+	 * 是否为大众竞技场
+	 * @return
+	 */
+	public static boolean isPub(int ownerId) {
 		return ownerId == 0;
 	}
-	
 	
 }

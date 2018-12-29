@@ -35,7 +35,15 @@ public class ClubDeskRedis {
 	
 	// 牌桌各座位的uid，座位从1开始编号
 	public static final String CLUB_DESK_SEATS				= "club.desk.seats.%d.%d";
+	
+	// 牌桌各玩家
+	public static final String CLUB_DESK_PLAYER				= "club.desk.player.%d.%d.%d";
+	public static final String FIELD_SEAT					= "seat";
+	
+	// 牌桌各玩家各项分数
+	public static final String CLUB_DESK_PLAYER_POINTS		= "club.desk.player.points.%d.%d.%d";
 
+	
 	private static RScoredSortedSet<Long> getRScoredSortedSetWaiting(int clubId) {
 		String key = String.format(CLUB_DESKS_WAITING, clubId);
 		RedissonClient redissonClient = RedissonManager.getRedission();
@@ -112,7 +120,7 @@ public class ClubDeskRedis {
 		return deskIds.valueRange(0, -1);
 	}
 	
-	private static RMap<String, String> getRMap(int clubId, long deskId) {
+	public static RMap<String, String> getRMap(int clubId, long deskId) {
 		String key = String.format(CLUB_DESK, clubId, deskId);
 		RedissonClient redissonClient = RedissonManager.getRedission();
 		return redissonClient.getMap(key);
@@ -135,6 +143,9 @@ public class ClubDeskRedis {
 		desk.setRule(GameRule.valueOf(CollectionUtils.getMapInt(rMap, FIELD_RULE)));
 		desk.setStatus(GameStatus.valueOf(CollectionUtils.getMapInt(rMap, FIELD_STATUS)));
 		desk.setCurSet(CollectionUtils.getMapInt(rMap, FIELD_CURRENT_SET));
+		
+		// 复制俱乐部玩法规则到牌桌
+		desk.setSetting(ClubRuleRedis.getSetting(clubId, desk.getRule()));
 		return desk;
 	}
 	
@@ -166,6 +177,12 @@ public class ClubDeskRedis {
 		rMap.put(String.valueOf(seat), String.valueOf(uid));
 		return true;
 	}
+
+	public static int putNextSeat(int clubId, long deskId, int uid) {
+		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
+		rMap.put(String.valueOf(rMap.size()+1), String.valueOf(uid));
+		return rMap.size();
+	}
 	
 	public static Map<String, String> getSeats(int clubId, long deskId) {
 		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
@@ -175,6 +192,20 @@ public class ClubDeskRedis {
 	public static boolean deleteSeats(int clubId, long deskId) {
 		RMap<String, String> rMap = getRMapSeats(clubId, deskId);
 		return rMap.delete();
+	}
+	
+	private static RMap<String, String> getRMapPlayer(int clubId, long deskId, int uid) {
+		String key = String.format(CLUB_DESK_PLAYER, clubId, deskId, uid);
+		RedissonClient redissonClient = RedissonManager.getRedission();
+		return redissonClient.getMap(key);
+	}
+	
+	public static boolean isPlayerSeated(int clubId, long deskId, int uid) {
+		return getRMapPlayer(clubId, deskId, uid).isExists();
+	}
+	
+	public static void playerSeat(int clubId, long deskId, int uid, int seat) {
+		getRMapPlayer(clubId, deskId, uid).put(FIELD_SEAT, String.valueOf(seat));
 	}
 	
 }

@@ -91,7 +91,12 @@ public class Desk {
 	}
 	
 	public boolean isFull() {
-		return id2Player.size() >= setting.getInt(CardGameSetting.TOTAL_PLAYER);
+		int totalPlayer = setting.getInt(CardGameSetting.TOTAL_PLAYER);
+		return isFull(totalPlayer, id2Player.size());
+	}
+
+	public static boolean isFull(int totalPlayer, int num) {
+		return totalPlayer > 0 && num >= totalPlayer;
 	}
 	
 	public GameRule getRule() {

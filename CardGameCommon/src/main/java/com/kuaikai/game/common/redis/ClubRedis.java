@@ -2,6 +2,8 @@ package com.kuaikai.game.common.redis;
 
 import org.redisson.api.RMap;
 import org.redisson.api.RedissonClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.db.RedissonManager;
 import com.kuaikai.game.common.model.Club;
@@ -14,6 +16,8 @@ import com.kuaikai.game.common.utils.CollectionUtils;
  */
 public class ClubRedis {
 
+	private static final Logger logger = LoggerFactory.getLogger(ClubRedis.class);
+	
 	public static final String CLUB				= "club.%d";
 	public static final String FIELD_CLUB_ID	= "id";
 	public static final String FIELD_NAME		= "name";
@@ -55,9 +59,20 @@ public class ClubRedis {
 		return rMap.get(key);
 	}
 	
+	public static long getDeskId(int clubId) {
+		RMap<String, String> rMap = getRMap(clubId);
+		return CollectionUtils.getMapLong(rMap, FIELD_DESK_ID);
+	}
+	
 	public static long incrDeskId(int clubId) {
 		RMap<String, String> rMap = getRMap(clubId);
-		return Long.parseLong(rMap.addAndGet(FIELD_DESK_ID, 1));
+		try {
+			return Long.parseLong(rMap.addAndGet(FIELD_DESK_ID, 1));
+		} catch(Exception e) {
+			logger.warn("ClubRedis.incrDeskId@exception|clubId={}", clubId, e);
+		}
+		rMap.put(FIELD_DESK_ID, String.valueOf(1));
+		return 1;
 	}
 	
 	public static boolean putOwnerId(int clubId, int ownerId) {

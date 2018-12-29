@@ -55,7 +55,7 @@ public class ClubRuleRedis {
 		return rScoredSortedSet.add(rule.getNumber(), String.valueOf(rule.getNumber()));
 	}
 	
-	private static RMap<String, String> getRMapSetting(int clubId, GameRule rule) {
+	public static RMap<String, String> getRMapSetting(int clubId, GameRule rule) {
 		String key = String.format(CLUB_RULE_SETTING, clubId, rule.getNumber());
 		RedissonClient redissonClient = RedissonManager.getRedission();
 		return redissonClient.getMap(key);
