@@ -57,6 +57,7 @@ public class MahjongEngine {
 		calculator = CalculatorFactory.createCalculator(desk);
 		
 		initPlayMode();
+		//initStage();
 	}
 	
 	public CardPool getCardPool() {
@@ -74,6 +75,12 @@ public class MahjongEngine {
 	public OperationManager getOperManager() {
 		return operManager;
 	}
+	
+//	private void initStage() {
+//		if(desk.getSetting().getBool(CardGameSetting.XIA_ZHU)) {
+//			this.enterXiaZhuStage();
+//		}
+//	}
 	
 	public boolean checkStage(SetStage stage) {
 		return stage.equals(this.stage);
@@ -109,16 +116,19 @@ public class MahjongEngine {
 		}
 		
 		// 无可执行操作时，庄家开始摸牌
-		if(!operManager.hasCanExecuteOperations()) MoOperation.execute(desk.getBanker(), null);
+		if(!operManager.hasCanExecuteOperations()) {
+			MoOperation moOper = MoOperation.execute(desk.getBanker(), null);
+			this.getOperManager().onOperationEnd(moOper);
+		}
 	}
 	
-	public boolean isStageXiaZhu() {
-		return this.checkStage(SetStage.XIA_ZHU);
-	}
-
-	public void enterXiaZhuStage() {
-		stage = SetStage.XIA_ZHU;
-	}
+//	public boolean isStageXiaZhu() {
+//		return this.checkStage(SetStage.XIA_ZHU);
+//	}
+//
+//	public void enterXiaZhuStage() {
+//		stage = SetStage.XIA_ZHU;
+//	}
 	
 	public boolean isStageDingQue() {
 		return this.checkStage(SetStage.DING_QUE);
@@ -304,26 +314,29 @@ public class MahjongEngine {
 		// 查找更多可执行的操作：如过了胡，其他玩家可胡、可碰等
 		List<BaseOperation> canExecuteOperations = operManager.getCurrentCanExecuteOperations();
 		if(!canExecuteOperations.isEmpty()) {
-			desk.getMessageSender().syncCanOperRes();
-			return;
-		}
-		
-		// 没有上一步操作，过后庄家开始摸牌，如：抢金不胡
-		BaseOperation lastDone = operManager.getLastDoneOperation();
-		if(lastDone == null) {
-			MoOperation.execute(desk.getBanker(), null);
+			desk.getMessageSender().sendSCanOper();
 			return;
 		}
 		
 		// 上一步是本人操作，过牌后增加一个打牌操作，如：碰后过了听牌，摸后过了暗杠等
-		if(lastDone.getPlayer().equals(player)) {
+		BaseOperation lastDone = operManager.getLastDoneOperation();
+		if(lastDone != null && lastDone.getPlayer().equals(player)) {
 			DaOperation.check(player, lastDone);
-			desk.getMessageSender().syncCanOperRes();
+			desk.getMessageSender().sendSCanOper();
 			return;
 		}
 		
-		// 上一步不是本人操作，下家开始摸牌
-		MoOperation.execute(desk.getNextPlayer(lastDone.getPlayer()), lastDone);
+		// 上一步不是本人操作：下家开始摸牌，否则庄家开始摸牌
+		MahjongPlayer moPlayer = (lastDone != null)?desk.getNextPlayer(lastDone.getPlayer()):desk.getBanker();
+		MoOperation moOper = MoOperation.execute(moPlayer, lastDone);
+
+		if(moOper != null) {
+			// 发送 SOperCard
+			desk.getMessageSender().sendSOperCard();
+			
+			// 操作完成
+			desk.getEngine().onOperationEnd(moOper);
+		}
 	}
 	
 	/*
@@ -331,7 +344,7 @@ public class MahjongEngine {
 	 */
 	public void checkJieSuanStage() {
 		if (isStageJieSuan()) {
-			desk.onSetEnd();
+			desk.onSetEnd(System.currentTimeMillis());
 		}
 	}
 	

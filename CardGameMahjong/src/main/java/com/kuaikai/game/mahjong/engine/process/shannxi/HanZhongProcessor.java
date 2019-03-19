@@ -1,8 +1,8 @@
 package com.kuaikai.game.mahjong.engine.process.shannxi;
 
 import com.kuaikai.game.common.model.AttrsModel;
+import com.kuaikai.game.common.msg.pb.ChairModePB.ChairMode;
 import com.kuaikai.game.common.play.CardGameSetting;
-import com.kuaikai.game.mahjong.engine.constants.ChairMode;
 import com.kuaikai.game.mahjong.engine.process.DefaultProcessor;
 
 public class HanZhongProcessor extends DefaultProcessor {
@@ -17,7 +17,7 @@ public class HanZhongProcessor extends DefaultProcessor {
 		AttrsModel setting = desk.getSetting();
 		
 		// 首局选座模式为 玩家选座
-		setting.put(CardGameSetting.CHAIR_MODE, ChairMode.PLAYER.name());
+		setting.put(CardGameSetting.CHAIR_MODE, ChairMode.PLAYER_VALUE);
 		
 		// 首局手动准备
 		setting.put(CardGameSetting.MANUAL_READY_TO_BEGIN, true);

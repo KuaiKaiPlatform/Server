@@ -417,6 +417,768 @@ public final class JieSuanPB {
      * </pre>
      */
     SI_HE(49, 1050),
+    /**
+     * <code>TIAN_HU = 5001;</code>
+     *
+     * <pre>
+     * 通用非牌型结算项（5001-9999 ）
+     * </pre>
+     */
+    TIAN_HU(50, 5001),
+    /**
+     * <code>DI_HU = 5002;</code>
+     *
+     * <pre>
+     * 地胡
+     * </pre>
+     */
+    DI_HU(51, 5002),
+    /**
+     * <code>ZI_MO = 5003;</code>
+     *
+     * <pre>
+     * 自摸
+     * </pre>
+     */
+    ZI_MO(52, 5003),
+    /**
+     * <code>GANG_SHANG_HUA = 5004;</code>
+     *
+     * <pre>
+     * 杠上花
+     * </pre>
+     */
+    GANG_SHANG_HUA(53, 5004),
+    /**
+     * <code>QIANG_GANG_HU = 5005;</code>
+     *
+     * <pre>
+     * 抢杠胡
+     * </pre>
+     */
+    QIANG_GANG_HU(54, 5005),
+    /**
+     * <code>DI_FEN = 5006;</code>
+     *
+     * <pre>
+     * 底分
+     * </pre>
+     */
+    DI_FEN(55, 5006),
+    /**
+     * <code>MING_GANG_ = 5009;</code>
+     *
+     * <pre>
+     * MING_KE						= 5007;			// 明刻
+     * AN_KE						= 5008;			// 暗刻
+     * </pre>
+     */
+    MING_GANG_(56, 5009),
+    /**
+     * <code>AN_GANG_ = 5010;</code>
+     *
+     * <pre>
+     * 暗杠
+     * </pre>
+     */
+    AN_GANG_(57, 5010),
+    /**
+     * <code>DIAN_GANG_ = 5011;</code>
+     *
+     * <pre>
+     * 点杠
+     * </pre>
+     */
+    DIAN_GANG_(58, 5011),
+    /**
+     * <code>BU_GANG_ = 5012;</code>
+     *
+     * <pre>
+     * 补杠
+     * </pre>
+     */
+    BU_GANG_(59, 5012),
+    /**
+     * <code>SI_GANG = 5013;</code>
+     *
+     * <pre>
+     * 四杠
+     * </pre>
+     */
+    SI_GANG(60, 5013),
+    /**
+     * <code>SAN_GANG = 5014;</code>
+     *
+     * <pre>
+     * 三杠
+     * </pre>
+     */
+    SAN_GANG(61, 5014),
+    /**
+     * <code>SHUANG_GANG = 5015;</code>
+     *
+     * <pre>
+     * 双杠
+     * </pre>
+     */
+    SHUANG_GANG(62, 5015),
+    /**
+     * <code>GANG_ = 5016;</code>
+     *
+     * <pre>
+     * 杠
+     * </pre>
+     */
+    GANG_(63, 5016),
+    /**
+     * <code>PENG_ = 5017;</code>
+     *
+     * <pre>
+     * 碰
+     * </pre>
+     */
+    PENG_(64, 5017),
+    /**
+     * <code>HU_PAI = 5018;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    HU_PAI(65, 5018),
+    /**
+     * <code>ZHI_FEN = 5019;</code>
+     *
+     * <pre>
+     * 支分
+     * </pre>
+     */
+    ZHI_FEN(66, 5019),
+    /**
+     * <code>QI_SHOU_BAO_TING = 5020;</code>
+     *
+     * <pre>
+     * 起手报听
+     * </pre>
+     */
+    QI_SHOU_BAO_TING(67, 5020),
+    /**
+     * <code>HAI_DI_LAO = 5021;</code>
+     *
+     * <pre>
+     * 海底捞
+     * </pre>
+     */
+    HAI_DI_LAO(68, 5021),
+    /**
+     * <code>BET_SCORE = 5022;</code>
+     *
+     * <pre>
+     * 下注分
+     * </pre>
+     */
+    BET_SCORE(69, 5022),
+    /**
+     * <code>GANG_HOU_PAO = 5023;</code>
+     *
+     * <pre>
+     * 杠后炮
+     * </pre>
+     */
+    GANG_HOU_PAO(70, 5023),
+    /**
+     * <code>HUANG_ZHUANG_DOUBLE = 5024;</code>
+     *
+     * <pre>
+     * 荒庄翻倍
+     * </pre>
+     */
+    HUANG_ZHUANG_DOUBLE(71, 5024),
+    /**
+     * <code>GEN_ZHUANG = 5025;</code>
+     *
+     * <pre>
+     * 跟庄
+     * </pre>
+     */
+    GEN_ZHUANG(72, 5025),
+    /**
+     * <code>GEN_HU = 610001;</code>
+     *
+     * <pre>
+     * 陕西麻将特殊牌型(六位：61开头，610001起)
+     * </pre>
+     */
+    GEN_HU(73, 610001),
+    /**
+     * <code>DA_DUI_ZI = 610002;</code>
+     *
+     * <pre>
+     * 大对子（碰碰胡）
+     * </pre>
+     */
+    DA_DUI_ZI(74, 610002),
+    /**
+     * <code>JIN_GOU_DIAO = 610003;</code>
+     *
+     * <pre>
+     * 金钩钓（全求人）
+     * </pre>
+     */
+    JIN_GOU_DIAO(75, 610003),
+    /**
+     * <code>PAO_ZI = 615001;</code>
+     *
+     * <pre>
+     *
+     *  陕西麻将结算(六位：61开头，615001-619999)
+     * </pre>
+     */
+    PAO_ZI(76, 615001),
+    /**
+     * <code>HUA_SHUI_YU = 615002;</code>
+     *
+     * <pre>
+     * 划水抓鱼
+     * </pre>
+     */
+    HUA_SHUI_YU(77, 615002),
+    /**
+     * <code>DIAN_ZI = 615003;</code>
+     *
+     * <pre>
+     * 亮六飞一点子
+     * </pre>
+     */
+    DIAN_ZI(78, 615003),
+    /**
+     * <code>SHUANG_BA_ZHI = 340001;</code>
+     *
+     * <pre>
+     * 芜湖
+     * </pre>
+     */
+    SHUANG_BA_ZHI(79, 340001),
+    /**
+     * <code>BA_ZHI = 340002;</code>
+     *
+     * <pre>
+     * 八支
+     * </pre>
+     */
+    BA_ZHI(80, 340002),
+    /**
+     * <code>SHUANG_SI_HE = 340003;</code>
+     *
+     * <pre>
+     * 双四核
+     * </pre>
+     */
+    SHUANG_SI_HE(81, 340003),
+    /**
+     * <code>TONG_TIAN = 340005;</code>
+     *
+     * <pre>
+     * 通天（一条龙）
+     * </pre>
+     */
+    TONG_TIAN(82, 340005),
+    /**
+     * <code>DUI_DUI_HU = 340006;</code>
+     *
+     * <pre>
+     * 对对胡 （碰碰胡）
+     * </pre>
+     */
+    DUI_DUI_HU(83, 340006),
+    /**
+     * <code>YA_DANG = 340007;</code>
+     *
+     * <pre>
+     * 压档
+     * </pre>
+     */
+    YA_DANG(84, 340007),
+    /**
+     * <code>SHUANG_TONG = 340011;</code>
+     *
+     * <pre>
+     * 无为
+     * </pre>
+     */
+    SHUANG_TONG(85, 340011),
+    /**
+     * <code>QI_TONG = 340012;</code>
+     *
+     * <pre>
+     * 七通
+     * </pre>
+     */
+    QI_TONG(86, 340012),
+    /**
+     * <code>WU_TONG = 340013;</code>
+     *
+     * <pre>
+     * 五通
+     * </pre>
+     */
+    WU_TONG(87, 340013),
+    /**
+     * <code>QUAN_LAO = 340014;</code>
+     *
+     * <pre>
+     * 全老
+     * </pre>
+     */
+    QUAN_LAO(88, 340014),
+    /**
+     * <code>QUAN_XIAO = 340015;</code>
+     *
+     * <pre>
+     * 全小
+     * </pre>
+     */
+    QUAN_XIAO(89, 340015),
+    /**
+     * <code>SHI_LAO = 340016;</code>
+     *
+     * <pre>
+     * 十老
+     * </pre>
+     */
+    SHI_LAO(90, 340016),
+    /**
+     * <code>SHI_XIAO = 340017;</code>
+     *
+     * <pre>
+     * 十小
+     * </pre>
+     */
+    SHI_XIAO(91, 340017),
+    /**
+     * <code>SHI_YI_ZHI = 340018;</code>
+     *
+     * <pre>
+     * 十一支
+     * </pre>
+     */
+    SHI_YI_ZHI(92, 340018),
+    /**
+     * <code>BA_TONG = 340020;</code>
+     *
+     * <pre>
+     * 和县
+     * </pre>
+     */
+    BA_TONG(93, 340020),
+    /**
+     * <code>JIAO = 345001;</code>
+     *
+     * <pre>
+     * 芜湖麻将
+     * </pre>
+     */
+    JIAO(94, 345001),
+    /**
+     * <code>ZUI = 345002;</code>
+     *
+     * <pre>
+     * 嘴
+     * </pre>
+     */
+    ZUI(95, 345002),
+    /**
+     * <code>JIAO_ZUI = 345003;</code>
+     *
+     * <pre>
+     * 一交多嘴
+     * </pre>
+     */
+    JIAO_ZUI(96, 345003),
+    /**
+     * <code>WUHU_DI = 345004;</code>
+     *
+     * <pre>
+     * 底番
+     * </pre>
+     */
+    WUHU_DI(97, 345004),
+    /**
+     * <code>WUHU_ZHI = 345005;</code>
+     *
+     * <pre>
+     * 支番
+     * </pre>
+     */
+    WUHU_ZHI(98, 345005),
+    /**
+     * <code>ZHUANG_FEN = 345006;</code>
+     *
+     * <pre>
+     * 无为麻将
+     * </pre>
+     */
+    ZHUANG_FEN(99, 345006),
+    /**
+     * <code>BU_DONG_SHOU = 345007;</code>
+     *
+     * <pre>
+     * 不动手
+     * </pre>
+     */
+    BU_DONG_SHOU(100, 345007),
+    /**
+     * <code>GANG_KAI_HU = 345008;</code>
+     *
+     * <pre>
+     * 杠开胡
+     * </pre>
+     */
+    GANG_KAI_HU(101, 345008),
+    /**
+     * <code>GANG_KAI_HU_YA_DANG = 345009;</code>
+     *
+     * <pre>
+     * 杠开胡（压档）
+     * </pre>
+     */
+    GANG_KAI_HU_YA_DANG(102, 345009),
+    /**
+     * <code>DI_SI_GE_TOU_KA = 345010;</code>
+     *
+     * <pre>
+     * 第四个头卡
+     * </pre>
+     */
+    DI_SI_GE_TOU_KA(103, 345010),
+    /**
+     * <code>HONG_ZHONG_MING_GANG = 345011;</code>
+     *
+     * <pre>
+     * 红中明杠
+     * </pre>
+     */
+    HONG_ZHONG_MING_GANG(104, 345011),
+    /**
+     * <code>HONG_ZHONG_AN_GANG = 345012;</code>
+     *
+     * <pre>
+     * 红中暗杠
+     * </pre>
+     */
+    HONG_ZHONG_AN_GANG(105, 345012),
+    /**
+     * <code>DA_CAI = 345013;</code>
+     *
+     * <pre>
+     * 歙县麻将
+     * </pre>
+     */
+    DA_CAI(106, 345013),
+    /**
+     * <code>WU_CAI = 345014;</code>
+     *
+     * <pre>
+     * 无财
+     * </pre>
+     */
+    WU_CAI(107, 345014),
+    /**
+     * <code>PENG_CAI = 345015;</code>
+     *
+     * <pre>
+     * 碰财神
+     * </pre>
+     */
+    PENG_CAI(108, 345015),
+    /**
+     * <code>GANG_CAI = 345016;</code>
+     *
+     * <pre>
+     * 杠财神
+     * </pre>
+     */
+    GANG_CAI(109, 345016),
+    /**
+     * <code>SHUN_FAN_BAO = 345017;</code>
+     *
+     * <pre>
+     * 顺反包
+     * </pre>
+     */
+    SHUN_FAN_BAO(110, 345017),
+    /**
+     * <code>LAO_XIAO_DUI = 345018;</code>
+     *
+     * <pre>
+     * 和县麻将
+     * </pre>
+     */
+    LAO_XIAO_DUI(111, 345018),
+    /**
+     * <code>BANG_BANG = 345019;</code>
+     *
+     * <pre>
+     * 棒棒（一色三连对）
+     * </pre>
+     */
+    BANG_BANG(112, 345019),
+    /**
+     * <code>QUAN_YAO_DUI_DUI_HU = 345020;</code>
+     *
+     * <pre>
+     * 全幺对对胡（混幺九+碰碰胡）
+     * </pre>
+     */
+    QUAN_YAO_DUI_DUI_HU(113, 345020),
+    /**
+     * <code>SI_DA_KAN = 345021;</code>
+     *
+     * <pre>
+     * 四大坎（一色四连刻或四字刻）
+     * </pre>
+     */
+    SI_DA_KAN(114, 345021),
+    /**
+     * <code>SAN_DA_KAN = 345022;</code>
+     *
+     * <pre>
+     * 三大坎（一色三连刻或三字刻）
+     * </pre>
+     */
+    SAN_DA_KAN(115, 345022),
+    /**
+     * <code>SHUANG_LIAN_HAO = 345023;</code>
+     *
+     * <pre>
+     * 双连号
+     * </pre>
+     */
+    SHUANG_LIAN_HAO(116, 345023),
+    /**
+     * <code>XIAO_LIAN_HAO = 345024;</code>
+     *
+     * <pre>
+     * 小连号（连六）
+     * </pre>
+     */
+    XIAO_LIAN_HAO(117, 345024),
+    /**
+     * <code>KAN_KAN_HU = 345025;</code>
+     *
+     * <pre>
+     * 坎坎胡（碰碰胡+门前清）
+     * </pre>
+     */
+    KAN_KAN_HU(118, 345025),
+    /**
+     * <code>SHUANG_BANG_BANG = 345026;</code>
+     *
+     * <pre>
+     * 双棒棒（一色三连对双）
+     * </pre>
+     */
+    SHUANG_BANG_BANG(119, 345026),
+    /**
+     * <code>ZHONG_FA_BAI_SAN_DA_KAN = 345027;</code>
+     *
+     * <pre>
+     * 中发白三大坎（大三元）
+     * </pre>
+     */
+    ZHONG_FA_BAI_SAN_DA_KAN(120, 345027),
+    /**
+     * <code>DA_DIAO_CHE = 345028;</code>
+     *
+     * <pre>
+     * 大吊车（全求人+碰碰胡）
+     * </pre>
+     */
+    DA_DIAO_CHE(121, 345028),
+    /**
+     * <code>DA_NA = 345029;</code>
+     *
+     * <pre>
+     * 大拿
+     * </pre>
+     */
+    DA_NA(122, 345029),
+    /**
+     * <code>QING_NA = 345030;</code>
+     *
+     * <pre>
+     * 清拿
+     * </pre>
+     */
+    QING_NA(123, 345030),
+    /**
+     * <code>PING_NA = 345031;</code>
+     *
+     * <pre>
+     * 平拿
+     * </pre>
+     */
+    PING_NA(124, 345031),
+    /**
+     * <code>MO_FEN = 345032;</code>
+     *
+     * <pre>
+     * 摸分
+     * </pre>
+     */
+    MO_FEN(125, 345032),
+    /**
+     * <code>DU_YA = 345033;</code>
+     *
+     * <pre>
+     * 独押（边张或坎张）
+     * </pre>
+     */
+    DU_YA(126, 345033),
+    /**
+     * <code>KU_ZHI_YA = 345034;</code>
+     *
+     * <pre>
+     * 枯枝押（边张或坎张+绝张）
+     * </pre>
+     */
+    KU_ZHI_YA(127, 345034),
+    /**
+     * <code>ZHI = 345035;</code>
+     *
+     * <pre>
+     * 支
+     * </pre>
+     */
+    ZHI(128, 345035),
+    /**
+     * <code>TONG_ = 345036;</code>
+     *
+     * <pre>
+     * 通
+     * </pre>
+     */
+    TONG_(129, 345036),
+    /**
+     * <code>KAN_ZI = 345037;</code>
+     *
+     * <pre>
+     * 坎子
+     * </pre>
+     */
+    KAN_ZI(130, 345037),
+    /**
+     * <code>SAN_DA_KAN_DAI_TOU = 345038;</code>
+     *
+     * <pre>
+     * 三大坎带头（一色三连刻或三字刻附一将）
+     * </pre>
+     */
+    SAN_DA_KAN_DAI_TOU(131, 345038),
+    /**
+     * <code>BAO_PAI = 345039;</code>
+     *
+     * <pre>
+     * 包牌
+     * </pre>
+     */
+    BAO_PAI(132, 345039),
+    /**
+     * <code>MO_ZI = 345040;</code>
+     *
+     * <pre>
+     * 摸子
+     * </pre>
+     */
+    MO_ZI(133, 345040),
+    /**
+     * <code>LUAN_FENG = 345041;</code>
+     *
+     * <pre>
+     * 乱风
+     * </pre>
+     */
+    LUAN_FENG(134, 345041),
+    /**
+     * <code>DU_YI = 345042;</code>
+     *
+     * <pre>
+     * 明光麻将
+     * </pre>
+     */
+    DU_YI(135, 345042),
+    /**
+     * <code>SHUANG_QING = 345043;</code>
+     *
+     * <pre>
+     * 双清
+     * </pre>
+     */
+    SHUANG_QING(136, 345043),
+    /**
+     * <code>SI_PEI_ZI = 345044;</code>
+     *
+     * <pre>
+     * 四配子
+     * </pre>
+     */
+    SI_PEI_ZI(137, 345044),
+    /**
+     * <code>PEI_ZI_CHI = 345045;</code>
+     *
+     * <pre>
+     * 配子吃
+     * </pre>
+     */
+    PEI_ZI_CHI(138, 345045),
+    /**
+     * <code>PEI_ZI_CHI_PEI_ZI = 345046;</code>
+     *
+     * <pre>
+     * 配子吃配子
+     * </pre>
+     */
+    PEI_ZI_CHI_PEI_ZI(139, 345046),
+    /**
+     * <code>DU_PEI_ZI = 345047;</code>
+     *
+     * <pre>
+     * 独配子
+     * </pre>
+     */
+    DU_PEI_ZI(140, 345047),
+    /**
+     * <code>KAN_JIANG = 345048;</code>
+     *
+     * <pre>
+     * 来安麻将老三番
+     * </pre>
+     */
+    KAN_JIANG(141, 345048),
+    /**
+     * <code>FENG_JIANG = 345049;</code>
+     *
+     * <pre>
+     * 风将
+     * </pre>
+     */
+    FENG_JIANG(142, 345049),
+    /**
+     * <code>YING_QUE = 345050;</code>
+     *
+     * <pre>
+     * 硬缺
+     * </pre>
+     */
+    YING_QUE(143, 345050),
+    /**
+     * <code>RUAN_QUE = 345051;</code>
+     *
+     * <pre>
+     * 软缺
+     * </pre>
+     */
+    RUAN_QUE(144, 345051),
     ;
 
     /**
@@ -819,6 +1581,768 @@ public final class JieSuanPB {
      * </pre>
      */
     public static final int SI_HE_VALUE = 1050;
+    /**
+     * <code>TIAN_HU = 5001;</code>
+     *
+     * <pre>
+     * 通用非牌型结算项（5001-9999 ）
+     * </pre>
+     */
+    public static final int TIAN_HU_VALUE = 5001;
+    /**
+     * <code>DI_HU = 5002;</code>
+     *
+     * <pre>
+     * 地胡
+     * </pre>
+     */
+    public static final int DI_HU_VALUE = 5002;
+    /**
+     * <code>ZI_MO = 5003;</code>
+     *
+     * <pre>
+     * 自摸
+     * </pre>
+     */
+    public static final int ZI_MO_VALUE = 5003;
+    /**
+     * <code>GANG_SHANG_HUA = 5004;</code>
+     *
+     * <pre>
+     * 杠上花
+     * </pre>
+     */
+    public static final int GANG_SHANG_HUA_VALUE = 5004;
+    /**
+     * <code>QIANG_GANG_HU = 5005;</code>
+     *
+     * <pre>
+     * 抢杠胡
+     * </pre>
+     */
+    public static final int QIANG_GANG_HU_VALUE = 5005;
+    /**
+     * <code>DI_FEN = 5006;</code>
+     *
+     * <pre>
+     * 底分
+     * </pre>
+     */
+    public static final int DI_FEN_VALUE = 5006;
+    /**
+     * <code>MING_GANG_ = 5009;</code>
+     *
+     * <pre>
+     * MING_KE						= 5007;			// 明刻
+     * AN_KE						= 5008;			// 暗刻
+     * </pre>
+     */
+    public static final int MING_GANG__VALUE = 5009;
+    /**
+     * <code>AN_GANG_ = 5010;</code>
+     *
+     * <pre>
+     * 暗杠
+     * </pre>
+     */
+    public static final int AN_GANG__VALUE = 5010;
+    /**
+     * <code>DIAN_GANG_ = 5011;</code>
+     *
+     * <pre>
+     * 点杠
+     * </pre>
+     */
+    public static final int DIAN_GANG__VALUE = 5011;
+    /**
+     * <code>BU_GANG_ = 5012;</code>
+     *
+     * <pre>
+     * 补杠
+     * </pre>
+     */
+    public static final int BU_GANG__VALUE = 5012;
+    /**
+     * <code>SI_GANG = 5013;</code>
+     *
+     * <pre>
+     * 四杠
+     * </pre>
+     */
+    public static final int SI_GANG_VALUE = 5013;
+    /**
+     * <code>SAN_GANG = 5014;</code>
+     *
+     * <pre>
+     * 三杠
+     * </pre>
+     */
+    public static final int SAN_GANG_VALUE = 5014;
+    /**
+     * <code>SHUANG_GANG = 5015;</code>
+     *
+     * <pre>
+     * 双杠
+     * </pre>
+     */
+    public static final int SHUANG_GANG_VALUE = 5015;
+    /**
+     * <code>GANG_ = 5016;</code>
+     *
+     * <pre>
+     * 杠
+     * </pre>
+     */
+    public static final int GANG__VALUE = 5016;
+    /**
+     * <code>PENG_ = 5017;</code>
+     *
+     * <pre>
+     * 碰
+     * </pre>
+     */
+    public static final int PENG__VALUE = 5017;
+    /**
+     * <code>HU_PAI = 5018;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    public static final int HU_PAI_VALUE = 5018;
+    /**
+     * <code>ZHI_FEN = 5019;</code>
+     *
+     * <pre>
+     * 支分
+     * </pre>
+     */
+    public static final int ZHI_FEN_VALUE = 5019;
+    /**
+     * <code>QI_SHOU_BAO_TING = 5020;</code>
+     *
+     * <pre>
+     * 起手报听
+     * </pre>
+     */
+    public static final int QI_SHOU_BAO_TING_VALUE = 5020;
+    /**
+     * <code>HAI_DI_LAO = 5021;</code>
+     *
+     * <pre>
+     * 海底捞
+     * </pre>
+     */
+    public static final int HAI_DI_LAO_VALUE = 5021;
+    /**
+     * <code>BET_SCORE = 5022;</code>
+     *
+     * <pre>
+     * 下注分
+     * </pre>
+     */
+    public static final int BET_SCORE_VALUE = 5022;
+    /**
+     * <code>GANG_HOU_PAO = 5023;</code>
+     *
+     * <pre>
+     * 杠后炮
+     * </pre>
+     */
+    public static final int GANG_HOU_PAO_VALUE = 5023;
+    /**
+     * <code>HUANG_ZHUANG_DOUBLE = 5024;</code>
+     *
+     * <pre>
+     * 荒庄翻倍
+     * </pre>
+     */
+    public static final int HUANG_ZHUANG_DOUBLE_VALUE = 5024;
+    /**
+     * <code>GEN_ZHUANG = 5025;</code>
+     *
+     * <pre>
+     * 跟庄
+     * </pre>
+     */
+    public static final int GEN_ZHUANG_VALUE = 5025;
+    /**
+     * <code>GEN_HU = 610001;</code>
+     *
+     * <pre>
+     * 陕西麻将特殊牌型(六位：61开头，610001起)
+     * </pre>
+     */
+    public static final int GEN_HU_VALUE = 610001;
+    /**
+     * <code>DA_DUI_ZI = 610002;</code>
+     *
+     * <pre>
+     * 大对子（碰碰胡）
+     * </pre>
+     */
+    public static final int DA_DUI_ZI_VALUE = 610002;
+    /**
+     * <code>JIN_GOU_DIAO = 610003;</code>
+     *
+     * <pre>
+     * 金钩钓（全求人）
+     * </pre>
+     */
+    public static final int JIN_GOU_DIAO_VALUE = 610003;
+    /**
+     * <code>PAO_ZI = 615001;</code>
+     *
+     * <pre>
+     *
+     *  陕西麻将结算(六位：61开头，615001-619999)
+     * </pre>
+     */
+    public static final int PAO_ZI_VALUE = 615001;
+    /**
+     * <code>HUA_SHUI_YU = 615002;</code>
+     *
+     * <pre>
+     * 划水抓鱼
+     * </pre>
+     */
+    public static final int HUA_SHUI_YU_VALUE = 615002;
+    /**
+     * <code>DIAN_ZI = 615003;</code>
+     *
+     * <pre>
+     * 亮六飞一点子
+     * </pre>
+     */
+    public static final int DIAN_ZI_VALUE = 615003;
+    /**
+     * <code>SHUANG_BA_ZHI = 340001;</code>
+     *
+     * <pre>
+     * 芜湖
+     * </pre>
+     */
+    public static final int SHUANG_BA_ZHI_VALUE = 340001;
+    /**
+     * <code>BA_ZHI = 340002;</code>
+     *
+     * <pre>
+     * 八支
+     * </pre>
+     */
+    public static final int BA_ZHI_VALUE = 340002;
+    /**
+     * <code>SHUANG_SI_HE = 340003;</code>
+     *
+     * <pre>
+     * 双四核
+     * </pre>
+     */
+    public static final int SHUANG_SI_HE_VALUE = 340003;
+    /**
+     * <code>TONG_TIAN = 340005;</code>
+     *
+     * <pre>
+     * 通天（一条龙）
+     * </pre>
+     */
+    public static final int TONG_TIAN_VALUE = 340005;
+    /**
+     * <code>DUI_DUI_HU = 340006;</code>
+     *
+     * <pre>
+     * 对对胡 （碰碰胡）
+     * </pre>
+     */
+    public static final int DUI_DUI_HU_VALUE = 340006;
+    /**
+     * <code>YA_DANG = 340007;</code>
+     *
+     * <pre>
+     * 压档
+     * </pre>
+     */
+    public static final int YA_DANG_VALUE = 340007;
+    /**
+     * <code>SHUANG_TONG = 340011;</code>
+     *
+     * <pre>
+     * 无为
+     * </pre>
+     */
+    public static final int SHUANG_TONG_VALUE = 340011;
+    /**
+     * <code>QI_TONG = 340012;</code>
+     *
+     * <pre>
+     * 七通
+     * </pre>
+     */
+    public static final int QI_TONG_VALUE = 340012;
+    /**
+     * <code>WU_TONG = 340013;</code>
+     *
+     * <pre>
+     * 五通
+     * </pre>
+     */
+    public static final int WU_TONG_VALUE = 340013;
+    /**
+     * <code>QUAN_LAO = 340014;</code>
+     *
+     * <pre>
+     * 全老
+     * </pre>
+     */
+    public static final int QUAN_LAO_VALUE = 340014;
+    /**
+     * <code>QUAN_XIAO = 340015;</code>
+     *
+     * <pre>
+     * 全小
+     * </pre>
+     */
+    public static final int QUAN_XIAO_VALUE = 340015;
+    /**
+     * <code>SHI_LAO = 340016;</code>
+     *
+     * <pre>
+     * 十老
+     * </pre>
+     */
+    public static final int SHI_LAO_VALUE = 340016;
+    /**
+     * <code>SHI_XIAO = 340017;</code>
+     *
+     * <pre>
+     * 十小
+     * </pre>
+     */
+    public static final int SHI_XIAO_VALUE = 340017;
+    /**
+     * <code>SHI_YI_ZHI = 340018;</code>
+     *
+     * <pre>
+     * 十一支
+     * </pre>
+     */
+    public static final int SHI_YI_ZHI_VALUE = 340018;
+    /**
+     * <code>BA_TONG = 340020;</code>
+     *
+     * <pre>
+     * 和县
+     * </pre>
+     */
+    public static final int BA_TONG_VALUE = 340020;
+    /**
+     * <code>JIAO = 345001;</code>
+     *
+     * <pre>
+     * 芜湖麻将
+     * </pre>
+     */
+    public static final int JIAO_VALUE = 345001;
+    /**
+     * <code>ZUI = 345002;</code>
+     *
+     * <pre>
+     * 嘴
+     * </pre>
+     */
+    public static final int ZUI_VALUE = 345002;
+    /**
+     * <code>JIAO_ZUI = 345003;</code>
+     *
+     * <pre>
+     * 一交多嘴
+     * </pre>
+     */
+    public static final int JIAO_ZUI_VALUE = 345003;
+    /**
+     * <code>WUHU_DI = 345004;</code>
+     *
+     * <pre>
+     * 底番
+     * </pre>
+     */
+    public static final int WUHU_DI_VALUE = 345004;
+    /**
+     * <code>WUHU_ZHI = 345005;</code>
+     *
+     * <pre>
+     * 支番
+     * </pre>
+     */
+    public static final int WUHU_ZHI_VALUE = 345005;
+    /**
+     * <code>ZHUANG_FEN = 345006;</code>
+     *
+     * <pre>
+     * 无为麻将
+     * </pre>
+     */
+    public static final int ZHUANG_FEN_VALUE = 345006;
+    /**
+     * <code>BU_DONG_SHOU = 345007;</code>
+     *
+     * <pre>
+     * 不动手
+     * </pre>
+     */
+    public static final int BU_DONG_SHOU_VALUE = 345007;
+    /**
+     * <code>GANG_KAI_HU = 345008;</code>
+     *
+     * <pre>
+     * 杠开胡
+     * </pre>
+     */
+    public static final int GANG_KAI_HU_VALUE = 345008;
+    /**
+     * <code>GANG_KAI_HU_YA_DANG = 345009;</code>
+     *
+     * <pre>
+     * 杠开胡（压档）
+     * </pre>
+     */
+    public static final int GANG_KAI_HU_YA_DANG_VALUE = 345009;
+    /**
+     * <code>DI_SI_GE_TOU_KA = 345010;</code>
+     *
+     * <pre>
+     * 第四个头卡
+     * </pre>
+     */
+    public static final int DI_SI_GE_TOU_KA_VALUE = 345010;
+    /**
+     * <code>HONG_ZHONG_MING_GANG = 345011;</code>
+     *
+     * <pre>
+     * 红中明杠
+     * </pre>
+     */
+    public static final int HONG_ZHONG_MING_GANG_VALUE = 345011;
+    /**
+     * <code>HONG_ZHONG_AN_GANG = 345012;</code>
+     *
+     * <pre>
+     * 红中暗杠
+     * </pre>
+     */
+    public static final int HONG_ZHONG_AN_GANG_VALUE = 345012;
+    /**
+     * <code>DA_CAI = 345013;</code>
+     *
+     * <pre>
+     * 歙县麻将
+     * </pre>
+     */
+    public static final int DA_CAI_VALUE = 345013;
+    /**
+     * <code>WU_CAI = 345014;</code>
+     *
+     * <pre>
+     * 无财
+     * </pre>
+     */
+    public static final int WU_CAI_VALUE = 345014;
+    /**
+     * <code>PENG_CAI = 345015;</code>
+     *
+     * <pre>
+     * 碰财神
+     * </pre>
+     */
+    public static final int PENG_CAI_VALUE = 345015;
+    /**
+     * <code>GANG_CAI = 345016;</code>
+     *
+     * <pre>
+     * 杠财神
+     * </pre>
+     */
+    public static final int GANG_CAI_VALUE = 345016;
+    /**
+     * <code>SHUN_FAN_BAO = 345017;</code>
+     *
+     * <pre>
+     * 顺反包
+     * </pre>
+     */
+    public static final int SHUN_FAN_BAO_VALUE = 345017;
+    /**
+     * <code>LAO_XIAO_DUI = 345018;</code>
+     *
+     * <pre>
+     * 和县麻将
+     * </pre>
+     */
+    public static final int LAO_XIAO_DUI_VALUE = 345018;
+    /**
+     * <code>BANG_BANG = 345019;</code>
+     *
+     * <pre>
+     * 棒棒（一色三连对）
+     * </pre>
+     */
+    public static final int BANG_BANG_VALUE = 345019;
+    /**
+     * <code>QUAN_YAO_DUI_DUI_HU = 345020;</code>
+     *
+     * <pre>
+     * 全幺对对胡（混幺九+碰碰胡）
+     * </pre>
+     */
+    public static final int QUAN_YAO_DUI_DUI_HU_VALUE = 345020;
+    /**
+     * <code>SI_DA_KAN = 345021;</code>
+     *
+     * <pre>
+     * 四大坎（一色四连刻或四字刻）
+     * </pre>
+     */
+    public static final int SI_DA_KAN_VALUE = 345021;
+    /**
+     * <code>SAN_DA_KAN = 345022;</code>
+     *
+     * <pre>
+     * 三大坎（一色三连刻或三字刻）
+     * </pre>
+     */
+    public static final int SAN_DA_KAN_VALUE = 345022;
+    /**
+     * <code>SHUANG_LIAN_HAO = 345023;</code>
+     *
+     * <pre>
+     * 双连号
+     * </pre>
+     */
+    public static final int SHUANG_LIAN_HAO_VALUE = 345023;
+    /**
+     * <code>XIAO_LIAN_HAO = 345024;</code>
+     *
+     * <pre>
+     * 小连号（连六）
+     * </pre>
+     */
+    public static final int XIAO_LIAN_HAO_VALUE = 345024;
+    /**
+     * <code>KAN_KAN_HU = 345025;</code>
+     *
+     * <pre>
+     * 坎坎胡（碰碰胡+门前清）
+     * </pre>
+     */
+    public static final int KAN_KAN_HU_VALUE = 345025;
+    /**
+     * <code>SHUANG_BANG_BANG = 345026;</code>
+     *
+     * <pre>
+     * 双棒棒（一色三连对双）
+     * </pre>
+     */
+    public static final int SHUANG_BANG_BANG_VALUE = 345026;
+    /**
+     * <code>ZHONG_FA_BAI_SAN_DA_KAN = 345027;</code>
+     *
+     * <pre>
+     * 中发白三大坎（大三元）
+     * </pre>
+     */
+    public static final int ZHONG_FA_BAI_SAN_DA_KAN_VALUE = 345027;
+    /**
+     * <code>DA_DIAO_CHE = 345028;</code>
+     *
+     * <pre>
+     * 大吊车（全求人+碰碰胡）
+     * </pre>
+     */
+    public static final int DA_DIAO_CHE_VALUE = 345028;
+    /**
+     * <code>DA_NA = 345029;</code>
+     *
+     * <pre>
+     * 大拿
+     * </pre>
+     */
+    public static final int DA_NA_VALUE = 345029;
+    /**
+     * <code>QING_NA = 345030;</code>
+     *
+     * <pre>
+     * 清拿
+     * </pre>
+     */
+    public static final int QING_NA_VALUE = 345030;
+    /**
+     * <code>PING_NA = 345031;</code>
+     *
+     * <pre>
+     * 平拿
+     * </pre>
+     */
+    public static final int PING_NA_VALUE = 345031;
+    /**
+     * <code>MO_FEN = 345032;</code>
+     *
+     * <pre>
+     * 摸分
+     * </pre>
+     */
+    public static final int MO_FEN_VALUE = 345032;
+    /**
+     * <code>DU_YA = 345033;</code>
+     *
+     * <pre>
+     * 独押（边张或坎张）
+     * </pre>
+     */
+    public static final int DU_YA_VALUE = 345033;
+    /**
+     * <code>KU_ZHI_YA = 345034;</code>
+     *
+     * <pre>
+     * 枯枝押（边张或坎张+绝张）
+     * </pre>
+     */
+    public static final int KU_ZHI_YA_VALUE = 345034;
+    /**
+     * <code>ZHI = 345035;</code>
+     *
+     * <pre>
+     * 支
+     * </pre>
+     */
+    public static final int ZHI_VALUE = 345035;
+    /**
+     * <code>TONG_ = 345036;</code>
+     *
+     * <pre>
+     * 通
+     * </pre>
+     */
+    public static final int TONG__VALUE = 345036;
+    /**
+     * <code>KAN_ZI = 345037;</code>
+     *
+     * <pre>
+     * 坎子
+     * </pre>
+     */
+    public static final int KAN_ZI_VALUE = 345037;
+    /**
+     * <code>SAN_DA_KAN_DAI_TOU = 345038;</code>
+     *
+     * <pre>
+     * 三大坎带头（一色三连刻或三字刻附一将）
+     * </pre>
+     */
+    public static final int SAN_DA_KAN_DAI_TOU_VALUE = 345038;
+    /**
+     * <code>BAO_PAI = 345039;</code>
+     *
+     * <pre>
+     * 包牌
+     * </pre>
+     */
+    public static final int BAO_PAI_VALUE = 345039;
+    /**
+     * <code>MO_ZI = 345040;</code>
+     *
+     * <pre>
+     * 摸子
+     * </pre>
+     */
+    public static final int MO_ZI_VALUE = 345040;
+    /**
+     * <code>LUAN_FENG = 345041;</code>
+     *
+     * <pre>
+     * 乱风
+     * </pre>
+     */
+    public static final int LUAN_FENG_VALUE = 345041;
+    /**
+     * <code>DU_YI = 345042;</code>
+     *
+     * <pre>
+     * 明光麻将
+     * </pre>
+     */
+    public static final int DU_YI_VALUE = 345042;
+    /**
+     * <code>SHUANG_QING = 345043;</code>
+     *
+     * <pre>
+     * 双清
+     * </pre>
+     */
+    public static final int SHUANG_QING_VALUE = 345043;
+    /**
+     * <code>SI_PEI_ZI = 345044;</code>
+     *
+     * <pre>
+     * 四配子
+     * </pre>
+     */
+    public static final int SI_PEI_ZI_VALUE = 345044;
+    /**
+     * <code>PEI_ZI_CHI = 345045;</code>
+     *
+     * <pre>
+     * 配子吃
+     * </pre>
+     */
+    public static final int PEI_ZI_CHI_VALUE = 345045;
+    /**
+     * <code>PEI_ZI_CHI_PEI_ZI = 345046;</code>
+     *
+     * <pre>
+     * 配子吃配子
+     * </pre>
+     */
+    public static final int PEI_ZI_CHI_PEI_ZI_VALUE = 345046;
+    /**
+     * <code>DU_PEI_ZI = 345047;</code>
+     *
+     * <pre>
+     * 独配子
+     * </pre>
+     */
+    public static final int DU_PEI_ZI_VALUE = 345047;
+    /**
+     * <code>KAN_JIANG = 345048;</code>
+     *
+     * <pre>
+     * 来安麻将老三番
+     * </pre>
+     */
+    public static final int KAN_JIANG_VALUE = 345048;
+    /**
+     * <code>FENG_JIANG = 345049;</code>
+     *
+     * <pre>
+     * 风将
+     * </pre>
+     */
+    public static final int FENG_JIANG_VALUE = 345049;
+    /**
+     * <code>YING_QUE = 345050;</code>
+     *
+     * <pre>
+     * 硬缺
+     * </pre>
+     */
+    public static final int YING_QUE_VALUE = 345050;
+    /**
+     * <code>RUAN_QUE = 345051;</code>
+     *
+     * <pre>
+     * 软缺
+     * </pre>
+     */
+    public static final int RUAN_QUE_VALUE = 345051;
 
 
     public final int getNumber() { return value; }
@@ -875,6 +2399,101 @@ public final class JieSuanPB {
         case 1048: return ZHI_SHU;
         case 1049: return TONG_SHU;
         case 1050: return SI_HE;
+        case 5001: return TIAN_HU;
+        case 5002: return DI_HU;
+        case 5003: return ZI_MO;
+        case 5004: return GANG_SHANG_HUA;
+        case 5005: return QIANG_GANG_HU;
+        case 5006: return DI_FEN;
+        case 5009: return MING_GANG_;
+        case 5010: return AN_GANG_;
+        case 5011: return DIAN_GANG_;
+        case 5012: return BU_GANG_;
+        case 5013: return SI_GANG;
+        case 5014: return SAN_GANG;
+        case 5015: return SHUANG_GANG;
+        case 5016: return GANG_;
+        case 5017: return PENG_;
+        case 5018: return HU_PAI;
+        case 5019: return ZHI_FEN;
+        case 5020: return QI_SHOU_BAO_TING;
+        case 5021: return HAI_DI_LAO;
+        case 5022: return BET_SCORE;
+        case 5023: return GANG_HOU_PAO;
+        case 5024: return HUANG_ZHUANG_DOUBLE;
+        case 5025: return GEN_ZHUANG;
+        case 610001: return GEN_HU;
+        case 610002: return DA_DUI_ZI;
+        case 610003: return JIN_GOU_DIAO;
+        case 615001: return PAO_ZI;
+        case 615002: return HUA_SHUI_YU;
+        case 615003: return DIAN_ZI;
+        case 340001: return SHUANG_BA_ZHI;
+        case 340002: return BA_ZHI;
+        case 340003: return SHUANG_SI_HE;
+        case 340005: return TONG_TIAN;
+        case 340006: return DUI_DUI_HU;
+        case 340007: return YA_DANG;
+        case 340011: return SHUANG_TONG;
+        case 340012: return QI_TONG;
+        case 340013: return WU_TONG;
+        case 340014: return QUAN_LAO;
+        case 340015: return QUAN_XIAO;
+        case 340016: return SHI_LAO;
+        case 340017: return SHI_XIAO;
+        case 340018: return SHI_YI_ZHI;
+        case 340020: return BA_TONG;
+        case 345001: return JIAO;
+        case 345002: return ZUI;
+        case 345003: return JIAO_ZUI;
+        case 345004: return WUHU_DI;
+        case 345005: return WUHU_ZHI;
+        case 345006: return ZHUANG_FEN;
+        case 345007: return BU_DONG_SHOU;
+        case 345008: return GANG_KAI_HU;
+        case 345009: return GANG_KAI_HU_YA_DANG;
+        case 345010: return DI_SI_GE_TOU_KA;
+        case 345011: return HONG_ZHONG_MING_GANG;
+        case 345012: return HONG_ZHONG_AN_GANG;
+        case 345013: return DA_CAI;
+        case 345014: return WU_CAI;
+        case 345015: return PENG_CAI;
+        case 345016: return GANG_CAI;
+        case 345017: return SHUN_FAN_BAO;
+        case 345018: return LAO_XIAO_DUI;
+        case 345019: return BANG_BANG;
+        case 345020: return QUAN_YAO_DUI_DUI_HU;
+        case 345021: return SI_DA_KAN;
+        case 345022: return SAN_DA_KAN;
+        case 345023: return SHUANG_LIAN_HAO;
+        case 345024: return XIAO_LIAN_HAO;
+        case 345025: return KAN_KAN_HU;
+        case 345026: return SHUANG_BANG_BANG;
+        case 345027: return ZHONG_FA_BAI_SAN_DA_KAN;
+        case 345028: return DA_DIAO_CHE;
+        case 345029: return DA_NA;
+        case 345030: return QING_NA;
+        case 345031: return PING_NA;
+        case 345032: return MO_FEN;
+        case 345033: return DU_YA;
+        case 345034: return KU_ZHI_YA;
+        case 345035: return ZHI;
+        case 345036: return TONG_;
+        case 345037: return KAN_ZI;
+        case 345038: return SAN_DA_KAN_DAI_TOU;
+        case 345039: return BAO_PAI;
+        case 345040: return MO_ZI;
+        case 345041: return LUAN_FENG;
+        case 345042: return DU_YI;
+        case 345043: return SHUANG_QING;
+        case 345044: return SI_PEI_ZI;
+        case 345045: return PEI_ZI_CHI;
+        case 345046: return PEI_ZI_CHI_PEI_ZI;
+        case 345047: return DU_PEI_ZI;
+        case 345048: return KAN_JIANG;
+        case 345049: return FENG_JIANG;
+        case 345050: return YING_QUE;
+        case 345051: return RUAN_QUE;
         default: return null;
       }
     }
@@ -935,7 +2554,7 @@ public final class JieSuanPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025mahjong/JieSuan.proto\022\007mahjong*\274\007\n\007Jie" +
+      "\n\025mahjong/JieSuan.proto\022\007mahjong*\244\024\n\007Jie" +
       "Suan\022\016\n\tHUN_YI_SE\020\351\007\022\023\n\016DAN_DIAO_JIANG\020\352" +
       "\007\022\017\n\nBIAN_ZHANG\020\353\007\022\016\n\tKAN_ZHANG\020\354\007\022\022\n\rME" +
       "N_QIAN_QING\020\355\007\022\017\n\nQUE_YI_MEN\020\356\007\022\021\n\014DUAN_" +
@@ -959,7 +2578,48 @@ public final class JieSuanPB {
       "\010\022\021\n\014BIAO_ZHUN_HU\020\221\010\022\017\n\nQING_YI_SE\020\222\010\022\017\n" +
       "\nALMIGHTY_4\020\223\010\022\r\n\010LIAN_DUI\020\224\010\022\014\n\007MING_KE" +
       "\020\225\010\022\n\n\005AN_KE\020\226\010\022\r\n\010GANG_PAI\020\227\010\022\014\n\007ZHI_SH" +
-      "U\020\230\010\022\r\n\010TONG_SHU\020\231\010\022\n\n\005SI_HE\020\232\010B,\n\037com.k" +
+      "U\020\230\010\022\r\n\010TONG_SHU\020\231\010\022\n\n\005SI_HE\020\232\010\022\014\n\007TIAN_" +
+      "HU\020\211\'\022\n\n\005DI_HU\020\212\'\022\n\n\005ZI_MO\020\213\'\022\023\n\016GANG_SH" +
+      "ANG_HUA\020\214\'\022\022\n\rQIANG_GANG_HU\020\215\'\022\013\n\006DI_FEN" +
+      "\020\216\'\022\017\n\nMING_GANG_\020\221\'\022\r\n\010AN_GANG_\020\222\'\022\017\n\nD" +
+      "IAN_GANG_\020\223\'\022\r\n\010BU_GANG_\020\224\'\022\014\n\007SI_GANG\020\225" +
+      "\'\022\r\n\010SAN_GANG\020\226\'\022\020\n\013SHUANG_GANG\020\227\'\022\n\n\005GA",
+      "NG_\020\230\'\022\n\n\005PENG_\020\231\'\022\013\n\006HU_PAI\020\232\'\022\014\n\007ZHI_F" +
+      "EN\020\233\'\022\025\n\020QI_SHOU_BAO_TING\020\234\'\022\017\n\nHAI_DI_L" +
+      "AO\020\235\'\022\016\n\tBET_SCORE\020\236\'\022\021\n\014GANG_HOU_PAO\020\237\'" +
+      "\022\030\n\023HUANG_ZHUANG_DOUBLE\020\240\'\022\017\n\nGEN_ZHUANG" +
+      "\020\241\'\022\014\n\006GEN_HU\020\321\235%\022\017\n\tDA_DUI_ZI\020\322\235%\022\022\n\014JI" +
+      "N_GOU_DIAO\020\323\235%\022\014\n\006PAO_ZI\020\331\304%\022\021\n\013HUA_SHUI" +
+      "_YU\020\332\304%\022\r\n\007DIAN_ZI\020\333\304%\022\023\n\rSHUANG_BA_ZHI\020" +
+      "\241\340\024\022\014\n\006BA_ZHI\020\242\340\024\022\022\n\014SHUANG_SI_HE\020\243\340\024\022\017\n" +
+      "\tTONG_TIAN\020\245\340\024\022\020\n\nDUI_DUI_HU\020\246\340\024\022\r\n\007YA_D" +
+      "ANG\020\247\340\024\022\021\n\013SHUANG_TONG\020\253\340\024\022\r\n\007QI_TONG\020\254\340",
+      "\024\022\r\n\007WU_TONG\020\255\340\024\022\016\n\010QUAN_LAO\020\256\340\024\022\017\n\tQUAN" +
+      "_XIAO\020\257\340\024\022\r\n\007SHI_LAO\020\260\340\024\022\016\n\010SHI_XIAO\020\261\340\024" +
+      "\022\020\n\nSHI_YI_ZHI\020\262\340\024\022\r\n\007BA_TONG\020\264\340\024\022\n\n\004JIA" +
+      "O\020\251\207\025\022\t\n\003ZUI\020\252\207\025\022\016\n\010JIAO_ZUI\020\253\207\025\022\r\n\007WUHU" +
+      "_DI\020\254\207\025\022\016\n\010WUHU_ZHI\020\255\207\025\022\020\n\nZHUANG_FEN\020\256\207" +
+      "\025\022\022\n\014BU_DONG_SHOU\020\257\207\025\022\021\n\013GANG_KAI_HU\020\260\207\025" +
+      "\022\031\n\023GANG_KAI_HU_YA_DANG\020\261\207\025\022\025\n\017DI_SI_GE_" +
+      "TOU_KA\020\262\207\025\022\032\n\024HONG_ZHONG_MING_GANG\020\263\207\025\022\030" +
+      "\n\022HONG_ZHONG_AN_GANG\020\264\207\025\022\014\n\006DA_CAI\020\265\207\025\022\014" +
+      "\n\006WU_CAI\020\266\207\025\022\016\n\010PENG_CAI\020\267\207\025\022\016\n\010GANG_CAI",
+      "\020\270\207\025\022\022\n\014SHUN_FAN_BAO\020\271\207\025\022\022\n\014LAO_XIAO_DUI" +
+      "\020\272\207\025\022\017\n\tBANG_BANG\020\273\207\025\022\031\n\023QUAN_YAO_DUI_DU" +
+      "I_HU\020\274\207\025\022\017\n\tSI_DA_KAN\020\275\207\025\022\020\n\nSAN_DA_KAN\020" +
+      "\276\207\025\022\025\n\017SHUANG_LIAN_HAO\020\277\207\025\022\023\n\rXIAO_LIAN_" +
+      "HAO\020\300\207\025\022\020\n\nKAN_KAN_HU\020\301\207\025\022\026\n\020SHUANG_BANG" +
+      "_BANG\020\302\207\025\022\035\n\027ZHONG_FA_BAI_SAN_DA_KAN\020\303\207\025" +
+      "\022\021\n\013DA_DIAO_CHE\020\304\207\025\022\013\n\005DA_NA\020\305\207\025\022\r\n\007QING" +
+      "_NA\020\306\207\025\022\r\n\007PING_NA\020\307\207\025\022\014\n\006MO_FEN\020\310\207\025\022\013\n\005" +
+      "DU_YA\020\311\207\025\022\017\n\tKU_ZHI_YA\020\312\207\025\022\t\n\003ZHI\020\313\207\025\022\013\n" +
+      "\005TONG_\020\314\207\025\022\014\n\006KAN_ZI\020\315\207\025\022\030\n\022SAN_DA_KAN_D",
+      "AI_TOU\020\316\207\025\022\r\n\007BAO_PAI\020\317\207\025\022\013\n\005MO_ZI\020\320\207\025\022\017" +
+      "\n\tLUAN_FENG\020\321\207\025\022\013\n\005DU_YI\020\322\207\025\022\021\n\013SHUANG_Q" +
+      "ING\020\323\207\025\022\017\n\tSI_PEI_ZI\020\324\207\025\022\020\n\nPEI_ZI_CHI\020\325" +
+      "\207\025\022\027\n\021PEI_ZI_CHI_PEI_ZI\020\326\207\025\022\017\n\tDU_PEI_ZI" +
+      "\020\327\207\025\022\017\n\tKAN_JIANG\020\330\207\025\022\020\n\nFENG_JIANG\020\331\207\025\022" +
+      "\016\n\010YING_QUE\020\332\207\025\022\016\n\010RUAN_QUE\020\333\207\025B,\n\037com.k" +
       "uaikai.game.mahjong.msg.pbB\tJieSuanPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

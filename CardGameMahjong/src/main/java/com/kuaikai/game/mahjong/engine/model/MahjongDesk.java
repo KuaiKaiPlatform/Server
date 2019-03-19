@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
-import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.DeskRecord;
 import com.kuaikai.game.common.play.GameDesk;
 import com.kuaikai.game.common.play.GamePlayer;
@@ -34,6 +33,13 @@ public class MahjongDesk extends GameDesk {
 		}
 	}
 	
+	@Override
+	public void addPlayer(Player p) {
+		this.desk.addPlayer(p);
+		MahjongPlayer mp = new MahjongPlayer(p, this);
+		this.addPlayer(mp);
+	}
+	
 	public MahjongEngine getEngine() {
 		return engine;
 	}
@@ -42,6 +48,14 @@ public class MahjongDesk extends GameDesk {
 		return (DefaultMessageSender)messageSender;
 	}
 
+	public MahjongPlayer getPlayerById(int pid) {
+		return (MahjongPlayer)super.getPlayerById(pid);
+	}
+
+	public MahjongPlayer getPlayerBySeat(int seat) {
+		return (MahjongPlayer)super.getPlayerBySeat(seat);
+	}
+	
 	public MahjongPlayer getNextPlayer(GamePlayer gamePlayer) {
 		return (MahjongPlayer)super.getNextPlayer(gamePlayer);
 	}
@@ -50,8 +64,14 @@ public class MahjongDesk extends GameDesk {
 		return (MahjongPlayer)banker;
 	}
 	
+	public MahjongPlayer initBanker() {
+		return engine.getProcessor().dingZhuang();
+	}
+	
 	@Override
-	public void onGameStart() {
+	public void onGameStart(long startTime) {
+		super.onGameStart(startTime);
+		
 		// 处理记录
 		this.record = new DeskRecord(this);
 		this.messageSender = SenderFactory.createMessageSender(this);
@@ -61,14 +81,31 @@ public class MahjongDesk extends GameDesk {
 		}
 		engine.onGameStart();
 		
-		onSetStart();
+		onSetStart(startTime);
 		
 	}
-
+	
+	/**
+	 *	检查是否开始一局
+	 */
+	public void checkSetStart() {
+		if(desk.isFull() && this.isAllPlayerReady()) {
+			if(desk.checkStatus(GameStatus.SET_ENDING)) {
+				this.onSetStart(System.currentTimeMillis());
+			} else {
+				this.onGameStart(System.currentTimeMillis());
+			}
+			this.getMessageSender().sendSSetInit(null);
+		}
+	}
+	
 	/**
 	 * 开始新的一局
 	 */
-	public void onSetStart() {
+	@Override
+	public void onSetStart(long startTime) {
+		super.onSetStart(startTime);
+		
 		desk.setStatus(GameStatus.STARTING);
 
 		engine.onSetStart();
@@ -81,11 +118,14 @@ public class MahjongDesk extends GameDesk {
 		record.addSetRecord(new MahjongSetRecord());
 		
 		// 检查是否有下注操作，没有直接发牌
-		if(desk.getSetting().getBool(CardGameSetting.XIA_ZHU)) {
-			engine.enterXiaZhuStage();
-		} else {
-			dealCards();
-		}
+//		if(desk.getSetting().getBool(CardGameSetting.XIA_ZHU)) {
+//			engine.enterXiaZhuStage();
+//		} else {
+//			dealCards();
+//		}
+		
+		// 发牌
+		dealCards();
 		
 		// 添加日志
 		logger.info("MahjongDesk.onSetStart@details|desk={}|set={}|players={}", desk.getKey(), desk.getCurSet(), this.getAllPlayers());
@@ -108,7 +148,10 @@ public class MahjongDesk extends GameDesk {
 	/**
 	 * 本局结束
 	 */
-	public void onSetEnd() {
+	@Override
+	public void onSetEnd(long endTime) {
+		super.onSetEnd(endTime);
+		
 		desk.setStatus(GameStatus.SET_ENDING);
 		// 算分
 		engine.onSetEnd();
@@ -117,21 +160,45 @@ public class MahjongDesk extends GameDesk {
 			player.onSetEnd();
 		}
 		
-		messageSender.syncSetEnd();
+		boolean over = engine.getProcessor().checkOver();
+		
+		// 定下一局庄家
+		if(!over) engine.getProcessor().dingZhuang();
+		
+		// 发送 SSetResult
+		messageSender.sendSSetResult(over);
 
 		//roomRecord.addCurSetEndInfo(curSet);
 
-		logger.info("MahjongRoom.onSetEnd@set end info|desk={}|curSet={}", desk.getKey(), desk.getCurSet());
+		logger.info("MahjongDesk.onSetEnd@set end info|desk={}|curSet={}", desk.getKey(), desk.getCurSet());
 		
-		if (engine.getProcessor().checkOver()) {
+		if (over) {
 			// 全局结束
-			onGameEnd(true);
+			onGameEnd(true, endTime);
 		}
+		
 	}
 	
 	@Override
-	public void onGameEnd(boolean normal) {
-		// TODO Auto-generated method stub
+	public void onGameEnd(boolean dismiss, long endTime) {
+		super.onGameEnd(dismiss, endTime);
+		
+		desk.setStatus(GameStatus.ENDING);
+		
+		//engine.onGameEnd();
+		
+		for (GamePlayer player : this.getAllPlayers()) {
+			player.onGameEnd();
+		}
+		
+		//record.save();
+		
+		// 发送 SSetResult
+		messageSender.sendSGameResult(dismiss);
+
+		//roomRecord.addCurSetEndInfo(curSet);
+
+		logger.info("MahjongDesk.onSetEnd@set end info|desk={}|curSet={}", desk.getKey(), desk.getCurSet());
 		
 	}
 	

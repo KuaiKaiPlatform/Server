@@ -35,7 +35,15 @@ public class PlayerGameResult {
     	CollectionUtils.increase(stats, stat);
     }
     
-    public GamePoints getFinalGamePoints() {
+    public int getStatInt(Object key) {
+    	return CollectionUtils.getMapInt(stats, key);
+    }
+    
+    public Map<Object, Object> getStats() {
+		return stats;
+	}
+
+	public GamePoints getFinalGamePoints() {
 		return finalGamePoints;
 	}
 

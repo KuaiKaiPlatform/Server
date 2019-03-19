@@ -8,11 +8,11 @@ import com.kuaikai.game.mahjong.engine.calculator.Calculator;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonBetCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonHuCalculatorDetail;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
 import com.kuaikai.game.mahjong.engine.model.CardPool;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 
 public class OneFiveNineCalculator extends Calculator {
@@ -65,14 +65,14 @@ public class OneFiveNineCalculator extends Calculator {
 		
 		// 抢杠胡
 		if(oper.isQiangGang()) {
-			calculatorDetail.addSubType(JieSuan.QIANG_GANG_HU);
+			calculatorDetail.addSubType(JieSuan.QIANG_GANG_HU_VALUE);
 		}
 		
 		// 炮子
 		int paoZi = desk.getSetting().getInt(CardGameSetting.PAO_ZI);
 		if (paoZi != 0) {
 			CommonBetCalculatorDetail paoziCalculatorDetail = new CommonBetCalculatorDetail(oper, paoZi, false, false);
-			paoziCalculatorDetail.setMainType(JieSuan.PAO_ZI);
+			paoziCalculatorDetail.setMainType(JieSuan.PAO_ZI_VALUE);
 			result.add(paoziCalculatorDetail);
 		}
 		

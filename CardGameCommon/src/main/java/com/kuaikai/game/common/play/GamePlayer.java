@@ -13,7 +13,7 @@ public abstract class GamePlayer {
 	protected Player player;
 	
 	// 一局游戏玩家属性
-	protected AttrsModel setAttrs;
+	protected AttrsModel setAttrs = new AttrsModel();
 	
 	protected GamePlayer(Player player, GameDesk desk) {
 		this.player = player;
@@ -35,13 +35,21 @@ public abstract class GamePlayer {
 	public int getSeat() {
 		return player.getSeat();
 	}
+
+	public int getBet() {
+		return player.getBet();
+	}
+	
+	public void setBet(int bet) {
+		player.setBet(bet);
+	}
 	
 	public int getDelta(GamePlayer other) {
 		return player.getDelta(other.player);
 	}
 	
-	public void initOrClearSetAttrs() {
-		if(setAttrs == null) setAttrs = new AttrsModel();
+	public void clearSetAttrs() {
+		//if(setAttrs == null) setAttrs = new AttrsModel();
 		setAttrs.clear();
 	}
 	
@@ -49,11 +57,25 @@ public abstract class GamePlayer {
 		return setAttrs;
 	}
 	
+	public void onReady() {
+		player.setPrepared(true);
+	}
+
+	public boolean isReady() {
+		return player.isPrepared();
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
 	public abstract void onGameStart();
 	
 	public abstract void onGameEnd();
 	
-	public abstract void onSetStart();
+	public void onSetStart() {
+		player.setPrepared(false);
+	}
 	
 	public abstract void onSetEnd();
 	

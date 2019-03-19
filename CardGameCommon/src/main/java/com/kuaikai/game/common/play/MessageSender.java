@@ -11,16 +11,16 @@ public abstract class MessageSender {
 	/**
 	 * 同步牌局初始信息
 	 */
-	public abstract void syncSetInit(GamePlayer p);
+	public abstract void sendSSetInit(GamePlayer p);
 
 	/**
 	 * 同步牌局结束信息
 	 */	
-	public abstract void syncSetEnd();
+	public abstract void sendSSetResult(boolean over);
 	
 	/**
 	 * 同步整场结束消息
 	 */
-	public abstract void syncGameEnd();
+	public abstract void sendSGameResult(boolean dismiss);
 	
 }

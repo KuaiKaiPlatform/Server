@@ -4,6 +4,7 @@ import org.redisson.api.RMap;
 import org.redisson.api.RedissonClient;
 
 import com.kuaikai.game.common.db.RedissonManager;
+import com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq;
 import com.kuaikai.game.common.utils.CollectionUtils;
 
 /**
@@ -46,9 +47,12 @@ public class PlayerArenaRedis {
 		return CollectionUtils.getMapLong(rMap, FIELD_DESK_ID);
 	}
 	
-/*	public static Desk getDesk(int uid) {
+	public static DeskUniq getDesk(int uid) {
 		RMap<String, String> rMap = getRMap(uid);
-		return ClubDeskRedis.getDesk(CollectionUtils.getMapInt(rMap, FIELD_CLUB_ID), CollectionUtils.getMapLong(rMap, FIELD_DESK_ID));
-	}*/
+		return DeskUniq.newBuilder()
+				.setClubId(CollectionUtils.getMapInt(rMap, FIELD_CLUB_ID))
+				.setDeskId(CollectionUtils.getMapLong(rMap, FIELD_DESK_ID))
+				.build();
+	}
 	
 }

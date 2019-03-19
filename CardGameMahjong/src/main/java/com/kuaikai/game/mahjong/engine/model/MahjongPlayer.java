@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
@@ -22,6 +25,8 @@ import com.kuaikai.game.mahjong.engine.oper.HuOperation;
 
 public class MahjongPlayer extends GamePlayer {
 	
+	protected Logger logger = LoggerFactory.getLogger("mahjong");
+	
 	private boolean baoTing;	// 是否报听
 	
 	private CardContainer cardContainer;
@@ -35,12 +40,13 @@ public class MahjongPlayer extends GamePlayer {
 	
 	// 一局游戏玩家属性
 	public static enum SetAttr { // 玩家属性 key
-		BET,			// 下注数（陕西麻将下炮子）
+		//BET,			// 下注数（陕西麻将下炮子）
 		QUE_MEN,		// 缺门：10 万 20 条 30 筒，见 MahjongCard.CardType
 		LOU_HU_CARDS,	// 漏胡，当前是否处于漏胡状态，value是不能胡的牌列表，空列表表示不能胡所有牌。
 		LOU_PENG_CARDS,	// 漏碰，当前是否处于漏碰状态，value是不能碰的牌列表，空列表表示不能碰所有牌。
 		TING_CARDS,		// 当前听牌列表
-		MO_STARTED		// 玩家开始摸第一张牌
+		MO_STARTED,		// 玩家开始摸第一张牌
+		DIRECTION		// 门风（东南西北）
 	}
 
 	public MahjongPlayer(Player player, MahjongDesk desk) {
@@ -100,9 +106,11 @@ public class MahjongPlayer extends GamePlayer {
 	
 	@Override
 	public void onSetStart() {
+		super.onSetStart();
+		
 		cardContainer.clear();
 		baoTing = false;
-		this.initOrClearSetAttrs();
+		this.clearSetAttrs();
 	}
 
 	@Override
@@ -170,7 +178,13 @@ public class MahjongPlayer extends GamePlayer {
 	}
 
 	public void refreshTingCards() {
-		setAttrs.put(SetAttr.TING_CARDS, huChecker.getTingCards());	// 记下听的牌
+		List<Integer> tingCards = huChecker.getTingCards();
+		logger.info("MahjongPlayer.refreshTingCard|desk={}|uid={}|handcards={}|tingCards={}", 
+				gameDesk.getKey(), 
+				this.getId(), 
+				this.getCardContainer().getHandCardValues(), 
+				tingCards);
+		setAttrs.put(SetAttr.TING_CARDS, tingCards);	// 记下听的牌
 	}
 
 	@SuppressWarnings("unchecked")

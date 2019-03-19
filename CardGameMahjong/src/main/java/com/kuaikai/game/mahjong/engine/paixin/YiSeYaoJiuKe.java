@@ -9,8 +9,8 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class YiSeYaoJiuKe {
 	
@@ -27,19 +27,19 @@ public class YiSeYaoJiuKe {
 		Map<Mahjong.CardType, Integer> type2count = new HashMap<Mahjong.CardType, Integer>();
 		
 		// 检查杠牌
-		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(PaiXin.GANG_PAI);
+		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(JieSuan.GANG_PAI_VALUE);
 		if(gangPai != null && !gangPai.isEmpty()) {
 			checkAndCountType(gangPai.keySet(), type2count);
 		}
 		
 		// 检查明刻
-		Set<Integer> mingKe = (Set<Integer>)extra.get(PaiXin.MING_KE);
+		Set<Integer> mingKe = (Set<Integer>)extra.get(JieSuan.MING_KE_VALUE);
 		if(mingKe != null && !mingKe.isEmpty()) {
 			checkAndCountType(mingKe, type2count);
 		}
 
 		// 检查暗刻
-		Set<Integer> anKe = (Set<Integer>)extra.get(PaiXin.AN_KE);
+		Set<Integer> anKe = (Set<Integer>)extra.get(JieSuan.AN_KE_VALUE);
 		if(anKe != null && !anKe.isEmpty()) {
 			checkAndCountType(anKe, type2count);
 		}
@@ -50,10 +50,10 @@ public class YiSeYaoJiuKe {
 		
 		switch(count) {
 		case 1 :
-			paiXins.add(PaiXin.YI_SE_YAO_JIU_KE);
+			paiXins.add(JieSuan.YI_SE_YAO_JIU_KE_VALUE);
 			break;
 		case 2 :
-			paiXins.add(PaiXin.YI_SE_YAO_JIU_KE_SHUANG);
+			paiXins.add(JieSuan.YI_SE_YAO_JIU_KE_SHUANG_VALUE);
 			break;
 		}
 		

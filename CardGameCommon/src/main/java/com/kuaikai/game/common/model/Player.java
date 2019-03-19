@@ -19,8 +19,11 @@ public class Player {
 	private boolean offline = false;
 
 	// 各项分数
-	private List<Integer> points;
+	private List<Integer> points = new LinkedList<Integer>();
 
+	// 玩家下注数
+	private int bet;
+	
 	public int getId() {
 		return user==null?0:user.getId();
 	}
@@ -74,6 +77,14 @@ public class Player {
 		points.add(point);
 	}
 	
+	public int getBet() {
+		return bet;
+	}
+
+	public void setBet(int bet) {
+		this.bet = bet;
+	}
+
 	/**
 	 * @param player
 	 * @return 指定一名玩家到本玩家的距离

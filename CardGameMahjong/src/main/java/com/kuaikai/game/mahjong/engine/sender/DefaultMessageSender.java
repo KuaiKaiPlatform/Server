@@ -9,11 +9,16 @@ import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.common.play.MessageSender;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
+import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.msg.DefaultMsgCreator;
 import com.kuaikai.game.mahjong.msg.MsgCreator;
 import com.kuaikai.game.mahjong.msg.MsgId;
+import com.kuaikai.game.mahjong.msg.pb.SCanOperPB.SCanOper;
+import com.kuaikai.game.mahjong.msg.pb.SGameResultPB.SGameResult;
+import com.kuaikai.game.mahjong.msg.pb.SOperCardPB.SOperCard;
 import com.kuaikai.game.mahjong.msg.pb.SSetInitPB.SSetInit;
+import com.kuaikai.game.mahjong.msg.pb.SSetResultPB.SSetResult;
 
 public class DefaultMessageSender extends MessageSender {
 	
@@ -35,96 +40,66 @@ public class DefaultMessageSender extends MessageSender {
 	/**
 	 * 同步牌桌信息
 	 */
-	public void syncSetInit(GamePlayer p) {
+	public void sendSSetInit(GamePlayer p) {
 		List<GamePlayer> receivers = new ArrayList<GamePlayer>();
 		if(p == null)
 			receivers.addAll(desk.getAllPlayers());
 		else
 			receivers.add(p);
 		
-		List<BaseOperation> canExecuteOperations = getDesk().getEngine().getOperManager().getCurrentCanExecuteOperations();
 		for(GamePlayer receiver : receivers) {
-			SSetInit.Builder builder = msgCreator.createSSetInit(this.getDesk(), receiver);
-/*			SFSObject initSFSObject = getSetStartObj(receiver);
-			// 可执行操作只发送给操作者
-			initSFSObject.removeElement("canOperDetails");
-			if(canExecuteOperations != null) {
-				SFSArray canOperDetails = new SFSArray();
-				for(BaseOperation canExecuteOperation : canExecuteOperations) {
-					if(!canExecuteOperation.canExecute()) continue;
-					if(!receiver.equals(canExecuteOperation.getPlayer())) continue;
-					canOperDetails.addSFSObject(getOperDetail(canExecuteOperation, receiver).toSfsObject());
-				}
-				initSFSObject.putSFSArray("canOperDetails", canOperDetails);				
-			}
-
-			// 打牌后听的牌
-			initSFSObject.removeElement("discard2TingCards");
-			SFSObject tingCardsObj = getDiscard2TingCardsSFSObj(receiver);
-			if(tingCardsObj != null) {
-				initSFSObject.putSFSObject("discard2TingCards", tingCardsObj);
-			}
-			
-			MessageHelper.sendMsg(roomExt, MessageContants.Init, initSFSObject, receiver);*/
+			SSetInit.Builder builder = msgCreator.createSSetInit(this.getDesk(), (MahjongPlayer)receiver);
 			OnlineManager.sendMsg(receiver.getId(), new CommonMsgHandler(MsgId.SSetInit, builder.build()));
-
 		}
 		
 	}
 	
-	/*
+	/**
 	 * 同步玩家最近的操作和可执行的操作
 	 */
-	public void syncOperCardRes() {
+	public void sendSOperCard() {
 		for(GamePlayer receiver : desk.getAllPlayers()) {
-			//syncOperCardRes(receiver);
+			SOperCard.Builder builder = msgCreator.createSOperCard(this.getDesk(), (MahjongPlayer)receiver);
+			OnlineManager.sendMsg(receiver.getId(), new CommonMsgHandler(MsgId.SOperCard, builder.build()));
 		}
 	}
 	
-	/*
-	 * 同步指定操作，当前仅用于一炮多响时发送胡牌消息
+	/**
+	 * 同步指定操作，仅用于一炮多响时发送胡牌消息
 	 */
-	public void syncOperCardRes(BaseOperation oper) {
-		for(GamePlayer receiver : desk.getAllPlayers()) {
-			
-		}
+	public void sendSOperCard(BaseOperation oper) {
+		SOperCard.Builder builder = msgCreator.createSOperCard(oper);
+		OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SOperCard, builder.build()));
 	}
 	
-	/*
+	/**
 	 * 过牌后如果有更多可执行的操作，同步给操作者
 	 */
-	public void syncCanOperRes() {
+	public void sendSCanOper() {
+		List<BaseOperation> canExecuteOperations = getDesk().getEngine().getOperManager().getCurrentCanExecuteOperations();
+		if(canExecuteOperations == null || canExecuteOperations.isEmpty()) return;
 		
-	}
-	
-	public void syncSetEnd() {
-/*		int time = (int) (System.currentTimeMillis() / 1000);
-		// 发送结束消息
-		SFSObject setEndObj = new SFSObject();
-		SFSArray userEndInfos = new SFSArray();
-		for (MahjongPlayer player : desk.getAllPlayers()) {
-			PlayerSetResult playerSetResult = desk.getEngine().getCalculator().getPlayerSetResult(player);
-			userEndInfos.addSFSObject(playerSetResult.toSFSObject());
+		for(GamePlayer receiver : desk.getAllPlayers()) {
+			SCanOper.Builder builder = msgCreator.createSCanOper(this.getDesk(), (MahjongPlayer)receiver, canExecuteOperations);
+			if(builder.getCanOperDetailsCount() == 0) continue;
+			OnlineManager.sendMsg(receiver.getId(), new CommonMsgHandler(MsgId.SCanOper, builder.build()));
 		}
-		setEndObj.putInt("time", time);
-		setEndObj.putSFSArray("ret", userEndInfos);
-		MessageHelper.sendMsgToAll(roomExt, MessageContants.SynSetEnd, setEndObj, desk.getAllPlayers());*/
+	}
+
+	/**
+	 * 发送本局结束消息
+	 */
+	public void sendSSetResult(boolean over) {
+		SSetResult.Builder builder = msgCreator.createSSetResult(this.getDesk(), over);
+		OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SSetResult, builder.build()));
 	}
 	
-	/*
+	/**
 	 * 发送整场结束消息
 	 */
-	public void syncGameEnd() {
-/*		SFSObject gameEndObj = new SFSObject();
-		SFSArray userGameEnds = new SFSArray();
-		List<MahjongPlayer> players = desk.getAllPlayers();
-		for (MahjongPlayer player : players) {
-			userGameEnds.addSFSObject(player.getGameEndInfo());
-		}
-		gameEndObj.putSFSArray("ret", userGameEnds);
-		gameEndObj.putInt("finalSet", desk.getCurSet());
-		gameEndObj.putInt("time", (int) (System.currentTimeMillis() / 1000));
-		MessageHelper.sendMsgToAll(roomExt, MessageContants.SynEnd, gameEndObj, players);*/
+	public void sendSGameResult(boolean dismiss) {
+		SGameResult.Builder builder = msgCreator.createSGameResult(this.getDesk(), dismiss);
+		OnlineManager.sendToAll(desk.getPids(), new CommonMsgHandler(MsgId.SGameResult, builder.build()));
 	}
 	
 }

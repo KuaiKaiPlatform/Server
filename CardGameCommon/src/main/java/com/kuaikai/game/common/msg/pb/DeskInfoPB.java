@@ -161,6 +161,24 @@ public final class DeskInfoPB {
      * </pre>
      */
     int getCurSet();
+
+    // optional int32 bankerId = 7;
+    /**
+     * <code>optional int32 bankerId = 7;</code>
+     *
+     * <pre>
+     * 庄家ID
+     * </pre>
+     */
+    boolean hasBankerId();
+    /**
+     * <code>optional int32 bankerId = 7;</code>
+     *
+     * <pre>
+     * 庄家ID
+     * </pre>
+     */
+    int getBankerId();
   }
   /**
    * Protobuf type {@code common.DeskInfo}
@@ -276,6 +294,11 @@ public final class DeskInfoPB {
             case 48: {
               bitField0_ |= 0x00000010;
               curSet_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              bankerId_ = input.readInt32();
               break;
             }
           }
@@ -517,6 +540,30 @@ public final class DeskInfoPB {
       return curSet_;
     }
 
+    // optional int32 bankerId = 7;
+    public static final int BANKERID_FIELD_NUMBER = 7;
+    private int bankerId_;
+    /**
+     * <code>optional int32 bankerId = 7;</code>
+     *
+     * <pre>
+     * 庄家ID
+     * </pre>
+     */
+    public boolean hasBankerId() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 bankerId = 7;</code>
+     *
+     * <pre>
+     * 庄家ID
+     * </pre>
+     */
+    public int getBankerId() {
+      return bankerId_;
+    }
+
     private void initFields() {
       uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
       players_ = java.util.Collections.emptyList();
@@ -524,6 +571,7 @@ public final class DeskInfoPB {
       setting_ = com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
       status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
       curSet_ = 0;
+      bankerId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -575,6 +623,9 @@ public final class DeskInfoPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, curSet_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, bankerId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -607,6 +658,10 @@ public final class DeskInfoPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, curSet_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, bankerId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -755,6 +810,8 @@ public final class DeskInfoPB {
         bitField0_ = (bitField0_ & ~0x00000010);
         curSet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        bankerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -820,6 +877,10 @@ public final class DeskInfoPB {
           to_bitField0_ |= 0x00000010;
         }
         result.curSet_ = curSet_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.bankerId_ = bankerId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -876,6 +937,9 @@ public final class DeskInfoPB {
         }
         if (other.hasCurSet()) {
           setCurSet(other.getCurSet());
+        }
+        if (other.hasBankerId()) {
+          setBankerId(other.getBankerId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1695,6 +1759,55 @@ public final class DeskInfoPB {
         return this;
       }
 
+      // optional int32 bankerId = 7;
+      private int bankerId_ ;
+      /**
+       * <code>optional int32 bankerId = 7;</code>
+       *
+       * <pre>
+       * 庄家ID
+       * </pre>
+       */
+      public boolean hasBankerId() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 bankerId = 7;</code>
+       *
+       * <pre>
+       * 庄家ID
+       * </pre>
+       */
+      public int getBankerId() {
+        return bankerId_;
+      }
+      /**
+       * <code>optional int32 bankerId = 7;</code>
+       *
+       * <pre>
+       * 庄家ID
+       * </pre>
+       */
+      public Builder setBankerId(int value) {
+        bitField0_ |= 0x00000040;
+        bankerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bankerId = 7;</code>
+       *
+       * <pre>
+       * 庄家ID
+       * </pre>
+       */
+      public Builder clearBankerId() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        bankerId_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:common.DeskInfo)
     }
 
@@ -1723,14 +1836,14 @@ public final class DeskInfoPB {
       "\n\025common/DeskInfo.proto\022\006common\032\025common/" +
       "DeskUniq.proto\032\027common/PlayerInfo.proto\032" +
       "\030common/GameSetting.proto\032\025common/GameRu" +
-      "le.proto\032\027common/GameStatus.proto\"\311\001\n\010De" +
+      "le.proto\032\027common/GameStatus.proto\"\333\001\n\010De" +
       "skInfo\022\036\n\004uniq\030\001 \002(\0132\020.common.DeskUniq\022#" +
       "\n\007players\030\002 \003(\0132\022.common.PlayerInfo\022\036\n\004r" +
       "ule\030\003 \001(\0162\020.common.GameRule\022$\n\007setting\030\004" +
       " \001(\0132\023.common.GameSetting\022\"\n\006status\030\005 \001(" +
-      "\0162\022.common.GameStatus\022\016\n\006curSet\030\006 \001(\005B,\n" +
-      "\036com.kuaikai.game.common.msg.pbB\nDeskInf",
-      "oPB"
+      "\0162\022.common.GameStatus\022\016\n\006curSet\030\006 \001(\005\022\020\n" +
+      "\010bankerId\030\007 \001(\005B,\n\036com.kuaikai.game.comm",
+      "on.msg.pbB\nDeskInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1742,7 +1855,7 @@ public final class DeskInfoPB {
           internal_static_common_DeskInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_DeskInfo_descriptor,
-              new java.lang.String[] { "Uniq", "Players", "Rule", "Setting", "Status", "CurSet", });
+              new java.lang.String[] { "Uniq", "Players", "Rule", "Setting", "Status", "CurSet", "BankerId", });
           return null;
         }
       };

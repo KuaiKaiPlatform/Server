@@ -96,7 +96,7 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     java.util.List<java.lang.Integer> getPointsList();
@@ -104,7 +104,7 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     int getPointsCount();
@@ -112,10 +112,28 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     int getPoints(int index);
+
+    // optional int32 bet = 6;
+    /**
+     * <code>optional int32 bet = 6;</code>
+     *
+     * <pre>
+     * 下注数量
+     * </pre>
+     */
+    boolean hasBet();
+    /**
+     * <code>optional int32 bet = 6;</code>
+     *
+     * <pre>
+     * 下注数量
+     * </pre>
+     */
+    int getBet();
   }
   /**
    * Protobuf type {@code common.PlayerInfo}
@@ -215,6 +233,11 @@ public final class PlayerInfoPB {
                 points_.add(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              bet_ = input.readInt32();
               break;
             }
           }
@@ -373,7 +396,7 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     public java.util.List<java.lang.Integer>
@@ -384,7 +407,7 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     public int getPointsCount() {
@@ -394,11 +417,35 @@ public final class PlayerInfoPB {
      * <code>repeated int32 points = 5;</code>
      *
      * <pre>
-     * 各项分数
+     * 本场各项分数
      * </pre>
      */
     public int getPoints(int index) {
       return points_.get(index);
+    }
+
+    // optional int32 bet = 6;
+    public static final int BET_FIELD_NUMBER = 6;
+    private int bet_;
+    /**
+     * <code>optional int32 bet = 6;</code>
+     *
+     * <pre>
+     * 下注数量
+     * </pre>
+     */
+    public boolean hasBet() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 bet = 6;</code>
+     *
+     * <pre>
+     * 下注数量
+     * </pre>
+     */
+    public int getBet() {
+      return bet_;
     }
 
     private void initFields() {
@@ -407,6 +454,7 @@ public final class PlayerInfoPB {
       prepared_ = false;
       offline_ = false;
       points_ = java.util.Collections.emptyList();
+      bet_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -443,6 +491,9 @@ public final class PlayerInfoPB {
       for (int i = 0; i < points_.size(); i++) {
         output.writeInt32(5, points_.get(i));
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(6, bet_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -476,6 +527,10 @@ public final class PlayerInfoPB {
         }
         size += dataSize;
         size += 1 * getPointsList().size();
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, bet_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -608,6 +663,8 @@ public final class PlayerInfoPB {
         bitField0_ = (bitField0_ & ~0x00000008);
         points_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
+        bet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -661,6 +718,10 @@ public final class PlayerInfoPB {
           bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.points_ = points_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.bet_ = bet_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -698,6 +759,9 @@ public final class PlayerInfoPB {
             points_.addAll(other.points_);
           }
           onChanged();
+        }
+        if (other.hasBet()) {
+          setBet(other.getBet());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1046,7 +1110,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public java.util.List<java.lang.Integer>
@@ -1057,7 +1121,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public int getPointsCount() {
@@ -1067,7 +1131,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public int getPoints(int index) {
@@ -1077,7 +1141,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public Builder setPoints(
@@ -1091,7 +1155,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public Builder addPoints(int value) {
@@ -1104,7 +1168,7 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public Builder addAllPoints(
@@ -1118,12 +1182,61 @@ public final class PlayerInfoPB {
        * <code>repeated int32 points = 5;</code>
        *
        * <pre>
-       * 各项分数
+       * 本场各项分数
        * </pre>
        */
       public Builder clearPoints() {
         points_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      // optional int32 bet = 6;
+      private int bet_ ;
+      /**
+       * <code>optional int32 bet = 6;</code>
+       *
+       * <pre>
+       * 下注数量
+       * </pre>
+       */
+      public boolean hasBet() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 bet = 6;</code>
+       *
+       * <pre>
+       * 下注数量
+       * </pre>
+       */
+      public int getBet() {
+        return bet_;
+      }
+      /**
+       * <code>optional int32 bet = 6;</code>
+       *
+       * <pre>
+       * 下注数量
+       * </pre>
+       */
+      public Builder setBet(int value) {
+        bitField0_ |= 0x00000020;
+        bet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bet = 6;</code>
+       *
+       * <pre>
+       * 下注数量
+       * </pre>
+       */
+      public Builder clearBet() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        bet_ = 0;
         onChanged();
         return this;
       }
@@ -1154,11 +1267,11 @@ public final class PlayerInfoPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\027common/PlayerInfo.proto\022\006common\032\026accou" +
-      "nt/UserInfo.proto\"n\n\nPlayerInfo\022\037\n\004user\030" +
+      "nt/UserInfo.proto\"{\n\nPlayerInfo\022\037\n\004user\030" +
       "\001 \002(\0132\021.account.UserInfo\022\014\n\004seat\030\002 \001(\005\022\020" +
       "\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010\022\016\n\006poi" +
-      "nts\030\005 \003(\005B.\n\036com.kuaikai.game.common.msg" +
-      ".pbB\014PlayerInfoPB"
+      "nts\030\005 \003(\005\022\013\n\003bet\030\006 \001(\005B.\n\036com.kuaikai.ga" +
+      "me.common.msg.pbB\014PlayerInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1170,7 +1283,7 @@ public final class PlayerInfoPB {
           internal_static_common_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_PlayerInfo_descriptor,
-              new java.lang.String[] { "User", "Seat", "Prepared", "Offline", "Points", });
+              new java.lang.String[] { "User", "Seat", "Prepared", "Offline", "Points", "Bet", });
           return null;
         }
       };

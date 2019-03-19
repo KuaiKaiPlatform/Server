@@ -55,95 +55,50 @@ public final class PlayerGameResultPB {
      */
     int getPoints(int index);
 
-    // optional int32 zimo = 3;
+    // repeated .mahjong.PlayerStat playerStats = 3;
     /**
-     * <code>optional int32 zimo = 3;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 自摸次数
+     * 玩家统计
      * </pre>
      */
-    boolean hasZimo();
+    java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> 
+        getPlayerStatsList();
     /**
-     * <code>optional int32 zimo = 3;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 自摸次数
+     * 玩家统计
      * </pre>
      */
-    int getZimo();
-
-    // optional int32 jiePao = 4;
+    com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat getPlayerStats(int index);
     /**
-     * <code>optional int32 jiePao = 4;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 接炮次数
+     * 玩家统计
      * </pre>
      */
-    boolean hasJiePao();
+    int getPlayerStatsCount();
     /**
-     * <code>optional int32 jiePao = 4;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 接炮次数
+     * 玩家统计
      * </pre>
      */
-    int getJiePao();
-
-    // optional int32 dianPao = 5;
+    java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder> 
+        getPlayerStatsOrBuilderList();
     /**
-     * <code>optional int32 dianPao = 5;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 点炮次数
+     * 玩家统计
      * </pre>
      */
-    boolean hasDianPao();
-    /**
-     * <code>optional int32 dianPao = 5;</code>
-     *
-     * <pre>
-     * 点炮次数
-     * </pre>
-     */
-    int getDianPao();
-
-    // optional int32 mingGang = 6;
-    /**
-     * <code>optional int32 mingGang = 6;</code>
-     *
-     * <pre>
-     * 明杠次数
-     * </pre>
-     */
-    boolean hasMingGang();
-    /**
-     * <code>optional int32 mingGang = 6;</code>
-     *
-     * <pre>
-     * 明杠次数
-     * </pre>
-     */
-    int getMingGang();
-
-    // optional int32 anGang = 7;
-    /**
-     * <code>optional int32 anGang = 7;</code>
-     *
-     * <pre>
-     * 暗杠次数
-     * </pre>
-     */
-    boolean hasAnGang();
-    /**
-     * <code>optional int32 anGang = 7;</code>
-     *
-     * <pre>
-     * 暗杠次数
-     * </pre>
-     */
-    int getAnGang();
+    com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder getPlayerStatsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code mahjong.PlayerGameResult}
@@ -226,29 +181,12 @@ public final class PlayerGameResultPB {
               input.popLimit(limit);
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000002;
-              zimo_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000004;
-              jiePao_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000008;
-              dianPao_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000010;
-              mingGang_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000020;
-              anGang_ = input.readInt32();
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                playerStats_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              playerStats_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.PARSER, extensionRegistry));
               break;
             }
           }
@@ -261,6 +199,9 @@ public final class PlayerGameResultPB {
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           points_ = java.util.Collections.unmodifiableList(points_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          playerStats_ = java.util.Collections.unmodifiableList(playerStats_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -353,134 +294,66 @@ public final class PlayerGameResultPB {
       return points_.get(index);
     }
 
-    // optional int32 zimo = 3;
-    public static final int ZIMO_FIELD_NUMBER = 3;
-    private int zimo_;
+    // repeated .mahjong.PlayerStat playerStats = 3;
+    public static final int PLAYERSTATS_FIELD_NUMBER = 3;
+    private java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> playerStats_;
     /**
-     * <code>optional int32 zimo = 3;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 自摸次数
+     * 玩家统计
      * </pre>
      */
-    public boolean hasZimo() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> getPlayerStatsList() {
+      return playerStats_;
     }
     /**
-     * <code>optional int32 zimo = 3;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 自摸次数
+     * 玩家统计
      * </pre>
      */
-    public int getZimo() {
-      return zimo_;
-    }
-
-    // optional int32 jiePao = 4;
-    public static final int JIEPAO_FIELD_NUMBER = 4;
-    private int jiePao_;
-    /**
-     * <code>optional int32 jiePao = 4;</code>
-     *
-     * <pre>
-     * 接炮次数
-     * </pre>
-     */
-    public boolean hasJiePao() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder> 
+        getPlayerStatsOrBuilderList() {
+      return playerStats_;
     }
     /**
-     * <code>optional int32 jiePao = 4;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 接炮次数
+     * 玩家统计
      * </pre>
      */
-    public int getJiePao() {
-      return jiePao_;
-    }
-
-    // optional int32 dianPao = 5;
-    public static final int DIANPAO_FIELD_NUMBER = 5;
-    private int dianPao_;
-    /**
-     * <code>optional int32 dianPao = 5;</code>
-     *
-     * <pre>
-     * 点炮次数
-     * </pre>
-     */
-    public boolean hasDianPao() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+    public int getPlayerStatsCount() {
+      return playerStats_.size();
     }
     /**
-     * <code>optional int32 dianPao = 5;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 点炮次数
+     * 玩家统计
      * </pre>
      */
-    public int getDianPao() {
-      return dianPao_;
-    }
-
-    // optional int32 mingGang = 6;
-    public static final int MINGGANG_FIELD_NUMBER = 6;
-    private int mingGang_;
-    /**
-     * <code>optional int32 mingGang = 6;</code>
-     *
-     * <pre>
-     * 明杠次数
-     * </pre>
-     */
-    public boolean hasMingGang() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+    public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat getPlayerStats(int index) {
+      return playerStats_.get(index);
     }
     /**
-     * <code>optional int32 mingGang = 6;</code>
+     * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
      *
      * <pre>
-     * 明杠次数
+     * 玩家统计
      * </pre>
      */
-    public int getMingGang() {
-      return mingGang_;
-    }
-
-    // optional int32 anGang = 7;
-    public static final int ANGANG_FIELD_NUMBER = 7;
-    private int anGang_;
-    /**
-     * <code>optional int32 anGang = 7;</code>
-     *
-     * <pre>
-     * 暗杠次数
-     * </pre>
-     */
-    public boolean hasAnGang() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 anGang = 7;</code>
-     *
-     * <pre>
-     * 暗杠次数
-     * </pre>
-     */
-    public int getAnGang() {
-      return anGang_;
+    public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder getPlayerStatsOrBuilder(
+        int index) {
+      return playerStats_.get(index);
     }
 
     private void initFields() {
       uid_ = 0;
       points_ = java.util.Collections.emptyList();
-      zimo_ = 0;
-      jiePao_ = 0;
-      dianPao_ = 0;
-      mingGang_ = 0;
-      anGang_ = 0;
+      playerStats_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -490,6 +363,12 @@ public final class PlayerGameResultPB {
       if (!hasUid()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      for (int i = 0; i < getPlayerStatsCount(); i++) {
+        if (!getPlayerStats(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -504,20 +383,8 @@ public final class PlayerGameResultPB {
       for (int i = 0; i < points_.size(); i++) {
         output.writeInt32(2, points_.get(i));
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(3, zimo_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(4, jiePao_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, dianPao_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(6, mingGang_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, anGang_);
+      for (int i = 0; i < playerStats_.size(); i++) {
+        output.writeMessage(3, playerStats_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -541,25 +408,9 @@ public final class PlayerGameResultPB {
         size += dataSize;
         size += 1 * getPointsList().size();
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      for (int i = 0; i < playerStats_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, zimo_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, jiePao_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, dianPao_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, mingGang_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, anGang_);
+          .computeMessageSize(3, playerStats_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -673,6 +524,7 @@ public final class PlayerGameResultPB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPlayerStatsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -685,16 +537,12 @@ public final class PlayerGameResultPB {
         bitField0_ = (bitField0_ & ~0x00000001);
         points_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        zimo_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        jiePao_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        dianPao_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        mingGang_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        anGang_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        if (playerStatsBuilder_ == null) {
+          playerStats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          playerStatsBuilder_.clear();
+        }
         return this;
       }
 
@@ -732,26 +580,15 @@ public final class PlayerGameResultPB {
           bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.points_ = points_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000002;
+        if (playerStatsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            playerStats_ = java.util.Collections.unmodifiableList(playerStats_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.playerStats_ = playerStats_;
+        } else {
+          result.playerStats_ = playerStatsBuilder_.build();
         }
-        result.zimo_ = zimo_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.jiePao_ = jiePao_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.dianPao_ = dianPao_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.mingGang_ = mingGang_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.anGang_ = anGang_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -781,20 +618,31 @@ public final class PlayerGameResultPB {
           }
           onChanged();
         }
-        if (other.hasZimo()) {
-          setZimo(other.getZimo());
-        }
-        if (other.hasJiePao()) {
-          setJiePao(other.getJiePao());
-        }
-        if (other.hasDianPao()) {
-          setDianPao(other.getDianPao());
-        }
-        if (other.hasMingGang()) {
-          setMingGang(other.getMingGang());
-        }
-        if (other.hasAnGang()) {
-          setAnGang(other.getAnGang());
+        if (playerStatsBuilder_ == null) {
+          if (!other.playerStats_.isEmpty()) {
+            if (playerStats_.isEmpty()) {
+              playerStats_ = other.playerStats_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensurePlayerStatsIsMutable();
+              playerStats_.addAll(other.playerStats_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.playerStats_.isEmpty()) {
+            if (playerStatsBuilder_.isEmpty()) {
+              playerStatsBuilder_.dispose();
+              playerStatsBuilder_ = null;
+              playerStats_ = other.playerStats_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              playerStatsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPlayerStatsFieldBuilder() : null;
+            } else {
+              playerStatsBuilder_.addAllMessages(other.playerStats_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -804,6 +652,12 @@ public final class PlayerGameResultPB {
         if (!hasUid()) {
           
           return false;
+        }
+        for (int i = 0; i < getPlayerStatsCount(); i++) {
+          if (!getPlayerStats(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -970,249 +824,316 @@ public final class PlayerGameResultPB {
         return this;
       }
 
-      // optional int32 zimo = 3;
-      private int zimo_ ;
-      /**
-       * <code>optional int32 zimo = 3;</code>
-       *
-       * <pre>
-       * 自摸次数
-       * </pre>
-       */
-      public boolean hasZimo() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 zimo = 3;</code>
-       *
-       * <pre>
-       * 自摸次数
-       * </pre>
-       */
-      public int getZimo() {
-        return zimo_;
-      }
-      /**
-       * <code>optional int32 zimo = 3;</code>
-       *
-       * <pre>
-       * 自摸次数
-       * </pre>
-       */
-      public Builder setZimo(int value) {
-        bitField0_ |= 0x00000004;
-        zimo_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 zimo = 3;</code>
-       *
-       * <pre>
-       * 自摸次数
-       * </pre>
-       */
-      public Builder clearZimo() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        zimo_ = 0;
-        onChanged();
-        return this;
+      // repeated .mahjong.PlayerStat playerStats = 3;
+      private java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> playerStats_ =
+        java.util.Collections.emptyList();
+      private void ensurePlayerStatsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          playerStats_ = new java.util.ArrayList<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat>(playerStats_);
+          bitField0_ |= 0x00000004;
+         }
       }
 
-      // optional int32 jiePao = 4;
-      private int jiePao_ ;
-      /**
-       * <code>optional int32 jiePao = 4;</code>
-       *
-       * <pre>
-       * 接炮次数
-       * </pre>
-       */
-      public boolean hasJiePao() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 jiePao = 4;</code>
-       *
-       * <pre>
-       * 接炮次数
-       * </pre>
-       */
-      public int getJiePao() {
-        return jiePao_;
-      }
-      /**
-       * <code>optional int32 jiePao = 4;</code>
-       *
-       * <pre>
-       * 接炮次数
-       * </pre>
-       */
-      public Builder setJiePao(int value) {
-        bitField0_ |= 0x00000008;
-        jiePao_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 jiePao = 4;</code>
-       *
-       * <pre>
-       * 接炮次数
-       * </pre>
-       */
-      public Builder clearJiePao() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        jiePao_ = 0;
-        onChanged();
-        return this;
-      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder> playerStatsBuilder_;
 
-      // optional int32 dianPao = 5;
-      private int dianPao_ ;
       /**
-       * <code>optional int32 dianPao = 5;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 点炮次数
+       * 玩家统计
        * </pre>
        */
-      public boolean hasDianPao() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> getPlayerStatsList() {
+        if (playerStatsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(playerStats_);
+        } else {
+          return playerStatsBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>optional int32 dianPao = 5;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 点炮次数
+       * 玩家统计
        * </pre>
        */
-      public int getDianPao() {
-        return dianPao_;
+      public int getPlayerStatsCount() {
+        if (playerStatsBuilder_ == null) {
+          return playerStats_.size();
+        } else {
+          return playerStatsBuilder_.getCount();
+        }
       }
       /**
-       * <code>optional int32 dianPao = 5;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 点炮次数
+       * 玩家统计
        * </pre>
        */
-      public Builder setDianPao(int value) {
-        bitField0_ |= 0x00000010;
-        dianPao_ = value;
-        onChanged();
+      public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat getPlayerStats(int index) {
+        if (playerStatsBuilder_ == null) {
+          return playerStats_.get(index);
+        } else {
+          return playerStatsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder setPlayerStats(
+          int index, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat value) {
+        if (playerStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayerStatsIsMutable();
+          playerStats_.set(index, value);
+          onChanged();
+        } else {
+          playerStatsBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 dianPao = 5;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 点炮次数
+       * 玩家统计
        * </pre>
        */
-      public Builder clearDianPao() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        dianPao_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 mingGang = 6;
-      private int mingGang_ ;
-      /**
-       * <code>optional int32 mingGang = 6;</code>
-       *
-       * <pre>
-       * 明杠次数
-       * </pre>
-       */
-      public boolean hasMingGang() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 mingGang = 6;</code>
-       *
-       * <pre>
-       * 明杠次数
-       * </pre>
-       */
-      public int getMingGang() {
-        return mingGang_;
-      }
-      /**
-       * <code>optional int32 mingGang = 6;</code>
-       *
-       * <pre>
-       * 明杠次数
-       * </pre>
-       */
-      public Builder setMingGang(int value) {
-        bitField0_ |= 0x00000020;
-        mingGang_ = value;
-        onChanged();
+      public Builder setPlayerStats(
+          int index, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder builderForValue) {
+        if (playerStatsBuilder_ == null) {
+          ensurePlayerStatsIsMutable();
+          playerStats_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          playerStatsBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>optional int32 mingGang = 6;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 明杠次数
+       * 玩家统计
        * </pre>
        */
-      public Builder clearMingGang() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        mingGang_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 anGang = 7;
-      private int anGang_ ;
-      /**
-       * <code>optional int32 anGang = 7;</code>
-       *
-       * <pre>
-       * 暗杠次数
-       * </pre>
-       */
-      public boolean hasAnGang() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 anGang = 7;</code>
-       *
-       * <pre>
-       * 暗杠次数
-       * </pre>
-       */
-      public int getAnGang() {
-        return anGang_;
-      }
-      /**
-       * <code>optional int32 anGang = 7;</code>
-       *
-       * <pre>
-       * 暗杠次数
-       * </pre>
-       */
-      public Builder setAnGang(int value) {
-        bitField0_ |= 0x00000040;
-        anGang_ = value;
-        onChanged();
+      public Builder addPlayerStats(com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat value) {
+        if (playerStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayerStatsIsMutable();
+          playerStats_.add(value);
+          onChanged();
+        } else {
+          playerStatsBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 anGang = 7;</code>
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
        *
        * <pre>
-       * 暗杠次数
+       * 玩家统计
        * </pre>
        */
-      public Builder clearAnGang() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        anGang_ = 0;
-        onChanged();
+      public Builder addPlayerStats(
+          int index, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat value) {
+        if (playerStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayerStatsIsMutable();
+          playerStats_.add(index, value);
+          onChanged();
+        } else {
+          playerStatsBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder addPlayerStats(
+          com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder builderForValue) {
+        if (playerStatsBuilder_ == null) {
+          ensurePlayerStatsIsMutable();
+          playerStats_.add(builderForValue.build());
+          onChanged();
+        } else {
+          playerStatsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder addPlayerStats(
+          int index, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder builderForValue) {
+        if (playerStatsBuilder_ == null) {
+          ensurePlayerStatsIsMutable();
+          playerStats_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          playerStatsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder addAllPlayerStats(
+          java.lang.Iterable<? extends com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat> values) {
+        if (playerStatsBuilder_ == null) {
+          ensurePlayerStatsIsMutable();
+          super.addAll(values, playerStats_);
+          onChanged();
+        } else {
+          playerStatsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder clearPlayerStats() {
+        if (playerStatsBuilder_ == null) {
+          playerStats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          playerStatsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public Builder removePlayerStats(int index) {
+        if (playerStatsBuilder_ == null) {
+          ensurePlayerStatsIsMutable();
+          playerStats_.remove(index);
+          onChanged();
+        } else {
+          playerStatsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder getPlayerStatsBuilder(
+          int index) {
+        return getPlayerStatsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder getPlayerStatsOrBuilder(
+          int index) {
+        if (playerStatsBuilder_ == null) {
+          return playerStats_.get(index);  } else {
+          return playerStatsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder> 
+           getPlayerStatsOrBuilderList() {
+        if (playerStatsBuilder_ != null) {
+          return playerStatsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(playerStats_);
+        }
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder addPlayerStatsBuilder() {
+        return getPlayerStatsFieldBuilder().addBuilder(
+            com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder addPlayerStatsBuilder(
+          int index) {
+        return getPlayerStatsFieldBuilder().addBuilder(
+            index, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mahjong.PlayerStat playerStats = 3;</code>
+       *
+       * <pre>
+       * 玩家统计
+       * </pre>
+       */
+      public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder> 
+           getPlayerStatsBuilderList() {
+        return getPlayerStatsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder> 
+          getPlayerStatsFieldBuilder() {
+        if (playerStatsBuilder_ == null) {
+          playerStatsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat.Builder, com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStatOrBuilder>(
+                  playerStats_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          playerStats_ = null;
+        }
+        return playerStatsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:mahjong.PlayerGameResult)
@@ -1241,11 +1162,11 @@ public final class PlayerGameResultPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\036mahjong/PlayerGameResult.proto\022\007mahjon" +
-      "g\"\200\001\n\020PlayerGameResult\022\013\n\003uid\030\001 \002(\005\022\016\n\006p" +
-      "oints\030\002 \003(\005\022\014\n\004zimo\030\003 \001(\005\022\016\n\006jiePao\030\004 \001(" +
-      "\005\022\017\n\007dianPao\030\005 \001(\005\022\020\n\010mingGang\030\006 \001(\005\022\016\n\006" +
-      "anGang\030\007 \001(\005B5\n\037com.kuaikai.game.mahjong" +
-      ".msg.pbB\022PlayerGameResultPB"
+      "g\032\030mahjong/PlayerStat.proto\"Y\n\020PlayerGam" +
+      "eResult\022\013\n\003uid\030\001 \002(\005\022\016\n\006points\030\002 \003(\005\022(\n\013" +
+      "playerStats\030\003 \003(\0132\023.mahjong.PlayerStatB5" +
+      "\n\037com.kuaikai.game.mahjong.msg.pbB\022Playe" +
+      "rGameResultPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1257,13 +1178,14 @@ public final class PlayerGameResultPB {
           internal_static_mahjong_PlayerGameResult_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_PlayerGameResult_descriptor,
-              new java.lang.String[] { "Uid", "Points", "Zimo", "JiePao", "DianPao", "MingGang", "AnGang", });
+              new java.lang.String[] { "Uid", "Points", "PlayerStats", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.getDescriptor(),
         }, assigner);
   }
 

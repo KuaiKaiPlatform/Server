@@ -5,13 +5,13 @@ import java.util.Set;
 
 import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class HuModesChecker {
 /*	private static final Logger logger = LoggerFactory.getLogger(HuModes.class);
@@ -189,7 +189,7 @@ public class HuModesChecker {
 	 * @return
 	 */
 	public static boolean kaBianDiao(HuOperation action) {
-		return action.containsPaiXin(PaiXin.BIAN_ZHANG) || action.containsPaiXin(PaiXin.KAN_ZHANG) || action.containsPaiXin(PaiXin.DAN_DIAO_JIANG);
+		return action.containsPaiXin(JieSuan.BIAN_ZHANG_VALUE) || action.containsPaiXin(JieSuan.KAN_ZHANG_VALUE) || action.containsPaiXin(JieSuan.DAN_DIAO_JIANG_VALUE);
 	}
 	
 	/**
@@ -224,7 +224,7 @@ public class HuModesChecker {
 	 */
 	@SuppressWarnings("unchecked")
 	public static boolean tingAll(MahjongPlayer player) {
-		List<Integer> tingCards = (List<Integer>)player.getSetAttrs().get(MahjongPlayer.SetAttr.TING_CARDS);
+		List<Integer> tingCards = player.getTingCards();
 		if(tingCards == null || tingCards.isEmpty()) return false;
 		List<Integer> initCardPool = player.getGameDesk().getEngine().getProcessor().getInitCardPool();
 		return tingCards.size() == initCardPool.size();
@@ -328,14 +328,14 @@ public class HuModesChecker {
 		
 		Collections.sort(cards);
 		boolean result = false;
-		if(huAction.containsPaiXin(PaiXin.SHI_SAN_BU_KAO)) {
+		if(huAction.containsPaiXin(JieSuan.SHI_SAN_BU_KAO)) {
 			result = ShiSanBuKao.check(cards) > 0 || result;
 		}
 		if(huAction.containsQiDuiPaiXin()) {
 			Map<Integer, Integer> cardCount = PaiXinHelper.countCards(cards);
 			result = QiDui.check(cardCount) >= 0 || result;
 		}
-		if(huAction.containsPaiXin(PaiXin.BIAO_ZHUN_HU)) {
+		if(huAction.containsPaiXin(JieSuan.BIAO_ZHUN_HU)) {
 			result = BiaoZhunHu.check(cards) || result;
 		}
 		return result;

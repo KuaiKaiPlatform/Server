@@ -78,9 +78,9 @@ public class ClubRuleRedis {
 	 * @param rule
 	 * @return
 	 */
-	public static AttrsModel getSetting(int clubId, GameRule rule) {
+	public static AttrsModel getSetting(int clubId, GameRule rule, AttrsModel setting) {
 		RMap<String, String> rMap = getRMapSetting(clubId, rule);
-		AttrsModel setting = new AttrsModel();
+		if(setting == null) setting = new AttrsModel();
 		setting.putAll(rMap.readAllMap());
 		return setting;
 	}

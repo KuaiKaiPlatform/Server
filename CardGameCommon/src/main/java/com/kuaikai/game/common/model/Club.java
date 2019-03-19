@@ -73,6 +73,9 @@ public class Club {
 		this.deskId = deskId;
 	}
 
+	public List<ClubRule> getClubRules() {
+		return clubRules;
+	}
 	public void addClubRule(ClubRule rule) {
 		clubRules.add(rule);
 	}

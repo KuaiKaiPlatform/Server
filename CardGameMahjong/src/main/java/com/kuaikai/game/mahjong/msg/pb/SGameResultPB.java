@@ -74,9 +74,9 @@ public final class SGameResultPB {
      */
     int getFinalSet();
 
-    // optional int32 endTime = 3;
+    // optional int64 endTime = 3;
     /**
-     * <code>optional int32 endTime = 3;</code>
+     * <code>optional int64 endTime = 3;</code>
      *
      * <pre>
      * 结束时间
@@ -84,13 +84,31 @@ public final class SGameResultPB {
      */
     boolean hasEndTime();
     /**
-     * <code>optional int32 endTime = 3;</code>
+     * <code>optional int64 endTime = 3;</code>
      *
      * <pre>
      * 结束时间
      * </pre>
      */
-    int getEndTime();
+    long getEndTime();
+
+    // optional bool dismiss = 4;
+    /**
+     * <code>optional bool dismiss = 4;</code>
+     *
+     * <pre>
+     * 是否解散
+     * </pre>
+     */
+    boolean hasDismiss();
+    /**
+     * <code>optional bool dismiss = 4;</code>
+     *
+     * <pre>
+     * 是否解散
+     * </pre>
+     */
+    boolean getDismiss();
   }
   /**
    * Protobuf type {@code mahjong.SGameResult}
@@ -162,7 +180,12 @@ public final class SGameResultPB {
             }
             case 24: {
               bitField0_ |= 0x00000002;
-              endTime_ = input.readInt32();
+              endTime_ = input.readInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              dismiss_ = input.readBool();
               break;
             }
           }
@@ -288,11 +311,11 @@ public final class SGameResultPB {
       return finalSet_;
     }
 
-    // optional int32 endTime = 3;
+    // optional int64 endTime = 3;
     public static final int ENDTIME_FIELD_NUMBER = 3;
-    private int endTime_;
+    private long endTime_;
     /**
-     * <code>optional int32 endTime = 3;</code>
+     * <code>optional int64 endTime = 3;</code>
      *
      * <pre>
      * 结束时间
@@ -302,20 +325,45 @@ public final class SGameResultPB {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 endTime = 3;</code>
+     * <code>optional int64 endTime = 3;</code>
      *
      * <pre>
      * 结束时间
      * </pre>
      */
-    public int getEndTime() {
+    public long getEndTime() {
       return endTime_;
+    }
+
+    // optional bool dismiss = 4;
+    public static final int DISMISS_FIELD_NUMBER = 4;
+    private boolean dismiss_;
+    /**
+     * <code>optional bool dismiss = 4;</code>
+     *
+     * <pre>
+     * 是否解散
+     * </pre>
+     */
+    public boolean hasDismiss() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bool dismiss = 4;</code>
+     *
+     * <pre>
+     * 是否解散
+     * </pre>
+     */
+    public boolean getDismiss() {
+      return dismiss_;
     }
 
     private void initFields() {
       playerGameResults_ = java.util.Collections.emptyList();
       finalSet_ = 0;
-      endTime_ = 0;
+      endTime_ = 0L;
+      dismiss_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -342,7 +390,10 @@ public final class SGameResultPB {
         output.writeInt32(2, finalSet_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(3, endTime_);
+        output.writeInt64(3, endTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(4, dismiss_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -363,7 +414,11 @@ public final class SGameResultPB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, endTime_);
+          .computeInt64Size(3, endTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, dismiss_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -494,8 +549,10 @@ public final class SGameResultPB {
         }
         finalSet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        endTime_ = 0;
+        endTime_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        dismiss_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -541,6 +598,10 @@ public final class SGameResultPB {
           to_bitField0_ |= 0x00000002;
         }
         result.endTime_ = endTime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.dismiss_ = dismiss_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -588,6 +649,9 @@ public final class SGameResultPB {
         }
         if (other.hasEndTime()) {
           setEndTime(other.getEndTime());
+        }
+        if (other.hasDismiss()) {
+          setDismiss(other.getDismiss());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -983,10 +1047,10 @@ public final class SGameResultPB {
         return this;
       }
 
-      // optional int32 endTime = 3;
-      private int endTime_ ;
+      // optional int64 endTime = 3;
+      private long endTime_ ;
       /**
-       * <code>optional int32 endTime = 3;</code>
+       * <code>optional int64 endTime = 3;</code>
        *
        * <pre>
        * 结束时间
@@ -996,30 +1060,30 @@ public final class SGameResultPB {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 endTime = 3;</code>
+       * <code>optional int64 endTime = 3;</code>
        *
        * <pre>
        * 结束时间
        * </pre>
        */
-      public int getEndTime() {
+      public long getEndTime() {
         return endTime_;
       }
       /**
-       * <code>optional int32 endTime = 3;</code>
+       * <code>optional int64 endTime = 3;</code>
        *
        * <pre>
        * 结束时间
        * </pre>
        */
-      public Builder setEndTime(int value) {
+      public Builder setEndTime(long value) {
         bitField0_ |= 0x00000004;
         endTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 endTime = 3;</code>
+       * <code>optional int64 endTime = 3;</code>
        *
        * <pre>
        * 结束时间
@@ -1027,7 +1091,56 @@ public final class SGameResultPB {
        */
       public Builder clearEndTime() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        endTime_ = 0;
+        endTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional bool dismiss = 4;
+      private boolean dismiss_ ;
+      /**
+       * <code>optional bool dismiss = 4;</code>
+       *
+       * <pre>
+       * 是否解散
+       * </pre>
+       */
+      public boolean hasDismiss() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bool dismiss = 4;</code>
+       *
+       * <pre>
+       * 是否解散
+       * </pre>
+       */
+      public boolean getDismiss() {
+        return dismiss_;
+      }
+      /**
+       * <code>optional bool dismiss = 4;</code>
+       *
+       * <pre>
+       * 是否解散
+       * </pre>
+       */
+      public Builder setDismiss(boolean value) {
+        bitField0_ |= 0x00000008;
+        dismiss_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool dismiss = 4;</code>
+       *
+       * <pre>
+       * 是否解散
+       * </pre>
+       */
+      public Builder clearDismiss() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        dismiss_ = false;
         onChanged();
         return this;
       }
@@ -1058,11 +1171,11 @@ public final class SGameResultPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\031mahjong/SGameResult.proto\022\007mahjong\032\036ma" +
-      "hjong/PlayerGameResult.proto\"f\n\013SGameRes" +
+      "hjong/PlayerGameResult.proto\"w\n\013SGameRes" +
       "ult\0224\n\021playerGameResults\030\001 \003(\0132\031.mahjong" +
       ".PlayerGameResult\022\020\n\010finalSet\030\002 \001(\005\022\017\n\007e" +
-      "ndTime\030\003 \001(\005B0\n\037com.kuaikai.game.mahjong" +
-      ".msg.pbB\rSGameResultPB"
+      "ndTime\030\003 \001(\003\022\017\n\007dismiss\030\004 \001(\010B0\n\037com.kua" +
+      "ikai.game.mahjong.msg.pbB\rSGameResultPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1074,7 +1187,7 @@ public final class SGameResultPB {
           internal_static_mahjong_SGameResult_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_SGameResult_descriptor,
-              new java.lang.String[] { "PlayerGameResults", "FinalSet", "EndTime", });
+              new java.lang.String[] { "PlayerGameResults", "FinalSet", "EndTime", "Dismiss", });
           return null;
         }
       };

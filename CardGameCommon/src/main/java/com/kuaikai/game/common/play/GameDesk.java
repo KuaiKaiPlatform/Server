@@ -3,10 +3,14 @@ package com.kuaikai.game.common.play;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.kuaikai.game.common.model.AttrsModel;
 import com.kuaikai.game.common.model.Desk;
+import com.kuaikai.game.common.model.GameAttrs;
+import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
+import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 
 /**
  * 游戏牌桌，定义通用操作
@@ -20,7 +24,7 @@ public abstract class GameDesk {
 	
 	protected MessageSender messageSender;
 	
-	private AttrsModel attrs;
+	protected AttrsModel attrs = new AttrsModel();
 	
 	// 玩家id到玩家对象map
 	protected Map<Integer, GamePlayer> id2Player = new HashMap<>();
@@ -32,6 +36,14 @@ public abstract class GameDesk {
 	protected GamePlayer banker;
 	
 	protected GameDesk(Desk desk) {
+		this.desk = desk;
+	}
+	
+	public Desk getDesk() {
+		return desk;
+	}
+	
+	public void setDesk(Desk desk) {
 		this.desk = desk;
 	}
 	
@@ -51,17 +63,32 @@ public abstract class GameDesk {
 		return desk.getCurSet();
 	}
 	
+	public GameStatus getStatus() {
+		return desk.getStatus();
+	}
+
+	public void setStatus(GameStatus status) {
+		desk.setStatus(status);
+	}
+	
+	public boolean checkStatus(GameStatus status) {
+		return desk.checkStatus(status);
+	}
+	
 	public GamePlayer getBanker() {
 		return banker;
 	}
 
 	public void setBanker(GamePlayer banker) {
 		this.banker = banker;
+		desk.setBanker(banker==null?null:banker.getPlayer());
 	}
 	
 	public int getBankerId() {
-		return banker == null?-1:banker.getId();
+		return desk.getBankerId();
 	}
+	
+	public abstract GamePlayer initBanker();
 	
 	public DeskRecord getRecord() {
 		return record;
@@ -74,7 +101,9 @@ public abstract class GameDesk {
 	public AttrsModel getAttrs() {
 		return attrs;
 	}
-
+	
+	public abstract void addPlayer(Player player);
+	
 	public void addPlayer(GamePlayer player) {
 		if(!id2Player.containsValue(player)) {
 			id2Player.put(player.getId(), player);
@@ -98,6 +127,10 @@ public abstract class GameDesk {
 		return id2Player.size();
 	}
 	
+	public Set<Integer> getPids() {
+		return desk.getPids();
+	}
+	
 	public GamePlayer getNextPlayer(GamePlayer gamePlayer) {
 		return getNextPlayer(gamePlayer.player.getSeat());
 	}
@@ -111,9 +144,34 @@ public abstract class GameDesk {
 	public MessageSender getMessageSender() {
 		return messageSender;
 	}
+
+	public boolean isFull() {
+		return desk.isFull();
+	}
 	
-	public abstract void onGameStart();
+	public boolean isAllPlayerReady() {
+		for (GamePlayer player : this.getAllPlayers()) {
+			if (!player.isReady()) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
-	public abstract void onGameEnd(boolean normal);
+	public void onSetStart(long startTime) {
+		this.getAttrs().put(GameAttrs.SET_START_TIME, startTime);
+	}
+	
+	public void onSetEnd(long endTime) {
+		this.getAttrs().put(GameAttrs.SET_END_TIME, endTime);
+	}
+	
+	public void onGameStart(long startTime) {
+		this.getAttrs().put(GameAttrs.START_TIME, startTime);
+	}
+	
+	public void onGameEnd(boolean dismiss, long endTime) {
+		this.getAttrs().put(GameAttrs.END_TIME, endTime);
+	}
 	
 }

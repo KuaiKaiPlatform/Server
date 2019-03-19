@@ -13,8 +13,8 @@ public class JieSuan {
 	public static final int GANG_SHANG_HUA				= 5004;			// 杠上花
 	public static final int QIANG_GANG_HU				= 5005;			// 抢杠胡
     public static final int DI_FEN						= 5006;			// 底分
-    public static final int MING_KE						= 5007;			// 明刻
-    public static final int AN_KE						= 5008;			// 暗刻
+//    public static final int MING_KE						= 5007;			// 明刻
+//    public static final int AN_KE						= 5008;			// 暗刻
     public static final int MING_GANG					= 5009;			// 明杠
     public static final int AN_GANG						= 5010;			// 暗杠
     public static final int DIAN_GANG					= 5011;			// 点杠

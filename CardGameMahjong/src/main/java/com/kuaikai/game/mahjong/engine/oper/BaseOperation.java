@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
@@ -175,7 +176,7 @@ public abstract class BaseOperation implements Comparable<BaseOperation> {
 	protected abstract void executeOperation();
 	protected abstract void createCanExecuteOperations();
 	
-	public OperDetail toOperDetail(MahjongPlayer receiver) {
+	public OperDetail toOperDetail(GamePlayer receiver) {
 		OperDetail operDetail = new OperDetail();
 		operDetail.setUid(player.getId());
 		if(target != null) operDetail.setFromUid(target.getPlayer()!=null?target.getPlayer().getId():0);

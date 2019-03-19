@@ -1,5 +1,6 @@
 package com.kuaikai.game.mahjong.engine.oper;
 
+import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.CardPool;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
@@ -74,7 +75,7 @@ public class MoOperation extends BaseOperation {
 	}
 	
 	@Override
-	public OperDetail toOperDetail(MahjongPlayer receiver) {
+	public OperDetail toOperDetail(GamePlayer receiver) {
 		OperDetail od = super.toOperDetail(receiver);
 		if(!player.equals(receiver)) {
 			od.setTarget(0);
@@ -82,10 +83,11 @@ public class MoOperation extends BaseOperation {
 		return od;
 	}
 	
-	public static void execute(MahjongPlayer player, BaseOperation preOperation) {
+	public static MoOperation execute(MahjongPlayer player, BaseOperation preOperation) {
 		MoOperation moOper = MoOperation.check(player, preOperation);
 		if(moOper != null) moOper.execute();
 		//player.getRoom().getEngine().getOperManager().autoRun();
+		return moOper;
 	}
 	
 	/*

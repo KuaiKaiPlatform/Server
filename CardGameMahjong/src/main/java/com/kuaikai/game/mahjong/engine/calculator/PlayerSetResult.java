@@ -47,6 +47,10 @@ public class PlayerSetResult {
     	scoreDetails.add(scoreDetail);
     }
     
+    public List<ScoreDetail> getScoreDetails() {
+    	return scoreDetails;
+    }
+    
     public void setZimo(boolean zimo) {
 		this.zimo = zimo;
 	}
@@ -58,6 +62,19 @@ public class PlayerSetResult {
 	public void setDianPao(boolean dianPao) {
 		this.dianPao = dianPao;
 	}
+
+	public boolean isZimo() {
+		return zimo;
+	}
+
+	public boolean isJiePao() {
+		return jiePao;
+	}
+
+	public boolean isDianPao() {
+		return dianPao;
+	}
+	
     
 /*    public SFSObject toSFSObject() {
     	SFSObject obj = new SFSObject();

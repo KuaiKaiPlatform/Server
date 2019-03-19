@@ -2,6 +2,7 @@ package com.kuaikai.game.mahjong.engine.oper;
 
 import java.util.List;
 
+import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.CardContainer;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
@@ -56,6 +57,12 @@ public class AnGangOperation extends BaseOperation {
 	@Override
 	protected String getDisplayName() {
 		return "暗杠";
+	}
+	
+	@Override
+	public OperDetail toOperDetail(GamePlayer receiver) {
+		// 只有暗杠者才收到 target
+		return super.toOperDetail(receiver);
 	}
 	
 	/*

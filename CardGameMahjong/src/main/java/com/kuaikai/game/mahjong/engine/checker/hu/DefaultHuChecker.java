@@ -17,22 +17,24 @@ import com.kuaikai.game.mahjong.engine.checker.paixin.CheckerArray;
 import com.kuaikai.game.mahjong.engine.checker.paixin.PaiXinChecker;
 import com.kuaikai.game.mahjong.engine.checker.paixin.SingleChecker;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.DiscardTingCards;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
+import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
 import com.kuaikai.game.mahjong.engine.oper.OperationFactory;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 /**
  * 默认的胡牌检查器
  * 
  */
 public class DefaultHuChecker implements HuChecker {
-	protected static final Logger logger = LoggerFactory.getLogger("play");
+	
+	protected static final Logger logger = LoggerFactory.getLogger("mahjong");
+	
 	protected final MahjongDesk desk;
 	protected final MahjongPlayer player;
 	protected PaiXinChecker paiXinChecker;
@@ -65,11 +67,11 @@ public class DefaultHuChecker implements HuChecker {
 	 */
 	protected void initPaiXinChecker() {
 		// 十三幺
-		SingleChecker shiSanYao = new SingleChecker(PaiXin.SHI_SAN_YAO, paiXinChecker);
+		SingleChecker shiSanYao = new SingleChecker(JieSuan.SHI_SAN_YAO_VALUE, paiXinChecker);
 		paiXinChecker.setChecker(shiSanYao);
 		
 		// 十三不靠
-		SingleChecker shiSanBuKao = new SingleChecker(PaiXin.SHI_SAN_BU_KAO, paiXinChecker);
+		SingleChecker shiSanBuKao = new SingleChecker(JieSuan.SHI_SAN_BU_KAO_VALUE, paiXinChecker);
 		shiSanYao.setNextChecker(shiSanBuKao);
 		
 		// 其他牌型
@@ -77,13 +79,13 @@ public class DefaultHuChecker implements HuChecker {
 		shiSanBuKao.setNextChecker(others);
 		
 		// 七对
-		SingleChecker qiDui = new SingleChecker(PaiXin.QI_DUI, paiXinChecker);
+		SingleChecker qiDui = new SingleChecker(JieSuan.QI_DUI_VALUE, paiXinChecker);
 		others.addSingleChecker(qiDui);
 
 		// 清一色
-		SingleChecker qingYiSe = new SingleChecker(PaiXin.QING_YI_SE, paiXinChecker);
-		qingYiSe.addOrDependency(PaiXin.BIAO_ZHUN_HU);
-		qingYiSe.addOrDependency(PaiXin.QI_DUI);
+		SingleChecker qingYiSe = new SingleChecker(JieSuan.QING_YI_SE_VALUE, paiXinChecker);
+		qingYiSe.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
+		qingYiSe.addOrDependency(JieSuan.QI_DUI_VALUE);
 		others.addSingleChecker(qingYiSe);
 		
 		// 其他牌型（七对）
@@ -91,16 +93,16 @@ public class DefaultHuChecker implements HuChecker {
 		qiDui.setNextChecker(othersQiDui);
 		
 		// 标准胡
-		SingleChecker biaoZhunHu = new SingleChecker(PaiXin.BIAO_ZHUN_HU, paiXinChecker);
+		SingleChecker biaoZhunHu = new SingleChecker(JieSuan.BIAO_ZHUN_HU_VALUE, paiXinChecker);
 		othersQiDui.addSingleChecker(biaoZhunHu);
 
 		// 金钩钓
-		SingleChecker jinGouDiao = new SingleChecker(PaiXin.QUAN_QIU_REN, paiXinChecker);
-		jinGouDiao.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker jinGouDiao = new SingleChecker(JieSuan.QUAN_QIU_REN_VALUE, paiXinChecker);
+		jinGouDiao.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		othersQiDui.addSingleChecker(jinGouDiao);
 		
 		// 碰碰胡
-		SingleChecker pengPengHu = new SingleChecker(PaiXin.PENG_PENG_HU, paiXinChecker);
+		SingleChecker pengPengHu = new SingleChecker(JieSuan.PENG_PENG_HU_VALUE, paiXinChecker);
 		jinGouDiao.setNextChecker(pengPengHu);
 
 		// 其他牌型（碰碰胡）
@@ -108,13 +110,13 @@ public class DefaultHuChecker implements HuChecker {
 		pengPengHu.setNextChecker(othersPengPengHu);
 
 		// 一条龙
-		SingleChecker yiTiaoLong = new SingleChecker(PaiXin.YI_TIAO_LONG, paiXinChecker);
-		yiTiaoLong.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker yiTiaoLong = new SingleChecker(JieSuan.YI_TIAO_LONG_VALUE, paiXinChecker);
+		yiTiaoLong.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		othersPengPengHu.addSingleChecker(yiTiaoLong);
 
 		// 根胡
-		SingleChecker genHu = new SingleChecker(PaiXin.GEN_HU, paiXinChecker);
-		genHu.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker genHu = new SingleChecker(JieSuan.GEN_HU_VALUE, paiXinChecker);
+		genHu.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		othersPengPengHu.addSingleChecker(genHu);
 		
 	}
@@ -148,10 +150,10 @@ public class DefaultHuChecker implements HuChecker {
 		
 		// 玩法设置要求缺一门时，清一色、混一色、缺一门、乱字必须存在任意一种牌型。
 		if(desk.getSetting().getBool(CardGameSetting.QUE_YI_MEN)) {
-			if(!paiXinChecker.containsResult(PaiXin.QING_YI_SE) &&
-					!paiXinChecker.containsResult(PaiXin.HUN_YI_SE) &&
-					!paiXinChecker.containsResult(PaiXin.QUE_YI_MEN) &&
-					!paiXinChecker.containsResult(PaiXin.LUAN_ZI))
+			if(!paiXinChecker.containsResult(JieSuan.QING_YI_SE_VALUE) &&
+					!paiXinChecker.containsResult(JieSuan.HUN_YI_SE_VALUE) &&
+					!paiXinChecker.containsResult(JieSuan.QUE_YI_MEN_VALUE) &&
+					!paiXinChecker.containsResult(JieSuan.LUAN_ZI_VALUE))
 				return result;
 		}
 		
@@ -224,27 +226,34 @@ public class DefaultHuChecker implements HuChecker {
 	public HuOperation checkHuOperation(BaseOperation oper) {
 		// 检查该玩家是否漏胡
 		if(!louHuCheck(oper)) {
-/*			logger.info(String.format("DefaultHuChecker.checkHuOperation@louHuCheck failed|room=%d|set=%d|user=%d|target=%d",
-					desk.getRoomid(),
-					desk.getCurSet(),
-					player.getId(),
-					oper.getTarget().getValue()));*/
+			logger.info("DefaultHuChecker.checkHuOperation@louHuCheck failed|cards={}|desk={}|uid={}|target={}", 
+					player.getCardContainer().getHandCardValues(),
+					desk.getKey(), 
+					player.getId(), 
+					oper.getTarget());
 			return null;
 		}
 		
 		// 检查该玩家是否有胡牌的条件
-		if(!preCheck(oper)) return null;	
+		if(!preCheck(oper)) {
+			logger.info("DefaultHuChecker.checkHuOperation@preCheck failed|cards={}|desk={}|uid={}|target={}", 
+					player.getCardContainer().getHandCardValues(),
+					desk.getKey(), 
+					player.getId(), 
+					oper.getTarget());
+			return null;	
+		}
 		
 		// 检查可胡牌型
 		Set<Integer> paiXins = checkPaiXins(oper);
 		if(paiXins == null || paiXins.isEmpty()) return null;
 		
-/*		logger.info(String.format("DefaultHuChecker.checkHuOperation@paiXins found|room=%d|set=%d|user=%d|paiXins=%s",
-				desk.getRoomid(),
-				desk.getCurSet(),
-				player.getId(),
-				paiXins,
-				oper.getTarget()));*/
+		logger.info("DefaultHuChecker.checkHuOperation@paiXins found|cards={}|desk={}|uid={}|target={}|paiXins={}", 
+				player.getCardContainer().getHandCardValues(),
+				desk.getKey(), 
+				player.getId(), 
+				oper.getTarget(),
+				paiXins);
 		
 		// 生成 HuAction
 		HuOperation huOper = OperationFactory.createHuOperation(player, oper);
@@ -253,11 +262,11 @@ public class DefaultHuChecker implements HuChecker {
 		
 		// 检查可胡牌型和胡牌方式是否具备胡牌条件，做后续操作
 		if(!postCheck(oper, huOper)) {
-/*			logger.info(String.format("DefaultHuChecker.checkHuOperation@postCheck failed|room=%d|set=%d|user=%d|target=%d",
-					desk.getRoomid(),
-					desk.getCurSet(),
-					player.getId(),
-					oper.getTarget().getValue()));*/
+			logger.info("DefaultHuChecker.checkHuOperation@postCheck failed|cards={}|desk={}|uid={}|target={}", 
+					player.getCardContainer().getHandCardValues(),
+					desk.getKey(), 
+					player.getId(), 
+					oper.getTarget());
 			return null;
 		}
 		

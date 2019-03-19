@@ -13,13 +13,13 @@ import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonGangCalculatorDetail;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.SetResult;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 /**
  * 结算器
@@ -28,7 +28,7 @@ import com.kuaikai.game.mahjong.engine.oper.HuOperation;
  */
 public abstract class Calculator {
 	
-	protected static final Logger logger = LoggerFactory.getLogger("cacl");
+	protected static final Logger logger = LoggerFactory.getLogger("mahjong");
 	
 	protected final MahjongDesk desk;
 	
@@ -121,7 +121,7 @@ public abstract class Calculator {
 	public void onGenZhuang() {
 		int rate = desk.getSetting().getInt(CardGameSetting.BASE_RATE);
 		CommonCalculatorDetail genZhuangCalculatorDetail = new CommonCalculatorDetail(desk, rate, false, false, false);
-		genZhuangCalculatorDetail.setMainType(JieSuan.GEN_ZHUANG);
+		genZhuangCalculatorDetail.setMainType(JieSuan.GEN_ZHUANG_VALUE);
 		genZhuangCalculatorDetail.addLoser(desk.getBanker());
 		for(GamePlayer winner : desk.getAllPlayers()) {
 			if(winner.isBanker()) continue;
@@ -143,6 +143,9 @@ public abstract class Calculator {
 	 * 本局结算（按局数和圈数玩法，底数玩法在DiCalculator中重载）
 	 */
 	protected void calculate() {
+		// 初始化
+		initPlayerSetResults();
+		
 		// 计算各项分数，得到所有玩家得失分
 		performCalculation();
 		
@@ -185,9 +188,6 @@ public abstract class Calculator {
 	}
 	
 	protected void handleSetResult() {
-		// 初始化
-		initPlayerSetResults();
-		
 		// 将当前局各结算项计算结果和总得失分计入各玩家的 playerSetResult中
 		for (Map.Entry<Integer, List<ScoreDetail>> entry : this.gainDetail.entrySet()) {
 			int userid = entry.getKey();
@@ -196,7 +196,7 @@ public abstract class Calculator {
 			for (ScoreDetail scoreDetail : scoreDetails) {
 				if(scoreDetail.isToPay()) playerSetResult.getGamePoints().changePoint(INDEX_DI, scoreDetail.getScore());
 				if(scoreDetail.isDisplay()) playerSetResult.addScoreDetail(scoreDetail);
-				//logger.info("gainscore room:" + room.getRoomid() + ",round:" + room.getCurSet() + ",userid:" + userid + "," + scoreDetail.toString());
+				logger.info("Calculator.handleSetResult@gainscore|desk={}|uid={}|scoreDetails={}", desk.getKey(), userid, scoreDetail.toString());
 			}
 		}
 		for (Map.Entry<Integer, List<ScoreDetail>> entry : this.lostDetail.entrySet()) {
@@ -207,7 +207,7 @@ public abstract class Calculator {
 				scoreDetail.setLost();
 				if(scoreDetail.isToPay()) playerSetResult.getGamePoints().changePoint(INDEX_DI, scoreDetail.getScore());
 				if(scoreDetail.isDisplay()) playerSetResult.addScoreDetail(scoreDetail);
-				//logger.info("lostscore room:" + room.getRoomid() + ",round:"+room.getCurSet() + ",userid:" + userid + "," + scoreDetail.toString());
+				logger.info("Calculator.handleSetResult@lostscore|desk={}|uid={}|scoreDetails={}", desk.getKey(), userid, scoreDetail.toString());
 			}
 		}
 		
@@ -240,7 +240,7 @@ public abstract class Calculator {
 	}
 
 	/**
-	 * 胡动作通知，创建相关 CalculatorDetail
+	 * 	胡动作通知，创建相关 CalculatorDetail
 	 * 
 	 * @param huOperation
 	 * @return

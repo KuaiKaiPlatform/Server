@@ -33,7 +33,7 @@ public class TcpServer extends ChannelConnection {
 		try {
 			boolean canSendMSg = checkSendMsg(ctx, msg);
 			if (!canSendMSg) {
-				LOGGER.info("TcpServer.onMessageReceived@discard msg|msgid={}", msg.msgid);
+				LOGGER.warn("TcpServer.onMessageReceived@discard msg|msgid={}", msg.msgid);
 				return;
 			}
 			MsgHandler msgHandler = MessageFactory.createMessage(ctx, msg);

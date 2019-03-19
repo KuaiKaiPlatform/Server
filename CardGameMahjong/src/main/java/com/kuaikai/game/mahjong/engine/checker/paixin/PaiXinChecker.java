@@ -9,10 +9,10 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class PaiXinChecker {
 	
@@ -69,7 +69,7 @@ public class PaiXinChecker {
 	 */
 	public boolean containsAnyResult(Set<Integer> paiXins) {
 		if(paiXins.isEmpty()) return true;
-		if(paiXins.contains(PaiXin.QI_DUI)) {
+		if(paiXins.contains(JieSuan.QI_DUI_VALUE)) {
 			if(containsQiDui()) return true;
 		}
 		for(int paiXin : paiXins) {
@@ -85,9 +85,9 @@ public class PaiXinChecker {
 	 */
 	public boolean containsAllResult(Set<Integer> paiXins) {
 		if(paiXins.isEmpty()) return true;
-		if(paiXins.contains(PaiXin.QI_DUI)) {
+		if(paiXins.contains(JieSuan.QI_DUI_VALUE)) {
 			if(!containsQiDui()) return false;
-			paiXins.remove(PaiXin.QI_DUI);
+			paiXins.remove(JieSuan.QI_DUI_VALUE);
 		}
 		return result.containsAll(paiXins);
 	}
@@ -110,7 +110,10 @@ public class PaiXinChecker {
 	}
 	
 	public static boolean containsQiDui(Set<Integer> paiXins) {
-		return paiXins.contains(PaiXin.QI_DUI) || paiXins.contains(PaiXin.HAO_QI_DUI) || paiXins.contains(PaiXin.CHAO_HAO_QI_DUI) || paiXins.contains(PaiXin.ZUI_HAO_QI_DUI);
+		return paiXins.contains(JieSuan.QI_DUI_VALUE)
+				|| paiXins.contains(JieSuan.HAO_QI_DUI_VALUE)
+				|| paiXins.contains(JieSuan.CHAO_HAO_QI_DUI_VALUE)
+				|| paiXins.contains(JieSuan.ZUI_HAO_QI_DUI_VALUE);
 	}
 	
 }

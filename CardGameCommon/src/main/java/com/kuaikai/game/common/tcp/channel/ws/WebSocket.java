@@ -43,13 +43,15 @@ public class WebSocket extends WebSocketServerHandler {
 				return;
 			}
 			MsgHandler msgHandler = MessageFactory.createMessage(ctx, msg);
-			msgHandler.process();
-//			if (msgHandler != null) {
-//				MsgThreadPool.getThreadPool().execute(msgHandler);
-//			}
-			LOGGER.debug("WebSocket.onMessageReceived@receive msg|msg={}|id={}", msgHandler, msg.msgid);
+			if (msgHandler != null) {
+				msgHandler.process();
+				//MsgThreadPool.getThreadPool().execute(msgHandler);
+			} else {
+				LOGGER.error("WebSocket.onMessageReceived@unsupported message|uid={}|msgid={}", OnlineManager.getUid(ctx), msg.msgid);
+			}
+			LOGGER.debug("WebSocket.onMessageReceived@receive msg|uid={}|{}|msgId={}", OnlineManager.getUid(ctx), msgHandler, msg.msgid);
 		} catch (Exception e) {
-			LOGGER.error("WebSocket.onMessageReceived@error occured|msgid={}", msg.msgid, e);
+			LOGGER.error("WebSocket.onMessageReceived@error occured|uid={}|msgid={}", OnlineManager.getUid(ctx), msg.msgid, e);
 		}
 
 	}

@@ -12,7 +12,6 @@ import com.kuaikai.game.common.model.AttrsModel;
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.common.utils.RandomUtils;
-import com.kuaikai.game.mahjong.engine.constants.ChairMode;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
 import com.kuaikai.game.mahjong.engine.model.CardPool;
@@ -21,6 +20,7 @@ import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
+import com.kuaikai.game.mahjong.engine.model.SetResult;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction;
 
@@ -74,7 +74,7 @@ public class DefaultProcessor implements IMahjongProcessor {
 	protected void initSetting() {
 		AttrsModel setting = desk.getSetting();
 		
-		setting.putIfNotExist(CardGameSetting.CHAIR_MODE, ChairMode.SEQUENCE.name());	// 按加入房间顺序入座
+		//setting.putIfNotExist(CardGameSetting.CHAIR_MODE, ChairMode.SEQUENCE_VALUE);	// 按加入房间顺序入座
 		setting.putIfNotExist(CardGameSetting.INIT_HAND_CARD_NUM, 13);					// 初始每人13张牌
 		
 		// 设置胡和杠的基础分
@@ -108,7 +108,7 @@ public class DefaultProcessor implements IMahjongProcessor {
 	@Override
 	public void onSetStart() {
 		// 定庄
-		dingZhuang();
+		//dingZhuang();
 		
 		// 底分玩法时，检查一底是否结束，开始新的一底
 		checkAndStartNewDi();
@@ -151,16 +151,25 @@ public class DefaultProcessor implements IMahjongProcessor {
 	}
 
 	/**
-	 * 胡牌时定庄：庄家胡牌则继续坐庄，闲家胡牌，根据规则设置决定胡牌坐庄或是点炮者坐庄
+	 * 胡牌时定庄：一炮多响时点炮者坐庄，庄家胡牌则继续坐庄，闲家胡牌，根据规则设置决定胡牌坐庄或是点炮者坐庄
 	 */
 	protected MahjongPlayer dingZhuangHu() {
-		if(desk.getBanker().isHuPlayer()) {	// 庄家胡牌，继续坐庄
+		// 一炮多响，点炮者坐庄
+		SetResult setResult = desk.getEngine().getCurrentSetResult();
+		if(setResult.isMultipleHu()) {
+			MahjongPlayer dianPlayer = setResult.getDianPlayer();
+			desk.setBanker(dianPlayer);
+			return dianPlayer;
+		}
+		
+		// 庄家胡牌，继续坐庄
+		if(desk.getBanker().isHuPlayer()) {
 			return desk.getBanker();
 		}
 		
 		// 规则设置为胡牌的坐庄
 		if(desk.getSetting().getBool(CardGameSetting.HU_TAKE_ZHUANG)) {
-			MahjongPlayer huPlayer = desk.getEngine().getCurrentSetResult().getSingleHuPlayer();
+			MahjongPlayer huPlayer = setResult.getSingleHuPlayer();
 			if(huPlayer != null) {
 				desk.setBanker(huPlayer);
 				return huPlayer;
@@ -169,7 +178,7 @@ public class DefaultProcessor implements IMahjongProcessor {
 
 		// 规则设置为点炮者坐庄
 		if(desk.getSetting().getBool(CardGameSetting.DIAN_PAO_TAKE_ZHUANG)) {
-			MahjongPlayer dianPlayer = desk.getEngine().getCurrentSetResult().getDianPlayer();
+			MahjongPlayer dianPlayer = setResult.getDianPlayer();
 			if(dianPlayer != null) {
 				desk.setBanker(dianPlayer);
 				return dianPlayer;

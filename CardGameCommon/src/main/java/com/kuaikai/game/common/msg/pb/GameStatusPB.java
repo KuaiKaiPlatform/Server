@@ -22,29 +22,37 @@ public final class GameStatusPB {
      */
     WAITING(0, 0),
     /**
-     * <code>STARTING = 1;</code>
+     * <code>FULL = 1;</code>
+     *
+     * <pre>
+     * 坐满
+     * </pre>
+     */
+    FULL(1, 1),
+    /**
+     * <code>STARTING = 2;</code>
      *
      * <pre>
      * 开始游戏
      * </pre>
      */
-    STARTING(1, 1),
+    STARTING(2, 2),
     /**
-     * <code>SET_ENDING = 2;</code>
+     * <code>SET_ENDING = 3;</code>
      *
      * <pre>
      * 一局结束
      * </pre>
      */
-    SET_ENDING(2, 2),
+    SET_ENDING(3, 3),
     /**
-     * <code>ENDING = 3;</code>
+     * <code>ENDING = 4;</code>
      *
      * <pre>
      * 整场结束
      * </pre>
      */
-    ENDING(3, 3),
+    ENDING(4, 4),
     ;
 
     /**
@@ -56,29 +64,37 @@ public final class GameStatusPB {
      */
     public static final int WAITING_VALUE = 0;
     /**
-     * <code>STARTING = 1;</code>
+     * <code>FULL = 1;</code>
+     *
+     * <pre>
+     * 坐满
+     * </pre>
+     */
+    public static final int FULL_VALUE = 1;
+    /**
+     * <code>STARTING = 2;</code>
      *
      * <pre>
      * 开始游戏
      * </pre>
      */
-    public static final int STARTING_VALUE = 1;
+    public static final int STARTING_VALUE = 2;
     /**
-     * <code>SET_ENDING = 2;</code>
+     * <code>SET_ENDING = 3;</code>
      *
      * <pre>
      * 一局结束
      * </pre>
      */
-    public static final int SET_ENDING_VALUE = 2;
+    public static final int SET_ENDING_VALUE = 3;
     /**
-     * <code>ENDING = 3;</code>
+     * <code>ENDING = 4;</code>
      *
      * <pre>
      * 整场结束
      * </pre>
      */
-    public static final int ENDING_VALUE = 3;
+    public static final int ENDING_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -86,9 +102,10 @@ public final class GameStatusPB {
     public static GameStatus valueOf(int value) {
       switch (value) {
         case 0: return WAITING;
-        case 1: return STARTING;
-        case 2: return SET_ENDING;
-        case 3: return ENDING;
+        case 1: return FULL;
+        case 2: return STARTING;
+        case 3: return SET_ENDING;
+        case 4: return ENDING;
         default: return null;
       }
     }
@@ -149,10 +166,10 @@ public final class GameStatusPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027common/GameStatus.proto\022\006common*C\n\nGam" +
-      "eStatus\022\013\n\007WAITING\020\000\022\014\n\010STARTING\020\001\022\016\n\nSE" +
-      "T_ENDING\020\002\022\n\n\006ENDING\020\003B.\n\036com.kuaikai.ga" +
-      "me.common.msg.pbB\014GameStatusPB"
+      "\n\027common/GameStatus.proto\022\006common*M\n\nGam" +
+      "eStatus\022\013\n\007WAITING\020\000\022\010\n\004FULL\020\001\022\014\n\010STARTI" +
+      "NG\020\002\022\016\n\nSET_ENDING\020\003\022\n\n\006ENDING\020\004B.\n\036com." +
+      "kuaikai.game.common.msg.pbB\014GameStatusPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

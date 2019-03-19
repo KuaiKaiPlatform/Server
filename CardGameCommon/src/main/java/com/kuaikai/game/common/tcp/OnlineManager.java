@@ -161,7 +161,7 @@ public class OnlineManager {
 		try {
 			channelHandlerContext.writeAndFlush(msgHandler.encode());
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("server send msg|uid={}|msg={}", uid, msgHandler);
+				LOGGER.debug("server send msg|uid={}|{}", uid, msgHandler);
 			}
 			return true;
 		} catch (Exception e) {

@@ -1,6 +1,7 @@
 package com.kuaikai.game.mahjong.engine.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -89,6 +90,7 @@ public class CardContainer {
 		for(MJCard card : handCards) {
 			cards.add(card.getValue());
 		}
+		Collections.sort(cards);
 		return cards;
 	}
 	

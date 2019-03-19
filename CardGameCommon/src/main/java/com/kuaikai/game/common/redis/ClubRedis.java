@@ -65,14 +65,16 @@ public class ClubRedis {
 	}
 	
 	public static long incrDeskId(int clubId) {
-		RMap<String, String> rMap = getRMap(clubId);
+		String key = String.format(CLUB, clubId);
+		RedissonClient redissonClient = RedissonManager.getRedission();
+		RMap<String, Long> rMap = redissonClient.getMap(key);
 		try {
-			return Long.parseLong(rMap.addAndGet(FIELD_DESK_ID, 1));
+			return rMap.addAndGet(FIELD_DESK_ID, 1L);
 		} catch(Exception e) {
 			logger.warn("ClubRedis.incrDeskId@exception|clubId={}", clubId, e);
 		}
-		rMap.put(FIELD_DESK_ID, String.valueOf(1));
-		return 1;
+		rMap.put(FIELD_DESK_ID, 1L);
+		return 1L;
 	}
 	
 	public static boolean putOwnerId(int clubId, int ownerId) {

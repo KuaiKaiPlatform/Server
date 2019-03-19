@@ -1,10 +1,10 @@
 package com.kuaikai.game.mahjong.engine.calculator.common;
 
 import com.kuaikai.game.common.play.CardGameSetting;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
-import com.kuaikai.game.mahjong.engine.constants.PlayerStat;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
+import com.kuaikai.game.mahjong.msg.pb.PlayerStatTypePB.PlayerStatType;
 
 public class CommonGangCalculatorDetail extends CommonCalculatorDetail {
 
@@ -43,22 +43,22 @@ public class CommonGangCalculatorDetail extends CommonCalculatorDetail {
 		boolean mingGang = desk.getSetting().getBool(CardGameSetting.JIE_SUAN_MING_GANG);
 		switch(operation.getOperType()) {
 		case OperType.AN_GANG :
-			setMainType(JieSuan.AN_GANG);
+			setMainType(JieSuan.AN_GANG__VALUE);
 			break;
 		case OperType.BU_GANG :
 			if(mingGang)
-				setMainType(JieSuan.MING_GANG);
+				setMainType(JieSuan.MING_GANG__VALUE);
 			else
-				setMainType(JieSuan.BU_GANG);
+				setMainType(JieSuan.BU_GANG__VALUE);
 			break;
 		case OperType.DIAN_GANG :
 			if(mingGang)
-				setMainType(JieSuan.MING_GANG);
+				setMainType(JieSuan.MING_GANG__VALUE);
 			else
-				setMainType(JieSuan.DIAN_GANG);
+				setMainType(JieSuan.DIAN_GANG__VALUE);
 			break;
 		default :
-			setMainType(JieSuan.GANG);
+			setMainType(JieSuan.GANG__VALUE);
 			break;
 		}
 	}
@@ -82,10 +82,10 @@ public class CommonGangCalculatorDetail extends CommonCalculatorDetail {
 			switch(operation.getOperType()) {
 			case OperType.DIAN_GANG :
 			case OperType.BU_GANG :
-				operation.getPlayer().getGameResult().increaseStat(PlayerStat.MING_GANG);
+				operation.getPlayer().getGameResult().increaseStat(PlayerStatType.MING_GANG);
 				break;
 			case OperType.AN_GANG :
-				operation.getPlayer().getGameResult().increaseStat(PlayerStat.AN_GANG);
+				operation.getPlayer().getGameResult().increaseStat(PlayerStatType.AN_GANG);
 				break;
 			}
 		}

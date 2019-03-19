@@ -109,6 +109,132 @@ public final class GameSettingPB {
      * </pre>
      */
     int getTotalPlayer();
+
+    // optional int32 chairMode = 6;
+    /**
+     * <code>optional int32 chairMode = 6;</code>
+     *
+     * <pre>
+     * 选座模式
+     * </pre>
+     */
+    boolean hasChairMode();
+    /**
+     * <code>optional int32 chairMode = 6;</code>
+     *
+     * <pre>
+     * 选座模式
+     * </pre>
+     */
+    int getChairMode();
+
+    // optional bool noJiaFanQiDui = 7;
+    /**
+     * <code>optional bool noJiaFanQiDui = 7;</code>
+     *
+     * <pre>
+     * 七对不加番
+     * </pre>
+     */
+    boolean hasNoJiaFanQiDui();
+    /**
+     * <code>optional bool noJiaFanQiDui = 7;</code>
+     *
+     * <pre>
+     * 七对不加番
+     * </pre>
+     */
+    boolean getNoJiaFanQiDui();
+
+    // optional bool noJiaFanQingYiSe = 8;
+    /**
+     * <code>optional bool noJiaFanQingYiSe = 8;</code>
+     *
+     * <pre>
+     * 清一色不加番
+     * </pre>
+     */
+    boolean hasNoJiaFanQingYiSe();
+    /**
+     * <code>optional bool noJiaFanQingYiSe = 8;</code>
+     *
+     * <pre>
+     * 清一色不加番
+     * </pre>
+     */
+    boolean getNoJiaFanQingYiSe();
+
+    // optional bool noJiaFanGangShangHua = 9;
+    /**
+     * <code>optional bool noJiaFanGangShangHua = 9;</code>
+     *
+     * <pre>
+     * 杠上花不加番
+     * </pre>
+     */
+    boolean hasNoJiaFanGangShangHua();
+    /**
+     * <code>optional bool noJiaFanGangShangHua = 9;</code>
+     *
+     * <pre>
+     * 杠上花不加番
+     * </pre>
+     */
+    boolean getNoJiaFanGangShangHua();
+
+    // optional bool noJiaFanHaiDiLao = 10;
+    /**
+     * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+     *
+     * <pre>
+     * 海底捞不加番
+     * </pre>
+     */
+    boolean hasNoJiaFanHaiDiLao();
+    /**
+     * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+     *
+     * <pre>
+     * 海底捞不加番
+     * </pre>
+     */
+    boolean getNoJiaFanHaiDiLao();
+
+    // optional bool noJiaFanQiangGangHu = 11;
+    /**
+     * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+     *
+     * <pre>
+     * 抢杠胡不加番
+     * </pre>
+     */
+    boolean hasNoJiaFanQiangGangHu();
+    /**
+     * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+     *
+     * <pre>
+     * 抢杠胡不加番
+     * </pre>
+     */
+    boolean getNoJiaFanQiangGangHu();
+
+    // optional bool paoZi = 12;
+    /**
+     * <code>optional bool paoZi = 12;</code>
+     *
+     * <pre>
+     * 陕西麻将下炮子
+     * </pre>
+     */
+    boolean hasPaoZi();
+    /**
+     * <code>optional bool paoZi = 12;</code>
+     *
+     * <pre>
+     * 陕西麻将下炮子
+     * </pre>
+     */
+    boolean getPaoZi();
   }
   /**
    * Protobuf type {@code common.GameSetting}
@@ -188,6 +314,41 @@ public final class GameSettingPB {
             case 40: {
               bitField0_ |= 0x00000010;
               totalPlayer_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              chairMode_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              noJiaFanQiDui_ = input.readBool();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              noJiaFanQingYiSe_ = input.readBool();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              noJiaFanGangShangHua_ = input.readBool();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              noJiaFanHaiDiLao_ = input.readBool();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              noJiaFanQiangGangHu_ = input.readBool();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              paoZi_ = input.readBool();
               break;
             }
           }
@@ -381,12 +542,187 @@ public final class GameSettingPB {
       return totalPlayer_;
     }
 
+    // optional int32 chairMode = 6;
+    public static final int CHAIRMODE_FIELD_NUMBER = 6;
+    private int chairMode_;
+    /**
+     * <code>optional int32 chairMode = 6;</code>
+     *
+     * <pre>
+     * 选座模式
+     * </pre>
+     */
+    public boolean hasChairMode() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 chairMode = 6;</code>
+     *
+     * <pre>
+     * 选座模式
+     * </pre>
+     */
+    public int getChairMode() {
+      return chairMode_;
+    }
+
+    // optional bool noJiaFanQiDui = 7;
+    public static final int NOJIAFANQIDUI_FIELD_NUMBER = 7;
+    private boolean noJiaFanQiDui_;
+    /**
+     * <code>optional bool noJiaFanQiDui = 7;</code>
+     *
+     * <pre>
+     * 七对不加番
+     * </pre>
+     */
+    public boolean hasNoJiaFanQiDui() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool noJiaFanQiDui = 7;</code>
+     *
+     * <pre>
+     * 七对不加番
+     * </pre>
+     */
+    public boolean getNoJiaFanQiDui() {
+      return noJiaFanQiDui_;
+    }
+
+    // optional bool noJiaFanQingYiSe = 8;
+    public static final int NOJIAFANQINGYISE_FIELD_NUMBER = 8;
+    private boolean noJiaFanQingYiSe_;
+    /**
+     * <code>optional bool noJiaFanQingYiSe = 8;</code>
+     *
+     * <pre>
+     * 清一色不加番
+     * </pre>
+     */
+    public boolean hasNoJiaFanQingYiSe() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional bool noJiaFanQingYiSe = 8;</code>
+     *
+     * <pre>
+     * 清一色不加番
+     * </pre>
+     */
+    public boolean getNoJiaFanQingYiSe() {
+      return noJiaFanQingYiSe_;
+    }
+
+    // optional bool noJiaFanGangShangHua = 9;
+    public static final int NOJIAFANGANGSHANGHUA_FIELD_NUMBER = 9;
+    private boolean noJiaFanGangShangHua_;
+    /**
+     * <code>optional bool noJiaFanGangShangHua = 9;</code>
+     *
+     * <pre>
+     * 杠上花不加番
+     * </pre>
+     */
+    public boolean hasNoJiaFanGangShangHua() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional bool noJiaFanGangShangHua = 9;</code>
+     *
+     * <pre>
+     * 杠上花不加番
+     * </pre>
+     */
+    public boolean getNoJiaFanGangShangHua() {
+      return noJiaFanGangShangHua_;
+    }
+
+    // optional bool noJiaFanHaiDiLao = 10;
+    public static final int NOJIAFANHAIDILAO_FIELD_NUMBER = 10;
+    private boolean noJiaFanHaiDiLao_;
+    /**
+     * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+     *
+     * <pre>
+     * 海底捞不加番
+     * </pre>
+     */
+    public boolean hasNoJiaFanHaiDiLao() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+     *
+     * <pre>
+     * 海底捞不加番
+     * </pre>
+     */
+    public boolean getNoJiaFanHaiDiLao() {
+      return noJiaFanHaiDiLao_;
+    }
+
+    // optional bool noJiaFanQiangGangHu = 11;
+    public static final int NOJIAFANQIANGGANGHU_FIELD_NUMBER = 11;
+    private boolean noJiaFanQiangGangHu_;
+    /**
+     * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+     *
+     * <pre>
+     * 抢杠胡不加番
+     * </pre>
+     */
+    public boolean hasNoJiaFanQiangGangHu() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+     *
+     * <pre>
+     * 抢杠胡不加番
+     * </pre>
+     */
+    public boolean getNoJiaFanQiangGangHu() {
+      return noJiaFanQiangGangHu_;
+    }
+
+    // optional bool paoZi = 12;
+    public static final int PAOZI_FIELD_NUMBER = 12;
+    private boolean paoZi_;
+    /**
+     * <code>optional bool paoZi = 12;</code>
+     *
+     * <pre>
+     * 陕西麻将下炮子
+     * </pre>
+     */
+    public boolean hasPaoZi() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional bool paoZi = 12;</code>
+     *
+     * <pre>
+     * 陕西麻将下炮子
+     * </pre>
+     */
+    public boolean getPaoZi() {
+      return paoZi_;
+    }
+
     private void initFields() {
       json_ = "";
       totalSet_ = 0;
       totalQuan_ = 0;
       totalDi_ = 0;
       totalPlayer_ = 0;
+      chairMode_ = 0;
+      noJiaFanQiDui_ = false;
+      noJiaFanQingYiSe_ = false;
+      noJiaFanGangShangHua_ = false;
+      noJiaFanHaiDiLao_ = false;
+      noJiaFanQiangGangHu_ = false;
+      paoZi_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -419,6 +755,27 @@ public final class GameSettingPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, totalPlayer_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, chairMode_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(7, noJiaFanQiDui_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBool(8, noJiaFanQingYiSe_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBool(9, noJiaFanGangShangHua_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBool(10, noJiaFanHaiDiLao_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBool(11, noJiaFanQiangGangHu_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeBool(12, paoZi_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -447,6 +804,34 @@ public final class GameSettingPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, totalPlayer_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, chairMode_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, noJiaFanQiDui_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, noJiaFanQingYiSe_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(9, noJiaFanGangShangHua_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, noJiaFanHaiDiLao_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(11, noJiaFanQiangGangHu_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(12, paoZi_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -578,6 +963,20 @@ public final class GameSettingPB {
         bitField0_ = (bitField0_ & ~0x00000008);
         totalPlayer_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        chairMode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        noJiaFanQiDui_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        noJiaFanQingYiSe_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        noJiaFanGangShangHua_ = false;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        noJiaFanHaiDiLao_ = false;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        noJiaFanQiangGangHu_ = false;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        paoZi_ = false;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -626,6 +1025,34 @@ public final class GameSettingPB {
           to_bitField0_ |= 0x00000010;
         }
         result.totalPlayer_ = totalPlayer_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.chairMode_ = chairMode_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.noJiaFanQiDui_ = noJiaFanQiDui_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.noJiaFanQingYiSe_ = noJiaFanQingYiSe_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.noJiaFanGangShangHua_ = noJiaFanGangShangHua_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.noJiaFanHaiDiLao_ = noJiaFanHaiDiLao_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.noJiaFanQiangGangHu_ = noJiaFanQiangGangHu_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.paoZi_ = paoZi_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -658,6 +1085,27 @@ public final class GameSettingPB {
         }
         if (other.hasTotalPlayer()) {
           setTotalPlayer(other.getTotalPlayer());
+        }
+        if (other.hasChairMode()) {
+          setChairMode(other.getChairMode());
+        }
+        if (other.hasNoJiaFanQiDui()) {
+          setNoJiaFanQiDui(other.getNoJiaFanQiDui());
+        }
+        if (other.hasNoJiaFanQingYiSe()) {
+          setNoJiaFanQingYiSe(other.getNoJiaFanQingYiSe());
+        }
+        if (other.hasNoJiaFanGangShangHua()) {
+          setNoJiaFanGangShangHua(other.getNoJiaFanGangShangHua());
+        }
+        if (other.hasNoJiaFanHaiDiLao()) {
+          setNoJiaFanHaiDiLao(other.getNoJiaFanHaiDiLao());
+        }
+        if (other.hasNoJiaFanQiangGangHu()) {
+          setNoJiaFanQiangGangHu(other.getNoJiaFanQiangGangHu());
+        }
+        if (other.hasPaoZi()) {
+          setPaoZi(other.getPaoZi());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -984,6 +1432,349 @@ public final class GameSettingPB {
         return this;
       }
 
+      // optional int32 chairMode = 6;
+      private int chairMode_ ;
+      /**
+       * <code>optional int32 chairMode = 6;</code>
+       *
+       * <pre>
+       * 选座模式
+       * </pre>
+       */
+      public boolean hasChairMode() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 chairMode = 6;</code>
+       *
+       * <pre>
+       * 选座模式
+       * </pre>
+       */
+      public int getChairMode() {
+        return chairMode_;
+      }
+      /**
+       * <code>optional int32 chairMode = 6;</code>
+       *
+       * <pre>
+       * 选座模式
+       * </pre>
+       */
+      public Builder setChairMode(int value) {
+        bitField0_ |= 0x00000020;
+        chairMode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 chairMode = 6;</code>
+       *
+       * <pre>
+       * 选座模式
+       * </pre>
+       */
+      public Builder clearChairMode() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        chairMode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bool noJiaFanQiDui = 7;
+      private boolean noJiaFanQiDui_ ;
+      /**
+       * <code>optional bool noJiaFanQiDui = 7;</code>
+       *
+       * <pre>
+       * 七对不加番
+       * </pre>
+       */
+      public boolean hasNoJiaFanQiDui() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool noJiaFanQiDui = 7;</code>
+       *
+       * <pre>
+       * 七对不加番
+       * </pre>
+       */
+      public boolean getNoJiaFanQiDui() {
+        return noJiaFanQiDui_;
+      }
+      /**
+       * <code>optional bool noJiaFanQiDui = 7;</code>
+       *
+       * <pre>
+       * 七对不加番
+       * </pre>
+       */
+      public Builder setNoJiaFanQiDui(boolean value) {
+        bitField0_ |= 0x00000040;
+        noJiaFanQiDui_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool noJiaFanQiDui = 7;</code>
+       *
+       * <pre>
+       * 七对不加番
+       * </pre>
+       */
+      public Builder clearNoJiaFanQiDui() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        noJiaFanQiDui_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool noJiaFanQingYiSe = 8;
+      private boolean noJiaFanQingYiSe_ ;
+      /**
+       * <code>optional bool noJiaFanQingYiSe = 8;</code>
+       *
+       * <pre>
+       * 清一色不加番
+       * </pre>
+       */
+      public boolean hasNoJiaFanQingYiSe() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional bool noJiaFanQingYiSe = 8;</code>
+       *
+       * <pre>
+       * 清一色不加番
+       * </pre>
+       */
+      public boolean getNoJiaFanQingYiSe() {
+        return noJiaFanQingYiSe_;
+      }
+      /**
+       * <code>optional bool noJiaFanQingYiSe = 8;</code>
+       *
+       * <pre>
+       * 清一色不加番
+       * </pre>
+       */
+      public Builder setNoJiaFanQingYiSe(boolean value) {
+        bitField0_ |= 0x00000080;
+        noJiaFanQingYiSe_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool noJiaFanQingYiSe = 8;</code>
+       *
+       * <pre>
+       * 清一色不加番
+       * </pre>
+       */
+      public Builder clearNoJiaFanQingYiSe() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        noJiaFanQingYiSe_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool noJiaFanGangShangHua = 9;
+      private boolean noJiaFanGangShangHua_ ;
+      /**
+       * <code>optional bool noJiaFanGangShangHua = 9;</code>
+       *
+       * <pre>
+       * 杠上花不加番
+       * </pre>
+       */
+      public boolean hasNoJiaFanGangShangHua() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional bool noJiaFanGangShangHua = 9;</code>
+       *
+       * <pre>
+       * 杠上花不加番
+       * </pre>
+       */
+      public boolean getNoJiaFanGangShangHua() {
+        return noJiaFanGangShangHua_;
+      }
+      /**
+       * <code>optional bool noJiaFanGangShangHua = 9;</code>
+       *
+       * <pre>
+       * 杠上花不加番
+       * </pre>
+       */
+      public Builder setNoJiaFanGangShangHua(boolean value) {
+        bitField0_ |= 0x00000100;
+        noJiaFanGangShangHua_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool noJiaFanGangShangHua = 9;</code>
+       *
+       * <pre>
+       * 杠上花不加番
+       * </pre>
+       */
+      public Builder clearNoJiaFanGangShangHua() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        noJiaFanGangShangHua_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool noJiaFanHaiDiLao = 10;
+      private boolean noJiaFanHaiDiLao_ ;
+      /**
+       * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+       *
+       * <pre>
+       * 海底捞不加番
+       * </pre>
+       */
+      public boolean hasNoJiaFanHaiDiLao() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+       *
+       * <pre>
+       * 海底捞不加番
+       * </pre>
+       */
+      public boolean getNoJiaFanHaiDiLao() {
+        return noJiaFanHaiDiLao_;
+      }
+      /**
+       * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+       *
+       * <pre>
+       * 海底捞不加番
+       * </pre>
+       */
+      public Builder setNoJiaFanHaiDiLao(boolean value) {
+        bitField0_ |= 0x00000200;
+        noJiaFanHaiDiLao_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool noJiaFanHaiDiLao = 10;</code>
+       *
+       * <pre>
+       * 海底捞不加番
+       * </pre>
+       */
+      public Builder clearNoJiaFanHaiDiLao() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        noJiaFanHaiDiLao_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool noJiaFanQiangGangHu = 11;
+      private boolean noJiaFanQiangGangHu_ ;
+      /**
+       * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+       *
+       * <pre>
+       * 抢杠胡不加番
+       * </pre>
+       */
+      public boolean hasNoJiaFanQiangGangHu() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+       *
+       * <pre>
+       * 抢杠胡不加番
+       * </pre>
+       */
+      public boolean getNoJiaFanQiangGangHu() {
+        return noJiaFanQiangGangHu_;
+      }
+      /**
+       * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+       *
+       * <pre>
+       * 抢杠胡不加番
+       * </pre>
+       */
+      public Builder setNoJiaFanQiangGangHu(boolean value) {
+        bitField0_ |= 0x00000400;
+        noJiaFanQiangGangHu_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool noJiaFanQiangGangHu = 11;</code>
+       *
+       * <pre>
+       * 抢杠胡不加番
+       * </pre>
+       */
+      public Builder clearNoJiaFanQiangGangHu() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        noJiaFanQiangGangHu_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool paoZi = 12;
+      private boolean paoZi_ ;
+      /**
+       * <code>optional bool paoZi = 12;</code>
+       *
+       * <pre>
+       * 陕西麻将下炮子
+       * </pre>
+       */
+      public boolean hasPaoZi() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional bool paoZi = 12;</code>
+       *
+       * <pre>
+       * 陕西麻将下炮子
+       * </pre>
+       */
+      public boolean getPaoZi() {
+        return paoZi_;
+      }
+      /**
+       * <code>optional bool paoZi = 12;</code>
+       *
+       * <pre>
+       * 陕西麻将下炮子
+       * </pre>
+       */
+      public Builder setPaoZi(boolean value) {
+        bitField0_ |= 0x00000800;
+        paoZi_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool paoZi = 12;</code>
+       *
+       * <pre>
+       * 陕西麻将下炮子
+       * </pre>
+       */
+      public Builder clearPaoZi() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        paoZi_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:common.GameSetting)
     }
 
@@ -1009,11 +1800,15 @@ public final class GameSettingPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030common/GameSetting.proto\022\006common\"f\n\013Ga" +
-      "meSetting\022\014\n\004json\030\001 \002(\t\022\020\n\010totalSet\030\002 \001(" +
-      "\005\022\021\n\ttotalQuan\030\003 \001(\005\022\017\n\007totalDi\030\004 \001(\005\022\023\n" +
-      "\013totalPlayer\030\005 \001(\005B/\n\036com.kuaikai.game.c" +
-      "ommon.msg.pbB\rGameSettingPB"
+      "\n\030common/GameSetting.proto\022\006common\"\216\002\n\013G" +
+      "ameSetting\022\014\n\004json\030\001 \002(\t\022\020\n\010totalSet\030\002 \001" +
+      "(\005\022\021\n\ttotalQuan\030\003 \001(\005\022\017\n\007totalDi\030\004 \001(\005\022\023" +
+      "\n\013totalPlayer\030\005 \001(\005\022\021\n\tchairMode\030\006 \001(\005\022\025" +
+      "\n\rnoJiaFanQiDui\030\007 \001(\010\022\030\n\020noJiaFanQingYiS" +
+      "e\030\010 \001(\010\022\034\n\024noJiaFanGangShangHua\030\t \001(\010\022\030\n" +
+      "\020noJiaFanHaiDiLao\030\n \001(\010\022\033\n\023noJiaFanQiang" +
+      "GangHu\030\013 \001(\010\022\r\n\005paoZi\030\014 \001(\010B/\n\036com.kuaik" +
+      "ai.game.common.msg.pbB\rGameSettingPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1025,7 +1820,7 @@ public final class GameSettingPB {
           internal_static_common_GameSetting_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_GameSetting_descriptor,
-              new java.lang.String[] { "Json", "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", });
+              new java.lang.String[] { "Json", "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", "ChairMode", "NoJiaFanQiDui", "NoJiaFanQingYiSe", "NoJiaFanGangShangHua", "NoJiaFanHaiDiLao", "NoJiaFanQiangGangHu", "PaoZi", });
           return null;
         }
       };

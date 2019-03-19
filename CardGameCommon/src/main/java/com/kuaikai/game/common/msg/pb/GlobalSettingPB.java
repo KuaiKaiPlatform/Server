@@ -11,63 +11,45 @@ public final class GlobalSettingPB {
   public interface GlobalSettingOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int32 valume = 1;
+    // optional int32 volumeBg = 1;
     /**
-     * <code>optional int32 valume = 1;</code>
+     * <code>optional int32 volumeBg = 1;</code>
      *
      * <pre>
      * 通用设置
      * </pre>
      */
-    boolean hasValume();
+    boolean hasVolumeBg();
     /**
-     * <code>optional int32 valume = 1;</code>
+     * <code>optional int32 volumeBg = 1;</code>
      *
      * <pre>
      * 通用设置
      * </pre>
      */
-    int getValume();
+    int getVolumeBg();
 
-    // optional bool mutePlay = 2;
+    // optional int32 volumePlay = 2;
     /**
-     * <code>optional bool mutePlay = 2;</code>
+     * <code>optional int32 volumePlay = 2;</code>
      *
      * <pre>
-     * 关闭打牌音效
+     * 打牌音效音量
      * </pre>
      */
-    boolean hasMutePlay();
+    boolean hasVolumePlay();
     /**
-     * <code>optional bool mutePlay = 2;</code>
+     * <code>optional int32 volumePlay = 2;</code>
      *
      * <pre>
-     * 关闭打牌音效
+     * 打牌音效音量
      * </pre>
      */
-    boolean getMutePlay();
+    int getVolumePlay();
 
-    // optional bool muteBg = 3;
+    // optional .common.Dialect dialect = 3;
     /**
-     * <code>optional bool muteBg = 3;</code>
-     *
-     * <pre>
-     * 关闭背景音乐
-     * </pre>
-     */
-    boolean hasMuteBg();
-    /**
-     * <code>optional bool muteBg = 3;</code>
-     *
-     * <pre>
-     * 关闭背景音乐
-     * </pre>
-     */
-    boolean getMuteBg();
-
-    // optional .common.Dialect dialect = 4;
-    /**
-     * <code>optional .common.Dialect dialect = 4;</code>
+     * <code>optional .common.Dialect dialect = 3;</code>
      *
      * <pre>
      * 方言
@@ -75,7 +57,7 @@ public final class GlobalSettingPB {
      */
     boolean hasDialect();
     /**
-     * <code>optional .common.Dialect dialect = 4;</code>
+     * <code>optional .common.Dialect dialect = 3;</code>
      *
      * <pre>
      * 方言
@@ -158,26 +140,21 @@ public final class GlobalSettingPB {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              valume_ = input.readInt32();
+              volumeBg_ = input.readInt32();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              mutePlay_ = input.readBool();
+              volumePlay_ = input.readInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
-              muteBg_ = input.readBool();
-              break;
-            }
-            case 32: {
               int rawValue = input.readEnum();
               com.kuaikai.game.common.msg.pb.DialectPB.Dialect value = com.kuaikai.game.common.msg.pb.DialectPB.Dialect.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(4, rawValue);
+                unknownFields.mergeVarintField(3, rawValue);
               } else {
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000004;
                 dialect_ = value;
               }
               break;
@@ -188,7 +165,7 @@ public final class GlobalSettingPB {
               if (value == null) {
                 unknownFields.mergeVarintField(11, rawValue);
               } else {
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000008;
                 mahjongTheme_ = value;
               }
               break;
@@ -233,93 +210,69 @@ public final class GlobalSettingPB {
     }
 
     private int bitField0_;
-    // optional int32 valume = 1;
-    public static final int VALUME_FIELD_NUMBER = 1;
-    private int valume_;
+    // optional int32 volumeBg = 1;
+    public static final int VOLUMEBG_FIELD_NUMBER = 1;
+    private int volumeBg_;
     /**
-     * <code>optional int32 valume = 1;</code>
+     * <code>optional int32 volumeBg = 1;</code>
      *
      * <pre>
      * 通用设置
      * </pre>
      */
-    public boolean hasValume() {
+    public boolean hasVolumeBg() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int32 valume = 1;</code>
+     * <code>optional int32 volumeBg = 1;</code>
      *
      * <pre>
      * 通用设置
      * </pre>
      */
-    public int getValume() {
-      return valume_;
+    public int getVolumeBg() {
+      return volumeBg_;
     }
 
-    // optional bool mutePlay = 2;
-    public static final int MUTEPLAY_FIELD_NUMBER = 2;
-    private boolean mutePlay_;
+    // optional int32 volumePlay = 2;
+    public static final int VOLUMEPLAY_FIELD_NUMBER = 2;
+    private int volumePlay_;
     /**
-     * <code>optional bool mutePlay = 2;</code>
+     * <code>optional int32 volumePlay = 2;</code>
      *
      * <pre>
-     * 关闭打牌音效
+     * 打牌音效音量
      * </pre>
      */
-    public boolean hasMutePlay() {
+    public boolean hasVolumePlay() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bool mutePlay = 2;</code>
+     * <code>optional int32 volumePlay = 2;</code>
      *
      * <pre>
-     * 关闭打牌音效
+     * 打牌音效音量
      * </pre>
      */
-    public boolean getMutePlay() {
-      return mutePlay_;
+    public int getVolumePlay() {
+      return volumePlay_;
     }
 
-    // optional bool muteBg = 3;
-    public static final int MUTEBG_FIELD_NUMBER = 3;
-    private boolean muteBg_;
-    /**
-     * <code>optional bool muteBg = 3;</code>
-     *
-     * <pre>
-     * 关闭背景音乐
-     * </pre>
-     */
-    public boolean hasMuteBg() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional bool muteBg = 3;</code>
-     *
-     * <pre>
-     * 关闭背景音乐
-     * </pre>
-     */
-    public boolean getMuteBg() {
-      return muteBg_;
-    }
-
-    // optional .common.Dialect dialect = 4;
-    public static final int DIALECT_FIELD_NUMBER = 4;
+    // optional .common.Dialect dialect = 3;
+    public static final int DIALECT_FIELD_NUMBER = 3;
     private com.kuaikai.game.common.msg.pb.DialectPB.Dialect dialect_;
     /**
-     * <code>optional .common.Dialect dialect = 4;</code>
+     * <code>optional .common.Dialect dialect = 3;</code>
      *
      * <pre>
      * 方言
      * </pre>
      */
     public boolean hasDialect() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .common.Dialect dialect = 4;</code>
+     * <code>optional .common.Dialect dialect = 3;</code>
      *
      * <pre>
      * 方言
@@ -340,7 +293,7 @@ public final class GlobalSettingPB {
      * </pre>
      */
     public boolean hasMahjongTheme() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .common.MahjongTheme mahjongTheme = 11;</code>
@@ -354,9 +307,8 @@ public final class GlobalSettingPB {
     }
 
     private void initFields() {
-      valume_ = 0;
-      mutePlay_ = false;
-      muteBg_ = false;
+      volumeBg_ = 0;
+      volumePlay_ = 0;
       dialect_ = com.kuaikai.game.common.msg.pb.DialectPB.Dialect.XIA_PU;
       mahjongTheme_ = com.kuaikai.game.common.msg.pb.MahjongThemePB.MahjongTheme.GREEN;
     }
@@ -373,18 +325,15 @@ public final class GlobalSettingPB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, valume_);
+        output.writeInt32(1, volumeBg_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBool(2, mutePlay_);
+        output.writeInt32(2, volumePlay_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(3, muteBg_);
+        output.writeEnum(3, dialect_.getNumber());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(4, dialect_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(11, mahjongTheme_.getNumber());
       }
       getUnknownFields().writeTo(output);
@@ -398,21 +347,17 @@ public final class GlobalSettingPB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, valume_);
+          .computeInt32Size(1, volumeBg_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, mutePlay_);
+          .computeInt32Size(2, volumePlay_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, muteBg_);
+          .computeEnumSize(3, dialect_.getNumber());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, dialect_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(11, mahjongTheme_.getNumber());
       }
@@ -536,16 +481,14 @@ public final class GlobalSettingPB {
 
       public Builder clear() {
         super.clear();
-        valume_ = 0;
+        volumeBg_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        mutePlay_ = false;
+        volumePlay_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        muteBg_ = false;
-        bitField0_ = (bitField0_ & ~0x00000004);
         dialect_ = com.kuaikai.game.common.msg.pb.DialectPB.Dialect.XIA_PU;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         mahjongTheme_ = com.kuaikai.game.common.msg.pb.MahjongThemePB.MahjongTheme.GREEN;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -577,21 +520,17 @@ public final class GlobalSettingPB {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.valume_ = valume_;
+        result.volumeBg_ = volumeBg_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.mutePlay_ = mutePlay_;
+        result.volumePlay_ = volumePlay_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.muteBg_ = muteBg_;
+        result.dialect_ = dialect_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
-        }
-        result.dialect_ = dialect_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
         }
         result.mahjongTheme_ = mahjongTheme_;
         result.bitField0_ = to_bitField0_;
@@ -610,14 +549,11 @@ public final class GlobalSettingPB {
 
       public Builder mergeFrom(com.kuaikai.game.common.msg.pb.GlobalSettingPB.GlobalSetting other) {
         if (other == com.kuaikai.game.common.msg.pb.GlobalSettingPB.GlobalSetting.getDefaultInstance()) return this;
-        if (other.hasValume()) {
-          setValume(other.getValume());
+        if (other.hasVolumeBg()) {
+          setVolumeBg(other.getVolumeBg());
         }
-        if (other.hasMutePlay()) {
-          setMutePlay(other.getMutePlay());
-        }
-        if (other.hasMuteBg()) {
-          setMuteBg(other.getMuteBg());
+        if (other.hasVolumePlay()) {
+          setVolumePlay(other.getVolumePlay());
         }
         if (other.hasDialect()) {
           setDialect(other.getDialect());
@@ -652,167 +588,118 @@ public final class GlobalSettingPB {
       }
       private int bitField0_;
 
-      // optional int32 valume = 1;
-      private int valume_ ;
+      // optional int32 volumeBg = 1;
+      private int volumeBg_ ;
       /**
-       * <code>optional int32 valume = 1;</code>
+       * <code>optional int32 volumeBg = 1;</code>
        *
        * <pre>
        * 通用设置
        * </pre>
        */
-      public boolean hasValume() {
+      public boolean hasVolumeBg() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int32 valume = 1;</code>
+       * <code>optional int32 volumeBg = 1;</code>
        *
        * <pre>
        * 通用设置
        * </pre>
        */
-      public int getValume() {
-        return valume_;
+      public int getVolumeBg() {
+        return volumeBg_;
       }
       /**
-       * <code>optional int32 valume = 1;</code>
+       * <code>optional int32 volumeBg = 1;</code>
        *
        * <pre>
        * 通用设置
        * </pre>
        */
-      public Builder setValume(int value) {
+      public Builder setVolumeBg(int value) {
         bitField0_ |= 0x00000001;
-        valume_ = value;
+        volumeBg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 valume = 1;</code>
+       * <code>optional int32 volumeBg = 1;</code>
        *
        * <pre>
        * 通用设置
        * </pre>
        */
-      public Builder clearValume() {
+      public Builder clearVolumeBg() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        valume_ = 0;
+        volumeBg_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bool mutePlay = 2;
-      private boolean mutePlay_ ;
+      // optional int32 volumePlay = 2;
+      private int volumePlay_ ;
       /**
-       * <code>optional bool mutePlay = 2;</code>
+       * <code>optional int32 volumePlay = 2;</code>
        *
        * <pre>
-       * 关闭打牌音效
+       * 打牌音效音量
        * </pre>
        */
-      public boolean hasMutePlay() {
+      public boolean hasVolumePlay() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bool mutePlay = 2;</code>
+       * <code>optional int32 volumePlay = 2;</code>
        *
        * <pre>
-       * 关闭打牌音效
+       * 打牌音效音量
        * </pre>
        */
-      public boolean getMutePlay() {
-        return mutePlay_;
+      public int getVolumePlay() {
+        return volumePlay_;
       }
       /**
-       * <code>optional bool mutePlay = 2;</code>
+       * <code>optional int32 volumePlay = 2;</code>
        *
        * <pre>
-       * 关闭打牌音效
+       * 打牌音效音量
        * </pre>
        */
-      public Builder setMutePlay(boolean value) {
+      public Builder setVolumePlay(int value) {
         bitField0_ |= 0x00000002;
-        mutePlay_ = value;
+        volumePlay_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool mutePlay = 2;</code>
+       * <code>optional int32 volumePlay = 2;</code>
        *
        * <pre>
-       * 关闭打牌音效
+       * 打牌音效音量
        * </pre>
        */
-      public Builder clearMutePlay() {
+      public Builder clearVolumePlay() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        mutePlay_ = false;
+        volumePlay_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bool muteBg = 3;
-      private boolean muteBg_ ;
-      /**
-       * <code>optional bool muteBg = 3;</code>
-       *
-       * <pre>
-       * 关闭背景音乐
-       * </pre>
-       */
-      public boolean hasMuteBg() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional bool muteBg = 3;</code>
-       *
-       * <pre>
-       * 关闭背景音乐
-       * </pre>
-       */
-      public boolean getMuteBg() {
-        return muteBg_;
-      }
-      /**
-       * <code>optional bool muteBg = 3;</code>
-       *
-       * <pre>
-       * 关闭背景音乐
-       * </pre>
-       */
-      public Builder setMuteBg(boolean value) {
-        bitField0_ |= 0x00000004;
-        muteBg_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool muteBg = 3;</code>
-       *
-       * <pre>
-       * 关闭背景音乐
-       * </pre>
-       */
-      public Builder clearMuteBg() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        muteBg_ = false;
-        onChanged();
-        return this;
-      }
-
-      // optional .common.Dialect dialect = 4;
+      // optional .common.Dialect dialect = 3;
       private com.kuaikai.game.common.msg.pb.DialectPB.Dialect dialect_ = com.kuaikai.game.common.msg.pb.DialectPB.Dialect.XIA_PU;
       /**
-       * <code>optional .common.Dialect dialect = 4;</code>
+       * <code>optional .common.Dialect dialect = 3;</code>
        *
        * <pre>
        * 方言
        * </pre>
        */
       public boolean hasDialect() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .common.Dialect dialect = 4;</code>
+       * <code>optional .common.Dialect dialect = 3;</code>
        *
        * <pre>
        * 方言
@@ -822,7 +709,7 @@ public final class GlobalSettingPB {
         return dialect_;
       }
       /**
-       * <code>optional .common.Dialect dialect = 4;</code>
+       * <code>optional .common.Dialect dialect = 3;</code>
        *
        * <pre>
        * 方言
@@ -832,20 +719,20 @@ public final class GlobalSettingPB {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         dialect_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .common.Dialect dialect = 4;</code>
+       * <code>optional .common.Dialect dialect = 3;</code>
        *
        * <pre>
        * 方言
        * </pre>
        */
       public Builder clearDialect() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         dialect_ = com.kuaikai.game.common.msg.pb.DialectPB.Dialect.XIA_PU;
         onChanged();
         return this;
@@ -861,7 +748,7 @@ public final class GlobalSettingPB {
        * </pre>
        */
       public boolean hasMahjongTheme() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .common.MahjongTheme mahjongTheme = 11;</code>
@@ -884,7 +771,7 @@ public final class GlobalSettingPB {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         mahjongTheme_ = value;
         onChanged();
         return this;
@@ -897,7 +784,7 @@ public final class GlobalSettingPB {
        * </pre>
        */
       public Builder clearMahjongTheme() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         mahjongTheme_ = com.kuaikai.game.common.msg.pb.MahjongThemePB.MahjongTheme.GREEN;
         onChanged();
         return this;
@@ -930,12 +817,11 @@ public final class GlobalSettingPB {
     java.lang.String[] descriptorData = {
       "\n\032common/GlobalSetting.proto\022\006common\032\024co" +
       "mmon/Dialect.proto\032\031common/MahjongTheme." +
-      "proto\"\217\001\n\rGlobalSetting\022\016\n\006valume\030\001 \001(\005\022" +
-      "\020\n\010mutePlay\030\002 \001(\010\022\016\n\006muteBg\030\003 \001(\010\022 \n\007dia" +
-      "lect\030\004 \001(\0162\017.common.Dialect\022*\n\014mahjongTh" +
-      "eme\030\013 \001(\0162\024.common.MahjongThemeB1\n\036com.k" +
-      "uaikai.game.common.msg.pbB\017GlobalSetting" +
-      "PB"
+      "proto\"\203\001\n\rGlobalSetting\022\020\n\010volumeBg\030\001 \001(" +
+      "\005\022\022\n\nvolumePlay\030\002 \001(\005\022 \n\007dialect\030\003 \001(\0162\017" +
+      ".common.Dialect\022*\n\014mahjongTheme\030\013 \001(\0162\024." +
+      "common.MahjongThemeB1\n\036com.kuaikai.game." +
+      "common.msg.pbB\017GlobalSettingPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -947,7 +833,7 @@ public final class GlobalSettingPB {
           internal_static_common_GlobalSetting_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_GlobalSetting_descriptor,
-              new java.lang.String[] { "Valume", "MutePlay", "MuteBg", "Dialect", "MahjongTheme", });
+              new java.lang.String[] { "VolumeBg", "VolumePlay", "Dialect", "MahjongTheme", });
           return null;
         }
       };

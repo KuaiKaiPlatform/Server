@@ -8,6 +8,7 @@ import com.kuaikai.game.common.mock.ClubMock;
 import com.kuaikai.game.common.model.Club;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.msg.CommonMsgHandler;
+import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.redis.PlayerArenaRedis;
 import com.kuaikai.game.common.tcp.OnlineManager;
 import com.kuaikai.game.common.redis.ClubDeskRedis;
@@ -45,7 +46,8 @@ public class PrepareManager {
 		if(clubId == 0) {	// 未找到竞技场
 			if(PropertyManager.isDebug()) {
 				// DEBUG 模式时，设置为大众亮六飞一竞技场
-				int debugClubId = ClubMock.CLUB_ID_PUB_LIANG;
+				//int debugClubId = ClubMock.CLUB_ID_PUB_LIANG;
+				int debugClubId = GameRule.LIANG_VALUE;
 				//PlayerArenaRedis.putDesk(uid, debugClubId, 0);
 				logger.info("PrepareManager.onUserLogin@Club set as {} for debug|uid={}", debugClubId, uid);
 			} else {

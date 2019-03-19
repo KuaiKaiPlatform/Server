@@ -22,25 +22,39 @@ public class DefaultMsgCreator implements MsgCreator {
 		for(Player p : desk.getPlayers()) {
 			builder.addPlayers(createPlayerInfo(p));
 		}
-		return builder.setUniq(DeskUniq.newBuilder().setDeskId(desk.getDeskId()).setClubId(desk.getClubId()))
-				.setRule(desk.getRule()).setSetting(createGameSetting(desk)).setStatus(desk.getStatus());
+		return builder
+				.setUniq(DeskUniq.newBuilder().setDeskId(desk.getDeskId()).setClubId(desk.getClubId()))
+				.setRule(desk.getRule())
+				.setSetting(createGameSetting(desk))
+				.setStatus(desk.getStatus())
+				.setCurSet(desk.getCurSet())
+				.setBankerId(desk.getBankerId());
 	}
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
-		return PlayerInfo.newBuilder().setUser(createUserInfo(p.getUser())).setSeat(p.getSeat())
-				.setPrepared(p.isPrepared()).addAllPoints(p.getPoints());
+		return PlayerInfo.newBuilder()
+				.setUser(createUserInfo(p.getUser()))
+				.setSeat(p.getSeat())
+				.setPrepared(p.isPrepared())
+				.setOffline(p.isOffline())
+				.addAllPoints(p.getPoints())
+				.setBet(p.getBet());
 	}
 
 	protected UserInfo.Builder createUserInfo(User u) {
-		return UserInfo.newBuilder().setUid(u.getId()).setNkn(u.getNickName());
+		return UserInfo.newBuilder()
+				.setUid(u.getId())
+				.setNkn(u.getNickName());
 	}
 	
 	protected GameSetting.Builder createGameSetting(Desk desk) {
-		return GameSetting.newBuilder().setJson(desk.getSetting().toJson());
+		return GameSetting.newBuilder()
+				.setJson(desk.getClubSetting().toJson());
 	}
 	
 	public SPlayerJoin.Builder createSPlayerJoin(Player p, Desk desk) {
-		return SPlayerJoin.newBuilder().setPlayer(createPlayerInfo(p))
+		return SPlayerJoin.newBuilder()
+				.setPlayer(createPlayerInfo(p))
 				.setUniq(DeskUniq.newBuilder().setDeskId(desk.getDeskId()).setClubId(desk.getClubId()));
 	}
 	

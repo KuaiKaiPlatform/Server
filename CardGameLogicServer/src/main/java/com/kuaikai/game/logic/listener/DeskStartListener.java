@@ -29,9 +29,9 @@ public class DeskStartListener implements BaseListener {
 			return;
 		}
 		
-		gameDesk.onGameStart();
+		gameDesk.onGameStart(System.currentTimeMillis());
 		
-		gameDesk.getMessageSender().syncSetInit(null);
+		gameDesk.getMessageSender().sendSSetInit(null);
 		
 		LOGGER.info("com.kuaikai.game.logic.listener.DeskStartListener.onEventTriggered@desk={}", desk);
 	}

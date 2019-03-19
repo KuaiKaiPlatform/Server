@@ -15,7 +15,7 @@ import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
  */
 public class MultipleHuOperations {
 	
-	protected static final Logger logger = LoggerFactory.getLogger("play");
+	protected static final Logger logger = LoggerFactory.getLogger("mahjong");
 	
 	private Set<HuOperation> huOperations = new HashSet<HuOperation>();	// 一炮多响
 	private MahjongDesk desk;
@@ -66,15 +66,16 @@ public class MultipleHuOperations {
 	public void executeHu(MahjongPlayer player) {
 		HuOperation oper = findHuOperation(player);
 		if(oper == null) {
-			//logger.error(room.getLogPrefix().append(";MultipleHuOperations.executeHu;hu operation not found;uid:").append(player.getId()).toString());
+			logger.error("MultipleHuOperations.executeHu@operation not found|uid={}", player.getId());
 			return;
 		}
 		
 		// 只执行胡牌操作，不执行 postExecute，暂不加入done operations
 		oper.executeOperation();
+		oper.setExecuted();
 
 		// 发送操作结果
-		desk.getMessageSender().syncOperCardRes(oper);
+		desk.getMessageSender().sendSOperCard(oper);
 		
 		// 所有人都选择完毕，有人选择胡，进入结算，本局结束
 		if(this.isAllReady()) {
@@ -86,7 +87,7 @@ public class MultipleHuOperations {
 	public void executePass(MahjongPlayer player) {
 		HuOperation oper = findHuOperation(player);
 		if(oper == null) {
-			//logger.error(room.getLogPrefix().append(";MultipleHuOperations.executePass;hu operation not found;uid:").append(player.getId()).toString());
+			logger.error("MultipleHuOperations.executePass@operation not found|uid={}", player.getId());
 			return;
 		}
 		
@@ -126,7 +127,7 @@ public class MultipleHuOperations {
 		
 		// 进入结算阶段，本局结束
 		desk.getEngine().enterJieSuanStage();
-		desk.onSetEnd();
+		desk.onSetEnd(System.currentTimeMillis());
 	}
 	
 }

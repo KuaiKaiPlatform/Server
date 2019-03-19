@@ -5,12 +5,12 @@ import com.kuaikai.game.mahjong.engine.checker.hu.DefaultHuChecker;
 import com.kuaikai.game.mahjong.engine.checker.hu.mode.HuModesChecker;
 import com.kuaikai.game.mahjong.engine.checker.paixin.CheckerArray;
 import com.kuaikai.game.mahjong.engine.checker.paixin.SingleChecker;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 /***
  * 渭南麻将胡牌检查器
@@ -43,13 +43,13 @@ public class WeiNanHuChecker extends DefaultHuChecker {
 		paiXinChecker.setChecker(others);
 		
 		// 七对
-		SingleChecker qiDui = new SingleChecker(PaiXin.QI_DUI, paiXinChecker);
+		SingleChecker qiDui = new SingleChecker(JieSuan.QI_DUI_VALUE, paiXinChecker);
 		others.addSingleChecker(qiDui);
 
 		// 清一色，依赖于标准胡或七对牌型
-		SingleChecker qingYiSe = new SingleChecker(PaiXin.QING_YI_SE, paiXinChecker);
-		qingYiSe.addOrDependency(PaiXin.BIAO_ZHUN_HU);
-		qingYiSe.addOrDependency(PaiXin.QI_DUI);
+		SingleChecker qingYiSe = new SingleChecker(JieSuan.QING_YI_SE_VALUE, paiXinChecker);
+		qingYiSe.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
+		qingYiSe.addOrDependency(JieSuan.QI_DUI_VALUE);
 		others.addSingleChecker(qingYiSe);
 		
 		// 其他牌型（七对）
@@ -57,21 +57,21 @@ public class WeiNanHuChecker extends DefaultHuChecker {
 		qiDui.setNextChecker(othersQiDui);
 		
 		// 标准胡
-		SingleChecker biaoZhunHu = new SingleChecker(PaiXin.BIAO_ZHUN_HU, paiXinChecker);
+		SingleChecker biaoZhunHu = new SingleChecker(JieSuan.BIAO_ZHUN_HU_VALUE, paiXinChecker);
 		othersQiDui.addSingleChecker(biaoZhunHu);
 
 		// 金钩钓
-		SingleChecker jinGouDiao = new SingleChecker(PaiXin.QUAN_QIU_REN, paiXinChecker);
-		jinGouDiao.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker jinGouDiao = new SingleChecker(JieSuan.QUAN_QIU_REN_VALUE, paiXinChecker);
+		jinGouDiao.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		othersQiDui.addSingleChecker(jinGouDiao);
 		
 		// 碰碰胡
-		SingleChecker pengPengHu = new SingleChecker(PaiXin.PENG_PENG_HU, paiXinChecker);
+		SingleChecker pengPengHu = new SingleChecker(JieSuan.PENG_PENG_HU_VALUE, paiXinChecker);
 		jinGouDiao.setNextChecker(pengPengHu);
 
 		// 根胡
-		SingleChecker genHu = new SingleChecker(PaiXin.SI_HE, paiXinChecker);
-		genHu.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker genHu = new SingleChecker(JieSuan.SI_HE_VALUE, paiXinChecker);
+		genHu.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		pengPengHu.setNextChecker(genHu);
 		
 	}
@@ -95,7 +95,7 @@ public class WeiNanHuChecker extends DefaultHuChecker {
 	@Override
 	public boolean postCheck(BaseOperation act, HuOperation huOper) {
 		if(!desk.getSetting().getBool(CardGameSetting.DING_QUE)) return true;	// 不带缺一门，无限制番数
-		if(huOper.getPaiXins().size() > 1 || !huOper.containsPaiXin(PaiXin.BIAO_ZHUN_HU)) return true;	// 不是普通平胡，有其他牌型，可胡
+		if(huOper.getPaiXins().size() > 1 || !huOper.containsPaiXin(JieSuan.BIAO_ZHUN_HU_VALUE)) return true;	// 不是普通平胡，有其他牌型，可胡
 		
 		// 检查胡牌番数，点炮2番起胡
 		if(huOper.isZimo()) return true;						// 自摸无限制番数

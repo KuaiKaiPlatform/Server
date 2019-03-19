@@ -9,12 +9,11 @@ import com.kuaikai.game.mahjong.engine.calculator.Calculator;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonHuCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.checker.hu.mode.HuModesChecker;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
 import com.kuaikai.game.mahjong.engine.process.shannxi.LiangProcessor;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class LiangCalculator extends Calculator {
 	
@@ -31,24 +30,24 @@ public class LiangCalculator extends Calculator {
 		Set<Integer> paiXins = oper.getPaiXins();
 		for(int paiXin : paiXins) {
 			switch(paiXin) {
-			case PaiXin.SHI_SAN_YAO :
+			case JieSuan.SHI_SAN_YAO_VALUE :
 				rate *= 8;
 				break;
-			case PaiXin.SHI_SAN_BU_KAO :
+			case JieSuan.SHI_SAN_BU_KAO_VALUE :
 				rate *= 2;
 				break;
-			case PaiXin.QI_DUI :
+			case JieSuan.QI_DUI_VALUE :
 				rate *= 2;
 				break;
-			case PaiXin.HAO_QI_DUI :
-			case PaiXin.CHAO_HAO_QI_DUI :
-			case PaiXin.ZUI_HAO_QI_DUI :
+			case JieSuan.HAO_QI_DUI_VALUE :
+			case JieSuan.CHAO_HAO_QI_DUI_VALUE :
+			case JieSuan.ZUI_HAO_QI_DUI_VALUE :
 				rate *= 4;
 				break;
-			case PaiXin.QING_YI_SE :
+			case JieSuan.QING_YI_SE_VALUE :
 				rate *= 2;
 				break;
-			case PaiXin.YI_TIAO_LONG :
+			case JieSuan.YI_TIAO_LONG_VALUE :
 				rate *= 2;
 				break;
 			default :
@@ -62,7 +61,7 @@ public class LiangCalculator extends Calculator {
 		
 		// 点子，只显示在赢家结算明细
 		CommonHuCalculatorDetail dianZiCalculatorDetail = new CommonHuCalculatorDetail(oper, dianZi, false, false);
-		dianZiCalculatorDetail.setMainType(JieSuan.DIAN_ZI);
+		dianZiCalculatorDetail.setMainType(JieSuan.DIAN_ZI_VALUE);
 		dianZiCalculatorDetail.addSubTypes(paiXins);
 		dianZiCalculatorDetail.setLoserDisplay(false);
 		dianZiCalculatorDetail.setToPay(false);
@@ -97,7 +96,7 @@ public class LiangCalculator extends Calculator {
 		}
 		
 		// 十三幺，十三不靠，卡边吊：胡的牌算点子
-		if(oper.containsPaiXin(PaiXin.SHI_SAN_YAO) || oper.containsPaiXin(PaiXin.SHI_SAN_BU_KAO) || HuModesChecker.kaBianDiao(oper)) {
+		if(oper.containsPaiXin(JieSuan.SHI_SAN_YAO_VALUE) || oper.containsPaiXin(JieSuan.SHI_SAN_BU_KAO_VALUE) || HuModesChecker.kaBianDiao(oper)) {
 			dianZi += getCardDianZi(oper.getTarget());
 		}
 		

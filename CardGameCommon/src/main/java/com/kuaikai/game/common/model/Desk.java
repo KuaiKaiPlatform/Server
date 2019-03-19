@@ -3,6 +3,7 @@ package com.kuaikai.game.common.model;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kuaikai.game.common.msg.pb.GameRulePB.GameRule;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
 import com.kuaikai.game.common.play.CardGameSetting;
+import com.kuaikai.game.common.redis.ClubDeskRedis;
 
 public class Desk {
 	
@@ -25,7 +27,7 @@ public class Desk {
 	// 玩家座位到玩家对象map
 	protected Map<Integer, Player> seat2Player = new HashMap<>();
 	
-	protected GameRule rule = GameRule.GUO_ZI;
+	protected GameRule rule;
 	
 	// 所有规则设置
 	protected AttrsModel setting = new AttrsModel();
@@ -38,6 +40,9 @@ public class Desk {
 	
 	// 当前局数
 	protected int curSet;
+	
+	// 庄家
+	protected Player banker;
 	
 	public Desk() {}
 	
@@ -58,19 +63,24 @@ public class Desk {
 	}
 	
 	public String getKey() {
-		StringBuilder sb = new StringBuilder().append(this.getDeskId());
-		if(clubId > 0) sb.append("-").append(this.getClubId());
-		return sb.toString();
+		return Desk.getKey(getClubId(), getDeskId());
+	}
+	
+	public static String getKey(int clubId, long deskId) {
+		StringBuilder sb = new StringBuilder().append(deskId);
+		if(clubId > 0) sb.append("-").append(clubId);
+		return sb.toString(); 
 	}
 	
 	public void addPlayer(Player player) {
 		if(!id2Player.containsValue(player)) {
 			id2Player.put(player.getId(), player);
 			seat2Player.put(player.getSeat(), player);
+			player.setDesk(this);
 		}
 	}
 	
-	public Collection<Integer> getPids() {
+	public Set<Integer> getPids() {
 		return id2Player.keySet();
 	}
 	
@@ -111,8 +121,8 @@ public class Desk {
 		return setting;
 	}
 
-	public void setSetting(AttrsModel setting) {
-		this.setting = setting;
+	public AttrsModel getClubSetting() {
+		return clubSetting;
 	}
 
 	public GameStatus getStatus() {
@@ -121,6 +131,7 @@ public class Desk {
 
 	public void setStatus(GameStatus status) {
 		this.status = status;
+		ClubDeskRedis.putStatus(clubId, deskId, status.getNumber());
 	}
 
 	public int getCurSet() {
@@ -133,6 +144,18 @@ public class Desk {
 
 	public void incrCurSet() {
 		this.curSet++;
+	}
+
+	public Player getBanker() {
+		return banker;
+	}
+
+	public void setBanker(Player banker) {
+		this.banker = banker;
+	}
+	
+	public int getBankerId() {
+		return banker == null?0:banker.getId();
 	}
 
 	public void clear() {

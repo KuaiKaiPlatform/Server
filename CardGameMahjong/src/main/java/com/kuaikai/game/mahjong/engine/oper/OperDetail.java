@@ -26,7 +26,7 @@ public class OperDetail {
 		this.operType = operType;
 	}
 	public List<Integer> getCards() {
-		return cards;
+		return cards!=null?cards:new LinkedList<Integer>();
 	}
 	public void addCards(Collection<Integer> cards) {
 		if(cards == null) return;

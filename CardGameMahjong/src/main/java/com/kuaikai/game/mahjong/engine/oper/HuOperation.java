@@ -8,8 +8,8 @@ import java.util.Set;
 
 import com.kuaikai.game.mahjong.engine.checker.paixin.PaiXinChecker;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class HuOperation extends BaseOperation {
 
@@ -42,7 +42,7 @@ public class HuOperation extends BaseOperation {
 
 	public int getSinglePaiXin() {
 		for(int paiXin : paiXins) return paiXin;
-		return PaiXin.BIAO_ZHUN_HU;
+		return JieSuan.BIAO_ZHUN_HU_VALUE;
 	}
 	
 	public void addPaiXins(Collection<Integer> paiXins) {

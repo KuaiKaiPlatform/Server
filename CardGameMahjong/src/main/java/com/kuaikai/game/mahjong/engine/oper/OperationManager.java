@@ -9,9 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.play.CardGameSetting;
+import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
-import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 
 public class OperationManager {
 
@@ -91,7 +91,7 @@ public class OperationManager {
 	/*
 	 * 在当前可执行操作中查找指定玩家的操作
 	 */
-	public List<BaseOperation> findCurrentCanExecuteOperations(MahjongPlayer player) {
+	public List<BaseOperation> findCurrentCanExecuteOperations(GamePlayer player) {
 		List<BaseOperation> canExecuteOperations = this.getCurrentCanExecuteOperations();
 		List<BaseOperation> result = new LinkedList<BaseOperation>();
 		for(BaseOperation oper : canExecuteOperations) {

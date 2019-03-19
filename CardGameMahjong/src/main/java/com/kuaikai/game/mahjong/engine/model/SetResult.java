@@ -86,4 +86,12 @@ public class SetResult {
 		this.huangZhuang = huangZhuang;
 	}
 	
+	/**
+	 *	是否一炮多响
+	 * @return
+	 */
+	public boolean isMultipleHu() {
+		return dianPlayer != null && huPlayers != null && huPlayers.size() > 1;
+	}
+	
 }

@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.play.CardGameSetting;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
@@ -56,6 +55,7 @@ import com.kuaikai.game.mahjong.engine.paixin.WuZi;
 import com.kuaikai.game.mahjong.engine.paixin.YiTiaoLong;
 import com.kuaikai.game.mahjong.engine.paixin.ZhiShu;
 import com.kuaikai.game.mahjong.engine.paixin.ZiYiSe;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class SingleChecker {
 	
@@ -111,298 +111,298 @@ public class SingleChecker {
 		}
 		
 		switch(paiXin) {
-		case PaiXin.SHI_SAN_YAO :
+		case JieSuan.SHI_SAN_YAO_VALUE :
 			if(ShiSanYao.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHI_SAN_YAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_YAO_VALUE);
 				//MahjongDesk desk = player.getDesk();
 				//loggerSSY.info(desk.getRoomid() + "," + desk.getCurSet() + "," + player.getId() + "," + desk.getCreateRoomParam().getRule());
 				return true;
 			}
 			break;
-		case PaiXin.SHI_SAN_BU_KAO :
+		case JieSuan.SHI_SAN_BU_KAO_VALUE :
 			switch(ShiSanBuKao.check(handlist, card, groupList, almightyCardNum)) {
 			case 5 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_BU_KAO);
-				paiXinChecker.addResult(PaiXin.WU_XING_BU_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_BU_KAO_VALUE);
+				paiXinChecker.addResult(JieSuan.WU_XING_BU_KAO_VALUE);
 				return true;
 			case 6 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_BU_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_BU_KAO_VALUE);
 				return true;
 			case 7 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_BU_KAO);
-				paiXinChecker.addResult(PaiXin.QI_XING_BU_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_BU_KAO_VALUE);
+				paiXinChecker.addResult(JieSuan.QI_XING_BU_KAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHI_SAN_LUAN_KAO :
+		case JieSuan.SHI_SAN_LUAN_KAO_VALUE :
 			switch(ShiSanLuanKao.check(handlist, card, groupList, almightyCardNum)) {
 			case 5 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_LUAN_KAO);
-				paiXinChecker.addResult(PaiXin.WU_XING_LUAN_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_LUAN_KAO_VALUE);
+				paiXinChecker.addResult(JieSuan.WU_XING_LUAN_KAO_VALUE);
 				return true;
 			case 6 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_LUAN_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_LUAN_KAO_VALUE);
 				return true;
 			case 7 :
-				paiXinChecker.addResult(PaiXin.SHI_SAN_LUAN_KAO);
-				paiXinChecker.addResult(PaiXin.QI_XING_LUAN_KAO);
+				paiXinChecker.addResult(JieSuan.SHI_SAN_LUAN_KAO_VALUE);
+				paiXinChecker.addResult(JieSuan.QI_XING_LUAN_KAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QI_DUI :
+		case JieSuan.QI_DUI_VALUE :
 			if(player.getGameDesk().getSetting().getBool(CardGameSetting.NO_QI_DUI)) break;
 			
 			switch(QiDui.check(handlist, card, groupList, almightyCardNum)) {
 			case 0 :	// 普通七对
-				paiXinChecker.addResult(PaiXin.QI_DUI);
+				paiXinChecker.addResult(JieSuan.QI_DUI_VALUE);
 				logger.debug("qidui checked");
 				return true;
 			case 1 :	// 豪华七对
-				paiXinChecker.addResult(PaiXin.HAO_QI_DUI);
+				paiXinChecker.addResult(JieSuan.HAO_QI_DUI_VALUE);
 				logger.debug("haoqidui checked");
 				return true;
 			case 2 :	// 超豪华七对
-				paiXinChecker.addResult(PaiXin.CHAO_HAO_QI_DUI);
+				paiXinChecker.addResult(JieSuan.CHAO_HAO_QI_DUI_VALUE);
 				logger.debug("chaohaoqidui checked");
 				return true;
 			case 3 :	// 最豪华七对
-				paiXinChecker.addResult(PaiXin.ZUI_HAO_QI_DUI);
+				paiXinChecker.addResult(JieSuan.ZUI_HAO_QI_DUI_VALUE);
 				logger.debug("zuihaohaoqidui checked");
 				return true;
 			}
 			break;
-		case PaiXin.ZI_YI_SE :
+		case JieSuan.ZI_YI_SE_VALUE :
 			if(ZiYiSe.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.ZI_YI_SE);
+				paiXinChecker.addResult(JieSuan.ZI_YI_SE_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QING_YI_SE :
+		case JieSuan.QING_YI_SE_VALUE :
 			if(QingYiSe.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QING_YI_SE);
+				paiXinChecker.addResult(JieSuan.QING_YI_SE_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.HUN_YI_SE :
+		case JieSuan.HUN_YI_SE_VALUE :
 			if(HunYiSe.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.HUN_YI_SE);
+				paiXinChecker.addResult(JieSuan.HUN_YI_SE_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.PENG_PENG_HU :
+		case JieSuan.PENG_PENG_HU_VALUE :
 			if(PengPengHu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.PENG_PENG_HU);
+				paiXinChecker.addResult(JieSuan.PENG_PENG_HU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QUAN_QIU_REN :
+		case JieSuan.QUAN_QIU_REN_VALUE :
 			if(QuanQiuRen.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QUAN_QIU_REN);
+				paiXinChecker.addResult(JieSuan.QUAN_QIU_REN_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHUANG_BA_ZHI :
+		case JieSuan.SHUANG_BA_ZHI_VALUE :
 			if(ShuangBaZhi.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHUANG_BA_ZHI);
+				paiXinChecker.addResult(JieSuan.SHUANG_BA_ZHI_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHUANG_SI_HE :
+		case JieSuan.SHUANG_SI_HE_VALUE :
 			if(ShuangSiHe.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHUANG_SI_HE);
+				paiXinChecker.addResult(JieSuan.SHUANG_SI_HE_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.BA_ZHI :
+		case JieSuan.BA_ZHI_VALUE :
 			if(BaZhi.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.BA_ZHI);
+				paiXinChecker.addResult(JieSuan.BA_ZHI_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SI_HE :
-		case PaiXin.GEN_HU :
+		case JieSuan.SI_HE_VALUE :
+		case JieSuan.GEN_HU_VALUE :
 			if(SiHe.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SI_HE);
+				paiXinChecker.addResult(JieSuan.SI_HE_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.BIAN_ZHANG :
+		case JieSuan.BIAN_ZHANG_VALUE :
 			if(BianZhang.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer())) {
-				paiXinChecker.addResult(PaiXin.BIAN_ZHANG);
+				paiXinChecker.addResult(JieSuan.BIAN_ZHANG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.DAN_DIAO_JIANG :
+		case JieSuan.DAN_DIAO_JIANG_VALUE :
 			if(DanDiaoJiang.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer())) {
-				paiXinChecker.addResult(PaiXin.DAN_DIAO_JIANG);
+				paiXinChecker.addResult(JieSuan.DAN_DIAO_JIANG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.KAN_ZHANG :
+		case JieSuan.KAN_ZHANG_VALUE :
 			if(KanZhang.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer())) {
-				paiXinChecker.addResult(PaiXin.KAN_ZHANG);
+				paiXinChecker.addResult(JieSuan.KAN_ZHANG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.YI_TIAO_LONG :
+		case JieSuan.YI_TIAO_LONG_VALUE :
 			if(YiTiaoLong.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.YI_TIAO_LONG);
+				paiXinChecker.addResult(JieSuan.YI_TIAO_LONG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHUANG_LIAN_LIU :
+		case JieSuan.SHUANG_LIAN_LIU_VALUE :
 			if(ShuangLianLiu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHUANG_LIAN_LIU);
+				paiXinChecker.addResult(JieSuan.SHUANG_LIAN_LIU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.LIAN_LIU :
+		case JieSuan.LIAN_LIU_VALUE :
 			if(LianLiu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.LIAN_LIU);
+				paiXinChecker.addResult(JieSuan.LIAN_LIU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.YI_SE_SAN_LIAN_DUI :
+		case JieSuan.YI_SE_SAN_LIAN_DUI_VALUE :
 			if(SanLianDui.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.YI_SE_SAN_LIAN_DUI);
+				paiXinChecker.addResult(JieSuan.YI_SE_SAN_LIAN_DUI_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.BIAO_ZHUN_HU :
+		case JieSuan.BIAO_ZHUN_HU_VALUE :
 			if(BiaoZhunHu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.BIAO_ZHUN_HU);
+				paiXinChecker.addResult(JieSuan.BIAO_ZHUN_HU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.ALMIGHTY_4 :
+		case JieSuan.ALMIGHTY_4_VALUE :
 			if(AlmightyX.check(handlist, card, groupList, almightyCardNum, 4, paiXinChecker.getPlayer())) {
-				paiXinChecker.addResult(PaiXin.ALMIGHTY_4);
+				paiXinChecker.addResult(JieSuan.ALMIGHTY_4_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHI_YI_ZHI :
+		case JieSuan.SHI_YI_ZHI_VALUE :
 			if(ShiYiZhi.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHI_YI_ZHI);
+				paiXinChecker.addResult(JieSuan.SHI_YI_ZHI_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.MEN_QIAN_QING :
+		case JieSuan.MEN_QIAN_QING_VALUE :
 			if(MenQianQing.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer())) {
-				paiXinChecker.addResult(PaiXin.MEN_QIAN_QING);
+				paiXinChecker.addResult(JieSuan.MEN_QIAN_QING_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QUE_YI_MEN :
+		case JieSuan.QUE_YI_MEN_VALUE :
 			if(QueYiMen.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QUE_YI_MEN);
+				paiXinChecker.addResult(JieSuan.QUE_YI_MEN_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.DUAN_YAO_JIU :
+		case JieSuan.DUAN_YAO_JIU_VALUE :
 			if(DuanYaoJiu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.DUAN_YAO_JIU);
+				paiXinChecker.addResult(JieSuan.DUAN_YAO_JIU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.HUN_YAO_JIU :
+		case JieSuan.HUN_YAO_JIU_VALUE :
 			if(HunYaoJiu.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.HUN_YAO_JIU);
+				paiXinChecker.addResult(JieSuan.HUN_YAO_JIU_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHUANG_TONG :
+		case JieSuan.SHUANG_TONG_VALUE :
 			if(ShuangTong.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHUANG_TONG);
+				paiXinChecker.addResult(JieSuan.SHUANG_TONG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QI_TONG :
+		case JieSuan.QI_TONG_VALUE :
 			if(QiTong.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QI_TONG);
+				paiXinChecker.addResult(JieSuan.QI_TONG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.WU_TONG :
+		case JieSuan.WU_TONG_VALUE :
 			if(WuTong.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.WU_TONG);
+				paiXinChecker.addResult(JieSuan.WU_TONG_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QUAN_LAO :
+		case JieSuan.QUAN_LAO_VALUE :
 			if(QuanLao.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QUAN_LAO);
+				paiXinChecker.addResult(JieSuan.QUAN_LAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.QUAN_XIAO :
+		case JieSuan.QUAN_XIAO_VALUE :
 			if(QuanXiao.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.QUAN_XIAO);
+				paiXinChecker.addResult(JieSuan.QUAN_XIAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHI_LAO :
+		case JieSuan.SHI_LAO_VALUE :
 			if(ShiLao.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHI_LAO);
+				paiXinChecker.addResult(JieSuan.SHI_LAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.SHI_XIAO :
+		case JieSuan.SHI_XIAO_VALUE :
 			if(ShiXiao.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.SHI_XIAO);
+				paiXinChecker.addResult(JieSuan.SHI_XIAO_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.AN_KE :
+		case JieSuan.AN_KE_VALUE :
 			Set<Integer> anKes = AnKe.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer());
 			if(anKes != null && !anKes.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.AN_KE, anKes);
+				paiXinChecker.putExtra(JieSuan.AN_KE_VALUE, anKes);
 				return true;
 			}
 			break;
-		case PaiXin.MING_KE :
+		case JieSuan.MING_KE_VALUE :
 			Set<Integer> mingKes = MingKe.check(handlist, card, groupList, almightyCardNum, paiXinChecker.getPlayer());
 			if(mingKes != null && !mingKes.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.MING_KE, mingKes);
+				paiXinChecker.putExtra(JieSuan.MING_KE_VALUE, mingKes);
 				return true;
 			}
 			break;
-		case PaiXin.ZHI_SHU :
+		case JieSuan.ZHI_SHU_VALUE :
 			Map<Mahjong.CardType, Integer> zhiShu = ZhiShu.check(handlist, card, groupList, almightyCardNum);
 			if(zhiShu != null && !zhiShu.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.ZHI_SHU, zhiShu);
+				paiXinChecker.putExtra(JieSuan.ZHI_SHU_VALUE, zhiShu);
 				return true;
 			}
 			break;
-		case PaiXin.GANG_PAI :
+		case JieSuan.GANG_PAI_VALUE :
 			Map<Integer, Integer> gangPai = GangPai.check(handlist, card, groupList, almightyCardNum);
 			if(gangPai != null && !gangPai.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.GANG_PAI, gangPai);
+				paiXinChecker.putExtra(JieSuan.GANG_PAI_VALUE, gangPai);
 				return true;
 			}
 			break;
-		case PaiXin.TONG_SHU :
+		case JieSuan.TONG_SHU_VALUE :
 			Map<Integer, Integer> tongShu = TongShu.check(handlist, card, groupList, almightyCardNum);
 			if(tongShu != null && !tongShu.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.TONG_SHU, tongShu);
+				paiXinChecker.putExtra(JieSuan.TONG_SHU_VALUE, tongShu);
 				return true;
 			}
 			break;
-		case PaiXin.LIAN_DUI :
+		case JieSuan.LIAN_DUI_VALUE :
 			Map<Integer, Integer> lianDui = LianDui.check(handlist, card, groupList, almightyCardNum);
 			if(lianDui != null && !lianDui.isEmpty()) {
-				paiXinChecker.putExtra(PaiXin.LIAN_DUI, lianDui);
+				paiXinChecker.putExtra(JieSuan.LIAN_DUI_VALUE, lianDui);
 				return true;
 			}
 			break;
-		case PaiXin.LUAN_ZI :
+		case JieSuan.LUAN_ZI_VALUE :
 			if(LuanZi.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.LUAN_ZI);
+				paiXinChecker.addResult(JieSuan.LUAN_ZI_VALUE);
 				return true;
 			}
 			break;
-		case PaiXin.WU_ZI :
+		case JieSuan.WU_ZI_VALUE :
 			if(WuZi.check(handlist, card, groupList, almightyCardNum)) {
-				paiXinChecker.addResult(PaiXin.WU_ZI);
+				paiXinChecker.addResult(JieSuan.WU_ZI_VALUE);
 				return true;
 			}
 			break;

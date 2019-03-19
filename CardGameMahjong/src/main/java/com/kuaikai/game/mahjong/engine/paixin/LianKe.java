@@ -10,9 +10,9 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class LianKe {
 	
@@ -28,19 +28,19 @@ public class LianKe {
 		List<Integer> cards = new LinkedList<Integer>();	// 所有刻牌和杠牌放到一个列表中
 		
 		// 杠牌
-		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(PaiXin.GANG_PAI);
+		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(JieSuan.GANG_PAI_VALUE);
 		if(gangPai != null && !gangPai.isEmpty()) {
 			cards.addAll(gangPai.keySet());
 		}
 		
 		// 明刻
-		Set<Integer> mingKe = (Set<Integer>)extra.get(PaiXin.MING_KE);
+		Set<Integer> mingKe = (Set<Integer>)extra.get(JieSuan.MING_KE_VALUE);
 		if(mingKe != null && !mingKe.isEmpty()) {
 			cards.addAll(mingKe);
 		}
 		
 		// 暗刻
-		Set<Integer> anKe = (Set<Integer>)extra.get(PaiXin.AN_KE);
+		Set<Integer> anKe = (Set<Integer>)extra.get(JieSuan.AN_KE_VALUE);
 		if(anKe != null && !anKe.isEmpty()) {
 			cards.addAll(anKe);
 		}
@@ -70,13 +70,13 @@ public class LianKe {
 		// 一色四连刻、一色三连刻
 		switch(lianKe) {
 		case 4 :
-			paiXins.add(PaiXin.YI_SE_SI_LIAN_KE);
+			paiXins.add(JieSuan.YI_SE_SI_LIAN_KE_VALUE);
 			break;
 		case 3 :
-			paiXins.add(PaiXin.YI_SE_SAN_LIAN_KE);
+			paiXins.add(JieSuan.YI_SE_SAN_LIAN_KE_VALUE);
 			// 检查是否附将
 			if(checkFuJiang(handCards, last3+1, last3-3)) {
-				paiXins.add(PaiXin.YI_SE_SAN_LIAN_KE_FU_JIANG);
+				paiXins.add(JieSuan.YI_SE_SAN_LIAN_KE_FU_JIANG_VALUE);
 			}
 			break;
 		}

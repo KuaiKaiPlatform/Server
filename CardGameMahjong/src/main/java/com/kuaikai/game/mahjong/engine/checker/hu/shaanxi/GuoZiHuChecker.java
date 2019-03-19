@@ -5,10 +5,10 @@ import com.kuaikai.game.mahjong.engine.checker.hu.DefaultHuChecker;
 import com.kuaikai.game.mahjong.engine.checker.paixin.CheckerArray;
 import com.kuaikai.game.mahjong.engine.checker.paixin.SingleChecker;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 /**
  * 打锅子胡牌检查器
@@ -41,7 +41,7 @@ public class GuoZiHuChecker extends DefaultHuChecker {
 		// 十三不靠
 		SingleChecker shiSanBuKao = null;
 		if(desk.getSetting().getBool(CardGameSetting.SHI_SAN_BU_KAO)) {
-			shiSanBuKao = new SingleChecker(PaiXin.SHI_SAN_BU_KAO, paiXinChecker);
+			shiSanBuKao = new SingleChecker(JieSuan.SHI_SAN_BU_KAO_VALUE, paiXinChecker);
 			paiXinChecker.setChecker(shiSanBuKao);
 		}
 		
@@ -54,13 +54,13 @@ public class GuoZiHuChecker extends DefaultHuChecker {
 		}
 		
 		// 七对
-		SingleChecker qiDui = new SingleChecker(PaiXin.QI_DUI, paiXinChecker);
+		SingleChecker qiDui = new SingleChecker(JieSuan.QI_DUI_VALUE, paiXinChecker);
 		others.addSingleChecker(qiDui);
 
 		// 清一色
-		SingleChecker qingYiSe = new SingleChecker(PaiXin.QING_YI_SE, paiXinChecker);
-		qingYiSe.addOrDependency(PaiXin.BIAO_ZHUN_HU);
-		qingYiSe.addOrDependency(PaiXin.QI_DUI);
+		SingleChecker qingYiSe = new SingleChecker(JieSuan.QING_YI_SE_VALUE, paiXinChecker);
+		qingYiSe.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
+		qingYiSe.addOrDependency(JieSuan.QI_DUI_VALUE);
 		others.addSingleChecker(qingYiSe);
 		
 		// 其他牌型（七对）
@@ -68,12 +68,12 @@ public class GuoZiHuChecker extends DefaultHuChecker {
 		qiDui.setNextChecker(othersQiDui);
 		
 		// 标准胡
-		SingleChecker biaoZhunHu = new SingleChecker(PaiXin.BIAO_ZHUN_HU, paiXinChecker);
+		SingleChecker biaoZhunHu = new SingleChecker(JieSuan.BIAO_ZHUN_HU_VALUE, paiXinChecker);
 		othersQiDui.addSingleChecker(biaoZhunHu);
 
 		// 一条龙
-		SingleChecker yiTiaoLong = new SingleChecker(PaiXin.YI_TIAO_LONG, paiXinChecker);
-		yiTiaoLong.addOrDependency(PaiXin.BIAO_ZHUN_HU);
+		SingleChecker yiTiaoLong = new SingleChecker(JieSuan.YI_TIAO_LONG_VALUE, paiXinChecker);
+		yiTiaoLong.addOrDependency(JieSuan.BIAO_ZHUN_HU_VALUE);
 		othersQiDui.addSingleChecker(yiTiaoLong);
 		
 	}

@@ -57,6 +57,10 @@ public class ScoreDetail {
 		}
 	}
 	
+	public List<Integer> getSubTypes() {
+		return subTypes;
+	}
+
 	public int getScore() {
 		return score;
 	}

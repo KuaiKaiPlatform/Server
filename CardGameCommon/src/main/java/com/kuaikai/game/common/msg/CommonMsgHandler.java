@@ -34,7 +34,7 @@ public class CommonMsgHandler extends MsgHandler {
 
 	@Override
 	public String desc() {
-		return String.format("msgid=%d,data=%s", msgId, genMsg);
+		return String.format("msgid=%d|data=%s", msgId, genMsg);
 	}
 
 }

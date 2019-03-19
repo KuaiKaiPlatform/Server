@@ -39,7 +39,11 @@ public class SXMJProcessor extends DefaultProcessor {
 
 		// 漏胡所有
 		setting.put(CardGameSetting.LOU_HU_NUM, -1);
-
+		
+		// 听所有牌时能点炮胡和抢杠胡
+		setting.put(CardGameSetting.TING_ALL_DIAN, true);
+		setting.put(CardGameSetting.TING_ALL_QIANG_GANG, true);
+		
 	}
 	
 }

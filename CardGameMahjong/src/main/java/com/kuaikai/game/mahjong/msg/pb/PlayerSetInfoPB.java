@@ -143,6 +143,86 @@ public final class PlayerSetInfoPB {
      */
     com.kuaikai.game.mahjong.msg.pb.CardGroupPB.CardGroupOrBuilder getCardGroupsOrBuilder(
         int index);
+
+    // repeated int32 points = 6;
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getPointsList();
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    int getPointsCount();
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    int getPoints(int index);
+
+    // optional .mahjong.Direction direction = 7;
+    /**
+     * <code>optional .mahjong.Direction direction = 7;</code>
+     *
+     * <pre>
+     * 玩家方位（门风）
+     * </pre>
+     */
+    boolean hasDirection();
+    /**
+     * <code>optional .mahjong.Direction direction = 7;</code>
+     *
+     * <pre>
+     * 玩家方位（门风）
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection();
+
+    // optional int32 bet = 8;
+    /**
+     * <code>optional int32 bet = 8;</code>
+     *
+     * <pre>
+     * 本局下注数量
+     * </pre>
+     */
+    boolean hasBet();
+    /**
+     * <code>optional int32 bet = 8;</code>
+     *
+     * <pre>
+     * 本局下注数量
+     * </pre>
+     */
+    int getBet();
+
+    // optional .mahjong.QueMen queMen = 9;
+    /**
+     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     *
+     * <pre>
+     * 本局缺门，0 无效  10 万 20 条 30 筒
+     * </pre>
+     */
+    boolean hasQueMen();
+    /**
+     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     *
+     * <pre>
+     * 本局缺门，0 无效  10 万 20 条 30 筒
+     * </pre>
+     */
+    com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen();
   }
   /**
    * Protobuf type {@code mahjong.PlayerSetInfo}
@@ -255,6 +335,54 @@ public final class PlayerSetInfoPB {
               cardGroups_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.CardGroupPB.CardGroup.PARSER, extensionRegistry));
               break;
             }
+            case 48: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                points_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              points_.add(input.readInt32());
+              break;
+            }
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
+                points_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                points_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 56: {
+              int rawValue = input.readEnum();
+              com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction value = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(7, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                direction_ = value;
+              }
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000008;
+              bet_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              int rawValue = input.readEnum();
+              com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen value = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(9, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                queMen_ = value;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -271,6 +399,9 @@ public final class PlayerSetInfoPB {
         }
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           cardGroups_ = java.util.Collections.unmodifiableList(cardGroups_);
+        }
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          points_ = java.util.Collections.unmodifiableList(points_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -478,12 +609,123 @@ public final class PlayerSetInfoPB {
       return cardGroups_.get(index);
     }
 
+    // repeated int32 points = 6;
+    public static final int POINTS_FIELD_NUMBER = 6;
+    private java.util.List<java.lang.Integer> points_;
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getPointsList() {
+      return points_;
+    }
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    public int getPointsCount() {
+      return points_.size();
+    }
+    /**
+     * <code>repeated int32 points = 6;</code>
+     *
+     * <pre>
+     * 本场各项总得失分列表
+     * </pre>
+     */
+    public int getPoints(int index) {
+      return points_.get(index);
+    }
+
+    // optional .mahjong.Direction direction = 7;
+    public static final int DIRECTION_FIELD_NUMBER = 7;
+    private com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction direction_;
+    /**
+     * <code>optional .mahjong.Direction direction = 7;</code>
+     *
+     * <pre>
+     * 玩家方位（门风）
+     * </pre>
+     */
+    public boolean hasDirection() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .mahjong.Direction direction = 7;</code>
+     *
+     * <pre>
+     * 玩家方位（门风）
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection() {
+      return direction_;
+    }
+
+    // optional int32 bet = 8;
+    public static final int BET_FIELD_NUMBER = 8;
+    private int bet_;
+    /**
+     * <code>optional int32 bet = 8;</code>
+     *
+     * <pre>
+     * 本局下注数量
+     * </pre>
+     */
+    public boolean hasBet() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 bet = 8;</code>
+     *
+     * <pre>
+     * 本局下注数量
+     * </pre>
+     */
+    public int getBet() {
+      return bet_;
+    }
+
+    // optional .mahjong.QueMen queMen = 9;
+    public static final int QUEMEN_FIELD_NUMBER = 9;
+    private com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen queMen_;
+    /**
+     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     *
+     * <pre>
+     * 本局缺门，0 无效  10 万 20 条 30 筒
+     * </pre>
+     */
+    public boolean hasQueMen() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     *
+     * <pre>
+     * 本局缺门，0 无效  10 万 20 条 30 筒
+     * </pre>
+     */
+    public com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen() {
+      return queMen_;
+    }
+
     private void initFields() {
       uid_ = 0;
       handCardNum_ = 0;
       handcards_ = java.util.Collections.emptyList();
       discards_ = java.util.Collections.emptyList();
       cardGroups_ = java.util.Collections.emptyList();
+      points_ = java.util.Collections.emptyList();
+      direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+      bet_ = 0;
+      queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -526,6 +768,18 @@ public final class PlayerSetInfoPB {
       for (int i = 0; i < cardGroups_.size(); i++) {
         output.writeMessage(5, cardGroups_.get(i));
       }
+      for (int i = 0; i < points_.size(); i++) {
+        output.writeInt32(6, points_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(7, direction_.getNumber());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(8, bet_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(9, queMen_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -564,6 +818,27 @@ public final class PlayerSetInfoPB {
       for (int i = 0; i < cardGroups_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, cardGroups_.get(i));
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < points_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(points_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getPointsList().size();
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(7, direction_.getNumber());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, bet_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(9, queMen_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -696,6 +971,14 @@ public final class PlayerSetInfoPB {
         } else {
           cardGroupsBuilder_.clear();
         }
+        points_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        bet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -751,6 +1034,23 @@ public final class PlayerSetInfoPB {
         } else {
           result.cardGroups_ = cardGroupsBuilder_.build();
         }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          points_ = java.util.Collections.unmodifiableList(points_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.points_ = points_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.direction_ = direction_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.bet_ = bet_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.queMen_ = queMen_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -818,6 +1118,25 @@ public final class PlayerSetInfoPB {
               cardGroupsBuilder_.addAllMessages(other.cardGroups_);
             }
           }
+        }
+        if (!other.points_.isEmpty()) {
+          if (points_.isEmpty()) {
+            points_ = other.points_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensurePointsIsMutable();
+            points_.addAll(other.points_);
+          }
+          onChanged();
+        }
+        if (other.hasDirection()) {
+          setDirection(other.getDirection());
+        }
+        if (other.hasBet()) {
+          setBet(other.getBet());
+        }
+        if (other.hasQueMen()) {
+          setQueMen(other.getQueMen());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1458,6 +1777,253 @@ public final class PlayerSetInfoPB {
         return cardGroupsBuilder_;
       }
 
+      // repeated int32 points = 6;
+      private java.util.List<java.lang.Integer> points_ = java.util.Collections.emptyList();
+      private void ensurePointsIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          points_ = new java.util.ArrayList<java.lang.Integer>(points_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getPointsList() {
+        return java.util.Collections.unmodifiableList(points_);
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public int getPointsCount() {
+        return points_.size();
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public int getPoints(int index) {
+        return points_.get(index);
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public Builder setPoints(
+          int index, int value) {
+        ensurePointsIsMutable();
+        points_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public Builder addPoints(int value) {
+        ensurePointsIsMutable();
+        points_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public Builder addAllPoints(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePointsIsMutable();
+        super.addAll(values, points_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 points = 6;</code>
+       *
+       * <pre>
+       * 本场各项总得失分列表
+       * </pre>
+       */
+      public Builder clearPoints() {
+        points_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      // optional .mahjong.Direction direction = 7;
+      private com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+      /**
+       * <code>optional .mahjong.Direction direction = 7;</code>
+       *
+       * <pre>
+       * 玩家方位（门风）
+       * </pre>
+       */
+      public boolean hasDirection() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .mahjong.Direction direction = 7;</code>
+       *
+       * <pre>
+       * 玩家方位（门风）
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction getDirection() {
+        return direction_;
+      }
+      /**
+       * <code>optional .mahjong.Direction direction = 7;</code>
+       *
+       * <pre>
+       * 玩家方位（门风）
+       * </pre>
+       */
+      public Builder setDirection(com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000040;
+        direction_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.Direction direction = 7;</code>
+       *
+       * <pre>
+       * 玩家方位（门风）
+       * </pre>
+       */
+      public Builder clearDirection() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 bet = 8;
+      private int bet_ ;
+      /**
+       * <code>optional int32 bet = 8;</code>
+       *
+       * <pre>
+       * 本局下注数量
+       * </pre>
+       */
+      public boolean hasBet() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 bet = 8;</code>
+       *
+       * <pre>
+       * 本局下注数量
+       * </pre>
+       */
+      public int getBet() {
+        return bet_;
+      }
+      /**
+       * <code>optional int32 bet = 8;</code>
+       *
+       * <pre>
+       * 本局下注数量
+       * </pre>
+       */
+      public Builder setBet(int value) {
+        bitField0_ |= 0x00000080;
+        bet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bet = 8;</code>
+       *
+       * <pre>
+       * 本局下注数量
+       * </pre>
+       */
+      public Builder clearBet() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        bet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .mahjong.QueMen queMen = 9;
+      private com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+      /**
+       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       *
+       * <pre>
+       * 本局缺门，0 无效  10 万 20 条 30 筒
+       * </pre>
+       */
+      public boolean hasQueMen() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       *
+       * <pre>
+       * 本局缺门，0 无效  10 万 20 条 30 筒
+       * </pre>
+       */
+      public com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen() {
+        return queMen_;
+      }
+      /**
+       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       *
+       * <pre>
+       * 本局缺门，0 无效  10 万 20 条 30 筒
+       * </pre>
+       */
+      public Builder setQueMen(com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000100;
+        queMen_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       *
+       * <pre>
+       * 本局缺门，0 无效  10 万 20 条 30 筒
+       * </pre>
+       */
+      public Builder clearQueMen() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:mahjong.PlayerSetInfo)
     }
 
@@ -1484,12 +2050,15 @@ public final class PlayerSetInfoPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\033mahjong/PlayerSetInfo.proto\022\007mahjong\032\027" +
-      "mahjong/CardGroup.proto\"~\n\rPlayerSetInfo" +
-      "\022\013\n\003uid\030\001 \002(\005\022\023\n\013handCardNum\030\002 \002(\005\022\021\n\tha" +
-      "ndcards\030\003 \003(\005\022\020\n\010discards\030\004 \003(\005\022&\n\ncardG" +
-      "roups\030\005 \003(\0132\022.mahjong.CardGroupB2\n\037com.k" +
-      "uaikai.game.mahjong.msg.pbB\017PlayerSetInf" +
-      "oPB"
+      "mahjong/CardGroup.proto\032\027mahjong/Directi" +
+      "on.proto\032\024mahjong/QueMen.proto\"\343\001\n\rPlaye" +
+      "rSetInfo\022\013\n\003uid\030\001 \002(\005\022\023\n\013handCardNum\030\002 \002" +
+      "(\005\022\021\n\thandcards\030\003 \003(\005\022\020\n\010discards\030\004 \003(\005\022" +
+      "&\n\ncardGroups\030\005 \003(\0132\022.mahjong.CardGroup\022" +
+      "\016\n\006points\030\006 \003(\005\022%\n\tdirection\030\007 \001(\0162\022.mah" +
+      "jong.Direction\022\013\n\003bet\030\010 \001(\005\022\037\n\006queMen\030\t " +
+      "\001(\0162\017.mahjong.QueMenB2\n\037com.kuaikai.game" +
+      ".mahjong.msg.pbB\017PlayerSetInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1501,7 +2070,7 @@ public final class PlayerSetInfoPB {
           internal_static_mahjong_PlayerSetInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_PlayerSetInfo_descriptor,
-              new java.lang.String[] { "Uid", "HandCardNum", "Handcards", "Discards", "CardGroups", });
+              new java.lang.String[] { "Uid", "HandCardNum", "Handcards", "Discards", "CardGroups", "Points", "Direction", "Bet", "QueMen", });
           return null;
         }
       };
@@ -1509,6 +2078,8 @@ public final class PlayerSetInfoPB {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.mahjong.msg.pb.CardGroupPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.DirectionPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.QueMenPB.getDescriptor(),
         }, assigner);
   }
 

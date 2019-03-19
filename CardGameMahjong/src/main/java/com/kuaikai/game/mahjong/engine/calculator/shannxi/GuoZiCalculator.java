@@ -12,7 +12,6 @@ import com.kuaikai.game.mahjong.engine.calculator.ScoreDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonGangCalculatorDetail;
 import com.kuaikai.game.mahjong.engine.calculator.common.CommonHuCalculatorDetail;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.constants.PlayMode;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
@@ -20,6 +19,7 @@ import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class GuoZiCalculator extends DiCalculator {
 
@@ -105,7 +105,7 @@ public class GuoZiCalculator extends DiCalculator {
 		if (!desk.getSetting().getBool(CardGameSetting.DIAN_PAO_PAY_DIAN_GANG)) return;
 		
 		for(CommonCalculatorDetail cd : calcDetails) {
-			if(cd.getMainType() == JieSuan.DIAN_GANG) {
+			if(cd.getMainType() == JieSuan.DIAN_GANG__VALUE) {
 				cd.setSingleLoser(dianPlayer);
 				cd.setPayAll();
 			}

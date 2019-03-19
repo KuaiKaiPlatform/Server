@@ -16,7 +16,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult> 
@@ -25,7 +25,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult getPlayerSetResults(int index);
@@ -33,7 +33,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     int getPlayerSetResultsCount();
@@ -41,7 +41,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder> 
@@ -50,11 +50,119 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder getPlayerSetResultsOrBuilder(
         int index);
+
+    // required int32 curSet = 2;
+    /**
+     * <code>required int32 curSet = 2;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    boolean hasCurSet();
+    /**
+     * <code>required int32 curSet = 2;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    int getCurSet();
+
+    // required bool huang = 3;
+    /**
+     * <code>required bool huang = 3;</code>
+     *
+     * <pre>
+     * 是否荒庄
+     * </pre>
+     */
+    boolean hasHuang();
+    /**
+     * <code>required bool huang = 3;</code>
+     *
+     * <pre>
+     * 是否荒庄
+     * </pre>
+     */
+    boolean getHuang();
+
+    // required bool over = 4;
+    /**
+     * <code>required bool over = 4;</code>
+     *
+     * <pre>
+     * 是否整场结束
+     * </pre>
+     */
+    boolean hasOver();
+    /**
+     * <code>required bool over = 4;</code>
+     *
+     * <pre>
+     * 是否整场结束
+     * </pre>
+     */
+    boolean getOver();
+
+    // optional int64 endTime = 5;
+    /**
+     * <code>optional int64 endTime = 5;</code>
+     *
+     * <pre>
+     * 本局结束时间
+     * </pre>
+     */
+    boolean hasEndTime();
+    /**
+     * <code>optional int64 endTime = 5;</code>
+     *
+     * <pre>
+     * 本局结束时间
+     * </pre>
+     */
+    long getEndTime();
+
+    // optional int32 huCard = 6;
+    /**
+     * <code>optional int32 huCard = 6;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    boolean hasHuCard();
+    /**
+     * <code>optional int32 huCard = 6;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    int getHuCard();
+
+    // optional int32 nextBankerId = 7;
+    /**
+     * <code>optional int32 nextBankerId = 7;</code>
+     *
+     * <pre>
+     * 下一局庄家ID
+     * </pre>
+     */
+    boolean hasNextBankerId();
+    /**
+     * <code>optional int32 nextBankerId = 7;</code>
+     *
+     * <pre>
+     * 下一局庄家ID
+     * </pre>
+     */
+    int getNextBankerId();
   }
   /**
    * Protobuf type {@code mahjong.SSetResult}
@@ -119,6 +227,36 @@ public final class SSetResultPB {
               playerSetResults_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult.PARSER, extensionRegistry));
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              curSet_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              huang_ = input.readBool();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              over_ = input.readBool();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              endTime_ = input.readInt64();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              huCard_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              nextBankerId_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -161,6 +299,7 @@ public final class SSetResultPB {
       return PARSER;
     }
 
+    private int bitField0_;
     // repeated .mahjong.PlayerSetResult playerSetResults = 1;
     public static final int PLAYERSETRESULTS_FIELD_NUMBER = 1;
     private java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult> playerSetResults_;
@@ -168,7 +307,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult> getPlayerSetResultsList() {
@@ -178,7 +317,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder> 
@@ -189,7 +328,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     public int getPlayerSetResultsCount() {
@@ -199,7 +338,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult getPlayerSetResults(int index) {
@@ -209,7 +348,7 @@ public final class SSetResultPB {
      * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
      *
      * <pre>
-     * 所有玩家牌局结束状态
+     * 所有玩家牌局结算结果
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder getPlayerSetResultsOrBuilder(
@@ -217,14 +356,176 @@ public final class SSetResultPB {
       return playerSetResults_.get(index);
     }
 
+    // required int32 curSet = 2;
+    public static final int CURSET_FIELD_NUMBER = 2;
+    private int curSet_;
+    /**
+     * <code>required int32 curSet = 2;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public boolean hasCurSet() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 curSet = 2;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public int getCurSet() {
+      return curSet_;
+    }
+
+    // required bool huang = 3;
+    public static final int HUANG_FIELD_NUMBER = 3;
+    private boolean huang_;
+    /**
+     * <code>required bool huang = 3;</code>
+     *
+     * <pre>
+     * 是否荒庄
+     * </pre>
+     */
+    public boolean hasHuang() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool huang = 3;</code>
+     *
+     * <pre>
+     * 是否荒庄
+     * </pre>
+     */
+    public boolean getHuang() {
+      return huang_;
+    }
+
+    // required bool over = 4;
+    public static final int OVER_FIELD_NUMBER = 4;
+    private boolean over_;
+    /**
+     * <code>required bool over = 4;</code>
+     *
+     * <pre>
+     * 是否整场结束
+     * </pre>
+     */
+    public boolean hasOver() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required bool over = 4;</code>
+     *
+     * <pre>
+     * 是否整场结束
+     * </pre>
+     */
+    public boolean getOver() {
+      return over_;
+    }
+
+    // optional int64 endTime = 5;
+    public static final int ENDTIME_FIELD_NUMBER = 5;
+    private long endTime_;
+    /**
+     * <code>optional int64 endTime = 5;</code>
+     *
+     * <pre>
+     * 本局结束时间
+     * </pre>
+     */
+    public boolean hasEndTime() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int64 endTime = 5;</code>
+     *
+     * <pre>
+     * 本局结束时间
+     * </pre>
+     */
+    public long getEndTime() {
+      return endTime_;
+    }
+
+    // optional int32 huCard = 6;
+    public static final int HUCARD_FIELD_NUMBER = 6;
+    private int huCard_;
+    /**
+     * <code>optional int32 huCard = 6;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    public boolean hasHuCard() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 huCard = 6;</code>
+     *
+     * <pre>
+     * 胡牌
+     * </pre>
+     */
+    public int getHuCard() {
+      return huCard_;
+    }
+
+    // optional int32 nextBankerId = 7;
+    public static final int NEXTBANKERID_FIELD_NUMBER = 7;
+    private int nextBankerId_;
+    /**
+     * <code>optional int32 nextBankerId = 7;</code>
+     *
+     * <pre>
+     * 下一局庄家ID
+     * </pre>
+     */
+    public boolean hasNextBankerId() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 nextBankerId = 7;</code>
+     *
+     * <pre>
+     * 下一局庄家ID
+     * </pre>
+     */
+    public int getNextBankerId() {
+      return nextBankerId_;
+    }
+
     private void initFields() {
       playerSetResults_ = java.util.Collections.emptyList();
+      curSet_ = 0;
+      huang_ = false;
+      over_ = false;
+      endTime_ = 0L;
+      huCard_ = 0;
+      nextBankerId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasCurSet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHuang()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOver()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getPlayerSetResultsCount(); i++) {
         if (!getPlayerSetResults(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -241,6 +542,24 @@ public final class SSetResultPB {
       for (int i = 0; i < playerSetResults_.size(); i++) {
         output.writeMessage(1, playerSetResults_.get(i));
       }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(2, curSet_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(3, huang_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(4, over_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(5, endTime_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(6, huCard_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, nextBankerId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -253,6 +572,30 @@ public final class SSetResultPB {
       for (int i = 0; i < playerSetResults_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, playerSetResults_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, curSet_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, huang_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, over_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, endTime_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, huCard_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, nextBankerId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -381,6 +724,18 @@ public final class SSetResultPB {
         } else {
           playerSetResultsBuilder_.clear();
         }
+        curSet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        huang_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        over_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        endTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        huCard_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        nextBankerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -408,6 +763,7 @@ public final class SSetResultPB {
       public com.kuaikai.game.mahjong.msg.pb.SSetResultPB.SSetResult buildPartial() {
         com.kuaikai.game.mahjong.msg.pb.SSetResultPB.SSetResult result = new com.kuaikai.game.mahjong.msg.pb.SSetResultPB.SSetResult(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (playerSetResultsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             playerSetResults_ = java.util.Collections.unmodifiableList(playerSetResults_);
@@ -417,6 +773,31 @@ public final class SSetResultPB {
         } else {
           result.playerSetResults_ = playerSetResultsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.curSet_ = curSet_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.huang_ = huang_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.over_ = over_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.endTime_ = endTime_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.huCard_ = huCard_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.nextBankerId_ = nextBankerId_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -458,11 +839,41 @@ public final class SSetResultPB {
             }
           }
         }
+        if (other.hasCurSet()) {
+          setCurSet(other.getCurSet());
+        }
+        if (other.hasHuang()) {
+          setHuang(other.getHuang());
+        }
+        if (other.hasOver()) {
+          setOver(other.getOver());
+        }
+        if (other.hasEndTime()) {
+          setEndTime(other.getEndTime());
+        }
+        if (other.hasHuCard()) {
+          setHuCard(other.getHuCard());
+        }
+        if (other.hasNextBankerId()) {
+          setNextBankerId(other.getNextBankerId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasCurSet()) {
+          
+          return false;
+        }
+        if (!hasHuang()) {
+          
+          return false;
+        }
+        if (!hasOver()) {
+          
+          return false;
+        }
         for (int i = 0; i < getPlayerSetResultsCount(); i++) {
           if (!getPlayerSetResults(i).isInitialized()) {
             
@@ -508,7 +919,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult> getPlayerSetResultsList() {
@@ -522,7 +933,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public int getPlayerSetResultsCount() {
@@ -536,7 +947,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult getPlayerSetResults(int index) {
@@ -550,7 +961,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder setPlayerSetResults(
@@ -571,7 +982,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder setPlayerSetResults(
@@ -589,7 +1000,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder addPlayerSetResults(com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult value) {
@@ -609,7 +1020,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder addPlayerSetResults(
@@ -630,7 +1041,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder addPlayerSetResults(
@@ -648,7 +1059,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder addPlayerSetResults(
@@ -666,7 +1077,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder addAllPlayerSetResults(
@@ -684,7 +1095,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder clearPlayerSetResults() {
@@ -701,7 +1112,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public Builder removePlayerSetResults(int index) {
@@ -718,7 +1129,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult.Builder getPlayerSetResultsBuilder(
@@ -729,7 +1140,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder getPlayerSetResultsOrBuilder(
@@ -743,7 +1154,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResultOrBuilder> 
@@ -758,7 +1169,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult.Builder addPlayerSetResultsBuilder() {
@@ -769,7 +1180,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult.Builder addPlayerSetResultsBuilder(
@@ -781,7 +1192,7 @@ public final class SSetResultPB {
        * <code>repeated .mahjong.PlayerSetResult playerSetResults = 1;</code>
        *
        * <pre>
-       * 所有玩家牌局结束状态
+       * 所有玩家牌局结算结果
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB.PlayerSetResult.Builder> 
@@ -801,6 +1212,300 @@ public final class SSetResultPB {
           playerSetResults_ = null;
         }
         return playerSetResultsBuilder_;
+      }
+
+      // required int32 curSet = 2;
+      private int curSet_ ;
+      /**
+       * <code>required int32 curSet = 2;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public boolean hasCurSet() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 curSet = 2;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public int getCurSet() {
+        return curSet_;
+      }
+      /**
+       * <code>required int32 curSet = 2;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder setCurSet(int value) {
+        bitField0_ |= 0x00000002;
+        curSet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 curSet = 2;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder clearCurSet() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        curSet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool huang = 3;
+      private boolean huang_ ;
+      /**
+       * <code>required bool huang = 3;</code>
+       *
+       * <pre>
+       * 是否荒庄
+       * </pre>
+       */
+      public boolean hasHuang() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required bool huang = 3;</code>
+       *
+       * <pre>
+       * 是否荒庄
+       * </pre>
+       */
+      public boolean getHuang() {
+        return huang_;
+      }
+      /**
+       * <code>required bool huang = 3;</code>
+       *
+       * <pre>
+       * 是否荒庄
+       * </pre>
+       */
+      public Builder setHuang(boolean value) {
+        bitField0_ |= 0x00000004;
+        huang_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool huang = 3;</code>
+       *
+       * <pre>
+       * 是否荒庄
+       * </pre>
+       */
+      public Builder clearHuang() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        huang_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required bool over = 4;
+      private boolean over_ ;
+      /**
+       * <code>required bool over = 4;</code>
+       *
+       * <pre>
+       * 是否整场结束
+       * </pre>
+       */
+      public boolean hasOver() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required bool over = 4;</code>
+       *
+       * <pre>
+       * 是否整场结束
+       * </pre>
+       */
+      public boolean getOver() {
+        return over_;
+      }
+      /**
+       * <code>required bool over = 4;</code>
+       *
+       * <pre>
+       * 是否整场结束
+       * </pre>
+       */
+      public Builder setOver(boolean value) {
+        bitField0_ |= 0x00000008;
+        over_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool over = 4;</code>
+       *
+       * <pre>
+       * 是否整场结束
+       * </pre>
+       */
+      public Builder clearOver() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        over_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional int64 endTime = 5;
+      private long endTime_ ;
+      /**
+       * <code>optional int64 endTime = 5;</code>
+       *
+       * <pre>
+       * 本局结束时间
+       * </pre>
+       */
+      public boolean hasEndTime() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int64 endTime = 5;</code>
+       *
+       * <pre>
+       * 本局结束时间
+       * </pre>
+       */
+      public long getEndTime() {
+        return endTime_;
+      }
+      /**
+       * <code>optional int64 endTime = 5;</code>
+       *
+       * <pre>
+       * 本局结束时间
+       * </pre>
+       */
+      public Builder setEndTime(long value) {
+        bitField0_ |= 0x00000010;
+        endTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 endTime = 5;</code>
+       *
+       * <pre>
+       * 本局结束时间
+       * </pre>
+       */
+      public Builder clearEndTime() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        endTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 huCard = 6;
+      private int huCard_ ;
+      /**
+       * <code>optional int32 huCard = 6;</code>
+       *
+       * <pre>
+       * 胡牌
+       * </pre>
+       */
+      public boolean hasHuCard() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 huCard = 6;</code>
+       *
+       * <pre>
+       * 胡牌
+       * </pre>
+       */
+      public int getHuCard() {
+        return huCard_;
+      }
+      /**
+       * <code>optional int32 huCard = 6;</code>
+       *
+       * <pre>
+       * 胡牌
+       * </pre>
+       */
+      public Builder setHuCard(int value) {
+        bitField0_ |= 0x00000020;
+        huCard_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 huCard = 6;</code>
+       *
+       * <pre>
+       * 胡牌
+       * </pre>
+       */
+      public Builder clearHuCard() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        huCard_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 nextBankerId = 7;
+      private int nextBankerId_ ;
+      /**
+       * <code>optional int32 nextBankerId = 7;</code>
+       *
+       * <pre>
+       * 下一局庄家ID
+       * </pre>
+       */
+      public boolean hasNextBankerId() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 nextBankerId = 7;</code>
+       *
+       * <pre>
+       * 下一局庄家ID
+       * </pre>
+       */
+      public int getNextBankerId() {
+        return nextBankerId_;
+      }
+      /**
+       * <code>optional int32 nextBankerId = 7;</code>
+       *
+       * <pre>
+       * 下一局庄家ID
+       * </pre>
+       */
+      public Builder setNextBankerId(int value) {
+        bitField0_ |= 0x00000040;
+        nextBankerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 nextBankerId = 7;</code>
+       *
+       * <pre>
+       * 下一局庄家ID
+       * </pre>
+       */
+      public Builder clearNextBankerId() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        nextBankerId_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:mahjong.SSetResult)
@@ -829,10 +1534,13 @@ public final class SSetResultPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\030mahjong/SSetResult.proto\022\007mahjong\032\035mah" +
-      "jong/PlayerSetResult.proto\"@\n\nSSetResult" +
-      "\0222\n\020playerSetResults\030\001 \003(\0132\030.mahjong.Pla" +
-      "yerSetResultB/\n\037com.kuaikai.game.mahjong" +
-      ".msg.pbB\014SSetResultPB"
+      "jong/PlayerSetResult.proto\"\244\001\n\nSSetResul" +
+      "t\0222\n\020playerSetResults\030\001 \003(\0132\030.mahjong.Pl" +
+      "ayerSetResult\022\016\n\006curSet\030\002 \002(\005\022\r\n\005huang\030\003" +
+      " \002(\010\022\014\n\004over\030\004 \002(\010\022\017\n\007endTime\030\005 \001(\003\022\016\n\006h" +
+      "uCard\030\006 \001(\005\022\024\n\014nextBankerId\030\007 \001(\005B/\n\037com" +
+      ".kuaikai.game.mahjong.msg.pbB\014SSetResult" +
+      "PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -844,7 +1552,7 @@ public final class SSetResultPB {
           internal_static_mahjong_SSetResult_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_SSetResult_descriptor,
-              new java.lang.String[] { "PlayerSetResults", });
+              new java.lang.String[] { "PlayerSetResults", "CurSet", "Huang", "Over", "EndTime", "HuCard", "NextBankerId", });
           return null;
         }
       };

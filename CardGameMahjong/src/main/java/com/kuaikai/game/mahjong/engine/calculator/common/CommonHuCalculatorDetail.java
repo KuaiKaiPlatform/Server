@@ -2,9 +2,9 @@ package com.kuaikai.game.mahjong.engine.calculator.common;
 
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.mahjong.engine.calculator.Calculator;
-import com.kuaikai.game.mahjong.engine.constants.JieSuan;
-import com.kuaikai.game.mahjong.engine.constants.PlayerStat;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
+import com.kuaikai.game.mahjong.msg.pb.PlayerStatTypePB.PlayerStatType;
 
 public class CommonHuCalculatorDetail extends CommonCalculatorDetail {
 
@@ -13,8 +13,7 @@ public class CommonHuCalculatorDetail extends CommonCalculatorDetail {
 	public CommonHuCalculatorDetail(HuOperation operation, int rate, boolean bankerDouble, boolean zimoDouble) {
 		super(operation.getDesk(), rate, bankerDouble, zimoDouble, operation.isZimo());
 		this.operation = operation;
-		
-		this.setMainType(zimo?JieSuan.ZI_MO:JieSuan.HU_PAI);
+		this.setMainType(zimo?JieSuan.ZI_MO_VALUE:JieSuan.HU_PAI_VALUE);
 		this.setPriority(Priority.HU);
 		this.addWinner(operation.getPlayer());
 		
@@ -58,13 +57,13 @@ public class CommonHuCalculatorDetail extends CommonCalculatorDetail {
 			Calculator calculator = desk.getEngine().getCalculator();
 			if(this.isZimo()) {
 				calculator.getPlayerSetResult(operation.getPlayer()).setZimo(true);
-				operation.getPlayer().getGameResult().increaseStat(PlayerStat.ZIMO);
+				operation.getPlayer().getGameResult().increaseStat(PlayerStatType.ZI_MO);
 			} else {
 				calculator.getPlayerSetResult(operation.getPlayer()).setJiePao(true);
-				operation.getPlayer().getGameResult().increaseStat(PlayerStat.JIE_PAO);
+				operation.getPlayer().getGameResult().increaseStat(PlayerStatType.JIE_PAO);
 				
 				calculator.getPlayerSetResult(operation.getPrePlayer()).setDianPao(true);
-				operation.getPrePlayer().getGameResult().increaseStat(PlayerStat.DIAN_PAO);
+				operation.getPrePlayer().getGameResult().increaseStat(PlayerStatType.DIAN_PAO);
 			}
 		}
 		return ret;

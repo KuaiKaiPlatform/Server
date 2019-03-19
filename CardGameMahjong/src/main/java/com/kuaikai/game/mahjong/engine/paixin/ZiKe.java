@@ -9,9 +9,9 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kuaikai.game.mahjong.engine.constants.PaiXin;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class ZiKe {
 	
@@ -27,19 +27,19 @@ public class ZiKe {
 		int[] counts = {0, 0};	// 数组第一个是风刻数，第二个是箭刻数
 		
 		// 检查杠牌
-		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(PaiXin.GANG_PAI);
+		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(JieSuan.GANG_PAI_VALUE);
 		if(gangPai != null && !gangPai.isEmpty()) {
 			countZi(gangPai.keySet(), counts);
 		}
 		
 		// 检查明刻
-		Set<Integer> mingKe = (Set<Integer>)extra.get(PaiXin.MING_KE);
+		Set<Integer> mingKe = (Set<Integer>)extra.get(JieSuan.MING_KE_VALUE);
 		if(mingKe != null && !mingKe.isEmpty()) {
 			countZi(mingKe, counts);
 		}
 
 		// 检查暗刻
-		Set<Integer> anKe = (Set<Integer>)extra.get(PaiXin.AN_KE);
+		Set<Integer> anKe = (Set<Integer>)extra.get(JieSuan.AN_KE_VALUE);
 		if(anKe != null && !anKe.isEmpty()) {
 			countZi(anKe, counts);
 		}
@@ -48,25 +48,25 @@ public class ZiKe {
 		int total = counts[0] + counts[1];
 		switch(total) {
 		case 4 :
-			paiXins.add(PaiXin.SI_ZI_KE);
+			paiXins.add(JieSuan.SI_ZI_KE_VALUE);
 			break;
 		case 3 :
-			paiXins.add(PaiXin.SAN_ZI_KE);
+			paiXins.add(JieSuan.SAN_ZI_KE_VALUE);
 			// 检查是否附将
 			if(checkFuJiang(handCards)) {
-				paiXins.add(PaiXin.SAN_ZI_KE_FU_JIANG);
+				paiXins.add(JieSuan.SAN_ZI_KE_FU_JIANG_VALUE);
 			}
 			break;
 		}
 		
 		// 大四喜
 		if(counts[0] == 4) {
-			paiXins.add(PaiXin.DA_SI_XI);
+			paiXins.add(JieSuan.DA_SI_XI_VALUE);
 		}
 		
 		// 大三元
 		if(counts[1] == 3) {
-			paiXins.add(PaiXin.DA_SAN_YUAN);
+			paiXins.add(JieSuan.DA_SAN_YUAN_VALUE);
 		}
 		
 		return paiXins;
