@@ -204,7 +204,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> 
@@ -213,7 +213,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index);
@@ -221,7 +221,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     int getDiscardTingCardsCount();
@@ -229,7 +229,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -238,11 +238,65 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
         int index);
+
+    // optional int32 almighty = 9;
+    /**
+     * <code>optional int32 almighty = 9;</code>
+     *
+     * <pre>
+     * 万能牌值
+     * </pre>
+     */
+    boolean hasAlmighty();
+    /**
+     * <code>optional int32 almighty = 9;</code>
+     *
+     * <pre>
+     * 万能牌值
+     * </pre>
+     */
+    int getAlmighty();
+
+    // optional int32 curDi = 10;
+    /**
+     * <code>optional int32 curDi = 10;</code>
+     *
+     * <pre>
+     * 当前底数
+     * </pre>
+     */
+    boolean hasCurDi();
+    /**
+     * <code>optional int32 curDi = 10;</code>
+     *
+     * <pre>
+     * 当前底数
+     * </pre>
+     */
+    int getCurDi();
+
+    // optional int32 curQuan = 11;
+    /**
+     * <code>optional int32 curQuan = 11;</code>
+     *
+     * <pre>
+     * 当前圈数
+     * </pre>
+     */
+    boolean hasCurQuan();
+    /**
+     * <code>optional int32 curQuan = 11;</code>
+     *
+     * <pre>
+     * 当前圈数
+     * </pre>
+     */
+    int getCurQuan();
   }
   /**
    * Protobuf type {@code mahjong.SSetInit}
@@ -360,6 +414,21 @@ public final class SSetInitPB {
                 mutable_bitField0_ |= 0x00000080;
               }
               discardTingCards_.add(input.readMessage(com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.PARSER, extensionRegistry));
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000020;
+              almighty_ = input.readInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000040;
+              curDi_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000080;
+              curQuan_ = input.readInt32();
               break;
             }
           }
@@ -660,7 +729,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
@@ -670,7 +739,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -681,7 +750,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public int getDiscardTingCardsCount() {
@@ -691,7 +760,7 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
@@ -701,12 +770,84 @@ public final class SSetInitPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
         int index) {
       return discardTingCards_.get(index);
+    }
+
+    // optional int32 almighty = 9;
+    public static final int ALMIGHTY_FIELD_NUMBER = 9;
+    private int almighty_;
+    /**
+     * <code>optional int32 almighty = 9;</code>
+     *
+     * <pre>
+     * 万能牌值
+     * </pre>
+     */
+    public boolean hasAlmighty() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 almighty = 9;</code>
+     *
+     * <pre>
+     * 万能牌值
+     * </pre>
+     */
+    public int getAlmighty() {
+      return almighty_;
+    }
+
+    // optional int32 curDi = 10;
+    public static final int CURDI_FIELD_NUMBER = 10;
+    private int curDi_;
+    /**
+     * <code>optional int32 curDi = 10;</code>
+     *
+     * <pre>
+     * 当前底数
+     * </pre>
+     */
+    public boolean hasCurDi() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 curDi = 10;</code>
+     *
+     * <pre>
+     * 当前底数
+     * </pre>
+     */
+    public int getCurDi() {
+      return curDi_;
+    }
+
+    // optional int32 curQuan = 11;
+    public static final int CURQUAN_FIELD_NUMBER = 11;
+    private int curQuan_;
+    /**
+     * <code>optional int32 curQuan = 11;</code>
+     *
+     * <pre>
+     * 当前圈数
+     * </pre>
+     */
+    public boolean hasCurQuan() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 curQuan = 11;</code>
+     *
+     * <pre>
+     * 当前圈数
+     * </pre>
+     */
+    public int getCurQuan() {
+      return curQuan_;
     }
 
     private void initFields() {
@@ -718,6 +859,9 @@ public final class SSetInitPB {
       lastOperDetail_ = com.kuaikai.game.mahjong.msg.pb.OperDetailPB.OperDetail.getDefaultInstance();
       canOperDetails_ = java.util.Collections.emptyList();
       discardTingCards_ = java.util.Collections.emptyList();
+      almighty_ = 0;
+      curDi_ = 0;
+      curQuan_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -795,6 +939,15 @@ public final class SSetInitPB {
       for (int i = 0; i < discardTingCards_.size(); i++) {
         output.writeMessage(8, discardTingCards_.get(i));
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(9, almighty_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(10, curDi_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(11, curQuan_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -835,6 +988,18 @@ public final class SSetInitPB {
       for (int i = 0; i < discardTingCards_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, discardTingCards_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, almighty_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, curDi_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, curQuan_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -992,6 +1157,12 @@ public final class SSetInitPB {
         } else {
           discardTingCardsBuilder_.clear();
         }
+        almighty_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        curDi_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        curQuan_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -1071,6 +1242,18 @@ public final class SSetInitPB {
         } else {
           result.discardTingCards_ = discardTingCardsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.almighty_ = almighty_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.curDi_ = curDi_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.curQuan_ = curQuan_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1179,6 +1362,15 @@ public final class SSetInitPB {
               discardTingCardsBuilder_.addAllMessages(other.discardTingCards_);
             }
           }
+        }
+        if (other.hasAlmighty()) {
+          setAlmighty(other.getAlmighty());
+        }
+        if (other.hasCurDi()) {
+          setCurDi(other.getCurDi());
+        }
+        if (other.hasCurQuan()) {
+          setCurQuan(other.getCurQuan());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2240,7 +2432,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
@@ -2254,7 +2446,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public int getDiscardTingCardsCount() {
@@ -2268,7 +2460,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
@@ -2282,7 +2474,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder setDiscardTingCards(
@@ -2303,7 +2495,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder setDiscardTingCards(
@@ -2321,7 +2513,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards value) {
@@ -2341,7 +2533,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -2362,7 +2554,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -2380,7 +2572,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -2398,7 +2590,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addAllDiscardTingCards(
@@ -2416,7 +2608,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder clearDiscardTingCards() {
@@ -2433,7 +2625,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder removeDiscardTingCards(int index) {
@@ -2450,7 +2642,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder getDiscardTingCardsBuilder(
@@ -2461,7 +2653,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
@@ -2475,7 +2667,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -2490,7 +2682,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder() {
@@ -2501,7 +2693,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder(
@@ -2513,7 +2705,7 @@ public final class SSetInitPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 8;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder> 
@@ -2533,6 +2725,153 @@ public final class SSetInitPB {
           discardTingCards_ = null;
         }
         return discardTingCardsBuilder_;
+      }
+
+      // optional int32 almighty = 9;
+      private int almighty_ ;
+      /**
+       * <code>optional int32 almighty = 9;</code>
+       *
+       * <pre>
+       * 万能牌值
+       * </pre>
+       */
+      public boolean hasAlmighty() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional int32 almighty = 9;</code>
+       *
+       * <pre>
+       * 万能牌值
+       * </pre>
+       */
+      public int getAlmighty() {
+        return almighty_;
+      }
+      /**
+       * <code>optional int32 almighty = 9;</code>
+       *
+       * <pre>
+       * 万能牌值
+       * </pre>
+       */
+      public Builder setAlmighty(int value) {
+        bitField0_ |= 0x00000100;
+        almighty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 almighty = 9;</code>
+       *
+       * <pre>
+       * 万能牌值
+       * </pre>
+       */
+      public Builder clearAlmighty() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        almighty_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 curDi = 10;
+      private int curDi_ ;
+      /**
+       * <code>optional int32 curDi = 10;</code>
+       *
+       * <pre>
+       * 当前底数
+       * </pre>
+       */
+      public boolean hasCurDi() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 curDi = 10;</code>
+       *
+       * <pre>
+       * 当前底数
+       * </pre>
+       */
+      public int getCurDi() {
+        return curDi_;
+      }
+      /**
+       * <code>optional int32 curDi = 10;</code>
+       *
+       * <pre>
+       * 当前底数
+       * </pre>
+       */
+      public Builder setCurDi(int value) {
+        bitField0_ |= 0x00000200;
+        curDi_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 curDi = 10;</code>
+       *
+       * <pre>
+       * 当前底数
+       * </pre>
+       */
+      public Builder clearCurDi() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        curDi_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 curQuan = 11;
+      private int curQuan_ ;
+      /**
+       * <code>optional int32 curQuan = 11;</code>
+       *
+       * <pre>
+       * 当前圈数
+       * </pre>
+       */
+      public boolean hasCurQuan() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional int32 curQuan = 11;</code>
+       *
+       * <pre>
+       * 当前圈数
+       * </pre>
+       */
+      public int getCurQuan() {
+        return curQuan_;
+      }
+      /**
+       * <code>optional int32 curQuan = 11;</code>
+       *
+       * <pre>
+       * 当前圈数
+       * </pre>
+       */
+      public Builder setCurQuan(int value) {
+        bitField0_ |= 0x00000400;
+        curQuan_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 curQuan = 11;</code>
+       *
+       * <pre>
+       * 当前圈数
+       * </pre>
+       */
+      public Builder clearCurQuan() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        curQuan_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:mahjong.SSetInit)
@@ -2563,16 +2902,17 @@ public final class SSetInitPB {
       "\n\026mahjong/SSetInit.proto\022\007mahjong\032\033mahjo" +
       "ng/PlayerSetInfo.proto\032\026mahjong/SetStage" +
       ".proto\032\030mahjong/OperDetail.proto\032\036mahjon" +
-      "g/DiscardTingCards.proto\"\242\002\n\010SSetInit\022.\n" +
+      "g/DiscardTingCards.proto\"\324\002\n\010SSetInit\022.\n" +
       "\016playerSetInfos\030\001 \003(\0132\026.mahjong.PlayerSe" +
       "tInfo\022\016\n\006curSet\030\002 \002(\005\022\023\n\013remainCards\030\003 \002" +
       "(\005\022\020\n\010bankerId\030\004 \002(\005\022 \n\005stage\030\005 \002(\0162\021.ma" +
       "hjong.SetStage\022+\n\016lastOperDetail\030\006 \001(\0132\023" +
       ".mahjong.OperDetail\022+\n\016canOperDetails\030\007 " +
       "\003(\0132\023.mahjong.OperDetail\0223\n\020discardTingC",
-      "ards\030\010 \003(\0132\031.mahjong.DiscardTingCardsB-\n" +
-      "\037com.kuaikai.game.mahjong.msg.pbB\nSSetIn" +
-      "itPB"
+      "ards\030\010 \003(\0132\031.mahjong.DiscardTingCards\022\020\n" +
+      "\010almighty\030\t \001(\005\022\r\n\005curDi\030\n \001(\005\022\017\n\007curQua" +
+      "n\030\013 \001(\005B-\n\037com.kuaikai.game.mahjong.msg." +
+      "pbB\nSSetInitPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2584,7 +2924,7 @@ public final class SSetInitPB {
           internal_static_mahjong_SSetInit_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_SSetInit_descriptor,
-              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", "Stage", "LastOperDetail", "CanOperDetails", "DiscardTingCards", });
+              new java.lang.String[] { "PlayerSetInfos", "CurSet", "RemainCards", "BankerId", "Stage", "LastOperDetail", "CanOperDetails", "DiscardTingCards", "Almighty", "CurDi", "CurQuan", });
           return null;
         }
       };

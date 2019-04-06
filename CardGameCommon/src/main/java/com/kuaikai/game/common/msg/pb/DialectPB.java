@@ -18,15 +18,27 @@ public final class DialectPB {
   public enum Dialect
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <code>PU_TONG = 0;</code>
+     */
+    PU_TONG(0, 0),
+    /**
      * <code>XIA_PU = 350001;</code>
      */
-    XIA_PU(0, 350001),
+    XIA_PU(1, 350001),
     /**
      * <code>YU_LIN = 610001;</code>
      */
-    YU_LIN(1, 610001),
+    YU_LIN(2, 610001),
+    /**
+     * <code>YAN_AN = 610002;</code>
+     */
+    YAN_AN(3, 610002),
     ;
 
+    /**
+     * <code>PU_TONG = 0;</code>
+     */
+    public static final int PU_TONG_VALUE = 0;
     /**
      * <code>XIA_PU = 350001;</code>
      */
@@ -35,14 +47,20 @@ public final class DialectPB {
      * <code>YU_LIN = 610001;</code>
      */
     public static final int YU_LIN_VALUE = 610001;
+    /**
+     * <code>YAN_AN = 610002;</code>
+     */
+    public static final int YAN_AN_VALUE = 610002;
 
 
     public final int getNumber() { return value; }
 
     public static Dialect valueOf(int value) {
       switch (value) {
+        case 0: return PU_TONG;
         case 350001: return XIA_PU;
         case 610001: return YU_LIN;
+        case 610002: return YAN_AN;
         default: return null;
       }
     }
@@ -103,9 +121,10 @@ public final class DialectPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024common/Dialect.proto\022\006common*%\n\007Dialec" +
-      "t\022\014\n\006XIA_PU\020\261\256\025\022\014\n\006YU_LIN\020\321\235%B+\n\036com.kua" +
-      "ikai.game.common.msg.pbB\tDialectPB"
+      "\n\024common/Dialect.proto\022\006common*@\n\007Dialec" +
+      "t\022\013\n\007PU_TONG\020\000\022\014\n\006XIA_PU\020\261\256\025\022\014\n\006YU_LIN\020\321" +
+      "\235%\022\014\n\006YAN_AN\020\322\235%B+\n\036com.kuaikai.game.com" +
+      "mon.msg.pbB\tDialectPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

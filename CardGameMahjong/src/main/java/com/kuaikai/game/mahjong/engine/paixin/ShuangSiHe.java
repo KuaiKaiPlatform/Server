@@ -11,7 +11,7 @@ import com.kuaikai.game.mahjong.engine.model.MJCard;
 public class ShuangSiHe {
 	
 	/*
-	 * 检查是否符合双四核牌型，依赖于标准胡
+	 * 检查是否符合双四核牌型，依赖于标准胡 
 	 */
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum) {
 		Map<Integer, Integer> cardCount = PaiXinHelper.countCards(handCards, almightyCardNum);

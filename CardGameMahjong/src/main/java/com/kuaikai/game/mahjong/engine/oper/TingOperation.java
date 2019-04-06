@@ -8,6 +8,7 @@ import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.DiscardTingCards;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
+import com.kuaikai.game.mahjong.engine.model.MahjongPlayer.SetAttr;
 
 public class TingOperation extends BaseOperation {
 
@@ -21,6 +22,11 @@ public class TingOperation extends BaseOperation {
 
 	public void setDiscard2TingCards(Map<Integer, DiscardTingCards> discard2TingCards) {
 		this.discard2TingCards = discard2TingCards;
+	}
+	
+	public int getDiscard() {
+		if(discard2TingCards == null || discard2TingCards.isEmpty()) return 0;
+		return discard2TingCards.keySet().iterator().next();
 	}
 	
 	@Override
@@ -62,9 +68,10 @@ public class TingOperation extends BaseOperation {
 
 	@Override
 	protected void executeOperation() {
-		player.getCardContainer().discard(target);	// 移出手牌
+		player.getCardContainer().discard(target);					// 移出手牌
 		desk.getEngine().getCardPool().discard(target);				// 放入牌池
 		player.setBaoTing(true);
+		player.getSetAttrs().put(SetAttr.TING_DISCARD_INDEX, player.getCardContainer().getTotalDiscards());
 	}
 
 	@Override

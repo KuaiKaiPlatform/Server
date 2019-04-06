@@ -59,6 +59,19 @@ public class ClubMock {
 		
 		c2.addClubRule(c2Rule);
 		
+		// 大众打锅子
+		Club c3 = new Club();
+		c3.setId(GameRule.GUO_ZI_VALUE);
+		c3.setName("大众打锅子");
+		c3.setTotal(871);
+		c3.setOwnerId(0);
+		clubs.put(c3.getId(), c3);
+		
+		ClubRule c3Rule = new ClubRule();
+		c3Rule.setClubId(c3.getId());
+		c3Rule.setRule(GameRule.GUO_ZI);
+		c3.addClubRule(c3Rule);
+		
 	}
 	
 	public static void main(String[] args) {

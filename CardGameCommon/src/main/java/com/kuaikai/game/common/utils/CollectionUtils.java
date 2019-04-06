@@ -49,7 +49,7 @@ public class CollectionUtils {
 		try {
 			return Integer.parseInt(val.toString());	
 		} catch(Exception e) {
-			logger.warn("map integer parsed error: key=" + key + ", value=" + val);
+			//logger.warn("map integer parsed error: key=" + key + ", value=" + val);
 		}
 		return 0;
 	}
@@ -62,7 +62,7 @@ public class CollectionUtils {
 		try {
 			return Long.parseLong(val.toString());	
 		} catch(Exception e) {
-			logger.warn("map long parsed error: key=" + key + ", value=" + val);
+			//logger.warn("map long parsed error: key=" + key + ", value=" + val);
 		}
 		return 0;
 	}
@@ -76,12 +76,12 @@ public class CollectionUtils {
 		try {
 			return Integer.parseInt(val.toString()) > 0;
 		} catch(Exception e) {
-			logger.warn("setting boolean parsed integer error: key=" + key + ", value=" + val);
+			//logger.warn("setting boolean parsed integer error: key=" + key + ", value=" + val);
 		}
 		try {
 			return Boolean.parseBoolean(val.toString());
 		} catch(Exception e) {
-			logger.warn("setting boolean parsed error: key=" + key + ", value=" + val);
+			//logger.warn("setting boolean parsed error: key=" + key + ", value=" + val);
 		}
 		
 		return false;

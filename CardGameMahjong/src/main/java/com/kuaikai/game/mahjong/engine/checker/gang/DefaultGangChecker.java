@@ -47,10 +47,10 @@ public class DefaultGangChecker implements GangChecker {
 		List<BaseOperation> result = new LinkedList<BaseOperation>();
 		int almighty = desk.getEngine().getAlmightyCardNum();
 		for(CardGroup group : cardContainer.getCardGroups()) {
-			//if(!group.isValid()) continue;
 			if(!group.checkOperType(OperType.PENG)) continue;
 			int cardNum = group.getTarget().getValue();
 			if(cardNum == almighty && !desk.getSetting().getBool(CardGameSetting.ALMIGHTY_GANG)) continue;	// 不能杠万能牌
+			if(player.isBaoTing() && cardNum != oper.getTarget().getValue()) continue;						// 报听时补杠，只能补杠刚摸到的牌
 			
 			MJCard target = cardContainer.findHandCard(cardNum);
 			if(target != null) {
@@ -61,7 +61,7 @@ public class DefaultGangChecker implements GangChecker {
 	}
 	
 	protected boolean preCheckBuGang(BaseOperation oper) {
-		// 听后补杠
+		// 报听时补杠
 		if(player.isBaoTing() && !desk.getSetting().getBool(CardGameSetting.TING_HOU_BU_GANG))  return false;
 		
 		switch(oper.getOperType()) {
@@ -93,6 +93,17 @@ public class DefaultGangChecker implements GangChecker {
 			if(count != 4) continue;
 			int cardNum = entry.getKey();
 			if(cardNum == almighty && !desk.getSetting().getBool(CardGameSetting.ALMIGHTY_GANG)) continue;	// 不能杠万能牌
+			
+			// 报听时暗杠，只能暗杠刚摸到的牌，并且去掉暗杠牌后仍然可以听牌
+			if(player.isBaoTing()) {
+				if(cardNum != oper.getTarget().getValue()) continue;
+				List<MJCard> handCards = new LinkedList<MJCard>();
+				for(MJCard card : player.getCardContainer().getHandCards()) {
+					if(card.getValue() != cardNum) handCards.add(card);
+				}
+				if(!player.getHuChecker().isTing(handCards)) continue;
+			}
+			
 			AnGangOperation action = OperationFactory.createAnGangOperation(player, oper, cardContainer.findHandCard(cardNum));
 			result.add(action);
 		}

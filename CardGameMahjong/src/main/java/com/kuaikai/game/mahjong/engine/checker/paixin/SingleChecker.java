@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.paixin.AlmightyX;
 import com.kuaikai.game.mahjong.engine.paixin.AnKe;
@@ -55,6 +54,7 @@ import com.kuaikai.game.mahjong.engine.paixin.WuZi;
 import com.kuaikai.game.mahjong.engine.paixin.YiTiaoLong;
 import com.kuaikai.game.mahjong.engine.paixin.ZhiShu;
 import com.kuaikai.game.mahjong.engine.paixin.ZiYiSe;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class SingleChecker {
@@ -367,7 +367,7 @@ public class SingleChecker {
 			}
 			break;
 		case JieSuan.ZHI_SHU_VALUE :
-			Map<Mahjong.CardType, Integer> zhiShu = ZhiShu.check(handlist, card, groupList, almightyCardNum);
+			Map<CardType, Integer> zhiShu = ZhiShu.check(handlist, card, groupList, almightyCardNum);
 			if(zhiShu != null && !zhiShu.isEmpty()) {
 				paiXinChecker.putExtra(JieSuan.ZHI_SHU_VALUE, zhiShu);
 				return true;

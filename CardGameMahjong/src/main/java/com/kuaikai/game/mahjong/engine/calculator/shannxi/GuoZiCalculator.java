@@ -124,8 +124,8 @@ public class GuoZiCalculator extends DiCalculator {
 		PayResult payResult;
 	}
 
-	@Override
-	public void onSetEnd() {
+	//@Override
+	//public void onSetEnd() {
 /*		if (!room.getSettingBool(RoomSetting.TOTAL_DI)) { // 够扣 走通用的情况
 			super.calcDetail();
 			return;
@@ -251,7 +251,7 @@ public class GuoZiCalculator extends DiCalculator {
 		}*/
 		// 计算完成 走通用的计算
 
-	}
+	//}
 
 	private void payHuScore(int userid, Map<Integer, LinkedHashMap<Integer, PayResult>> huScoreNotEndMap,
 			Map<Integer, Integer> user2Point) {

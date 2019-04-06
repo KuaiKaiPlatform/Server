@@ -8,6 +8,7 @@ import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.msg.Message;
 import com.kuaikai.game.common.msg.MsgHandler;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
+import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GameDeskManager;
 import com.kuaikai.game.common.redis.LockRedis;
 import com.kuaikai.game.common.redis.PlayerArenaRedis;
@@ -15,8 +16,8 @@ import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.OperDetail;
-import com.kuaikai.game.mahjong.msg.pb.COperCardPB.COperCard;
 import com.kuaikai.game.mahjong.msg.MsgId;
+import com.kuaikai.game.mahjong.msg.pb.COperCardPB.COperCard;
 import com.kuaikai.game.mahjong.msg.pb.OperDetailPB;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -29,12 +30,19 @@ public class COperCardHandler extends MsgHandler {
 		super(ctx);
 	}
 
+	public COperCardHandler(int uid, COperCard cOperCard) {
+		super(null);
+		this.cOperCard = cOperCard;
+		this.uid = uid;
+	}
+	
 	public static final int msgid = MsgId.COperCard;
 	private COperCard cOperCard;
+	private int uid;
 
 	@Override
 	public void process() {
-		int uid = getUid();
+		uid = uid>0?uid:getUid();
 		
 		// 找到牌桌
 		int clubId = PlayerArenaRedis.getClubId(uid);
@@ -99,7 +107,12 @@ public class COperCardHandler extends MsgHandler {
 			desk.getEngine().onOperationEnd(oper);
 			
 			// 检查是否进入结算阶段，本局结束
-			desk.getEngine().checkJieSuanStage();
+			boolean jieSuan = desk.getEngine().checkJieSuanStage();
+			
+			// 牌局未结束，自动出牌秒数有设置，启动定时任务，自动出牌
+			if(!jieSuan) {
+				desk.getEngine().getOperManager().scheduleOperation();
+			}
 			
 		} catch (Exception e) {
 			logger.error("COperCardHandler.process@error|uid={}|clubId={}|deskId={}|operDetails={}", uid, clubId, deskId, operDetail, e);

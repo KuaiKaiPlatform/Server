@@ -22,6 +22,7 @@ import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class MahjongPlayer extends GamePlayer {
 	
@@ -46,7 +47,9 @@ public class MahjongPlayer extends GamePlayer {
 		LOU_PENG_CARDS,	// 漏碰，当前是否处于漏碰状态，value是不能碰的牌列表，空列表表示不能碰所有牌。
 		TING_CARDS,		// 当前听牌列表
 		MO_STARTED,		// 玩家开始摸第一张牌
-		DIRECTION		// 门风（东南西北）
+		DIRECTION,		// 门风（东南西北）
+		TING_DISCARD_INDEX	// 报听时打出的牌位置
+		
 	}
 
 	public MahjongPlayer(Player player, MahjongDesk desk) {
@@ -124,19 +127,19 @@ public class MahjongPlayer extends GamePlayer {
 	}
 	
 	// 记录新一局的缺门
-	public boolean setQueMen(Mahjong.CardType queMen) {
+	public boolean setQueMen(CardType queMen) {
 		setAttrs.put(SetAttr.QUE_MEN, queMen);
 		return true;
 	}
 
 	// 返回当前局的缺门，null 表示还未设置缺门
-	public Mahjong.CardType getQueMen() {
-		return (Mahjong.CardType)setAttrs.get(SetAttr.QUE_MEN);
+	public CardType getQueMen() {
+		return (CardType)setAttrs.get(SetAttr.QUE_MEN);
 	}
 
 	public int getQueMenVal() {
-		Mahjong.CardType queMen = (Mahjong.CardType)setAttrs.get(SetAttr.QUE_MEN);
-		return queMen == null?0:queMen.getValue();
+		CardType queMen = this.getQueMen();
+		return queMen == null?0:queMen.getNumber();
 	}
 	
 	public boolean isQueMenSet() {
@@ -147,7 +150,7 @@ public class MahjongPlayer extends GamePlayer {
 	 * 检查玩家手牌是否有缺门牌
 	 */
 	public boolean hasQueMenHandCard() {
-		Mahjong.CardType queMen = getQueMen();
+		CardType queMen = getQueMen();
 		if(queMen == null) return false;
 		for(MJCard card : cardContainer.getHandCards()) {
 			if(queMen.equals(card.getCardType())) {

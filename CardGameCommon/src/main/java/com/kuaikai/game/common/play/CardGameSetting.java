@@ -254,6 +254,11 @@ public class CardGameSetting {
 	/** 抢杠胡不加番 */ 
 	public final static String NO_JIA_FAN_QIANG_GANG_HU = "noJiaFanQiangGangHu";
 	
+	/** 自动出牌秒数（大众竞技场或设置自动出牌的私有竞技场） */ 
+	public final static String OPER_DELAY_SECONDS = "operDelaySeconds";	
+	
+	/** 掉线自动出牌（私有竞技场设置） */ 
+	//public final static String OPER_AUTO_OFFLINE = "operAutoOffline";		
 	
 	/*
 	 * 以下为陕西麻将特有设置

@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class HunYiSe {
 	
@@ -17,11 +17,11 @@ public class HunYiSe {
 	 * 检查是否符合混一色牌型
 	 */
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum) {
-		Mahjong.CardType type = null;
+		CardType type = null;
 		for(MJCard c : handCards) {
 			if(c.getValue() == almightyCardNum && c.isValidAlmighty()) continue;
-			Mahjong.CardType handType = c.getCardType();
-			if(handType.equals(Mahjong.CardType.ZI)) continue;
+			CardType handType = c.getCardType();
+			if(handType.equals(CardType.ZI)) continue;
 			if(type == null) {
 				type = c.getCardType();
 				continue;
@@ -37,8 +37,8 @@ public class HunYiSe {
 		for (CardGroup cg : groupList) {
 			//if(!cg.isValid()) continue;
 			List<MJCard> cardsList = cg.getCards();
-			Mahjong.CardType openType = cardsList.get(0).getCardType();
-			if(openType.equals(Mahjong.CardType.ZI)) continue;
+			CardType openType = cardsList.get(0).getCardType();
+			if(openType.equals(CardType.ZI)) continue;
 			if(!openType.equals(type)) {
 				//if(logger.isDebugEnabled()) logger.debug("open type not matched:" + cardsList.get(0).getCardNum());
 				return false;

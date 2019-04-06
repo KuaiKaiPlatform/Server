@@ -125,6 +125,10 @@ public class Desk {
 		return clubSetting;
 	}
 
+	public void copyClubSetting() {
+		setting.copy(clubSetting);
+	}
+	
 	public GameStatus getStatus() {
 		return status;
 	}

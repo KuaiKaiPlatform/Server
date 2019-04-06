@@ -100,33 +100,6 @@ public final class UserInfoPB {
      * </pre>
      */
     int getSex();
-
-    // optional string ip = 5;
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    boolean hasIp();
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    java.lang.String getIp();
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getIpBytes();
   }
   /**
    * Protobuf type {@code account.UserInfo}
@@ -197,11 +170,6 @@ public final class UserInfoPB {
             case 32: {
               bitField0_ |= 0x00000008;
               sex_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              ip_ = input.readBytes();
               break;
             }
           }
@@ -402,67 +370,11 @@ public final class UserInfoPB {
       return sex_;
     }
 
-    // optional string ip = 5;
-    public static final int IP_FIELD_NUMBER = 5;
-    private java.lang.Object ip_;
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    public boolean hasIp() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          ip_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string ip = 5;</code>
-     *
-     * <pre>
-     * IP地址
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
       uid_ = 0;
       nkn_ = "";
       head_ = "";
       sex_ = 0;
-      ip_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -496,9 +408,6 @@ public final class UserInfoPB {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, sex_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getIpBytes());
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -523,10 +432,6 @@ public final class UserInfoPB {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, sex_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getIpBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -652,8 +557,6 @@ public final class UserInfoPB {
         bitField0_ = (bitField0_ & ~0x00000004);
         sex_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        ip_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -698,10 +601,6 @@ public final class UserInfoPB {
           to_bitField0_ |= 0x00000008;
         }
         result.sex_ = sex_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.ip_ = ip_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -733,11 +632,6 @@ public final class UserInfoPB {
         }
         if (other.hasSex()) {
           setSex(other.getSex());
-        }
-        if (other.hasIp()) {
-          bitField0_ |= 0x00000010;
-          ip_ = other.ip_;
-          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1068,104 +962,6 @@ public final class UserInfoPB {
         return this;
       }
 
-      // optional string ip = 5;
-      private java.lang.Object ip_ = "";
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public boolean hasIp() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public java.lang.String getIp() {
-        java.lang.Object ref = ip_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          ip_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getIpBytes() {
-        java.lang.Object ref = ip_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          ip_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public Builder setIp(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public Builder clearIp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        ip_ = getDefaultInstance().getIp();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 5;</code>
-       *
-       * <pre>
-       * IP地址
-       * </pre>
-       */
-      public Builder setIpBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:account.UserInfo)
     }
 
@@ -1191,10 +987,10 @@ public final class UserInfoPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026account/UserInfo.proto\022\007account\"K\n\010Use" +
+      "\n\026account/UserInfo.proto\022\007account\"?\n\010Use" +
       "rInfo\022\013\n\003uid\030\001 \002(\005\022\013\n\003nkn\030\002 \002(\t\022\014\n\004head\030" +
-      "\003 \001(\t\022\013\n\003sex\030\004 \001(\005\022\n\n\002ip\030\005 \001(\tB,\n\036com.ku" +
-      "aikai.game.common.msg.pbB\nUserInfoPB"
+      "\003 \001(\t\022\013\n\003sex\030\004 \001(\005B,\n\036com.kuaikai.game.c" +
+      "ommon.msg.pbB\nUserInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1206,7 +1002,7 @@ public final class UserInfoPB {
           internal_static_account_UserInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_account_UserInfo_descriptor,
-              new java.lang.String[] { "Uid", "Nkn", "Head", "Sex", "Ip", });
+              new java.lang.String[] { "Uid", "Nkn", "Head", "Sex", });
           return null;
         }
       };

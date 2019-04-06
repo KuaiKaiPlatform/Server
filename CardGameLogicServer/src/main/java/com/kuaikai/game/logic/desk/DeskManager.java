@@ -69,7 +69,8 @@ public class DeskManager {
 			if(PropertyManager.isDebug()) {
 				// DEBUG 模式时，设置为大众陕西麻将竞技场，大众竞技场 clubId 等于 game rule 
 				//clubId = ClubMock.CLUB_ID_PUB_LIANG;
-				clubId = GameRule.SXMJ_VALUE;	
+				clubId = GameRule.GUO_ZI_VALUE;
+				//clubId = GameRule.SXMJ_VALUE;
 				PlayerArenaRedis.putClubId(uid, clubId);
 				logger.info("DeskManager.onUserLogin@Club set as {} for debug|uid={}", clubId, uid);
 			} else {

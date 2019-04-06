@@ -6,6 +6,7 @@ import java.util.Map;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class QueYiMen {
 	
@@ -16,10 +17,10 @@ public class QueYiMen {
 		List<Integer> cards = PaiXinHelper.getAllCards(handCards, groupList, almightyCardNum);
 		
 		// 按牌的类型进行分组，万、条、筒、字、万能牌等
-		Map<Mahjong.CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);	
+		Map<CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);	
 		int count = 0;	// 万条筒计数
-		for(Mahjong.CardType type : type2Cards.keySet()) {
-			if(Mahjong.CardType.isWanTiaoTong(type)) count++;
+		for(CardType type : type2Cards.keySet()) {
+			if(Mahjong.isWanTiaoTong(type)) count++;
 		}
 		
 		return count == 2;	// 万条筒中有两个

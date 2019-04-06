@@ -30,7 +30,7 @@ public class ClubRuleRedis {
 	}
 	
 	/**
-	 *	返回指定俱乐部的玩法列表
+	 * 返回指定俱乐部的玩法列表
 	 * @param clubId
 	 * @return
 	 */
@@ -62,27 +62,32 @@ public class ClubRuleRedis {
 	}
 	
 	/**
-	 * 	设置指定俱乐部玩法的规则
+	 * 设置指定俱乐部玩法的规则
 	 * @param clubRule
 	 * @return
 	 */
 	public static boolean putSetting(ClubRule clubRule) {
 		RMap<String, String> rMap = getRMapSetting(clubRule.getClubId(), clubRule.getRule());
+		if(!clubRule.hasSetting()) return false;
 		rMap.putAll(clubRule.getSetting().getAllStr());
 		return true;
 	}
 	
 	/**
-	 * 	返回指定俱乐部玩法的规则
+	 * 返回指定俱乐部玩法的规则，若俱乐部未设置玩法规则，返回玩法默认规则
 	 * @param clubId
 	 * @param rule
 	 * @return
 	 */
 	public static AttrsModel getSetting(int clubId, GameRule rule, AttrsModel setting) {
 		RMap<String, String> rMap = getRMapSetting(clubId, rule);
-		if(setting == null) setting = new AttrsModel();
-		setting.putAll(rMap.readAllMap());
-		return setting;
+		if(rMap.isExists()) {
+			if(setting == null) setting = new AttrsModel();
+			setting.putAll(rMap.readAllMap());
+			return setting;
+		}
+		// 俱乐部未设置玩法规则，返回玩法默认规则
+		return GameRuleRedis.getSetting(rule, setting);
 	}
 
 	public static boolean putSettingAttr(int clubId, GameRule rule, String key, String value) {

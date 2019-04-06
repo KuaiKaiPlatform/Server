@@ -16,6 +16,7 @@ import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class PaiXinHelper {
 
@@ -125,10 +126,10 @@ public class PaiXinHelper {
 	}
 	
 	// key 是麻将牌的类型：万，条，筒，字，value是麻将牌列表。
-	public static Map<Mahjong.CardType, List<Integer>> groupCardsByType(List<Integer> cards) {
-		Map<Mahjong.CardType, List<Integer>> type2Cards = new HashMap<Mahjong.CardType, List<Integer>>();
+	public static Map<CardType, List<Integer>> groupCardsByType(List<Integer> cards) {
+		Map<CardType, List<Integer>> type2Cards = new HashMap<CardType, List<Integer>>();
 		for (int card : cards) {
-			Mahjong.CardType type = Mahjong.getCardType(card);
+			CardType type = Mahjong.getCardType(card);
 			List<Integer> cardsType = type2Cards.get(type);
 			if (cardsType == null) {
 				cardsType = new ArrayList<Integer>();
@@ -145,8 +146,8 @@ public class PaiXinHelper {
 	public static boolean isWanTiaoTong(List<Integer> cards) {
 		for(int card : cards) {
 			if(card == ALMIGHTY_CARD_NUM) continue; // 万能牌，略过
-			Mahjong.CardType cardType = Mahjong.getCardType(card);
-			if(!Mahjong.CardType.isWanTiaoTong(cardType)) return false;	// 不是万、条、筒 
+			CardType cardType = Mahjong.getCardType(card);
+			if(!Mahjong.isWanTiaoTong(cardType)) return false;	// 不是万、条、筒 
 		}
 		return true;
 	}

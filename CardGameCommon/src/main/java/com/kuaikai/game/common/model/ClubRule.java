@@ -31,5 +31,8 @@ public class ClubRule {
 	public void setSetting(AttrsModel setting) {
 		this.setting = setting;
 	}
+	public boolean hasSetting() {
+		return setting != null;
+	}
 	
 }

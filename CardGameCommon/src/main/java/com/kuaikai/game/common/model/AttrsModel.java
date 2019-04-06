@@ -66,6 +66,10 @@ public class AttrsModel {
 		return CollectionUtils.getMapBool(attrs, key);
 	}
 	
+	public void copy(AttrsModel model) {
+		this.attrs.putAll(model.getAll());
+	}
+	
 	public void clear() {
 		attrs.clear();
 	}

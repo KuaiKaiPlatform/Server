@@ -1,6 +1,6 @@
 package com.kuaikai.game.mahjong.engine.model;
 
-import com.kuaikai.game.mahjong.engine.model.Mahjong.CardType;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 /**
  * 一张麻将牌

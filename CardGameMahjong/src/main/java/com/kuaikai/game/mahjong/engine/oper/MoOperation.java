@@ -54,10 +54,14 @@ public class MoOperation extends BaseOperation {
 		// 听
 		TingOperation.check(player, this);
 		
-		if(desk.getEngine().getOperManager().hasCanExecuteOperations()) return;
+		if(!desk.getEngine().getOperManager().hasCanExecuteOperations()) {
+			// 无更多操作，只有打
+			DaOperation.check(player, this);
+		}
 
-		// 打
-		DaOperation.check(player, this);
+		// 报听的玩家，1秒后自动执行其操作
+//		if(player.isBaoTing())
+//			desk.getEngine().getOperManager().scheduleOperation(1000);
 
 	}
 	

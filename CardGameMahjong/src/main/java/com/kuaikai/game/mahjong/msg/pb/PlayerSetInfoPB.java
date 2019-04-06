@@ -206,9 +206,9 @@ public final class PlayerSetInfoPB {
      */
     int getBet();
 
-    // optional .mahjong.QueMen queMen = 9;
+    // optional .mahjong.CardType queMen = 9;
     /**
-     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     * <code>optional .mahjong.CardType queMen = 9;</code>
      *
      * <pre>
      * 本局缺门，0 无效  10 万 20 条 30 筒
@@ -216,13 +216,49 @@ public final class PlayerSetInfoPB {
      */
     boolean hasQueMen();
     /**
-     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     * <code>optional .mahjong.CardType queMen = 9;</code>
      *
      * <pre>
      * 本局缺门，0 无效  10 万 20 条 30 筒
      * </pre>
      */
-    com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen();
+    com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType getQueMen();
+
+    // optional bool baoTing = 10;
+    /**
+     * <code>optional bool baoTing = 10;</code>
+     *
+     * <pre>
+     * 是否报听
+     * </pre>
+     */
+    boolean hasBaoTing();
+    /**
+     * <code>optional bool baoTing = 10;</code>
+     *
+     * <pre>
+     * 是否报听
+     * </pre>
+     */
+    boolean getBaoTing();
+
+    // optional int32 tingDiscardIndex = 11;
+    /**
+     * <code>optional int32 tingDiscardIndex = 11;</code>
+     *
+     * <pre>
+     * 报听时打出的牌位置
+     * </pre>
+     */
+    boolean hasTingDiscardIndex();
+    /**
+     * <code>optional int32 tingDiscardIndex = 11;</code>
+     *
+     * <pre>
+     * 报听时打出的牌位置
+     * </pre>
+     */
+    int getTingDiscardIndex();
   }
   /**
    * Protobuf type {@code mahjong.PlayerSetInfo}
@@ -374,13 +410,23 @@ public final class PlayerSetInfoPB {
             }
             case 72: {
               int rawValue = input.readEnum();
-              com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen value = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.valueOf(rawValue);
+              com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType value = com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(9, rawValue);
               } else {
                 bitField0_ |= 0x00000010;
                 queMen_ = value;
               }
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000020;
+              baoTing_ = input.readBool();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000040;
+              tingDiscardIndex_ = input.readInt32();
               break;
             }
           }
@@ -692,11 +738,11 @@ public final class PlayerSetInfoPB {
       return bet_;
     }
 
-    // optional .mahjong.QueMen queMen = 9;
+    // optional .mahjong.CardType queMen = 9;
     public static final int QUEMEN_FIELD_NUMBER = 9;
-    private com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen queMen_;
+    private com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType queMen_;
     /**
-     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     * <code>optional .mahjong.CardType queMen = 9;</code>
      *
      * <pre>
      * 本局缺门，0 无效  10 万 20 条 30 筒
@@ -706,14 +752,62 @@ public final class PlayerSetInfoPB {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional .mahjong.QueMen queMen = 9;</code>
+     * <code>optional .mahjong.CardType queMen = 9;</code>
      *
      * <pre>
      * 本局缺门，0 无效  10 万 20 条 30 筒
      * </pre>
      */
-    public com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen() {
+    public com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType getQueMen() {
       return queMen_;
+    }
+
+    // optional bool baoTing = 10;
+    public static final int BAOTING_FIELD_NUMBER = 10;
+    private boolean baoTing_;
+    /**
+     * <code>optional bool baoTing = 10;</code>
+     *
+     * <pre>
+     * 是否报听
+     * </pre>
+     */
+    public boolean hasBaoTing() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional bool baoTing = 10;</code>
+     *
+     * <pre>
+     * 是否报听
+     * </pre>
+     */
+    public boolean getBaoTing() {
+      return baoTing_;
+    }
+
+    // optional int32 tingDiscardIndex = 11;
+    public static final int TINGDISCARDINDEX_FIELD_NUMBER = 11;
+    private int tingDiscardIndex_;
+    /**
+     * <code>optional int32 tingDiscardIndex = 11;</code>
+     *
+     * <pre>
+     * 报听时打出的牌位置
+     * </pre>
+     */
+    public boolean hasTingDiscardIndex() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 tingDiscardIndex = 11;</code>
+     *
+     * <pre>
+     * 报听时打出的牌位置
+     * </pre>
+     */
+    public int getTingDiscardIndex() {
+      return tingDiscardIndex_;
     }
 
     private void initFields() {
@@ -725,7 +819,9 @@ public final class PlayerSetInfoPB {
       points_ = java.util.Collections.emptyList();
       direction_ = com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction.DONG;
       bet_ = 0;
-      queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+      queMen_ = com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType.NA;
+      baoTing_ = false;
+      tingDiscardIndex_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -779,6 +875,12 @@ public final class PlayerSetInfoPB {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(9, queMen_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBool(10, baoTing_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(11, tingDiscardIndex_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -839,6 +941,14 @@ public final class PlayerSetInfoPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(9, queMen_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, baoTing_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, tingDiscardIndex_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -977,8 +1087,12 @@ public final class PlayerSetInfoPB {
         bitField0_ = (bitField0_ & ~0x00000040);
         bet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+        queMen_ = com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType.NA;
         bitField0_ = (bitField0_ & ~0x00000100);
+        baoTing_ = false;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        tingDiscardIndex_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -1051,6 +1165,14 @@ public final class PlayerSetInfoPB {
           to_bitField0_ |= 0x00000010;
         }
         result.queMen_ = queMen_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.baoTing_ = baoTing_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.tingDiscardIndex_ = tingDiscardIndex_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1137,6 +1259,12 @@ public final class PlayerSetInfoPB {
         }
         if (other.hasQueMen()) {
           setQueMen(other.getQueMen());
+        }
+        if (other.hasBaoTing()) {
+          setBaoTing(other.getBaoTing());
+        }
+        if (other.hasTingDiscardIndex()) {
+          setTingDiscardIndex(other.getTingDiscardIndex());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1972,10 +2100,10 @@ public final class PlayerSetInfoPB {
         return this;
       }
 
-      // optional .mahjong.QueMen queMen = 9;
-      private com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+      // optional .mahjong.CardType queMen = 9;
+      private com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType queMen_ = com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType.NA;
       /**
-       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       * <code>optional .mahjong.CardType queMen = 9;</code>
        *
        * <pre>
        * 本局缺门，0 无效  10 万 20 条 30 筒
@@ -1985,23 +2113,23 @@ public final class PlayerSetInfoPB {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       * <code>optional .mahjong.CardType queMen = 9;</code>
        *
        * <pre>
        * 本局缺门，0 无效  10 万 20 条 30 筒
        * </pre>
        */
-      public com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen getQueMen() {
+      public com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType getQueMen() {
         return queMen_;
       }
       /**
-       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       * <code>optional .mahjong.CardType queMen = 9;</code>
        *
        * <pre>
        * 本局缺门，0 无效  10 万 20 条 30 筒
        * </pre>
        */
-      public Builder setQueMen(com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen value) {
+      public Builder setQueMen(com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2011,7 +2139,7 @@ public final class PlayerSetInfoPB {
         return this;
       }
       /**
-       * <code>optional .mahjong.QueMen queMen = 9;</code>
+       * <code>optional .mahjong.CardType queMen = 9;</code>
        *
        * <pre>
        * 本局缺门，0 无效  10 万 20 条 30 筒
@@ -2019,7 +2147,105 @@ public final class PlayerSetInfoPB {
        */
       public Builder clearQueMen() {
         bitField0_ = (bitField0_ & ~0x00000100);
-        queMen_ = com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen.NA;
+        queMen_ = com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType.NA;
+        onChanged();
+        return this;
+      }
+
+      // optional bool baoTing = 10;
+      private boolean baoTing_ ;
+      /**
+       * <code>optional bool baoTing = 10;</code>
+       *
+       * <pre>
+       * 是否报听
+       * </pre>
+       */
+      public boolean hasBaoTing() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional bool baoTing = 10;</code>
+       *
+       * <pre>
+       * 是否报听
+       * </pre>
+       */
+      public boolean getBaoTing() {
+        return baoTing_;
+      }
+      /**
+       * <code>optional bool baoTing = 10;</code>
+       *
+       * <pre>
+       * 是否报听
+       * </pre>
+       */
+      public Builder setBaoTing(boolean value) {
+        bitField0_ |= 0x00000200;
+        baoTing_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool baoTing = 10;</code>
+       *
+       * <pre>
+       * 是否报听
+       * </pre>
+       */
+      public Builder clearBaoTing() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        baoTing_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 tingDiscardIndex = 11;
+      private int tingDiscardIndex_ ;
+      /**
+       * <code>optional int32 tingDiscardIndex = 11;</code>
+       *
+       * <pre>
+       * 报听时打出的牌位置
+       * </pre>
+       */
+      public boolean hasTingDiscardIndex() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional int32 tingDiscardIndex = 11;</code>
+       *
+       * <pre>
+       * 报听时打出的牌位置
+       * </pre>
+       */
+      public int getTingDiscardIndex() {
+        return tingDiscardIndex_;
+      }
+      /**
+       * <code>optional int32 tingDiscardIndex = 11;</code>
+       *
+       * <pre>
+       * 报听时打出的牌位置
+       * </pre>
+       */
+      public Builder setTingDiscardIndex(int value) {
+        bitField0_ |= 0x00000400;
+        tingDiscardIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 tingDiscardIndex = 11;</code>
+       *
+       * <pre>
+       * 报听时打出的牌位置
+       * </pre>
+       */
+      public Builder clearTingDiscardIndex() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        tingDiscardIndex_ = 0;
         onChanged();
         return this;
       }
@@ -2051,14 +2277,15 @@ public final class PlayerSetInfoPB {
     java.lang.String[] descriptorData = {
       "\n\033mahjong/PlayerSetInfo.proto\022\007mahjong\032\027" +
       "mahjong/CardGroup.proto\032\027mahjong/Directi" +
-      "on.proto\032\024mahjong/QueMen.proto\"\343\001\n\rPlaye" +
-      "rSetInfo\022\013\n\003uid\030\001 \002(\005\022\023\n\013handCardNum\030\002 \002" +
-      "(\005\022\021\n\thandcards\030\003 \003(\005\022\020\n\010discards\030\004 \003(\005\022" +
-      "&\n\ncardGroups\030\005 \003(\0132\022.mahjong.CardGroup\022" +
-      "\016\n\006points\030\006 \003(\005\022%\n\tdirection\030\007 \001(\0162\022.mah" +
-      "jong.Direction\022\013\n\003bet\030\010 \001(\005\022\037\n\006queMen\030\t " +
-      "\001(\0162\017.mahjong.QueMenB2\n\037com.kuaikai.game" +
-      ".mahjong.msg.pbB\017PlayerSetInfoPB"
+      "on.proto\032\026mahjong/CardType.proto\"\220\002\n\rPla" +
+      "yerSetInfo\022\013\n\003uid\030\001 \002(\005\022\023\n\013handCardNum\030\002" +
+      " \002(\005\022\021\n\thandcards\030\003 \003(\005\022\020\n\010discards\030\004 \003(" +
+      "\005\022&\n\ncardGroups\030\005 \003(\0132\022.mahjong.CardGrou" +
+      "p\022\016\n\006points\030\006 \003(\005\022%\n\tdirection\030\007 \001(\0162\022.m" +
+      "ahjong.Direction\022\013\n\003bet\030\010 \001(\005\022!\n\006queMen\030" +
+      "\t \001(\0162\021.mahjong.CardType\022\017\n\007baoTing\030\n \001(" +
+      "\010\022\030\n\020tingDiscardIndex\030\013 \001(\005B2\n\037com.kuaik",
+      "ai.game.mahjong.msg.pbB\017PlayerSetInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2070,7 +2297,7 @@ public final class PlayerSetInfoPB {
           internal_static_mahjong_PlayerSetInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_mahjong_PlayerSetInfo_descriptor,
-              new java.lang.String[] { "Uid", "HandCardNum", "Handcards", "Discards", "CardGroups", "Points", "Direction", "Bet", "QueMen", });
+              new java.lang.String[] { "Uid", "HandCardNum", "Handcards", "Discards", "CardGroups", "Points", "Direction", "Bet", "QueMen", "BaoTing", "TingDiscardIndex", });
           return null;
         }
       };
@@ -2079,7 +2306,7 @@ public final class PlayerSetInfoPB {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.kuaikai.game.mahjong.msg.pb.CardGroupPB.getDescriptor(),
           com.kuaikai.game.mahjong.msg.pb.DirectionPB.getDescriptor(),
-          com.kuaikai.game.mahjong.msg.pb.QueMenPB.getDescriptor(),
+          com.kuaikai.game.mahjong.msg.pb.CardTypePB.getDescriptor(),
         }, assigner);
   }
 

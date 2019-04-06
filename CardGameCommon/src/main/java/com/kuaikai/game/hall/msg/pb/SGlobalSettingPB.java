@@ -191,6 +191,10 @@ public final class SGlobalSettingPB {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getSetting().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -402,6 +406,10 @@ public final class SGlobalSettingPB {
 
       public final boolean isInitialized() {
         if (!hasSetting()) {
+          
+          return false;
+        }
+        if (!getSetting().isInitialized()) {
           
           return false;
         }

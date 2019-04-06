@@ -62,7 +62,11 @@ public class AnGangOperation extends BaseOperation {
 	@Override
 	public OperDetail toOperDetail(GamePlayer receiver) {
 		// 只有暗杠者才收到 target
-		return super.toOperDetail(receiver);
+		OperDetail od = super.toOperDetail(receiver);
+		if(receiver.equals(player)) return od;
+		od.clearCards();
+		od.setTarget(0);
+		return od;
 	}
 	
 	/*

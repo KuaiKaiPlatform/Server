@@ -155,10 +155,12 @@ public class ClubDeskRedis {
 		desk.setCurSet(CollectionUtils.getMapInt(rMap, FIELD_CURRENT_SET));
 		
 		// 复制俱乐部玩法规则到牌桌
-		RMap<String, String> rMapSetting = ClubRuleRedis.getRMapSetting(clubId, desk.getRule());
-		Map<String, String> setting = rMapSetting.readAllMap();
-		desk.getSetting().putAll(setting);
-		desk.getClubSetting().putAll(setting);
+		ClubRuleRedis.getSetting(clubId, desk.getRule(), desk.getClubSetting());
+//		RMap<String, String> rMapSetting = ClubRuleRedis.getRMapSetting(clubId, desk.getRule());
+//		Map<String, String> setting = rMapSetting.readAllMap();
+//		desk.getSetting().putAll(setting);
+//		desk.getClubSetting().putAll(setting);
+		desk.copyClubSetting();
 		
 		// 牌桌各玩家
 		Map<String, String> seats = getSeats(clubId, deskId);
@@ -225,7 +227,7 @@ public class ClubDeskRedis {
 	}
 	
 	/**
-	 * 	返回指定牌桌玩法规则，牌桌未设置玩法规则则返回俱乐部玩法规则
+	 * 返回指定牌桌玩法规则，牌桌未设置玩法规则则返回俱乐部玩法规则
 	 * @param clubId
 	 * @param rule
 	 * @return
@@ -329,6 +331,18 @@ public class ClubDeskRedis {
 		Map<String, String> attrs = getRMapPlayer(clubId, deskId, uid);
 		attrs.put(FIELD_BET, String.valueOf(bet));
 		attrs.put(FIELD_PREPARED, Boolean.TRUE.toString());
+	}
+	
+	/**
+	 * 	玩家离线状态切换
+	 * @param clubId
+	 * @param deskId
+	 * @param uid
+	 * @param offline
+	 */
+	public static void playerOffline(int clubId, long deskId, int uid, boolean offline) {
+		Map<String, String> attrs = getRMapPlayer(clubId, deskId, uid);
+		attrs.put(FIELD_OFFLINE, String.valueOf(offline));
 	}
 	
 	public static Player getPlayer(int clubId, long deskId, int uid) {

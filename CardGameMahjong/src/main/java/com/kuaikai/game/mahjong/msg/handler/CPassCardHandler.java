@@ -98,7 +98,12 @@ public class CPassCardHandler extends MsgHandler {
 			desk.getEngine().executePass(player);
 			
 			// 检查是否进入结算阶段，本局结束
-			desk.getEngine().checkJieSuanStage();
+			boolean jieSuan = desk.getEngine().checkJieSuanStage();
+			
+			// 牌局未结束，自动出牌秒数有设置，启动定时任务，自动出牌
+			if(!jieSuan) {
+				desk.getEngine().getOperManager().scheduleOperation();
+			}
 			
 		} catch (Exception e) {
 			logger.error("CPassCardHandler.process@error|uid={}|clubId={}|deskId={}", uid, clubId, deskId, e);

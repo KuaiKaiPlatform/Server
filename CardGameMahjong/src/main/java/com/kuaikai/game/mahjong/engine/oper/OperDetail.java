@@ -59,17 +59,4 @@ public class OperDetail {
 		this.fromUid = fromUid;
 	}
 	
-/*	public SFSObject toSfsObject() {
-		SFSObject obj = new SFSObject();
-		obj.putInt("uid", uid);
-		obj.putInt("operType", operType);
-		if(cards != null) {
-			obj.putIntArray("cards", cards);
-		}
-		obj.putInt("target", target);
-		obj.putInt("remainCards", remainCards);
-		obj.putInt("fromUid", fromUid);
-		return obj;
-	}*/
-	
 }

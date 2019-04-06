@@ -179,6 +179,9 @@ public abstract class DiCalculator extends Calculator {
 	 * 按底数玩法时结算
 	 */
 	protected void calculateDi() {
+		// 初始化
+		initPlayerSetResults();
+		
 		// 将所有 Calculator Detail 按优先级和得分分组并排序
 		List<CommonCalculatorDetailWithPriorityRate> details = groupCalculatorDetailsByPriorityAndRate();
 		

@@ -44,12 +44,19 @@ public abstract class GamePlayer {
 		player.setBet(bet);
 	}
 	
+	public boolean isOffline() {
+		return player.isOffline();
+	}
+
+	public void setOffline(boolean offline) {
+		player.setOffline(offline);
+	}
+	
 	public int getDelta(GamePlayer other) {
 		return player.getDelta(other.player);
 	}
 	
 	public void clearSetAttrs() {
-		//if(setAttrs == null) setAttrs = new AttrsModel();
 		setAttrs.clear();
 	}
 	

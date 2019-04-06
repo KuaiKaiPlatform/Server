@@ -8,6 +8,7 @@ import com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq;
 import com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting;
 import com.kuaikai.game.common.msg.pb.PlayerInfoPB.PlayerInfo;
 import com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo;
+import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.hall.msg.pb.SDeskInfoPB.SDeskInfo;
 import com.kuaikai.game.hall.msg.pb.SPlayerJoinPB.SPlayerJoin;
 
@@ -27,8 +28,8 @@ public class DefaultMsgCreator implements MsgCreator {
 				.setRule(desk.getRule())
 				.setSetting(createGameSetting(desk))
 				.setStatus(desk.getStatus())
-				.setCurSet(desk.getCurSet())
-				.setBankerId(desk.getBankerId());
+				.setBankerId(desk.getBankerId())
+				.setCurSet(desk.getCurSet());
 	}
 	
 	protected PlayerInfo.Builder createPlayerInfo(Player p) {
@@ -44,12 +45,15 @@ public class DefaultMsgCreator implements MsgCreator {
 	protected UserInfo.Builder createUserInfo(User u) {
 		return UserInfo.newBuilder()
 				.setUid(u.getId())
-				.setNkn(u.getNickName());
+				.setNkn(u.getNickName())
+				.setHead(u.getHead())
+				.setSex(u.getSex());
 	}
 	
 	protected GameSetting.Builder createGameSetting(Desk desk) {
 		return GameSetting.newBuilder()
-				.setJson(desk.getClubSetting().toJson());
+				.setJson(desk.getClubSetting().toJson())
+				.setOperDelaySeconds(desk.getSetting().getInt(CardGameSetting.OPER_DELAY_SECONDS));
 	}
 	
 	public SPlayerJoin.Builder createSPlayerJoin(Player p, Desk desk) {

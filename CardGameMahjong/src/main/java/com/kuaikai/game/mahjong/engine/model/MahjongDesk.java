@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.kuaikai.game.common.model.Desk;
 import com.kuaikai.game.common.model.Player;
 import com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus;
+import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.DeskRecord;
 import com.kuaikai.game.common.play.GameDesk;
 import com.kuaikai.game.common.play.GamePlayer;
@@ -126,6 +127,9 @@ public class MahjongDesk extends GameDesk {
 		
 		// 发牌
 		dealCards();
+		
+		// 自动出牌秒数有设置，启动定时任务，自动出牌
+		engine.getOperManager().scheduleOperation();
 		
 		// 添加日志
 		logger.info("MahjongDesk.onSetStart@details|desk={}|set={}|players={}", desk.getKey(), desk.getCurSet(), this.getAllPlayers());

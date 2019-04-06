@@ -7,6 +7,7 @@ import java.util.List;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class YiTiaoLong {
 	
@@ -20,8 +21,8 @@ public class YiTiaoLong {
 		}
 
 		//把同一种颜色的123 456 789 移除再看是否是胡牌的
-		for(Mahjong.CardType cardType : Mahjong.CardType.values()) {
-			if(!Mahjong.CardType.isWanTiaoTong(cardType)) continue;
+		for(CardType cardType : CardType.values()) {
+			if(!Mahjong.isWanTiaoTong(cardType)) continue;
 			List<Integer> cards = getRemainCards(handCards, cardType);
 			if(cards == null) continue;
 			if(BiaoZhunHu.check(cards)) return true;	
@@ -36,13 +37,13 @@ public class YiTiaoLong {
 	 * @param cardType
 	 * @return
 	 */
-	private static List<Integer> getRemainCards(List<MJCard> handCards, Mahjong.CardType cardType){
+	private static List<Integer> getRemainCards(List<MJCard> handCards, CardType cardType){
 		//把同一种颜色的123 456 789 移除
 		List<Integer> cards = new ArrayList<Integer>();
 		for(MJCard card : handCards) {	// 所有手牌
 			cards.add(card.getValue());
 		}
-		int typeValue = cardType.getValue();
+		int typeValue = cardType.getNumber();
 		for(int i=1; i<=9; i++) {
 			if(!cards.remove(new Integer(typeValue + i))) return null;	// 删除一条龙
 		}

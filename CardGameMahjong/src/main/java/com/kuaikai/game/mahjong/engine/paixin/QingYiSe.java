@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class QingYiSe {
 	
@@ -13,7 +13,7 @@ public class QingYiSe {
 	 */
 	public static boolean check(List<MJCard> handCards, MJCard card, List<CardGroup> groupList, int almightyCardNum) {
 		
-		Mahjong.CardType type = null;
+		CardType type = null;
 		for(MJCard c : handCards) {
 			if(c.getValue() == almightyCardNum && c.isValidAlmighty()) continue;
 			if(!c.isWanTiaoTong()) return false;
@@ -31,7 +31,7 @@ public class QingYiSe {
 		for (CardGroup cg : groupList) {
 			//if(!cg.isValid()) continue;
 			List<MJCard> cardsList = cg.getCards();
-			Mahjong.CardType openType = cardsList.get(0).getCardType();
+			CardType openType = cardsList.get(0).getCardType();
 			if(!openType.equals(type)) {
 				return false;
 			}

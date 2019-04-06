@@ -134,6 +134,33 @@ public final class PlayerInfoPB {
      * </pre>
      */
     int getBet();
+
+    // optional string ip = 7;
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    boolean hasIp();
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    java.lang.String getIp();
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getIpBytes();
   }
   /**
    * Protobuf type {@code common.PlayerInfo}
@@ -238,6 +265,11 @@ public final class PlayerInfoPB {
             case 48: {
               bitField0_ |= 0x00000010;
               bet_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000020;
+              ip_ = input.readBytes();
               break;
             }
           }
@@ -448,6 +480,61 @@ public final class PlayerInfoPB {
       return bet_;
     }
 
+    // optional string ip = 7;
+    public static final int IP_FIELD_NUMBER = 7;
+    private java.lang.Object ip_;
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    public boolean hasIp() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    public java.lang.String getIp() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          ip_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string ip = 7;</code>
+     *
+     * <pre>
+     * IP地址
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getIpBytes() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       user_ = com.kuaikai.game.common.msg.pb.UserInfoPB.UserInfo.getDefaultInstance();
       seat_ = 0;
@@ -455,6 +542,7 @@ public final class PlayerInfoPB {
       offline_ = false;
       points_ = java.util.Collections.emptyList();
       bet_ = 0;
+      ip_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -494,6 +582,9 @@ public final class PlayerInfoPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, bet_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(7, getIpBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -531,6 +622,10 @@ public final class PlayerInfoPB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, bet_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getIpBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -665,6 +760,8 @@ public final class PlayerInfoPB {
         bitField0_ = (bitField0_ & ~0x00000010);
         bet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        ip_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -722,6 +819,10 @@ public final class PlayerInfoPB {
           to_bitField0_ |= 0x00000010;
         }
         result.bet_ = bet_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.ip_ = ip_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -762,6 +863,11 @@ public final class PlayerInfoPB {
         }
         if (other.hasBet()) {
           setBet(other.getBet());
+        }
+        if (other.hasIp()) {
+          bitField0_ |= 0x00000040;
+          ip_ = other.ip_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1241,6 +1347,104 @@ public final class PlayerInfoPB {
         return this;
       }
 
+      // optional string ip = 7;
+      private java.lang.Object ip_ = "";
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public boolean hasIp() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public java.lang.String getIp() {
+        java.lang.Object ref = ip_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          ip_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getIpBytes() {
+        java.lang.Object ref = ip_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ip_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public Builder setIp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public Builder clearIp() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        ip_ = getDefaultInstance().getIp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ip = 7;</code>
+       *
+       * <pre>
+       * IP地址
+       * </pre>
+       */
+      public Builder setIpBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:common.PlayerInfo)
     }
 
@@ -1267,11 +1471,12 @@ public final class PlayerInfoPB {
   static {
     java.lang.String[] descriptorData = {
       "\n\027common/PlayerInfo.proto\022\006common\032\026accou" +
-      "nt/UserInfo.proto\"{\n\nPlayerInfo\022\037\n\004user\030" +
-      "\001 \002(\0132\021.account.UserInfo\022\014\n\004seat\030\002 \001(\005\022\020" +
-      "\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010\022\016\n\006poi" +
-      "nts\030\005 \003(\005\022\013\n\003bet\030\006 \001(\005B.\n\036com.kuaikai.ga" +
-      "me.common.msg.pbB\014PlayerInfoPB"
+      "nt/UserInfo.proto\"\207\001\n\nPlayerInfo\022\037\n\004user" +
+      "\030\001 \002(\0132\021.account.UserInfo\022\014\n\004seat\030\002 \001(\005\022" +
+      "\020\n\010prepared\030\003 \001(\010\022\017\n\007offline\030\004 \001(\010\022\016\n\006po" +
+      "ints\030\005 \003(\005\022\013\n\003bet\030\006 \001(\005\022\n\n\002ip\030\007 \001(\tB.\n\036c" +
+      "om.kuaikai.game.common.msg.pbB\014PlayerInf" +
+      "oPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1283,7 +1488,7 @@ public final class PlayerInfoPB {
           internal_static_common_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_PlayerInfo_descriptor,
-              new java.lang.String[] { "User", "Seat", "Prepared", "Offline", "Points", "Bet", });
+              new java.lang.String[] { "User", "Seat", "Prepared", "Offline", "Points", "Bet", "Ip", });
           return null;
         }
       };

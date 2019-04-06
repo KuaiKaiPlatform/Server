@@ -106,7 +106,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> 
@@ -115,7 +115,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index);
@@ -123,7 +123,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     int getDiscardTingCardsCount();
@@ -131,7 +131,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -140,7 +140,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
@@ -392,7 +392,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
@@ -402,7 +402,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -413,7 +413,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public int getDiscardTingCardsCount() {
@@ -423,7 +423,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
@@ -433,7 +433,7 @@ public final class SOperCardPB {
      * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
      *
      * <pre>
-     * 打牌后的听牌列表
+     * 本人打牌后的听牌列表
      * </pre>
      */
     public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
@@ -1480,7 +1480,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards> getDiscardTingCardsList() {
@@ -1494,7 +1494,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public int getDiscardTingCardsCount() {
@@ -1508,7 +1508,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards getDiscardTingCards(int index) {
@@ -1522,7 +1522,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder setDiscardTingCards(
@@ -1543,7 +1543,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder setDiscardTingCards(
@@ -1561,7 +1561,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards value) {
@@ -1581,7 +1581,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -1602,7 +1602,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -1620,7 +1620,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addDiscardTingCards(
@@ -1638,7 +1638,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder addAllDiscardTingCards(
@@ -1656,7 +1656,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder clearDiscardTingCards() {
@@ -1673,7 +1673,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public Builder removeDiscardTingCards(int index) {
@@ -1690,7 +1690,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder getDiscardTingCardsBuilder(
@@ -1701,7 +1701,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder getDiscardTingCardsOrBuilder(
@@ -1715,7 +1715,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<? extends com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCardsOrBuilder> 
@@ -1730,7 +1730,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder() {
@@ -1741,7 +1741,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder addDiscardTingCardsBuilder(
@@ -1753,7 +1753,7 @@ public final class SOperCardPB {
        * <code>repeated .mahjong.DiscardTingCards discardTingCards = 3;</code>
        *
        * <pre>
-       * 打牌后的听牌列表
+       * 本人打牌后的听牌列表
        * </pre>
        */
       public java.util.List<com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB.DiscardTingCards.Builder> 

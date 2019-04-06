@@ -11,13 +11,13 @@ public class ThreadPoolManager extends ThreadPoolExecutor {
 
 	public ThreadPoolManager(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
 			BlockingQueue<Runnable> workQueue,final String namePrefix) {
-		super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,new ThreadFactory() {
+		super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, new ThreadFactory() {
 			
 			private final AtomicInteger atomicInteger = new AtomicInteger(0);
 			
 			@Override
 			public Thread newThread(Runnable r) {
-				Thread thread = new Thread(r, namePrefix+ atomicInteger.getAndIncrement());
+				Thread thread = new Thread(r, namePrefix + atomicInteger.getAndIncrement());
 				thread.setDaemon(true);
 				return thread;
 			}

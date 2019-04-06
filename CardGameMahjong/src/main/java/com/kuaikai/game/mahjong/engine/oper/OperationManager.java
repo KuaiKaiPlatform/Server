@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
-import com.kuaikai.game.mahjong.engine.constants.OperType;
+import com.kuaikai.game.common.utils.GameThreadPool;
+import com.kuaikai.game.mahjong.engine.model.MJCard;
 import com.kuaikai.game.mahjong.engine.model.MahjongDesk;
+import com.kuaikai.game.mahjong.msg.pb.OperDetailPB;
+import com.kuaikai.game.mahjong.msg.pb.OperTypePB.OperType;
+import com.kuaikai.game.mahjong.msg.handler.COperCardHandler;
+import com.kuaikai.game.mahjong.msg.pb.COperCardPB.COperCard;
 
 public class OperationManager {
 
@@ -29,6 +36,9 @@ public class OperationManager {
 	private MultipleHuOperations multipleHuOperations;
 	// 检查过跟庄
 	private boolean genZhuangChecked;
+	// 定时操作
+	private ScheduledFuture future;
+	private BaseOperation scheduledOperation;	// 已计划的操作
 	
 	public OperationManager(MahjongDesk desk) {
 		this.desk = desk;
@@ -129,7 +139,7 @@ public class OperationManager {
 		int huCount = 0;
 		if(desk.getSetting().getBool(CardGameSetting.MULTIPLE_HU)) {
 			for(BaseOperation oper : canExecuteOperations) {
-				if(oper.canExecute() && oper.checkOperType(OperType.HU)) huCount++;
+				if(oper.canExecute() && oper.checkOperType(OperType.HU_VALUE)) huCount++;
 			}
 		}
 		
@@ -146,7 +156,7 @@ public class OperationManager {
 		for(BaseOperation oper : canExecuteOperations) {
 			if(!oper.canExecute()) continue;
 			if(huCount > 1) { // 一炮多响，只加所有的胡
-				if(oper.checkOperType(OperType.HU)) {
+				if(oper.checkOperType(OperType.HU_VALUE)) {
 					result.add(oper);
 					multipleHuOperations.addHuOperation((HuOperation)oper);
 				}
@@ -194,6 +204,70 @@ public class OperationManager {
 		lastOperations.clear();
 	}
 	
+	public void scheduleOperation() {
+		int delaySeconds = desk.getSetting().getInt(CardGameSetting.OPER_DELAY_SECONDS);
+		if(delaySeconds > 0) scheduleOperation(delaySeconds*1000);
+	}
+	
+	public void scheduleOperation(int deplayMilliSeconds) {
+		if(deplayMilliSeconds <= 0) return;
+		
+		// 找到第一个可执行的操作
+		List<BaseOperation> canExecuteOperations = getCurrentCanExecuteOperations();
+		BaseOperation scheduledOper = null;
+		for(BaseOperation canExecuteOperation : canExecuteOperations) {
+			if(!canExecuteOperation.canExecute()) continue;
+			scheduledOper = canExecuteOperation;
+			break;
+		}
+		
+		if(scheduledOper == null) {
+			logger.warn("OperationManager.scheduleOperation@no operation scheduled|deskKey={}|lastOper={}", desk.getDesk().getKey(), this.getLastDoneOperation());
+			return;
+		}
+		
+		// 已经计划过的，不再重复计划
+		if(scheduledOper.equals(scheduledOperation)) {
+			logger.warn("OperationManager.scheduleOperation@operation has been scheduled|deskKey={}|lastOper={}|scheduledOper={}",
+					desk.getDesk().getKey(), this.getLastDoneOperation(), scheduledOper);
+			return;
+		}
+		scheduledOperation = scheduledOper;
+		
+		// 报听的玩家，1秒后自动执行其操作
+		if(scheduledOper.getPlayer().isBaoTing())
+			deplayMilliSeconds = 1000;
+		
+		OperDetailPB.OperDetail.Builder operDetail = OperDetailPB.OperDetail.newBuilder()
+				.setOperType(OperType.valueOf(scheduledOper.getOperType()))
+				.setUid(scheduledOper.getPlayer().getId())
+				.setTarget(scheduledOper.getTarget()==null?0:scheduledOper.getTarget().getValue());
+		if(scheduledOper.checkOperType(OperType.DA_VALUE)) {
+			operDetail.setTarget(scheduledOper.getPlayer().getCardContainer().findLastHandCard().getValue());
+		} else if(scheduledOper.checkOperType(OperType.TING_VALUE)) {
+			TingOperation tingOperation = (TingOperation)scheduledOper;
+			operDetail.setTarget(tingOperation.getDiscard());
+		}
+		
+		if(scheduledOper.getCards() != null) {
+			for(MJCard card: scheduledOper.getCards()) {
+				operDetail.addCards(card.getValue());
+			}	
+		}
+		
+		COperCard cOperCard = COperCard.newBuilder().setOperDetail(operDetail).build();
+		COperCardHandler cOperCardHandler = new COperCardHandler(scheduledOper.getPlayer().getId(), cOperCard);
+		
+		if(future != null && !future.isCancelled() && !future.isDone()) {
+			future.cancel(false);
+		}
+		future = GameThreadPool.getScheduler().schedule(
+				cOperCardHandler,
+				deplayMilliSeconds,
+				TimeUnit.MILLISECONDS);
+		
+	}
+	
 	/*
 	 * 检查当前状态是否为跟庄
 	 */
@@ -202,7 +276,7 @@ public class OperationManager {
 		int count = 0, card = 0;
 		for(BaseOperation oper : doneOperations) {
 			switch(oper.getOperType()) {
-			case OperType.DA :
+			case OperType.DA_VALUE :
 				int discard = oper.getTarget().getValue();
 				if(card == 0) 
 					card = discard;
@@ -218,8 +292,8 @@ public class OperationManager {
 					return true;
 				}
 				break;
-			case OperType.MO :
-			case OperType.AN_GANG :	// 允许摸和暗杠
+			case OperType.MO_VALUE :
+			case OperType.AN_GANG_VALUE :	// 允许摸和暗杠
 				break;
 			default :
 				genZhuangChecked = true;

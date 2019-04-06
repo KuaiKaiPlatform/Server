@@ -232,12 +232,14 @@ public class MahjongEngine {
 		int totalDi = desk.getSetting().getInt(CardGameSetting.TOTAL_DI);
 		if(totalDi > 0) {
 			this.putAttr(RoomAttr.PLAY_MODE, PlayMode.DI);
+			this.putAttr(RoomAttr.CURRENT_DI, 1);	// 从第一底开始
 			return;
 		}
 		
 		int totalQuan = desk.getSetting().getInt(CardGameSetting.TOTAL_QUAN);
 		if(totalQuan > 0) {
 			this.putAttr(RoomAttr.PLAY_MODE, PlayMode.QUAN);
+			this.putAttr(RoomAttr.CURRENT_QUAN, 1);	// 从第一圈开始
 			return;
 		}
 		
@@ -342,10 +344,13 @@ public class MahjongEngine {
 	/*
 	 * 检查是否结算阶段，牌局结束
 	 */
-	public void checkJieSuanStage() {
+	public boolean checkJieSuanStage() {
 		if (isStageJieSuan()) {
 			desk.onSetEnd(System.currentTimeMillis());
+			return true;
 		}
+		
+		return false;
 	}
 	
 	public void postMultipleHu() {

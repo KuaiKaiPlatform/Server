@@ -6,8 +6,8 @@ import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 /**
  * 打牌
@@ -100,7 +100,7 @@ public class DaOperation extends BaseOperation {
 		
 		// 有硬缺限制时，只能打缺门的牌
 		if(desk.getSetting().getBool(CardGameSetting.DING_QUE) && player.hasQueMenHandCard()) {
-			Mahjong.CardType queMen = player.getQueMen();
+			CardType queMen = player.getQueMen();
 			if(!card.getCardType().equals(queMen)) {
 /*				logger.warn(String.format("DaOperation.check@can only diacard que men|user=%d|room=%d|target=%d|queMen=%d",
 						player.getId(), desk.getRoomid(), od.getTarget(), queMen==null?0:queMen.getValue()));*/

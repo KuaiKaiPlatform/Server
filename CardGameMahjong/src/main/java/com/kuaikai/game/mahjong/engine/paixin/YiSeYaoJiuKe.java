@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 public class YiSeYaoJiuKe {
@@ -24,7 +25,7 @@ public class YiSeYaoJiuKe {
 		if(extra == null) return paiXins;
 		
 		int count = 0;
-		Map<Mahjong.CardType, Integer> type2count = new HashMap<Mahjong.CardType, Integer>();
+		Map<CardType, Integer> type2count = new HashMap<CardType, Integer>();
 		
 		// 检查杠牌
 		Map<Integer, Integer> gangPai = (Map<Integer, Integer>)extra.get(JieSuan.GANG_PAI_VALUE);
@@ -60,10 +61,10 @@ public class YiSeYaoJiuKe {
 		return paiXins;
 	}
 	
-	private static void checkAndCountType(Collection<Integer> cards, Map<Mahjong.CardType, Integer> type2count) {
+	private static void checkAndCountType(Collection<Integer> cards, Map<CardType, Integer> type2count) {
 		for(int card : cards) {
 			if(!Mahjong.isYaoJiu(card)) continue;
-			Mahjong.CardType type = Mahjong.getCardType(card);
+			CardType type = Mahjong.getCardType(card);
 			if(type2count.containsKey(type)) {
 				type2count.put(type, type2count.get(type)+1);
 			} else {

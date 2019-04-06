@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class ShiSanLuanKao {
 	
@@ -25,21 +25,21 @@ public class ShiSanLuanKao {
 	 * 检查一个有序的麻将牌列表是否满足十三乱靠牌型，返回值为字牌的数量：7为七星乱靠，5为五星乱靠，0 不是十三乱靠牌型
 	 */
 	public static int check(List<Integer> cards) {
-		Map<Mahjong.CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);
+		Map<CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);
 		
 		// 万能牌数量
-		List<Integer> cardsAlmighty = type2Cards.remove(Mahjong.CardType.ALMIGHTY);
+		List<Integer> cardsAlmighty = type2Cards.remove(CardType.ALMIGHTY);
 		int countAlmighty = (cardsAlmighty!=null)?cardsAlmighty.size():0;
 		
 		// 字牌数量
-		if(!type2Cards.containsKey(Mahjong.CardType.ZI)) return 0;
-		List<Integer> cardsZi = type2Cards.remove(Mahjong.CardType.ZI);
+		if(!type2Cards.containsKey(CardType.ZI)) return 0;
+		List<Integer> cardsZi = type2Cards.remove(CardType.ZI);
 		int countZi = cardsZi.size();
 		if((countZi+countAlmighty) < 5) return 0;	// 字牌加万能牌数量小于5，不是十三乱靠
 		if(PaiXinHelper.hasSameCard(cardsZi)) return 0;	// 有重复字牌，不是十三乱靠
 		
 		// 检查万条筒是否符合十三乱靠牌型要求
-		for(Map.Entry<Mahjong.CardType, List<Integer>> entry : type2Cards.entrySet()) {
+		for(Map.Entry<CardType, List<Integer>> entry : type2Cards.entrySet()) {
 			List<Integer> cardsX = entry.getValue();
 			if(cardsX.size() > 3) return 0;	// 同花色不能超过3张
 			

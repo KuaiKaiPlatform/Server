@@ -6,10 +6,10 @@ import com.kuaikai.game.mahjong.engine.checker.hu.mode.HuModesChecker;
 import com.kuaikai.game.mahjong.engine.checker.paixin.CheckerArray;
 import com.kuaikai.game.mahjong.engine.checker.paixin.SingleChecker;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
 import com.kuaikai.game.mahjong.engine.oper.HuOperation;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 import com.kuaikai.game.mahjong.msg.pb.JieSuanPB.JieSuan;
 
 /***
@@ -79,7 +79,7 @@ public class WeiNanHuChecker extends DefaultHuChecker {
 	@Override
 	public boolean preCheck(BaseOperation oper) {
 		// 是否缺一门
-		Mahjong.CardType queMen = player.getQueMen();
+		CardType queMen = player.getQueMen();
 		if(queMen == null) return true;
 
 		if(queMen.equals(oper.getTarget().getCardType())) return false; 

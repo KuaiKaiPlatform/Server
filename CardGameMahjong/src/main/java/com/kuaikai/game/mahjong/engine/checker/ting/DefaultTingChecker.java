@@ -35,8 +35,6 @@ public class DefaultTingChecker implements TingChecker {
 		Map<Integer, DiscardTingCards> discard2TingCards = player.getHuChecker().getDiscard2TingCards();
 		if(discard2TingCards == null || discard2TingCards.isEmpty()) return null;
 		
-		//if(logger.isDebugEnabled()) logger.debug(player.getLogPrefix().append(";discards=").append(discard2TingCards.keySet()).toString());
-		
 		return OperationFactory.createTingOperation(player, oper, discard2TingCards);
 	}
 	

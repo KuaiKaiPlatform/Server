@@ -144,27 +144,9 @@ public final class DeskInfoPB {
      */
     com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus getStatus();
 
-    // optional int32 curSet = 6;
+    // optional int32 bankerId = 6;
     /**
-     * <code>optional int32 curSet = 6;</code>
-     *
-     * <pre>
-     * 当前局数
-     * </pre>
-     */
-    boolean hasCurSet();
-    /**
-     * <code>optional int32 curSet = 6;</code>
-     *
-     * <pre>
-     * 当前局数
-     * </pre>
-     */
-    int getCurSet();
-
-    // optional int32 bankerId = 7;
-    /**
-     * <code>optional int32 bankerId = 7;</code>
+     * <code>optional int32 bankerId = 6;</code>
      *
      * <pre>
      * 庄家ID
@@ -172,13 +154,31 @@ public final class DeskInfoPB {
      */
     boolean hasBankerId();
     /**
-     * <code>optional int32 bankerId = 7;</code>
+     * <code>optional int32 bankerId = 6;</code>
      *
      * <pre>
      * 庄家ID
      * </pre>
      */
     int getBankerId();
+
+    // optional int32 curSet = 7;
+    /**
+     * <code>optional int32 curSet = 7;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    boolean hasCurSet();
+    /**
+     * <code>optional int32 curSet = 7;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    int getCurSet();
   }
   /**
    * Protobuf type {@code common.DeskInfo}
@@ -293,12 +293,12 @@ public final class DeskInfoPB {
             }
             case 48: {
               bitField0_ |= 0x00000010;
-              curSet_ = input.readInt32();
+              bankerId_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000020;
-              bankerId_ = input.readInt32();
+              curSet_ = input.readInt32();
               break;
             }
           }
@@ -516,45 +516,21 @@ public final class DeskInfoPB {
       return status_;
     }
 
-    // optional int32 curSet = 6;
-    public static final int CURSET_FIELD_NUMBER = 6;
-    private int curSet_;
-    /**
-     * <code>optional int32 curSet = 6;</code>
-     *
-     * <pre>
-     * 当前局数
-     * </pre>
-     */
-    public boolean hasCurSet() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 curSet = 6;</code>
-     *
-     * <pre>
-     * 当前局数
-     * </pre>
-     */
-    public int getCurSet() {
-      return curSet_;
-    }
-
-    // optional int32 bankerId = 7;
-    public static final int BANKERID_FIELD_NUMBER = 7;
+    // optional int32 bankerId = 6;
+    public static final int BANKERID_FIELD_NUMBER = 6;
     private int bankerId_;
     /**
-     * <code>optional int32 bankerId = 7;</code>
+     * <code>optional int32 bankerId = 6;</code>
      *
      * <pre>
      * 庄家ID
      * </pre>
      */
     public boolean hasBankerId() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 bankerId = 7;</code>
+     * <code>optional int32 bankerId = 6;</code>
      *
      * <pre>
      * 庄家ID
@@ -564,14 +540,38 @@ public final class DeskInfoPB {
       return bankerId_;
     }
 
+    // optional int32 curSet = 7;
+    public static final int CURSET_FIELD_NUMBER = 7;
+    private int curSet_;
+    /**
+     * <code>optional int32 curSet = 7;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public boolean hasCurSet() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 curSet = 7;</code>
+     *
+     * <pre>
+     * 当前局数
+     * </pre>
+     */
+    public int getCurSet() {
+      return curSet_;
+    }
+
     private void initFields() {
       uniq_ = com.kuaikai.game.common.msg.pb.DeskUniqPB.DeskUniq.getDefaultInstance();
       players_ = java.util.Collections.emptyList();
       rule_ = com.kuaikai.game.common.msg.pb.GameRulePB.GameRule.JIN_HUA;
       setting_ = com.kuaikai.game.common.msg.pb.GameSettingPB.GameSetting.getDefaultInstance();
       status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
-      curSet_ = 0;
       bankerId_ = 0;
+      curSet_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -621,10 +621,10 @@ public final class DeskInfoPB {
         output.writeEnum(5, status_.getNumber());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(6, curSet_);
+        output.writeInt32(6, bankerId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, bankerId_);
+        output.writeInt32(7, curSet_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -657,11 +657,11 @@ public final class DeskInfoPB {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, curSet_);
+          .computeInt32Size(6, bankerId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, bankerId_);
+          .computeInt32Size(7, curSet_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -808,9 +808,9 @@ public final class DeskInfoPB {
         bitField0_ = (bitField0_ & ~0x00000008);
         status_ = com.kuaikai.game.common.msg.pb.GameStatusPB.GameStatus.WAITING;
         bitField0_ = (bitField0_ & ~0x00000010);
-        curSet_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         bankerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        curSet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
@@ -876,11 +876,11 @@ public final class DeskInfoPB {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.curSet_ = curSet_;
+        result.bankerId_ = bankerId_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.bankerId_ = bankerId_;
+        result.curSet_ = curSet_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -935,11 +935,11 @@ public final class DeskInfoPB {
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
-        if (other.hasCurSet()) {
-          setCurSet(other.getCurSet());
-        }
         if (other.hasBankerId()) {
           setBankerId(other.getBankerId());
+        }
+        if (other.hasCurSet()) {
+          setCurSet(other.getCurSet());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1710,69 +1710,20 @@ public final class DeskInfoPB {
         return this;
       }
 
-      // optional int32 curSet = 6;
-      private int curSet_ ;
-      /**
-       * <code>optional int32 curSet = 6;</code>
-       *
-       * <pre>
-       * 当前局数
-       * </pre>
-       */
-      public boolean hasCurSet() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 curSet = 6;</code>
-       *
-       * <pre>
-       * 当前局数
-       * </pre>
-       */
-      public int getCurSet() {
-        return curSet_;
-      }
-      /**
-       * <code>optional int32 curSet = 6;</code>
-       *
-       * <pre>
-       * 当前局数
-       * </pre>
-       */
-      public Builder setCurSet(int value) {
-        bitField0_ |= 0x00000020;
-        curSet_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 curSet = 6;</code>
-       *
-       * <pre>
-       * 当前局数
-       * </pre>
-       */
-      public Builder clearCurSet() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        curSet_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 bankerId = 7;
+      // optional int32 bankerId = 6;
       private int bankerId_ ;
       /**
-       * <code>optional int32 bankerId = 7;</code>
+       * <code>optional int32 bankerId = 6;</code>
        *
        * <pre>
        * 庄家ID
        * </pre>
        */
       public boolean hasBankerId() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional int32 bankerId = 7;</code>
+       * <code>optional int32 bankerId = 6;</code>
        *
        * <pre>
        * 庄家ID
@@ -1782,28 +1733,77 @@ public final class DeskInfoPB {
         return bankerId_;
       }
       /**
-       * <code>optional int32 bankerId = 7;</code>
+       * <code>optional int32 bankerId = 6;</code>
        *
        * <pre>
        * 庄家ID
        * </pre>
        */
       public Builder setBankerId(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000020;
         bankerId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 bankerId = 7;</code>
+       * <code>optional int32 bankerId = 6;</code>
        *
        * <pre>
        * 庄家ID
        * </pre>
        */
       public Builder clearBankerId() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         bankerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 curSet = 7;
+      private int curSet_ ;
+      /**
+       * <code>optional int32 curSet = 7;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public boolean hasCurSet() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 curSet = 7;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public int getCurSet() {
+        return curSet_;
+      }
+      /**
+       * <code>optional int32 curSet = 7;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder setCurSet(int value) {
+        bitField0_ |= 0x00000040;
+        curSet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 curSet = 7;</code>
+       *
+       * <pre>
+       * 当前局数
+       * </pre>
+       */
+      public Builder clearCurSet() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        curSet_ = 0;
         onChanged();
         return this;
       }
@@ -1841,8 +1841,8 @@ public final class DeskInfoPB {
       "\n\007players\030\002 \003(\0132\022.common.PlayerInfo\022\036\n\004r" +
       "ule\030\003 \001(\0162\020.common.GameRule\022$\n\007setting\030\004" +
       " \001(\0132\023.common.GameSetting\022\"\n\006status\030\005 \001(" +
-      "\0162\022.common.GameStatus\022\016\n\006curSet\030\006 \001(\005\022\020\n" +
-      "\010bankerId\030\007 \001(\005B,\n\036com.kuaikai.game.comm",
+      "\0162\022.common.GameStatus\022\020\n\010bankerId\030\006 \001(\005\022" +
+      "\016\n\006curSet\030\007 \001(\005B,\n\036com.kuaikai.game.comm",
       "on.msg.pbB\nDeskInfoPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -1855,7 +1855,7 @@ public final class DeskInfoPB {
           internal_static_common_DeskInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_DeskInfo_descriptor,
-              new java.lang.String[] { "Uniq", "Players", "Rule", "Setting", "Status", "CurSet", "BankerId", });
+              new java.lang.String[] { "Uniq", "Players", "Rule", "Setting", "Status", "BankerId", "CurSet", });
           return null;
         }
       };

@@ -235,6 +235,24 @@ public final class GameSettingPB {
      * </pre>
      */
     boolean getPaoZi();
+
+    // optional int32 operDelaySeconds = 13;
+    /**
+     * <code>optional int32 operDelaySeconds = 13;</code>
+     *
+     * <pre>
+     * 自动出牌秒数
+     * </pre>
+     */
+    boolean hasOperDelaySeconds();
+    /**
+     * <code>optional int32 operDelaySeconds = 13;</code>
+     *
+     * <pre>
+     * 自动出牌秒数
+     * </pre>
+     */
+    int getOperDelaySeconds();
   }
   /**
    * Protobuf type {@code common.GameSetting}
@@ -349,6 +367,11 @@ public final class GameSettingPB {
             case 96: {
               bitField0_ |= 0x00000800;
               paoZi_ = input.readBool();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00001000;
+              operDelaySeconds_ = input.readInt32();
               break;
             }
           }
@@ -710,6 +733,30 @@ public final class GameSettingPB {
       return paoZi_;
     }
 
+    // optional int32 operDelaySeconds = 13;
+    public static final int OPERDELAYSECONDS_FIELD_NUMBER = 13;
+    private int operDelaySeconds_;
+    /**
+     * <code>optional int32 operDelaySeconds = 13;</code>
+     *
+     * <pre>
+     * 自动出牌秒数
+     * </pre>
+     */
+    public boolean hasOperDelaySeconds() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional int32 operDelaySeconds = 13;</code>
+     *
+     * <pre>
+     * 自动出牌秒数
+     * </pre>
+     */
+    public int getOperDelaySeconds() {
+      return operDelaySeconds_;
+    }
+
     private void initFields() {
       json_ = "";
       totalSet_ = 0;
@@ -723,6 +770,7 @@ public final class GameSettingPB {
       noJiaFanHaiDiLao_ = false;
       noJiaFanQiangGangHu_ = false;
       paoZi_ = false;
+      operDelaySeconds_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -775,6 +823,9 @@ public final class GameSettingPB {
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeBool(12, paoZi_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt32(13, operDelaySeconds_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -832,6 +883,10 @@ public final class GameSettingPB {
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(12, paoZi_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(13, operDelaySeconds_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -977,6 +1032,8 @@ public final class GameSettingPB {
         bitField0_ = (bitField0_ & ~0x00000400);
         paoZi_ = false;
         bitField0_ = (bitField0_ & ~0x00000800);
+        operDelaySeconds_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -1053,6 +1110,10 @@ public final class GameSettingPB {
           to_bitField0_ |= 0x00000800;
         }
         result.paoZi_ = paoZi_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.operDelaySeconds_ = operDelaySeconds_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1106,6 +1167,9 @@ public final class GameSettingPB {
         }
         if (other.hasPaoZi()) {
           setPaoZi(other.getPaoZi());
+        }
+        if (other.hasOperDelaySeconds()) {
+          setOperDelaySeconds(other.getOperDelaySeconds());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1775,6 +1839,55 @@ public final class GameSettingPB {
         return this;
       }
 
+      // optional int32 operDelaySeconds = 13;
+      private int operDelaySeconds_ ;
+      /**
+       * <code>optional int32 operDelaySeconds = 13;</code>
+       *
+       * <pre>
+       * 自动出牌秒数
+       * </pre>
+       */
+      public boolean hasOperDelaySeconds() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional int32 operDelaySeconds = 13;</code>
+       *
+       * <pre>
+       * 自动出牌秒数
+       * </pre>
+       */
+      public int getOperDelaySeconds() {
+        return operDelaySeconds_;
+      }
+      /**
+       * <code>optional int32 operDelaySeconds = 13;</code>
+       *
+       * <pre>
+       * 自动出牌秒数
+       * </pre>
+       */
+      public Builder setOperDelaySeconds(int value) {
+        bitField0_ |= 0x00001000;
+        operDelaySeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 operDelaySeconds = 13;</code>
+       *
+       * <pre>
+       * 自动出牌秒数
+       * </pre>
+       */
+      public Builder clearOperDelaySeconds() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        operDelaySeconds_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:common.GameSetting)
     }
 
@@ -1800,15 +1913,16 @@ public final class GameSettingPB {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030common/GameSetting.proto\022\006common\"\216\002\n\013G" +
+      "\n\030common/GameSetting.proto\022\006common\"\250\002\n\013G" +
       "ameSetting\022\014\n\004json\030\001 \002(\t\022\020\n\010totalSet\030\002 \001" +
       "(\005\022\021\n\ttotalQuan\030\003 \001(\005\022\017\n\007totalDi\030\004 \001(\005\022\023" +
       "\n\013totalPlayer\030\005 \001(\005\022\021\n\tchairMode\030\006 \001(\005\022\025" +
       "\n\rnoJiaFanQiDui\030\007 \001(\010\022\030\n\020noJiaFanQingYiS" +
       "e\030\010 \001(\010\022\034\n\024noJiaFanGangShangHua\030\t \001(\010\022\030\n" +
       "\020noJiaFanHaiDiLao\030\n \001(\010\022\033\n\023noJiaFanQiang" +
-      "GangHu\030\013 \001(\010\022\r\n\005paoZi\030\014 \001(\010B/\n\036com.kuaik" +
-      "ai.game.common.msg.pbB\rGameSettingPB"
+      "GangHu\030\013 \001(\010\022\r\n\005paoZi\030\014 \001(\010\022\030\n\020operDelay" +
+      "Seconds\030\r \001(\005B/\n\036com.kuaikai.game.common" +
+      ".msg.pbB\rGameSettingPB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1820,7 +1934,7 @@ public final class GameSettingPB {
           internal_static_common_GameSetting_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_common_GameSetting_descriptor,
-              new java.lang.String[] { "Json", "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", "ChairMode", "NoJiaFanQiDui", "NoJiaFanQingYiSe", "NoJiaFanGangShangHua", "NoJiaFanHaiDiLao", "NoJiaFanQiangGangHu", "PaoZi", });
+              new java.lang.String[] { "Json", "TotalSet", "TotalQuan", "TotalDi", "TotalPlayer", "ChairMode", "NoJiaFanQiDui", "NoJiaFanQingYiSe", "NoJiaFanGangShangHua", "NoJiaFanHaiDiLao", "NoJiaFanQiangGangHu", "PaoZi", "OperDelaySeconds", });
           return null;
         }
       };

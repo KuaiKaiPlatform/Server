@@ -1,5 +1,7 @@
 package com.kuaikai.game.mahjong.engine.model;
 
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
+
 /**
  * Wan(11-19), Tiao(21-29), Tong(31-39), Zi(41-47);
  * 
@@ -15,7 +17,7 @@ public class Mahjong {
 	public static final int POS_MIN		= POS_DONG;
 	public static final int POS_MAX		= POS_BEI;
 	
-    public enum CardType {
+/*    public enum CardType {
 
         WAN(10), TIAO(20), TONG(30), ZI(40), HUA(50), ALMIGHTY(100);
 
@@ -40,11 +42,15 @@ public class Mahjong {
         	return WAN.equals(type) || TIAO.equals(type) || TONG.equals(type);
         }
         
+    }*/
+	
+    public static boolean isWanTiaoTong(CardType type) {
+    	return CardType.WAN.equals(type) || CardType.TIAO.equals(type) || CardType.TONG.equals(type);
     }
-
+	
     public static CardType getCardType(int card) {
     	card -= getRemain(card);
-    	return CardType.getType(card);
+    	return CardType.valueOf(card);
     }
     
     public enum Zi {
@@ -137,7 +143,7 @@ public class Mahjong {
 	}
 
 	public static boolean isZi(int card) {
-		return Mahjong.CardType.ZI.equals(getCardType(card));
+		return CardType.ZI.equals(getCardType(card));
 	}
 
 	public static boolean isFeng(int card) {

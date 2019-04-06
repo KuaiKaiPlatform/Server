@@ -148,6 +148,10 @@ public class CardContainer {
 		}
 		return result;
 	}
+	
+	public int getTotalDiscards() {
+		return discards.size();
+	}
 
 	public void clear() {
 		handCards.clear();

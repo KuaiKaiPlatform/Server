@@ -22,7 +22,7 @@ public class GuoZiProcessor extends DefaultProcessor {
 		// 牌库剩14张牌时还未有人胡牌则荒庄
 		setting.put(CardGameSetting.REMAIN_CARD_NUM, 14);
 		
-		// 可听牌，听牌后可补杠和暗杠
+		// 可听牌，报听后可补杠和暗杠
 		setting.put(CardGameSetting.KE_TING, true);
 		setting.put(CardGameSetting.TING_HOU_BU_GANG, true);
 		setting.put(CardGameSetting.TING_HOU_AN_GANG, true);

@@ -3,18 +3,18 @@ package com.kuaikai.game.mahjong.engine.paixin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Comparator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.MJCard;
-import com.kuaikai.game.mahjong.engine.model.Mahjong;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 
 public class BiaoZhunHu {
 	
@@ -149,8 +149,8 @@ public class BiaoZhunHu {
 		if(cards.isEmpty()) return true;
 		//System.out.println("checking sentence, cards=" + cards);
 		
-		Map<Mahjong.CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);	// 按牌的类型进行分组，万、条、筒、风、万能牌等
-		List<Integer> almightyCards = type2Cards.remove(Mahjong.CardType.ALMIGHTY);
+		Map<CardType, List<Integer>> type2Cards = PaiXinHelper.groupCardsByType(cards);	// 按牌的类型进行分组，万、条、筒、风、万能牌等
+		List<Integer> almightyCards = type2Cards.remove(CardType.ALMIGHTY);
 		int countAlmighty = (almightyCards!=null)?almightyCards.size():0;	// 万能牌数量
 		
 		// 用万能牌补充各类型的牌到3的倍数

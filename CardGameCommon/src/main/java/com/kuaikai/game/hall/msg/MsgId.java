@@ -9,6 +9,12 @@ public class MsgId {
 	public static final int SQuitDesk = 105;
 	public static final int SPlayerJoin = 106;
 	public static final int SPlayerQuit = 107;
-	public static final int SGlobalSetting = 108;
+	
+	public static final int CGlobalSetting = 111;
+	public static final int SGlobalSetting = 112;
+	public static final int CRuleDialects = 113;
+	public static final int SRuleDialects = 114;
+	public static final int COffline = 115;
+	public static final int SOffline = 116;
 	
 }

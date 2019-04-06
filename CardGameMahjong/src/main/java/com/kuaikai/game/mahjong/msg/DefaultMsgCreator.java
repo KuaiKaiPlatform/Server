@@ -10,6 +10,7 @@ import com.kuaikai.game.common.play.GamePlayer;
 import com.kuaikai.game.mahjong.engine.calculator.PlayerGameResult;
 import com.kuaikai.game.mahjong.engine.calculator.PlayerSetResult;
 import com.kuaikai.game.mahjong.engine.calculator.ScoreDetail;
+import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
 import com.kuaikai.game.mahjong.engine.model.CardContainer;
 import com.kuaikai.game.mahjong.engine.model.CardGroup;
 import com.kuaikai.game.mahjong.engine.model.DiscardTingCards;
@@ -22,7 +23,6 @@ import com.kuaikai.game.mahjong.msg.pb.PlayerSetInfoPB.PlayerSetInfo;
 import com.kuaikai.game.mahjong.msg.pb.PlayerStatPB.PlayerStat;
 import com.kuaikai.game.mahjong.msg.pb.PlayerStatTypePB.PlayerStatType;
 import com.kuaikai.game.mahjong.msg.pb.PlayerSetResultPB;
-import com.kuaikai.game.mahjong.msg.pb.QueMenPB.QueMen;
 import com.kuaikai.game.mahjong.msg.pb.SCanOperPB.SCanOper;
 import com.kuaikai.game.mahjong.msg.pb.SGameResultPB.SGameResult;
 import com.kuaikai.game.mahjong.msg.pb.SOperCardPB.SOperCard;
@@ -30,6 +30,7 @@ import com.kuaikai.game.mahjong.msg.pb.SSetInitPB.SSetInit;
 import com.kuaikai.game.mahjong.msg.pb.SSetResultPB.SSetResult;
 import com.kuaikai.game.mahjong.msg.pb.ScoreDetailPB;
 import com.kuaikai.game.mahjong.msg.pb.CardGroupPB;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 import com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction;
 import com.kuaikai.game.mahjong.msg.pb.DiscardTingCardsPB;
 import com.kuaikai.game.mahjong.msg.pb.JieSuanPB;
@@ -48,7 +49,10 @@ public class DefaultMsgCreator implements MsgCreator {
 				.setCurSet(desk.getCurSet())
 				.setRemainCards(desk.getEngine().getCardPool().remainCards())
 				.setBankerId(desk.getBankerId())
-				.setStage(desk.getEngine().getStage());
+				.setStage(desk.getEngine().getStage())
+				.setAlmighty(desk.getEngine().getAlmightyCardNum())
+				.setCurDi(desk.getEngine().getAttrInt(RoomAttr.CURRENT_DI))
+				.setCurQuan(desk.getEngine().getAttrInt(RoomAttr.CURRENT_QUAN));
 		
 		// 所有玩家牌局状态
 		for(GamePlayer gp : desk.getAllPlayers()) {
@@ -88,14 +92,16 @@ public class DefaultMsgCreator implements MsgCreator {
 				.setHandCardNum(cardContainer.getHandCards().size())
 				.addAllDiscards(cardContainer.getDiscardValues())
 				.setDirection(Direction.valueOf(setAttrs.contains(SetAttr.DIRECTION)?setAttrs.getInt(SetAttr.DIRECTION):player.getSeat()))	// 设置方位：无门风属性时，按座位顺序设置
-				.addAllPoints(player.getGameResult().getFinalGamePoints().getPoints());
+				.addAllPoints(player.getGameResult().getFinalGamePoints().getPoints())
+				.setBaoTing(player.isBaoTing())
+				.setTingDiscardIndex(player.getSetAttrs().getInt(SetAttr.TING_DISCARD_INDEX));
 		
 		if(player.getGameDesk().getSetting().getBool(CardGameSetting.XIA_ZHU)) {
 			builder.setBet(player.getBet());
 		}
 		
 		if(player.getGameDesk().getSetting().getBool(CardGameSetting.DING_QUE)) {
-			builder.setQueMen(QueMen.valueOf(setAttrs.getInt(SetAttr.QUE_MEN)));
+			builder.setQueMen(CardType.valueOf(setAttrs.getInt(SetAttr.QUE_MEN)));
 		}
 		
 		// 手牌
@@ -223,7 +229,10 @@ public class DefaultMsgCreator implements MsgCreator {
 		if(!over)
 			builder.setNextBankerId(desk.getBankerId());
 		
-		for(PlayerSetResult psr: desk.getEngine().getCalculator().getPlayerSetResults()) {
+		for(Direction dir : Direction.values()) {
+			MahjongPlayer player = desk.getPlayerBySeat(dir.getNumber());
+			if(player == null) continue;
+			PlayerSetResult psr = desk.getEngine().getCalculator().getPlayerSetResult(player);
 			builder.addPlayerSetResults(this.createPlayerSetResult(psr));
 		}
 		
@@ -273,9 +282,10 @@ public class DefaultMsgCreator implements MsgCreator {
 				.setEndTime(desk.getAttrs().getLong(GameAttrs.END_TIME))
 				.setDismiss(dismiss);
 		
-		for(GamePlayer player: desk.getAllPlayers()) {
-			MahjongPlayer p = (MahjongPlayer)player;
-			builder.addPlayerGameResults(this.createPlayerGameResult(p));
+		for(Direction dir : Direction.values()) {
+			MahjongPlayer player = desk.getPlayerBySeat(dir.getNumber());
+			if(player == null) continue;
+			builder.addPlayerGameResults(this.createPlayerGameResult(player));
 		}
 		
 		return builder;

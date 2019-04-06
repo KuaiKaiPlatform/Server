@@ -24,6 +24,9 @@ public class SXMJProcessor extends DefaultProcessor {
 		// 杠牌计分
 		setting.put(CardGameSetting.GANG_DE_FEN, true);
 		
+		// 结算显示明杠（补杠和点杠）
+		setting.put(CardGameSetting.JIE_SUAN_MING_GANG, true);
+		
 		// 陕西麻将下炮子
 		int paoZi = setting.getInt(CardGameSetting.PAO_ZI);
 		if(paoZi == 0) {	// 不带下炮子，庄六闲四：点炮者胡牌分数包三家，庄家输赢分数翻倍；点杠者包杠

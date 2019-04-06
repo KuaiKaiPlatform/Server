@@ -21,10 +21,10 @@ public class OneFiveNineProcessor extends DefaultProcessor {
 		setting.put(CardGameSetting.HU_TAKE_ZHUANG, true);			// 谁胡牌谁坐庄
 		setting.put(CardGameSetting.QU_ZI, true);					// 去掉字牌
 		setting.put(CardGameSetting.ZI_MO_ONLY, true);				// 只炸不胡
-		setting.put(CardGameSetting.TING_ALL_QIANG_GANG, true);	// 听所有牌时可以抢杠胡
-		setting.put(CardGameSetting.GANG_DE_FEN, true);			// 杠牌计分
+		setting.put(CardGameSetting.TING_ALL_QIANG_GANG, true);		// 听所有牌时可以抢杠胡
+		setting.put(CardGameSetting.GANG_DE_FEN, true);				// 杠牌计分
 		setting.put(CardGameSetting.DIAN_GANG_PAY_ALL, true);		// 点杠包三家
-		setting.put(CardGameSetting.MULTIPLE_HU, true);			// 一炮多响，多人可同时抢杠胡
+		setting.put(CardGameSetting.MULTIPLE_HU, true);				// 一炮多响，多人可同时抢杠胡
 		setting.put(CardGameSetting.QIANG_GANG_PAY_ALL, true);		// 抢杠胡包三家
 		
 		// 自由炮时，开启下注

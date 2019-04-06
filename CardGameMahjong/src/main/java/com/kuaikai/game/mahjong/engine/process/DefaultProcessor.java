@@ -9,8 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kuaikai.game.common.model.AttrsModel;
+import com.kuaikai.game.common.model.Club;
 import com.kuaikai.game.common.play.CardGameSetting;
 import com.kuaikai.game.common.play.GamePlayer;
+import com.kuaikai.game.common.redis.ClubRedis;
 import com.kuaikai.game.common.utils.RandomUtils;
 import com.kuaikai.game.mahjong.engine.constants.OperType;
 import com.kuaikai.game.mahjong.engine.constants.RoomAttr;
@@ -22,6 +24,7 @@ import com.kuaikai.game.mahjong.engine.model.MahjongFactory;
 import com.kuaikai.game.mahjong.engine.model.MahjongPlayer;
 import com.kuaikai.game.mahjong.engine.model.SetResult;
 import com.kuaikai.game.mahjong.engine.oper.BaseOperation;
+import com.kuaikai.game.mahjong.msg.pb.CardTypePB.CardType;
 import com.kuaikai.game.mahjong.msg.pb.DirectionPB.Direction;
 
 public class DefaultProcessor implements IMahjongProcessor {
@@ -54,18 +57,6 @@ public class DefaultProcessor implements IMahjongProcessor {
 	public void init(MahjongDesk desk) {
 		this.desk = desk;
 		initSetting();
-		
-		int totalQuan = desk.getSetting().getInt(CardGameSetting.TOTAL_QUAN);
-		if(totalQuan > 0) {
-			desk.getEngine().putAttr(RoomAttr.CURRENT_QUAN, 1);	// 从第一圈开始
-			addQuan2Round(1);	// 第一圈从第一局开始
-		}
-		
-		int totalDi = desk.getSetting().getInt(CardGameSetting.TOTAL_DI);
-		if(totalDi > 0) {
-			desk.getEngine().putAttr(RoomAttr.CURRENT_DI, 1);	// 从第一底开始
-			addDi2Round(1);	// 第一底从第一局开始
-		}
 	}
 
 	/**
@@ -88,6 +79,11 @@ public class DefaultProcessor implements IMahjongProcessor {
 		if(setting.getBool(CardGameSetting.HONG_ZHONG_ALMIGHTY)) {
 			setting.put(CardGameSetting.HONG_ZHONG, true);
 		}
+		
+		// 15秒自动出牌（大众竞技场默认）
+		if(Club.isPub(ClubRedis.getOwnerId(desk.getDesk().getClubId())))
+			setting.putIfNotExist(CardGameSetting.OPER_DELAY_SECONDS, 15);
+		
 	}
 	
 	/**
@@ -226,24 +222,24 @@ public class DefaultProcessor implements IMahjongProcessor {
 		List<Integer> cardPool = new ArrayList<Integer>();
 		// 加入万条筒
 		for(int i=1; i<=9; i++){
-			cardPool.add(Mahjong.CardType.WAN.getValue()+i);
+			cardPool.add(CardType.WAN.getNumber()+i);
 		}
 		
 		if(!desk.getSetting().getBool(CardGameSetting.QU_TIAO)) {
 			for(int i=1; i<=9; i++){
-				cardPool.add(Mahjong.CardType.TIAO.getValue()+i);
+				cardPool.add(CardType.TIAO.getNumber()+i);
 			}			
 		}
 		
 		if(!desk.getSetting().getBool(CardGameSetting.QU_TONG)) {
 			for(int i=1; i<=9; i++){
-				cardPool.add(Mahjong.CardType.TONG.getValue()+i);
+				cardPool.add(CardType.TONG.getNumber()+i);
 			}			
 		}
 		
 		if(!desk.getSetting().getBool(CardGameSetting.QU_ZI)) {
 			for(int i=1; i<=7; i++){
-				cardPool.add(Mahjong.CardType.ZI.getValue()+i);
+				cardPool.add(CardType.ZI.getNumber()+i);
 			}				
 		}
 		
